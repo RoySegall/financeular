@@ -30,7 +30,6 @@
     <div class="actions row">
       <div class="col-8 text-left">
         <button type="button" class="btn btn-primary">Add another section</button>
-        <button type="button" class="btn btn-light">Export to file</button>
         <button type="button" class="btn btn-success">Login and save</button>
       </div>
 
