@@ -8,10 +8,14 @@
         Balance: 5,000
         Total: 35,000
       </div>
+
+      <!--<div class="col-12 no-income">-->
+        <!--<input name="income" type="number" placeholder="Income" class="form-control" />-->
+      <!--</div>-->
     </div>
 
-    <div class="row">
-      <div class="block col-6">
+    <div class="row blocks">
+      <div class="block col-5">
 
         <div class="block-header">
           <div class="title"><input type="text" placeholder="Enter title here" class="form-control title" /></div>
@@ -44,33 +48,47 @@
 
   .home {
 
-    .block {
-      padding: 0;
-      border: solid 1px $blue1;
-      background: $white2;
-      margin: 1em;
+    .no-income {
 
       input {
-        margin: 0;
+        width: 25%;
+        margin: 0 auto;
+        border: solid 1px $blue1;
         border-radius: 0;
-        border: none;
-
-        &.title {
-          text-align: center;
-          border-bottom: solid 1px $blue2;
-          color: $blue3;
-        }
       }
+    }
 
-      .expense {
+    .blocks {
+      text-align: center;
 
-        .title {
-          padding-right: 0;
-          border-right: $blue1 solid 1px;
+      .block {
+        margin: 1em auto;
+        padding: 0;
+        border: solid 1px $blue1;
+        background: $white2;
+
+        input {
+          margin: 0;
+          border-radius: 0;
+          border: none;
+
+          &.title {
+            text-align: center;
+            border-bottom: solid 1px $blue2;
+            color: $blue3;
+          }
         }
 
-        .value {
-          padding-left: 0;
+        .expense {
+
+          .title {
+            padding-right: 0;
+            border-right: $blue1 solid 1px;
+          }
+
+          .value {
+            padding-left: 0;
+          }
         }
       }
     }
