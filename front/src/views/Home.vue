@@ -1,46 +1,46 @@
 <template>
   <div class="home">
     <div class="row upper">
-      <div class="col-6 text-left">
-        <input name="income" type="number" placeholder="Income" class="form-control" />
-      </div>
-      <div class="col-6 text-right">
-        Balance: 5,000
-        Total: 35,000
-      </div>
-
-      <!--<div class="col-12 no-income">-->
+      <!--<div class="col-6 text-left">-->
         <!--<input name="income" type="number" placeholder="Income" class="form-control" />-->
       <!--</div>-->
-    </div>
+      <!--<div class="col-6 text-right">-->
+        <!--Balance: 5,000-->
+        <!--Total: 35,000-->
+      <!--</div>-->
 
-    <div class="row blocks">
-      <div class="block col-5">
-
-        <div class="block-header">
-          <div class="title"><input type="text" placeholder="Enter title here" class="form-control title" /></div>
-        </div>
-
-        <div class="expenses">
-          <div class="expense row">
-            <div class="title col-md-6"><input type="text" placeholder="Title" class="form-control" /></div>
-            <div class="value col-md-6"><input type="number" placeholder="Value" class="form-control" /></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="actions row">
-      <div class="col-8 text-left">
-        <button type="button" class="btn btn-primary">Add another section</button>
-        <button type="button" class="btn btn-success">Login and save</button>
-      </div>
-
-      <div class="col-4 text-right">
-        Total: 25,000
+      <div class="col-12 no-income">
+        <input name="income" type="number" placeholder="What is you budget?" class="form-control animated bounce fast" />
       </div>
     </div>
+
+    <!--<div class="row blocks">-->
+      <!--<div class="block col-5">-->
+
+        <!--<div class="block-header">-->
+          <!--<div class="title"><input type="text" placeholder="Enter title here" class="form-control title" /></div>-->
+        <!--</div>-->
+
+        <!--<div class="expenses">-->
+          <!--<div class="expense row">-->
+            <!--<div class="title col-md-6"><input type="text" placeholder="Title" class="form-control" /></div>-->
+            <!--<div class="value col-md-6"><input type="number" placeholder="Value" class="form-control" /></div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div class="actions row">-->
+      <!--<div class="col-8 text-left">-->
+        <!--<button type="button" class="btn btn-primary">Add another section</button>-->
+        <!--<button type="button" class="btn btn-success">Login and save</button>-->
+      <!--</div>-->
+<!---->
+      <!--<div class="col-4 text-right">-->
+        <!--Total: 25,000-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </template>
 
