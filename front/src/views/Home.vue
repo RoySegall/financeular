@@ -69,11 +69,13 @@
                 padding: 0;
                 border: solid 1px $blue1;
                 background: $white2;
+                border-bottom: none;
 
                 input {
                     margin: 0;
                     border-radius: 0;
                     border: none;
+                    border-bottom: 1px solid $blue1;
 
                     &.title {
                         text-align: center;
@@ -111,6 +113,7 @@
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
     import Block from './Block';
+    import Items from './Block';
 
     @Component({})
 
@@ -127,7 +130,7 @@
         }
 
         public addBlock() {
-            this.blocks.push(new Block())
+            this.blocks.push(new Block());
         }
     }
 </script>
