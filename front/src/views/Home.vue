@@ -23,10 +23,10 @@
                     </div>
                 </div>
 
-                <div class="expenses">
+                <div class="expenses" v-for="item in block.items">
                     <div class="expense row">
-                        <div class="title col-md-6"><input type="text" placeholder="Title" class="form-control"/></div>
-                        <div class="value col-md-6"><input type="number" placeholder="Value" class="form-control"/>
+                        <div class="title col-md-6"><input type="text" placeholder="Title" class="form-control" v-model="item.title" /></div>
+                        <div class="value col-md-6"><input type="number" placeholder="Value" class="form-control"  v-model="item.value" />
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
         </div>
 
-        <div class="actions row animated fadeInLeft fast" v-if="budget">
+        <div class="actions row animated slideInLeft fast" v-if="budget">
             <div class="col-8 text-left">
                 <button type="button" class="btn btn-primary" v-on:click="addBlock">Add another section</button>
                 <button type="button" class="btn btn-success">Login and save</button>
@@ -92,6 +92,8 @@
                     .value {
                         padding-left: 0;
                     }
+
+                    border-bottom: none;
                 }
             }
         }
