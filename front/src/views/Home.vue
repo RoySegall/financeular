@@ -15,11 +15,11 @@
             </div>
         </div>
 
-        <div class="row blocks" v-if="budget" >
+        <div class="row blocks" v-if="budget">
             <div class="block col-5 animated fadeInDown fast" v-for="block in blocks">
 
                 <div class="block-header">
-                    <div class="title"><input type="text" placeholder="Enter title here" class="form-control title"/>
+                    <div class="title"><input type="text" placeholder="Enter title here" v-model="block.title" class="form-control title"/>
                     </div>
                 </div>
 
@@ -114,8 +114,8 @@
 
     export default class Home extends Vue {
 
-        private budget = null;
-        private tempBudget = null;
+        private budget: any = null;
+        private tempBudget: any = null;
         private blocks = [
             new Block(),
         ];
