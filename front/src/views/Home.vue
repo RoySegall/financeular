@@ -1,48 +1,52 @@
 <template>
     <div class="home">
-        <div class="row upper">
-            <div class="col-6 text-left animated fadeInLeft fast" v-if="budget">
-                <input name="income" type="number" placeholder="Income" class="form-control"/>
-            </div>
-            <div class="col-6 text-right animated fadeInRight fast" v-if="budget">
-                Balance: 5,000
-                Total: 35,000
-            </div>
-
-            <div class="col-12 no-income " v-if="!budget">
+        <div v-if="!budget">
+            <div class="col-12 no-income">
                 <input name="income" type="number" placeholder="What is you budget?"
-                       class="form-control animated bounce fast" @keyup.enter="applyBudget" v-model="tempBudget"/>
+                       class="form-control animated bounce fast income-setter" @keyup.enter="applyBudget"
+                       v-model="tempBudget"/>
             </div>
         </div>
 
-        <div class="row blocks" v-if="budget">
-            <div class="block col-5 animated fadeInDown fast" v-for="block in blocks">
-
-                <div class="block-header">
-                    <div class="title"><input type="text" placeholder="Enter title here" v-model="block.title" class="form-control title"/>
-                    </div>
+        <div v-if="budget">
+            <div class="row upper">
+                <div class="col-6 text-left animated fadeInLeft fast">
+                    <input name="income" type="number" placeholder="Income" v-model="budget"
+                           class="form-control income-setter"/>
                 </div>
+                <div class="col-6 text-right animated fadeInRight fast">
+                    Balance: 5,000
+                    Total: 35,000
+                </div>
+            </div>
 
-                <div class="expenses" v-for="item in block.items">
-                    <div class="expense row">
-                        <div class="title col-md-6"><input type="text" placeholder="Title" class="form-control" v-model="item.title" /></div>
-                        <div class="value col-md-6"><input type="number" placeholder="Value" class="form-control"  v-model="item.value" />
+            <div class="row blocks">
+                <div class="block col-5 animated fadeInDown fast" v-for="block in blocks">
+
+                    <div class="block-header">
+                        <div class="title"><input type="text" placeholder="Enter title here" v-model="block.title"
+                                                  class="form-control title"/>
+                        </div>
+                    </div>
+
+                    <div class="expenses" v-for="item in block.items">
+                        <div class="expense row" @click.once="addItem(block.items)">
+                            <div class="title col-md-6"><input type="text" placeholder="Title" class="form-control"
+                                                               v-model="item.title"/></div>
+                            <div class="value col-md-6"><input type="number" placeholder="Value" class="form-control"
+                                                               v-model="item.value"/></div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
-
-        <div class="actions row animated slideInLeft fast" v-if="budget">
-            <div class="col-8 text-left">
-                <button type="button" class="btn btn-primary" v-on:click="addBlock">Add another section</button>
-                <button type="button" class="btn btn-success">Login and save</button>
+            <div class="actions row animated slideInLeft fast">
+                <div class="col-8 text-left">
+                    <button type="button" class="btn btn-primary" v-on:click="addBlock">Add another section</button>
+                    <button type="button" class="btn btn-success">Login and save</button>
+                </div>
             </div>
-            <!---->
-            <!--<div class="col-4 text-right">-->
-            <!--Total: 25,000-->
-            <!--</div>-->
         </div>
     </div>
 </template>
@@ -53,18 +57,22 @@
 
         .no-income {
 
-            input {
-                width: 25%;
+            .income-setter {
                 margin: 0 auto;
-                border: solid 1px $blue1;
-                border-radius: 0;
             }
+        }
+
+        .income-setter {
+            width: 25%;
+            border: solid 1px $blue1;
+            border-radius: 0;
         }
 
         .blocks {
             text-align: center;
 
             .block {
+                height: fit-content;
                 margin: 1em auto;
                 padding: 0;
                 border: solid 1px $blue1;
@@ -107,13 +115,12 @@
             }
         }
     }
-
 </style>
 
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
     import Block from './Block';
-    import Items from './Block';
+    import Items from "./Items";
 
     @Component({})
 
@@ -121,12 +128,17 @@
 
         private budget: any = null;
         private tempBudget: any = null;
+
         private blocks = [
             new Block(),
         ];
 
         public applyBudget() {
             this.budget = this.tempBudget;
+        }
+
+        public addItem(items: any) {
+            items.push(new Items());
         }
 
         public addBlock() {
