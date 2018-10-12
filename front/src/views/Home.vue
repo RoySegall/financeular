@@ -15,8 +15,8 @@
                            class="form-control income-setter"/>
                 </div>
                 <div class="col-6 text-right animated fadeInRight fast">
-                    Balance: 5,000
-                    Total: 35,000
+                    Balance: <span v-bind:class="this.balanceClass">{{this.balance}}</span>
+                    Total: <span>{{this.total}}</span>
                 </div>
             </div>
 
@@ -24,8 +24,17 @@
                 <div class="block col-5 animated fadeInDown fast" v-for="block in blocks">
 
                     <div class="block-header">
-                        <div class="title"><input type="text" placeholder="Enter title here" v-model="block.title"
-                                                  class="form-control title"/>
+                        <div class="title">
+                            <input type="text" placeholder="Enter title here" v-model="block.title" class="form-control title" />
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dropdown
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button" v-on:click="addBlock">Add another section</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -34,7 +43,7 @@
                             <div class="title col-md-6"><input type="text" placeholder="Title" class="form-control"
                                                                v-model="item.title"/></div>
                             <div class="value col-md-6"><input type="number" placeholder="Value" class="form-control"
-                                                               v-model="item.value"/></div>
+                                                               v-model="item.value" v-on:keyup="calculateBalance"/></div>
                         </div>
                     </div>
                 </div>
@@ -92,6 +101,13 @@
                     }
                 }
 
+                .dropdown {
+                    position: absolute;
+                    z-index: 1;
+                    right: 0;
+                    top: 0;
+                }
+
                 .expense {
 
                     .title {
@@ -126,8 +142,11 @@
 
     export default class Home extends Vue {
 
-        private budget: any = null;
+        private budget: any = 0;
         private tempBudget: any = null;
+        private total: number = 0;
+        private balance: number = 0;
+        private balanceClass: string = 'text-primary';
 
         private blocks = [
             new Block(),
@@ -143,6 +162,36 @@
 
         public addBlock() {
             this.blocks.push(new Block());
+        }
+
+        public calculateBalance() {
+            this.balance = 0;
+            this.total = 0;
+
+            this.blocks.forEach((block) => {
+                block.items.forEach((item) => {
+                    this.total += parseInt(item.value);
+                });
+            });
+
+            this.processBalance();
+        }
+
+        public processBalance() {
+
+            this.balance = this.budget - this.total;
+
+            if (this.balanceClass <= 0) {
+                this.balanceClass = 'text-danger';
+                return;
+            }
+
+            if (this.balance <= 1000) {
+                this.balanceClass = 'text-warning';
+                return;
+            }
+
+            this.balanceClass = 'text-success';
         }
     }
 </script>
