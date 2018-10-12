@@ -170,6 +170,9 @@
 
             this.blocks.forEach((block) => {
                 block.items.forEach((item) => {
+                    if (typeof item.value != 'number') {
+                        item.value = 0;
+                    }
                     this.total += parseInt(item.value);
                 });
             });
@@ -181,13 +184,8 @@
 
             this.balance = this.budget - this.total;
 
-            if (this.balanceClass <= 0) {
+            if (this.balance <= 0) {
                 this.balanceClass = 'text-danger';
-                return;
-            }
-
-            if (this.balance <= 1000) {
-                this.balanceClass = 'text-warning';
                 return;
             }
 
