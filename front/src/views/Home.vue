@@ -5,8 +5,6 @@
                 <input name="income" type="number" placeholder="What is you budget?"
                        class="form-control animated bounce fast income-setter" @keyup.enter="applyBudget"
                        v-model="tempBudget"/>
-
-                <i class="fal fa-phabricator"></i>
             </div>
         </div>
 
@@ -30,11 +28,13 @@
                             <input type="text" placeholder="Enter title here" v-model="block.title" class="form-control title" />
 
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown
-                                </button>
+                                <!--<button >-->
+                                    <!--<i class="fal fa-bars"></i>-->
+                                <!--</button>-->
+
+                                <span id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fal fa-bars"></i></span>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" v-on:click="addBlock">Add another section</button>
+                                    <button class="dropdown-item" type="button" v-on:click="addBlock"><i class="fal fa-layer-plus"></i> Add another section</button>
                                 </div>
                             </div>
                         </div>
@@ -54,8 +54,8 @@
 
             <div class="actions row animated slideInLeft fast">
                 <div class="col-8 text-left">
-                    <button type="button" class="btn btn-primary" v-on:click="addBlock">Add another section</button>
-                    <button type="button" class="btn btn-success">Login and save</button>
+                    <button type="button" class="btn btn-primary" v-on:click="addBlock"><i class="fal fa-layer-plus"></i> Add another section</button>
+                    <button type="button" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save</button>
                 </div>
             </div>
         </div>
@@ -106,8 +106,8 @@
                 .dropdown {
                     position: absolute;
                     z-index: 1;
-                    right: 0;
-                    top: 0;
+                    right: 5px;
+                    top: 5px;
                 }
 
                 .expense {
