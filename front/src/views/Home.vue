@@ -5,6 +5,8 @@
                 <input name="income" type="number" placeholder="What is you budget?"
                        class="form-control animated bounce fast income-setter" @keyup.enter="applyBudget"
                        v-model="tempBudget"/>
+
+                <i class="fal fa-phabricator"></i>
             </div>
         </div>
 
