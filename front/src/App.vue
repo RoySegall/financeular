@@ -8,7 +8,7 @@
 
 
 body {
-  background-color: #ffffff;
+  background-color: $background;
   font-size: 16px;
 }
 

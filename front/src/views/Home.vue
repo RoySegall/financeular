@@ -5,36 +5,42 @@
                 <input name="income" type="number" placeholder="What is you budget?"
                        class="form-control animated bounce fast income-setter" @keyup.enter="applyBudget"
                        v-model="tempBudget"/>
+
+                <span class="d-block d-sm-none small-device-submit">
+                    <button type="button" class="btn btn-success" @click="applyBudget"><i
+                            class="fal fa-sign-in-alt"></i> Login and save
+                    </button>
+                </span>
             </div>
         </div>
 
         <div v-if="budget">
             <div class="row upper">
-                <div class="col-6 text-left animated fadeInLeft fast">
+                <div class="col-4 col-md-6 text-left animated fadeInLeft fast">
                     <input name="income" type="number" placeholder="Income" v-model="budget"
                            class="form-control income-setter"/>
                 </div>
-                <div class="col-6 text-right animated fadeInRight fast">
+                <div class="col-8 col-md-6 text-right animated fadeInRight fast">
                     Balance: <span v-bind:class="this.balanceClass">{{this.balance}}</span>
                     Total: <span>{{this.total}}</span>
                 </div>
             </div>
 
             <div class="row blocks">
-                <div class="block col-5 animated fadeInDown fast" v-for="block in blocks">
+                <div class="block col-md-5 col-12 animated fadeInDown fast" v-for="block in blocks">
 
                     <div class="block-header">
                         <div class="title">
-                            <input type="text" placeholder="Enter title here" v-model="block.title" class="form-control title" />
+                            <input type="text" placeholder="Enter title here" v-model="block.title"
+                                   class="form-control title"/>
 
                             <div class="dropdown">
-                                <!--<button >-->
-                                    <!--<i class="fal fa-bars"></i>-->
-                                <!--</button>-->
-
-                                <span id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fal fa-bars"></i></span>
+                                <span id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                      aria-expanded="false"><i class="fal fa-bars"></i></span>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" v-on:click="addBlock"><i class="fal fa-layer-plus"></i> Add another section</button>
+                                    <button class="dropdown-item" type="button" v-on:click="addBlock"><i
+                                            class="fal fa-layer-plus"></i> Add another section
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -42,20 +48,37 @@
 
                     <div class="expenses" v-for="item in block.items">
                         <div class="expense row" @click.once="addItem(block.items)">
-                            <div class="title col-md-6"><input type="text" placeholder="Title" class="form-control"
-                                                               v-model="item.title"/></div>
-                            <div class="value col-md-6"><input type="number" placeholder="Value" class="form-control"
-                                                               v-model="item.value" v-on:keyup="calculateBalance"/></div>
+                            <div class="title col-6"><input type="text" placeholder="Title" class="form-control"
+                                                            v-model="item.title"/></div>
+                            <div class="value col-6"><input type="number" placeholder="Value" class="form-control"
+                                                            v-model="item.value" v-on:keyup="calculateBalance"/>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <div class="actions row animated slideInLeft fast">
-                <div class="col-8 text-left">
-                    <button type="button" class="btn btn-primary" v-on:click="addBlock"><i class="fal fa-layer-plus"></i> Add another section</button>
-                    <button type="button" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save</button>
+            <div class="actions row animated slideInLeft fast d-none d-md-block">
+                <div class="col-md-8 text-left">
+                    <button type="button" class="btn btn-primary" v-on:click="addBlock"><i
+                            class="fal fa-layer-plus"></i> Add another section
+                    </button>
+                    <button type="button" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save
+                    </button>
+                </div>
+            </div>
+
+            <div class="actions d-block d-sm-none">
+                <div class="col-12">
+                    <button type="button" class="btn btn-primary" v-on:click="addBlock"><i
+                            class="fal fa-layer-plus"></i> Add another section
+                    </button>
+                </div>
+
+                <div class="col-12">
+                    <button type="button" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save
+                    </button>
                 </div>
             </div>
         </div>
@@ -74,9 +97,11 @@
         }
 
         .income-setter {
-            width: 25%;
-            border: solid 1px $blue1;
+            width: 50%;
+            border: none;
+            border-bottom: solid 1px $blue1;
             border-radius: 0;
+            background: $background;
         }
 
         .blocks {
@@ -133,6 +158,35 @@
             }
         }
     }
+
+    @media only screen and (max-width: 700px) {
+        .home {
+
+            .upper .text-right {
+                padding-top: 10px;
+            }
+
+            .small-device-submit {
+                padding-top: 1em;
+
+                button {
+                    width: 100%
+                }
+            }
+
+            .income-setter {
+                width: 100%;
+
+            }
+            .actions {
+                button {
+                    margin-top: .5em;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
 </style>
 
 <script lang="ts">
@@ -172,9 +226,6 @@
 
             this.blocks.forEach((block) => {
                 block.items.forEach((item) => {
-                    if (typeof item.value != 'number') {
-                        item.value = 0;
-                    }
                     this.total += parseInt(item.value);
                 });
             });
