@@ -8,9 +8,11 @@
 
                 <span class="d-block d-sm-none small-device-submit">
                     <button type="button" class="btn btn-success" @click="applyBudget"><i
-                            class="fal fa-sign-in-alt"></i> Login and save
+                            class="fal fa-sign-in-alt"></i> Start build your budget!
                     </button>
                 </span>
+
+                <p class="lead">Or <router-link to="authenticate">authenticate</router-link> for a better experience</p>
             </div>
         </div>
 
@@ -64,8 +66,9 @@
                     <button type="button" class="btn btn-primary" v-on:click="addBlock"><i
                             class="fal fa-layer-plus"></i> Add another section
                     </button>
-                    <button type="button" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save
-                    </button>
+                    <router-link to="authenticate" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and
+                        save
+                    </router-link>
                 </div>
             </div>
 
@@ -77,8 +80,9 @@
                 </div>
 
                 <div class="col-12">
-                    <button type="button" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save
-                    </button>
+                    <router-link to="authenticate" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and
+                        save
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -93,6 +97,10 @@
 
             .income-setter {
                 margin: 0 auto;
+            }
+
+            .lead {
+                margin-top: 1em;
             }
         }
 
@@ -226,7 +234,7 @@
 
             this.blocks.forEach((block) => {
                 block.items.forEach((item) => {
-                    this.total = this.total + item.value;
+                    this.total = this.total + parseInt(item.value);
                 });
             });
 
