@@ -19,7 +19,7 @@ export default new Router({
             path: '/authenticate',
             name: 'auth',
             component: Authenticate,
-        }
+        },
         // {
         //   path: '/about',
         //   name: 'about',
