@@ -8,9 +8,11 @@
 
                 <span class="d-block d-sm-none small-device-submit">
                     <button type="button" class="btn btn-success" @click="applyBudget"><i
-                            class="fal fa-sign-in-alt"></i> Login and save
+                            class="fal fa-sign-in-alt"></i> Start build your budget!
                     </button>
                 </span>
+
+                <p class="lead">Or <router-link to="authenticate">authenticate</router-link> for a better experience</p>
             </div>
         </div>
 
@@ -95,6 +97,10 @@
 
             .income-setter {
                 margin: 0 auto;
+            }
+
+            .lead {
+                margin-top: 1em;
             }
         }
 

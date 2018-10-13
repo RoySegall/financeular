@@ -20,7 +20,7 @@
         </div>
 
         <div class="login-input">
-            <div class="col-auto form-row">
+            <div class="col-auto">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fal fa-pen"></i></div>
@@ -74,6 +74,7 @@
                 </div>
             </div>
 
+            <a class="back-button btn btn-light"><router-link to="/">Go back</router-link></a>
             <button class="btn btn-primary" type="submit">{{this.submitButtonText}}</button>
 
             <hr/>
@@ -157,6 +158,13 @@
             font-weight: bold;
         }
 
+        .back-button {
+            a {
+                color: black;
+                font-weight: bold;
+            }
+        }
+
         .login-icon {
             background: white;
             font-size: 4em;
@@ -194,7 +202,7 @@
             'sign-up': 'fal fa-user-edit text-primary',
         };
 
-        public context = 'sign-up';
+        public context = 'sign-in';
         public submitButtonText = this.texts[this.context];
         public loginIcon = 'fal fa-sign-in-alt text-primary';
         public errors = [];
