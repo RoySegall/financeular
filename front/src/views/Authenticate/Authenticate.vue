@@ -1,23 +1,32 @@
 <template>
-    <div class="login">
+    <form class="login" @submit="submitForm" novalidate>
         <div class="login-icon">
             <i v-bind:class="loginIcon"></i>
         </div>
 
         <div class="row context-switching">
-            <div class="col-md-6 sign-in"><a @click="contextSwitch('sign-in')"
-                                             v-bind:class="{'active': this.context === 'sign-in'}">Sign in</a></div>
-            <div class="col-md-6 sign-up"><a @click="contextSwitch('sign-up')"
-                                             v-bind:class="{'active': this.context === 'sign-up'}">Sign up</a></div>
+            <div class="col-md-6 sign-in" v-bind:class="{'active': this.context === 'sign-in'}"><a
+                    @click="contextSwitch('sign-in')"
+            >Sign in</a></div>
+            <div class="col-md-6 sign-up" v-bind:class="{'active': this.context === 'sign-up'}"><a
+                    @click="contextSwitch('sign-up')"
+            >Sign up</a></div>
+        </div>
+
+        <div v-if="errors.length !== 0" class="results bg-danger text-white">
+            <ul>
+                <li v-for="error in errors">{{error}}</li>
+            </ul>
         </div>
 
         <div class="login-input">
-            <div class="col-auto">
+            <div class="col-auto form-row">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fal fa-pen"></i></div>
                     </div>
-                    <input type="text" class="form-control" v-model="user.name" placeholder="Username">
+                    <input type="text" class="form-control" v-bind:class="{'is-invalid': this.touchedInputs['name']}"
+                           v-model="user.name" placeholder="Username">
                 </div>
             </div>
 
@@ -26,7 +35,8 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fal fa-unlock"></i></div>
                     </div>
-                    <input type="password" class="form-control" placeholder="Password" v-model="user.pass">
+                    <input type="password" class="form-control" placeholder="Password"
+                           v-bind:class="{'is-invalid': this.touchedInputs['pass']}" v-model="user.pass">
                 </div>
             </div>
 
@@ -38,6 +48,7 @@
                             <div class="input-group-text"><i class="fal fa-unlock"></i></div>
                         </div>
                         <input type="password" class="form-control" placeholder="Password(again)"
+                               v-bind:class="{'is-invalid': this.touchedInputs['passAgain']}"
                                v-model="user.passAgain">
                     </div>
                 </div>
@@ -47,7 +58,8 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fal fa-envelope"></i></div>
                         </div>
-                        <input type="email" class="form-control" placeholder="Email" v-model="user.email">
+                        <input type="email" class="form-control" placeholder="Email" v-model="user.email"
+                               v-bind:class="{'is-invalid': this.touchedInputs['email']}">
                     </div>
                 </div>
 
@@ -56,19 +68,20 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fal fa-envelope"></i></div>
                         </div>
-                        <input type="email" class="form-control" placeholder="Email(again)" v-model="user.emailAgain">
+                        <input type="email" class="form-control" placeholder="Email(again)" v-model="user.emailAgain"
+                               v-bind:class="{'is-invalid': this.touchedInputs['emailAgain']}">
                     </div>
                 </div>
             </div>
 
-            <button class="btn btn-primary" @click="submitForm()">{{this.submitButtonText}}</button>
+            <button class="btn btn-primary" type="submit">{{this.submitButtonText}}</button>
 
             <hr/>
 
             <a class="login-button facebook"><i class="fab fa-facebook-f"></i> Login using Facebook</a>
             <a class="login-button google"><i class="fab fa-google"></i> Login using Google</a>
         </div>
-    </div>
+    </form>
 </template>
 
 
@@ -99,9 +112,12 @@
             }
 
             .active {
+                max-width: 40%;
+                margin: 0 auto;
                 font-weight: bold;
-                padding-bottom: 1px;
                 color: $blue1;
+                border-bottom: solid $blue2 1px;
+                padding-bottom: .5em;
             }
         }
 
@@ -178,10 +194,11 @@
             'sign-up': 'fal fa-user-edit text-primary',
         };
 
-        public context = 'sign-in';
+        public context = 'sign-up';
         public submitButtonText = this.texts[this.context];
         public loginIcon = 'fal fa-sign-in-alt text-primary';
         public errors = [];
+        public touchedInputs = {};
         public success = '';
         public user = {
             name: '',
@@ -205,21 +222,72 @@
             this.loginIcon = this.icons[context];
         }
 
-        public submitForm() {
-            const self = this;
-            self.errors = [];
+        public validEmail(email: string) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
 
-            if (this.user.pass !== '' && this.user.name !== '') {
+        public submitForm(e) {
+            const self = this;
+
+            e.preventDefault();
+
+            self.errors = [];
+            self.touchedInputs = {};
+
+            if (this.user.name === '') {
+                this.errors.push('Please fill in the username');
+                self.touchedInputs['name'] = true;
+            }
+            if (this.user.pass === '') {
+                this.errors.push('Please fill in the password');
+                self.touchedInputs['pass'] = true;
+            }
+
+            if (this.context === 'sign-up') {
+                if (this.user.passAgain == '') {
+                    this.errors.push('Please fill in the password(again)');
+                    self.touchedInputs['passAgain'] = true;
+                }
+
+                if (this.user.pass != '' && this.user.passAgain != this.user.pass) {
+                    this.errors.push('The passwords are not matching');
+                    self.touchedInputs['pass'] = true;
+                    self.touchedInputs['passAgain'] = true;
+                }
+
+                if (this.user.email == '') {
+                    this.errors.push('Please fill in the email');
+                    self.touchedInputs['email'] = true;
+                }
+
+                if (this.user.emailAgain == '') {
+                    this.errors.push('Please fill in the email(again)');
+                    self.touchedInputs['emailAgain'] = true;
+                }
+
+                if (!this.validEmail(this.user.email)) {
+                    this.errors.push('The email should be valid');
+                    self.touchedInputs['email'] = true;
+                }
+
+                if (this.user.emailAgain != '' && this.user.emailAgain != this.user.email) {
+                    this.errors.push('The emails addresses are not matching');
+                    self.touchedInputs['email'] = true;
+                    self.touchedInputs['emailAgain'] = true;
+                }
+            }
+
+            if (self.errors.length === 0) {
                 this.errors = [];
                 self.loginIcon = 'fal fa-spinner-third fa-spin';
 
-            } else {
-                if (this.user.name === '') {
-                    this.errors.push('Please fill in the username');
-                }
-                if (this.user.pass === '') {
-                    this.errors.push('Please fill in the password');
-                }
+                setTimeout(() => {
+                    self.loginIcon = 'fal fa-check text-success';
+                }, 1500);
+            }
+            else {
+                this.loginIcon = 'fal fa-times text-danger';
             }
         }
 

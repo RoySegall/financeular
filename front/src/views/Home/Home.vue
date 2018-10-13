@@ -200,7 +200,7 @@
 
     export default class Home extends Vue {
 
-        private budget: any = 100;
+        private budget: any = 0;
         private tempBudget: any = null;
         private total: number = 0;
         private balance: number = 0;
@@ -228,7 +228,7 @@
 
             this.blocks.forEach((block) => {
                 block.items.forEach((item) => {
-                    this.total = this.total + item.value;
+                    this.total = this.total + parseInt(item.value);
                 });
             });
 
