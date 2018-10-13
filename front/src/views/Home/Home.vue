@@ -64,8 +64,7 @@
                     <button type="button" class="btn btn-primary" v-on:click="addBlock"><i
                             class="fal fa-layer-plus"></i> Add another section
                     </button>
-                    <button type="button" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save
-                    </button>
+                    <router-link to="auth" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save</router-link>
                 </div>
             </div>
 
@@ -77,8 +76,7 @@
                 </div>
 
                 <div class="col-12">
-                    <button type="button" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save
-                    </button>
+                    <router-link to="auth" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and save</router-link>
                 </div>
             </div>
         </div>
@@ -198,7 +196,7 @@
 
     export default class Home extends Vue {
 
-        private budget: any = 0;
+        private budget: any = 100;
         private tempBudget: any = null;
         private total: number = 0;
         private balance: number = 0;
