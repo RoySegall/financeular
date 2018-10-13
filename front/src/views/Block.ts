@@ -1,4 +1,4 @@
-import Items from '@/views/Items';
+import Items from '@/views/Item';
 
 class Block {
 

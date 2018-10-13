@@ -192,7 +192,7 @@
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
     import Block from './Block';
-    import Items from "./Items";
+    import Item from './Item';
 
     @Component({})
 
@@ -213,7 +213,7 @@
         }
 
         public addItem(items: any) {
-            items.push(new Items());
+            items.push(new Item());
         }
 
         public addBlock() {
@@ -226,7 +226,7 @@
 
             this.blocks.forEach((block) => {
                 block.items.forEach((item) => {
-                    this.total += parseInt(item.value);
+                    this.total = this.total + item.value;
                 });
             });
 

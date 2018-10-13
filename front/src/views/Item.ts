@@ -1,4 +1,4 @@
-class Items {
+class Item {
 
     public title: string;
     public value: number;
@@ -9,4 +9,4 @@ class Items {
     }
 }
 
-export default Items;
+export default Item;
