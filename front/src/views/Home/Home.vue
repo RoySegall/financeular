@@ -20,7 +20,9 @@
             <div class="row upper">
                 <div class="col-4 col-md-6 text-left animated fadeInLeft fast">
                     <input name="income" type="number" placeholder="Income" v-model="budget"
-                           class="form-control income-setter"/>
+                           class="form-control income-setter d-inline"/>
+
+                    <a class="btn btn-info d-inline text-white" @click="setCurrentIncomeAsDefault" v-html="setCurrentBudgetText"></a>
                 </div>
                 <div class="col-8 col-md-6 text-right animated fadeInRight fast">
                     Balance: <span v-bind:class="this.balanceClass">{{this.balance}}</span>
@@ -105,11 +107,12 @@
         }
 
         .income-setter {
-            width: 50%;
+            width: 25%;
             border: none;
             border-bottom: solid 1px $blue1;
             border-radius: 0;
             background: $background;
+            margin-right: 1em;
         }
 
         .blocks {
@@ -211,10 +214,39 @@
         private total: number = 0;
         private balance: number = 0;
         private balanceClass: string = 'text-primary';
+        private setCurrentBudgetText = '<i class="fal fa-wallet"></i> Save as default income';
 
         private blocks = [
             new Block(),
         ];
+
+        data() {
+            let budget = 0;
+
+            if (this.$store.state.income.DefaultIncome !== null) {
+                // Getting the income from the state.
+                budget = this.$store.state.income.DefaultIncome;
+            }
+
+            return {
+                budget: budget,
+            };
+        }
+
+        /**
+         * Saving the current income as the default income.
+         */
+        public setCurrentIncomeAsDefault() {
+            this.setCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
+            this.$store.commit('saveIncome', this.budget);
+
+            this.setCurrentBudgetText = '<i class="fal fa-check"></i> Done';
+            let self = this;
+
+            setTimeout(() => {
+                self.setCurrentBudgetText = '<i class="fal fa-wallet"></i> Save as default income';
+            }, 3000)
+        }
 
         public applyBudget() {
             this.budget = this.tempBudget;

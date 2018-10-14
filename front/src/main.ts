@@ -5,6 +5,9 @@ import store from './store';
 
 Vue.config.productionTip = false;
 
+// Initing all the modules of the state.
+store.dispatch('starting');
+
 new Vue({
   router,
   store,
