@@ -1,14 +1,28 @@
 export default {
     state: {
         BudgetTemplate: {},
-        TempBudgetTemplate: {},
     },
     mutations: {
         setBudgetTemplate(store: any, budgetTemplate: number) {
             store.BudgetTemplate = budgetTemplate;
         },
-        setTempBudgetTemplate(store: any, tempBudgetTemplate: any) {
-            store.TempBudgetTemplate = tempBudgetTemplate;
+        saveBudgetForNextTime(store: any) {
+            // Setting in the index db.
+        }
+    },
+    actions: {
+        /**
+         * Listening to the init of the object.
+         *
+         * @param context
+         */
+        starting(context: any) {
+            // Load from index DB.
+            let budgetFromData = {};
+
+            if (budgetFromData !== {}) {
+                context.commit('setBudgetTemplate', budgetFromData);
+            }
         }
     },
 }

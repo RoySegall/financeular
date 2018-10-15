@@ -201,7 +201,7 @@
 </style>
 
 <script lang="ts">
-    import {Component, Vue} from 'vue-property-decorator';
+    import {Component, Vue, Watch} from 'vue-property-decorator';
     import Block from './Block';
     import Item from './Item';
 
@@ -215,7 +215,6 @@
         private balance: number = 0;
         private balanceClass: string = 'text-primary';
         private setCurrentBudgetText = '<i class="fal fa-wallet"></i> Save as default income';
-
         private blocks = [
             new Block(),
         ];
@@ -230,6 +229,7 @@
 
             return {
                 budget: budget,
+                blocks: [new Block()],
             };
         }
 
@@ -283,6 +283,11 @@
             }
 
             this.balanceClass = 'text-success';
+        }
+
+        @Watch('blocks', { immediate: true, deep: true })
+        onBlocksChanged(val: string, oldVal: string) {
+            this.$store.commit('setBudgetTemplate', val);
         }
     }
 </script>
