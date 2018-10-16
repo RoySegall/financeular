@@ -64,7 +64,7 @@
             </div>
 
             <a class="btn btn-info d-inline text-white" @click="setCurrentBudgetAsDefault" v-html="setCurrentBudgetText"></a>
-            <a class="btn btn-danger d-inline text-white" @click="removeCurrentBudget" v-if="getBudgetTemplate()" v-html="removeCurrentBudgetText"></a>
+            <a class="btn btn-danger d-inline text-white" @click="removeCurrentBudget" v-if="getShowDelete() !== null" v-html="removeCurrentBudgetText"></a>
 
             <div class="actions row animated slideInLeft fast d-none d-md-block">
                 <div class="col-md-8 text-left">
@@ -235,7 +235,9 @@
             }
 
             if (this.$store.state.budget.BudgetTemplate !== null) {
-                blocks = this.getBudgetTemplate();
+                if (this.getBudgetTemplate().length !== 0) {
+                    blocks = this.getBudgetTemplate();
+                }
             }
 
             return {
@@ -246,6 +248,10 @@
 
         getBudgetTemplate() {
             return this.$store.state.budget.BudgetTemplate;
+        }
+
+        getShowDelete() {
+            return window.localStorage.getItem('budgetTemplate');
         }
 
         /**
@@ -341,15 +347,8 @@
         }
 
         removeCurrentBudget() {
-            this.removeCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
+            this.removeCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Removing';
             this.$store.commit('clearBudgetTemplate', this.blocks);
-
-            this.removeCurrentBudgetText = '<i class="fal fa-check"></i> Removed';
-            let self = this;
-
-            setTimeout(() => {
-                self.removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
-            }, 3000)
         }
     }
 </script>

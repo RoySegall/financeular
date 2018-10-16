@@ -22,9 +22,15 @@ export default {
         starting(context: any) {
             let budgetFromData: any = window.localStorage.getItem('budgetTemplate');
 
-            if (budgetFromData !== undefined) {
-                let budget = JSON.parse(budgetFromData);
-                context.commit('setBudgetTemplate', budget);
+           if (budgetFromData === null) {
+               budgetFromData = [];
+           }
+           else {
+               budgetFromData = JSON.parse(budgetFromData);
+           }
+
+            if (budgetFromData !== null) {
+                context.commit('setBudgetTemplate', budgetFromData);
             }
         }
     },
