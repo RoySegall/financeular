@@ -2,27 +2,41 @@
     <div class="home">
         <div v-if="!budget">
             <div class="col-12 no-income">
-                <input name="income" type="number" placeholder="What is you budget?"
-                       class="form-control animated bounce fast income-setter" @keyup.enter="applyBudget"
+                <input name="income"
+                       type="number"
+                       placeholder="What is you budget?"
+                       class="form-control animated bounce fast income-setter"
+                       @keyup.enter="applyBudget"
                        v-model="tempBudget"/>
 
                 <span class="d-block d-sm-none small-device-submit">
-                    <button type="button" class="btn btn-success" @click="applyBudget"><i
-                            class="fal fa-sign-in-alt"></i> Start build your budget!
+                    <button type="button"
+                            class="btn btn-success"
+                            @click="applyBudget">
+                        <i class="fal fa-sign-in-alt"></i> Start build your budget!
                     </button>
                 </span>
 
-                <p class="lead">Or <router-link to="authenticate">authenticate</router-link> for a better experience</p>
+                <p class="lead"> Or
+                    <router-link to="authenticate">authenticate</router-link>
+                    for a better experience
+                </p>
             </div>
         </div>
 
         <div v-if="budget">
             <div class="row upper">
                 <div class="col-4 col-md-6 text-left animated fadeInLeft fast">
-                    <input name="income" type="number" placeholder="Income" v-model="budget"
+                    <input name="income"
+                           type="number"
+                           placeholder="Income"
+                           v-model="budget"
                            class="form-control income-setter d-inline"/>
 
-                    <a class="btn btn-info d-inline text-white" @click="setCurrentIncomeAsDefault" v-html="setCurrentIncomeText"></a>
+                    <a class="btn btn-info d-inline text-white"
+                       @click="setCurrentIncomeAsDefault"
+                       v-html="setCurrentIncomeText"
+                       v-if="getShowAwesomeButtons() !== ''"></a>
                 </div>
                 <div class="col-8 col-md-6 text-right animated fadeInRight fast">
                     Balance: <span v-bind:class="this.balanceClass">{{this.balance}}</span>
@@ -39,11 +53,16 @@
                                    class="form-control title"/>
 
                             <div class="dropdown">
-                                <span id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                                      aria-expanded="false"><i class="fal fa-bars"></i></span>
+                                <span id="dropdownMenu2"
+                                      data-toggle="dropdown"
+                                      aria-haspopup="true"
+                                      aria-expanded="false">
+                                    <i class="fal fa-bars"></i>
+                                </span>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" v-on:click="addBlock"><i
-                                            class="fal fa-layer-plus"></i> Add another section
+                                    <button class="dropdown-item"
+                                            type="button"
+                                            v-on:click="addBlock"><i class="fal fa-layer-plus"></i> Add another section
                                     </button>
                                 </div>
                             </div>
@@ -52,10 +71,18 @@
 
                     <div class="expenses" v-for="item in block.items">
                         <div class="expense row">
-                            <div class="title col-6"><input type="text" placeholder="Title" class="form-control"
-                                                            v-model="item.title"/></div>
-                            <div class="value col-6"><input type="number" placeholder="Value" class="form-control"
-                                                            v-model="item.value" v-on:keyup="calculateBalance"/>
+                            <div class="title col-6">
+                                <input type="text"
+                                       placeholder="Title"
+                                       class="form-control"
+                                       v-model="item.title"/>
+                            </div>
+                            <div class="value col-6">
+                                <input type="number"
+                                       placeholder="Value"
+                                       class="form-control"
+                                       v-model="item.value"
+                                       v-on:keyup="calculateBalance"/>
                             </div>
                         </div>
                     </div>
@@ -63,30 +90,43 @@
 
             </div>
 
-            <a class="btn btn-info d-inline text-white" @click="setCurrentBudgetAsDefault" v-html="setCurrentBudgetText"></a>
-            <a class="btn btn-danger d-inline text-white" @click="removeCurrentBudget" v-if="getShowDelete() !== null" v-html="removeCurrentBudgetText"></a>
+            <div class="" v-if="getShowAwesomeButtons() !== ''">
+                <a class="btn btn-info d-inline text-white"
+                   @click="setCurrentBudgetAsDefault"
+                   v-html="setCurrentBudgetText"></a>
+
+                <a class="btn btn-danger d-inline text-white"
+                   @click="removeCurrentBudget"
+                   v-if="getShowDelete() !== null"
+                   v-html="removeCurrentBudgetText"></a>
+
+            </div>
 
             <div class="actions row animated slideInLeft fast d-none d-md-block">
                 <div class="col-md-8 text-left">
-                    <button type="button" class="btn btn-primary" v-on:click="addBlock"><i
-                            class="fal fa-layer-plus"></i> Add another section
+                    <button type="button"
+                            class="btn btn-primary"
+                            v-on:click="addBlock">
+                        <i class="fal fa-layer-plus"></i> Add another section
                     </button>
-                    <router-link to="authenticate" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and
-                        save
+                    <router-link to="authenticate" class="btn btn-success" v-if="getShowAwesomeButtons() === ''">
+                        <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
                 </div>
             </div>
 
             <div class="actions d-block d-sm-none">
                 <div class="col-12">
-                    <button type="button" class="btn btn-primary" v-on:click="addBlock"><i
-                            class="fal fa-layer-plus"></i> Add another section
+                    <button type="button"
+                            class="btn btn-primary"
+                            v-on:click="addBlock">
+                        <i class="fal fa-layer-plus"></i> Add another section
                     </button>
                 </div>
 
                 <div class="col-12">
-                    <router-link to="authenticate" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and
-                        save
+                    <router-link to="authenticate" class="btn btn-success" v-if="getShowAwesomeButtons() === ''">
+                        <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
                 </div>
             </div>
@@ -306,7 +346,7 @@
             this.balanceClass = 'text-success';
         }
 
-        @Watch('blocks', { immediate: true, deep: true })
+        @Watch('blocks', {immediate: true, deep: true})
         onBlocksChanged(val: string, oldVal: string) {
             this.$store.commit('setBudgetTemplate', val);
 
@@ -347,8 +387,13 @@
         }
 
         removeCurrentBudget() {
-            this.removeCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Removing';
+            this.removeCurrentBudgetText = '';
             this.$store.commit('clearBudgetTemplate', this.blocks);
+            this.removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
+        }
+
+        getShowAwesomeButtons() {
+            return this.$store.state.auth.AccessToken;
         }
     }
 </script>

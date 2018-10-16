@@ -288,10 +288,13 @@
 
             if (self.errors.length === 0) {
                 this.errors = [];
+                let self = this;
                 self.loginIcon = 'fal fa-spinner-third fa-spin';
 
                 setTimeout(() => {
+                    self.$store.commit('setAccessToken', 100);
                     self.loginIcon = 'fal fa-check text-success';
+                    this.$router.go(-1)
                 }, 1500);
             }
             else {
