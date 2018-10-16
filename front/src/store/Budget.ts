@@ -3,11 +3,14 @@ export default {
         BudgetTemplate: {},
     },
     mutations: {
-        setBudgetTemplate(store: any, budgetTemplate: number) {
+        setBudgetTemplate(store: any, budgetTemplate: any) {
             store.BudgetTemplate = budgetTemplate;
         },
-        saveBudgetForNextTime(store: any) {
-            // Setting in the index db.
+        saveBudgetForNextTime(store: any, budget: any) {
+            window.localStorage.setItem('budgetTemplate', JSON.stringify(budget));
+        },
+        clearBudgetTemplate(store: any) {
+            window.localStorage.removeItem('budgetTemplate');
         }
     },
     actions: {
@@ -17,11 +20,11 @@ export default {
          * @param context
          */
         starting(context: any) {
-            // Load from index DB.
-            let budgetFromData = {};
+            let budgetFromData: any = window.localStorage.getItem('budgetTemplate');
 
-            if (budgetFromData !== {}) {
-                context.commit('setBudgetTemplate', budgetFromData);
+            if (budgetFromData !== undefined) {
+                let budget = JSON.parse(budgetFromData);
+                context.commit('setBudgetTemplate', budget);
             }
         }
     },

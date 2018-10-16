@@ -27,6 +27,9 @@ export default {
 
             // todo: handle DB saving.
             store.DefaultIncome = income;
+        },
+        clearDefaultIncome(store: any) {
+            window.localStorage.removeItem('defaultIncome');
         }
     },
     actions: {
