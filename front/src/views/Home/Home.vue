@@ -2,25 +2,41 @@
     <div class="home">
         <div v-if="!budget">
             <div class="col-12 no-income">
-                <input name="income" type="number" placeholder="What is you budget?"
-                       class="form-control animated bounce fast income-setter" @keyup.enter="applyBudget"
+                <input name="income"
+                       type="number"
+                       placeholder="What is you budget?"
+                       class="form-control animated bounce fast income-setter"
+                       @keyup.enter="applyBudget"
                        v-model="tempBudget"/>
 
                 <span class="d-block d-sm-none small-device-submit">
-                    <button type="button" class="btn btn-success" @click="applyBudget"><i
-                            class="fal fa-sign-in-alt"></i> Start build your budget!
+                    <button type="button"
+                            class="btn btn-success"
+                            @click="applyBudget">
+                        <i class="fal fa-sign-in-alt"></i> Start build your budget!
                     </button>
                 </span>
 
-                <p class="lead">Or <router-link to="authenticate">authenticate</router-link> for a better experience</p>
+                <p class="lead"> Or
+                    <router-link to="authenticate">authenticate</router-link>
+                    for a better experience
+                </p>
             </div>
         </div>
 
         <div v-if="budget">
             <div class="row upper">
                 <div class="col-4 col-md-6 text-left animated fadeInLeft fast">
-                    <input name="income" type="number" placeholder="Income" v-model="budget"
-                           class="form-control income-setter"/>
+                    <input name="income"
+                           type="number"
+                           placeholder="Income"
+                           v-model="budget"
+                           class="form-control income-setter d-inline"/>
+
+                    <a class="btn btn-info d-inline text-white"
+                       @click="setCurrentIncomeAsDefault"
+                       v-html="setCurrentIncomeText"
+                       v-if="getShowAwesomeButtons() !== ''"></a>
                 </div>
                 <div class="col-8 col-md-6 text-right animated fadeInRight fast">
                     Balance: <span v-bind:class="this.balanceClass">{{this.balance}}</span>
@@ -37,11 +53,16 @@
                                    class="form-control title"/>
 
                             <div class="dropdown">
-                                <span id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                                      aria-expanded="false"><i class="fal fa-bars"></i></span>
+                                <span id="dropdownMenu2"
+                                      data-toggle="dropdown"
+                                      aria-haspopup="true"
+                                      aria-expanded="false">
+                                    <i class="fal fa-bars"></i>
+                                </span>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" v-on:click="addBlock"><i
-                                            class="fal fa-layer-plus"></i> Add another section
+                                    <button class="dropdown-item"
+                                            type="button"
+                                            v-on:click="addBlock"><i class="fal fa-layer-plus"></i> Add another section
                                     </button>
                                 </div>
                             </div>
@@ -49,40 +70,64 @@
                     </div>
 
                     <div class="expenses" v-for="item in block.items">
-                        <div class="expense row" @click.once="addItem(block.items)">
-                            <div class="title col-6"><input type="text" placeholder="Title" class="form-control"
-                                                            v-model="item.title"/></div>
-                            <div class="value col-6"><input type="number" placeholder="Value" class="form-control"
-                                                            v-model="item.value" v-on:keyup="calculateBalance"/>
+                        <div class="expense row">
+                            <div class="title col-6">
+                                <input type="text"
+                                       placeholder="Title"
+                                       class="form-control"
+                                       v-model="item.title"/>
+                            </div>
+                            <div class="value col-6">
+                                <input type="number"
+                                       placeholder="Value"
+                                       class="form-control"
+                                       v-model="item.value"
+                                       v-on:keyup="calculateBalance"/>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="budget-actions" v-if="getShowAwesomeButtons() !== ''">
+                    <a class="btn btn-info d-inline text-white"
+                       @click="setCurrentBudgetAsDefault"
+                       v-html="setCurrentBudgetText"></a>
 
+                    <a class="btn btn-danger d-inline text-white"
+                       @click="removeCurrentBudget"
+                       v-if="getShowDelete() !== null"
+                       v-html="removeCurrentBudgetText"></a>
+
+                </div>
             </div>
 
             <div class="actions row animated slideInLeft fast d-none d-md-block">
                 <div class="col-md-8 text-left">
-                    <button type="button" class="btn btn-primary" v-on:click="addBlock"><i
-                            class="fal fa-layer-plus"></i> Add another section
+                    <button type="button"
+                            class="btn btn-primary"
+                            v-on:click="addBlock">
+                        <i class="fal fa-layer-plus"></i> Add another section
                     </button>
-                    <router-link to="authenticate" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and
-                        save
+                    <router-link to="authenticate" class="btn btn-success" v-if="getShowAwesomeButtons() === ''">
+                        <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
+                    <a class="btn btn-danger text-white" @click="logout" v-if="getShowAwesomeButtons() !== ''"><i class="fal fa-sign-out-alt"></i> Logout</a>
                 </div>
             </div>
 
             <div class="actions d-block d-sm-none">
                 <div class="col-12">
-                    <button type="button" class="btn btn-primary" v-on:click="addBlock"><i
-                            class="fal fa-layer-plus"></i> Add another section
+                    <button type="button"
+                            class="btn btn-primary"
+                            v-on:click="addBlock">
+                        <i class="fal fa-layer-plus"></i> Add another section
                     </button>
                 </div>
 
                 <div class="col-12">
-                    <router-link to="authenticate" class="btn btn-success"><i class="fal fa-sign-in-alt"></i> Login and
-                        save
+                    <router-link to="authenticate" class="btn btn-success" v-if="getShowAwesomeButtons() === ''">
+                        <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
+                    <a class="btn btn-danger text-white" @click="logout" v-if="getShowAwesomeButtons() !== ''"><i class="fal fa-sign-out-alt"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -105,11 +150,12 @@
         }
 
         .income-setter {
-            width: 50%;
+            width: 25%;
             border: none;
             border-bottom: solid 1px $blue1;
             border-radius: 0;
             background: $background;
+            margin-right: 1em;
         }
 
         .blocks {
@@ -157,9 +203,19 @@
                     border-bottom: none;
                 }
             }
+
+            .budget-actions {
+                margin: 1em auto 0;
+
+                a {
+                    margin-right: 0.5em;
+                }
+            }
         }
 
         .actions {
+
+            margin-top: 1em;
 
             button {
                 margin-right: .5em;
@@ -198,7 +254,7 @@
 </style>
 
 <script lang="ts">
-    import {Component, Vue} from 'vue-property-decorator';
+    import {Component, Vue, Watch} from 'vue-property-decorator';
     import Block from './Block';
     import Item from './Item';
 
@@ -211,12 +267,59 @@
         private total: number = 0;
         private balance: number = 0;
         private balanceClass: string = 'text-primary';
-
+        private setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
+        private setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
+        private removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
         private blocks = [
             new Block(),
         ];
 
+        data() {
+            let budget = 0;
+            let blocks = [new Block()];
+
+            if (this.$store.state.income.DefaultIncome !== null) {
+                // Getting the income from the state.
+                budget = this.$store.state.income.DefaultIncome;
+            }
+
+            if (this.$store.state.budget.BudgetTemplate !== null) {
+                if (this.getBudgetTemplate().length !== 0) {
+                    blocks = this.getBudgetTemplate();
+                }
+            }
+
+            return {
+                budget: budget,
+                blocks: blocks,
+            };
+        }
+
+        getBudgetTemplate() {
+            return this.$store.state.budget.BudgetTemplate;
+        }
+
+        getShowDelete() {
+            return window.localStorage.getItem('budgetTemplate');
+        }
+
+        /**
+         * Saving the current income as the default income.
+         */
+        public setCurrentIncomeAsDefault() {
+            this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
+            this.$store.commit('saveIncome', this.budget);
+
+            this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
+            let self = this;
+
+            setTimeout(() => {
+                self.setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
+            }, 3000)
+        }
+
         public applyBudget() {
+            this.$store.commit('setTempIncome', this.tempBudget);
             this.budget = this.tempBudget;
         }
 
@@ -251,6 +354,67 @@
             }
 
             this.balanceClass = 'text-success';
+        }
+
+        @Watch('blocks', {immediate: true, deep: true})
+        onBlocksChanged(val: string, oldVal: string) {
+            this.$store.commit('setBudgetTemplate', val);
+
+            // Go over the blocks an empty one.
+            if (oldVal !== undefined) {
+
+                // This is not the init of the blocks and the
+                this.leaveEmptyItem();
+            }
+
+            // Calculating the balance.
+            this.calculateBalance();
+        }
+
+        @Watch('budget')
+        onBudgetChanged(val: any) {
+            this.calculateBalance();
+            this.$store.commit('setTempIncome', val);
+        }
+
+        leaveEmptyItem() {
+            this.blocks.forEach(block => {
+                // Get the last item.
+                let lastItem = block.items[block.items.length - 1];
+
+                if (lastItem.title !== '' || lastItem.value != 0) {
+                    // The last item has a title or a value. Append a new one in the bottom of the block.
+                    this.addItem(block.items);
+                }
+
+            });
+        }
+
+        setCurrentBudgetAsDefault() {
+            this.setCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
+            this.$store.commit('saveBudgetForNextTime', this.blocks);
+
+            this.setCurrentBudgetText = '<i class="fal fa-check"></i> Done';
+            let self = this;
+
+            setTimeout(() => {
+                self.setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
+            }, 3000)
+        }
+
+        removeCurrentBudget() {
+            this.removeCurrentBudgetText = '';
+            this.$store.commit('clearBudgetTemplate', this.blocks);
+            this.removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
+        }
+
+        getShowAwesomeButtons() {
+            return this.$store.state.auth.AccessToken;
+        }
+
+        logout() {
+            this.$store.dispatch('logout');
+            window.location.reload();
         }
     }
 </script>
