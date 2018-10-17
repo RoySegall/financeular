@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home/Home.vue';
 import Authenticate from './views/Authenticate/Authenticate.vue';
+import Dashboard from './views/Dashboard/Dashboard.vue';
 
 Vue.use(Router);
 
@@ -19,6 +20,11 @@ export default new Router({
             path: '/authenticate',
             name: 'auth',
             component: Authenticate,
+        },
+        {
+            path: '/dashboard',
+            name: 'dashboard',
+            component: Dashboard,
         },
         // {
         //   path: '/about',
