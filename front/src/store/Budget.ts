@@ -3,12 +3,32 @@ export default {
         BudgetTemplate: {},
     },
     mutations: {
+        /**
+         * Setting the budget template in the state.
+         *
+         * @param store
+         *  The state object.
+         * @param budgetTemplate
+         *  The budget object.
+         */
         setBudgetTemplate(store: any, budgetTemplate: any) {
             store.BudgetTemplate = budgetTemplate;
         },
+        /**
+         * Setting the budget for next time.
+         *
+         * @param store
+         *  The state object.
+         * @param budget
+         *  The budget.
+         */
         saveBudgetForNextTime(store: any, budget: any) {
             window.localStorage.setItem('budgetTemplate', JSON.stringify(budget));
         },
+        /**
+         * Clearing the budget object.
+         * @param store
+         */
         clearBudgetTemplate(store: any) {
             window.localStorage.removeItem('budgetTemplate');
         }

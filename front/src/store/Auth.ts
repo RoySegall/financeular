@@ -3,6 +3,14 @@ export default {
         AccessToken: '',
     },
     mutations: {
+        /**
+         * Setting the access token.
+         *
+         * @param store
+         *  The state object.
+         * @param {string} at
+         *  The access token.
+         */
         setAccessToken(store: any, at: string) {
             store.AccessToken = at;
             window.localStorage.setItem('access_token', at);

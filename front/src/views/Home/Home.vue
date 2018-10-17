@@ -263,7 +263,6 @@
         private blocks = [
             new Block(),
         ];
-        private skip: boolean;
 
         data() {
             let budget = 0;
@@ -310,6 +309,7 @@
         }
 
         public applyBudget() {
+            this.$store.commit('setTempIncome', this.tempBudget);
             this.budget = this.tempBudget;
         }
 
@@ -359,6 +359,12 @@
 
             // Calculating the balance.
             this.calculateBalance();
+        }
+
+        @Watch('budget')
+        onBudgetChanged(val: any) {
+            this.calculateBalance();
+            this.$store.commit('setTempIncome', val);
         }
 
         leaveEmptyItem() {

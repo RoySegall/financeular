@@ -288,12 +288,15 @@
 
             if (self.errors.length === 0) {
                 this.errors = [];
-                let self = this;
                 self.loginIcon = 'fal fa-spinner-third fa-spin';
 
                 setTimeout(() => {
                     self.$store.commit('setAccessToken', 100);
+                    self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
+                    self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
+                    self.$store.commit('clearTempIncome');
                     self.loginIcon = 'fal fa-check text-success';
+
                     this.$router.go(-1)
                 }, 1500);
             }
