@@ -52,6 +52,16 @@ export default {
             if (budgetFromData !== null) {
                 context.commit('setBudgetTemplate', budgetFromData);
             }
+        },
+        /**
+         * Invoking action when the user is logging out.
+         *
+         * @param context
+         */
+        logout(context: any) {
+            // Clearing up the template the local storage template.
+            context.commit('clearBudgetTemplate');
+            context.commit('setBudgetTemplate', '');
         }
     },
 }

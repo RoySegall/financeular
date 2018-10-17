@@ -87,19 +87,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="budget-actions" v-if="getShowAwesomeButtons() !== ''">
+                    <a class="btn btn-info d-inline text-white"
+                       @click="setCurrentBudgetAsDefault"
+                       v-html="setCurrentBudgetText"></a>
 
-            </div>
+                    <a class="btn btn-danger d-inline text-white"
+                       @click="removeCurrentBudget"
+                       v-if="getShowDelete() !== null"
+                       v-html="removeCurrentBudgetText"></a>
 
-            <div class="" v-if="getShowAwesomeButtons() !== ''">
-                <a class="btn btn-info d-inline text-white"
-                   @click="setCurrentBudgetAsDefault"
-                   v-html="setCurrentBudgetText"></a>
-
-                <a class="btn btn-danger d-inline text-white"
-                   @click="removeCurrentBudget"
-                   v-if="getShowDelete() !== null"
-                   v-html="removeCurrentBudgetText"></a>
-
+                </div>
             </div>
 
             <div class="actions row animated slideInLeft fast d-none d-md-block">
@@ -112,6 +110,7 @@
                     <router-link to="authenticate" class="btn btn-success" v-if="getShowAwesomeButtons() === ''">
                         <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
+                    <a class="btn btn-danger text-white" @click="logout" v-if="getShowAwesomeButtons() !== ''"><i class="fal fa-sign-out-alt"></i> Logout</a>
                 </div>
             </div>
 
@@ -128,6 +127,7 @@
                     <router-link to="authenticate" class="btn btn-success" v-if="getShowAwesomeButtons() === ''">
                         <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
+                    <a class="btn btn-danger text-white" @click="logout" v-if="getShowAwesomeButtons() !== ''"><i class="fal fa-sign-out-alt"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -203,9 +203,19 @@
                     border-bottom: none;
                 }
             }
+
+            .budget-actions {
+                margin: 1em auto 0;
+
+                a {
+                    margin-right: 0.5em;
+                }
+            }
         }
 
         .actions {
+
+            margin-top: 1em;
 
             button {
                 margin-right: .5em;
@@ -400,6 +410,11 @@
 
         getShowAwesomeButtons() {
             return this.$store.state.auth.AccessToken;
+        }
+
+        logout() {
+            this.$store.dispatch('logout');
+            window.location.reload();
         }
     }
 </script>

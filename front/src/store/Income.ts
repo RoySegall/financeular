@@ -70,6 +70,16 @@ export default {
             if (localStorageIncome !== undefined) {
                 context.commit('setIncome', localStorageIncome);
             }
+        },
+        /**
+         * Invoking action when the user is logging out.
+         *
+         * @param context
+         */
+        logout(context: any) {
+            // Remove teh default income and the temp income.
+            context.commit('clearDefaultIncome');
+            context.commit('clearTempIncome');
         }
     },
 }

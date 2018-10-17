@@ -14,6 +14,10 @@ export default {
         setAccessToken(store: any, at: string) {
             store.AccessToken = at;
             window.localStorage.setItem('access_token', at);
+        },
+        removeAccessToken(store: any) {
+            store.AccessToken = '';
+            window.localStorage.removeItem('access_token');
         }
     },
     actions: {
@@ -28,6 +32,17 @@ export default {
             if (at !== null) {
                 context.commit('setAccessToken', at);
             }
+        },
+        /**
+         * Invoking action when the user is logging out.
+         *
+         * @param context
+         */
+        logout(context: any) {
+            // Remvoving the access token.
+            context.commit('removeAccessToken');
+
+            // todo: invalidate the token in the DB.
         }
     },
 }
