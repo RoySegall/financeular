@@ -8,11 +8,11 @@
             <div class="menu col-md-2">
                 <ul>
                     <li v-for="(menu, key) in menu_items" v-bind:class="{selected: active === key, first: key === 'general', last: key === 'expenses'}" v-html="menu" @click="changeActiveMenu(key)"></li>
+                    <li><router-link to="/"><i class="fal fa-hand-point-left"></i> Go back</router-link></li>
                 </ul>
             </div>
 
             <div class="page col-md-10">
-
                 <GeneralSettings v-if="active === 'general' "></GeneralSettings>
                 <RecurringSettings v-if="active === 'payments' "></RecurringSettings>
                 <IncomeSettings v-if="active === 'incomes' "></IncomeSettings>
@@ -32,7 +32,7 @@
 
         .page {
             padding: 1em;
-            background: #e9f5ff;
+            background: $background-blue;
             text-align: left;
 
             .setting {
@@ -60,17 +60,18 @@
 
                     &:hover {
                         cursor: pointer;
-                        color: #0d447d;
+                        color: $blue7;
                     }
 
                     &.selected {
-                        background: #e9f5ff;
-                        color: #073f66;
+                        background: $background-blue;
+                        color: $blue6;
                     }
 
                     &.first {
                         border-top: none;
                     }
+
                 }
             }
         }
