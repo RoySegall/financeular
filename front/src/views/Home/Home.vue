@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="budget-actions" v-if="getShowAwesomeButtons() !== ''">
+                <div class="budget-actions animated fadeInDown fast" v-if="getShowAwesomeButtons() !== ''">
                     <a class="btn btn-info d-inline text-white"
                        @click="setCurrentBudgetAsDefault"
                        v-html="setCurrentBudgetText"></a>
@@ -111,6 +111,9 @@
                         <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
                     <a class="btn btn-danger text-white" @click="logout" v-if="getShowAwesomeButtons() !== ''"><i class="fal fa-sign-out-alt"></i> Logout</a>
+                    <router-link to="dashboard" class="btn btn-success" v-if="getShowAwesomeButtons() !== ''">
+                        <i class="fal fa-chart-line"></i> Dashboard
+                    </router-link>
                 </div>
             </div>
 
@@ -128,6 +131,9 @@
                         <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
                     <a class="btn btn-danger text-white" @click="logout" v-if="getShowAwesomeButtons() !== ''"><i class="fal fa-sign-out-alt"></i> Logout</a>
+                    <router-link to="dashboard" class="btn btn-success" v-if="getShowAwesomeButtons() !== ''">
+                        <i class="fal fa-chart-line"></i> Dashboard
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -217,7 +223,7 @@
 
             margin-top: 1em;
 
-            button {
+            .btn {
                 margin-right: .5em;
             }
         }
