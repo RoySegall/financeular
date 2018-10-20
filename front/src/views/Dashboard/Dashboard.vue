@@ -28,6 +28,7 @@
     .settings-wrapper {
         margin: 0;
         border: $blue1 solid 1px;
+        min-height: 75vh;
 
         .page {
             padding: 1em;
@@ -47,7 +48,6 @@
             margin: 0;
             background: white;
             text-align: left;
-            /*min-height: 50vh;*/
 
             ul {
                 margin: 0;
@@ -57,7 +57,6 @@
                     list-style-type: none;
                     font-size: 1.25em;
                     padding: .5em 1em;
-                    border-right: solid 1px $blue5;
 
                     &:hover {
                         cursor: pointer;
@@ -65,19 +64,12 @@
                     }
 
                     &.selected {
-                        border-bottom: $blue3 solid 1px;
-                        border-top: $blue3 solid 1px;
-                        border-right: none;
                         background: #e9f5ff;
                         color: #073f66;
                     }
 
                     &.first {
                         border-top: none;
-                    }
-
-                    &.last {
-                        border-bottom: none;
                     }
                 }
             }
