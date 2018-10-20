@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="budget-actions" v-if="getShowAwesomeButtons() !== ''">
+                <div class="budget-actions animated fadeInDown fast" v-if="getShowAwesomeButtons() !== ''">
                     <a class="btn btn-info d-inline text-white"
                        @click="setCurrentBudgetAsDefault"
                        v-html="setCurrentBudgetText"></a>

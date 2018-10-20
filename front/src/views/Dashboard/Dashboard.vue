@@ -4,18 +4,20 @@
 
         <hr/>
 
-        <div class="row">
-            <div class="col-md-8">Graph</div>
-            <div class="col-md-4">Tools</div>
-        </div>
+        <div class="row settings-wrapper">
+            <div class="menu col-md-2">
+                <ul>
+                    <li v-for="(menu, key) in menu_items" v-bind:class="{selected: active === key, first: key === 'general', last: key === 'expenses'}" v-html="menu" @click="changeActiveMenu(key)"></li>
+                </ul>
+            </div>
 
-        <div class="row">
-            <div class="col-md-12 text-center">Tools</div>
+            <div class="page col-md-10">
 
-            <div class="col-md-4"><a class="btn btn-success text-white">Look for loans</a></div>
-            <div class="col-md-4"><a class="btn btn-success text-white">Talk with an expert</a></div>
-            <div class="col-md-4"><a class="btn btn-info text-white">More tools</a></div>
-            <div class="col-md-4"><a class="btn btn-success text-white">View out market place for more sutff</a></div>
+                <GeneralSettings v-if="active === 'general' "></GeneralSettings>
+                <RecurringSettings v-if="active === 'payments' "></RecurringSettings>
+                <IncomeSettings v-if="active === 'incomes' "></IncomeSettings>
+                <ExpensesSettings v-if="active === 'expenses' "></ExpensesSettings>
+            </div>
         </div>
     </div>
 
@@ -23,15 +25,98 @@
 
 <style lang="scss">
 
+    .settings-wrapper {
+        margin: 0;
+        border: $blue1 solid 1px;
+
+        .page {
+            padding: 1em;
+            background: #e9f5ff;
+            text-align: left;
+
+            .setting {
+                background: white;
+                padding: 1em;
+                height: 100%;
+                border: $blue1 solid 1px;
+            }
+        }
+
+        .menu {
+            padding: 0;
+            margin: 0;
+            background: white;
+            text-align: left;
+            /*min-height: 50vh;*/
+
+            ul {
+                margin: 0;
+                padding: 0;
+
+                li {
+                    list-style-type: none;
+                    font-size: 1.25em;
+                    padding: .5em 1em;
+                    border-right: solid 1px $blue5;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: #0d447d;
+                    }
+
+                    &.selected {
+                        border-bottom: $blue3 solid 1px;
+                        border-top: $blue3 solid 1px;
+                        border-right: none;
+                        background: #e9f5ff;
+                        color: #073f66;
+                    }
+
+                    &.first {
+                        border-top: none;
+                    }
+
+                    &.last {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+
 </style>
 
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
+    import GeneralSettings from './GeneralSettings.vue';
+    import RecurringSettings from './RecurringSettings.vue';
+    import IncomeSettings from './IncomeSettings.vue';
+    import ExpensesSettings from './ExpensesSettings.vue';
 
-    @Component({})
+    @Component({
+        components : { GeneralSettings, RecurringSettings, IncomeSettings, ExpensesSettings }
+    })
 
     export default class Dashboard extends Vue {
 
+        private menu_items: object;
+        private active: string = 'general';
+
+        public data() {
+            return {
+                menu_items: {
+                    general: '<i class="fal fa-cog"></i> General settings',
+                    payments: '<i class="fal fa-recycle"></i> Recurring payments',
+                    incomes: '<i class="fal fa-credit-card"></i> Manage incomes',
+                    expenses: '<i class="fal fa-hands-usd"></i> Default expenses',
+                },
+                active: 'general',
+            };
+        }
+
+        public changeActiveMenu(key) {
+            this.active = key;
+        }
     }
 
 </script>
