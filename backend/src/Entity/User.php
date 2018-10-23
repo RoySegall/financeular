@@ -85,6 +85,21 @@ class User extends AbstractEntity implements UserInterface
    */
     public $updated;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\UserDefault", mappedBy="user_id", cascade={"persist", "remove"})
+     */
+    private $default;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\RecurringPayments", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $recurringPayments;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\DefaultExpenses", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $defaultExpenses;
+
   /**
    * Setting the password for a user.
    *
@@ -133,5 +148,56 @@ class User extends AbstractEntity implements UserInterface
    */
     public function eraseCredentials()
     {
+    }
+
+    public function getDefault(): ?UserDefault
+    {
+        return $this->default;
+    }
+
+    public function setDefault(UserDefault $default): self
+    {
+        $this->default = $default;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $default->getUserId()) {
+            $default->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function getRecurringPayments(): ?RecurringPayments
+    {
+        return $this->recurringPayments;
+    }
+
+    public function setRecurringPayments(RecurringPayments $recurringPayments): self
+    {
+        $this->recurringPayments = $recurringPayments;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $recurringPayments->getUser()) {
+            $recurringPayments->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getDefaultExpenses(): ?DefaultExpenses
+    {
+        return $this->defaultExpenses;
+    }
+
+    public function setDefaultExpenses(DefaultExpenses $defaultExpenses): self
+    {
+        $this->defaultExpenses = $defaultExpenses;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $defaultExpenses->getUser()) {
+            $defaultExpenses->setUser($this);
+        }
+
+        return $this;
     }
 }
