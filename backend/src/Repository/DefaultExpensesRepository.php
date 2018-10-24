@@ -14,14 +14,13 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class DefaultExpensesRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    public function __construct(RegistryInterface $registry) {
         parent::__construct($registry, DefaultExpenses::class);
     }
 
-//    /**
-//     * @return DefaultExpenses[] Returns an array of DefaultExpenses objects
-//     */
+    //    /**
+    //     * @return DefaultExpenses[] Returns an array of DefaultExpenses objects
+    //     */
     /*
     public function findByExampleField($value)
     {

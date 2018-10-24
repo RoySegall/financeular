@@ -33,42 +33,35 @@ class UserDefault
      */
     private $template;
 
-    public function getId(): ?int
-    {
+    public function getId(): ?int {
         return $this->id;
     }
 
-    public function getUser(): ?User
-    {
+    public function getUser(): ?User {
         return $this->user;
     }
 
-    public function setUser(User $user): self
-    {
+    public function setUser(User $user): self {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getIncome(): ?int
-    {
+    public function getIncome(): ?int {
         return $this->income;
     }
 
-    public function setIncome(?int $income): self
-    {
+    public function setIncome(?int $income): self {
         $this->income = $income;
 
         return $this;
     }
 
-    public function getTemplate()
-    {
+    public function getTemplate() {
         return $this->template;
     }
 
-    public function setTemplate($template): self
-    {
+    public function setTemplate($template): self {
         $this->template = $template;
 
         return $this;

@@ -14,14 +14,13 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UserDefaultRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    public function __construct(RegistryInterface $registry) {
         parent::__construct($registry, UserDefault::class);
     }
 
-//    /**
-//     * @return UserDefault[] Returns an array of UserDefault objects
-//     */
+    //    /**
+    //     * @return UserDefault[] Returns an array of UserDefault objects
+    //     */
     /*
     public function findByExampleField($value)
     {

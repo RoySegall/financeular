@@ -18,71 +18,71 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User extends AbstractEntity implements UserInterface
 {
 
-  /**
-   * @var int The id of the user.
-   *
-   * @ORM\Id
-   * @ORM\GeneratedValue
-   * @ORM\Column(type="integer", options={"unsigned":true})
-   */
+    /**
+     * @var int The id of the user.
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", options={"unsigned":true})
+     */
     public $id;
 
-  /**
-   * @var string The username.
-   *
-   * @Assert\NotNull()
-   * @ORM\Column(type="string", nullable=false, unique=true)
-   */
+    /**
+     * @var string The username.
+     *
+     * @Assert\NotNull()
+     * @ORM\Column(type="string", nullable=false, unique=true)
+     */
     public $username;
 
-  /**
-   * @var string The password.
-   *
-   * @Assert\NotNull()
-   * @ORM\Column(type="string", nullable=false)
-   */
+    /**
+     * @var string The password.
+     *
+     * @Assert\NotNull()
+     * @ORM\Column(type="string", nullable=false)
+     */
     protected $password;
 
-  /**
-   * @var string The user roles.
-   *
-   * @Assert\NotNull()
-   */
+    /**
+     * @var string The user roles.
+     *
+     * @Assert\NotNull()
+     */
     public $roles;
 
-  /**
-   * @var string The user type.
-   *
-   * @Assert\NotNull()
-   * @ORM\Column(type="string", nullable=false)
-   * @Assert\Choice(
-   *     choices = {"app", "user"},
-   *     message = "The allowed values are 'app' or 'user'"
-   * )
-   */
+    /**
+     * @var string The user type.
+     *
+     * @Assert\NotNull()
+     * @ORM\Column(type="string", nullable=false)
+     * @Assert\Choice(
+     *     choices = {"app", "user"},
+     *     message = "The allowed values are 'app' or 'user'"
+     * )
+     */
     public $type;
 
-  /**
-   * @var string The user's email.
-   *
-   * @Assert\NotNull()
-   * @ORM\Column(type="string", nullable=false, unique=true)
-   * @Assert\Email()
-   */
+    /**
+     * @var string The user's email.
+     *
+     * @Assert\NotNull()
+     * @ORM\Column(type="string", nullable=false, unique=true)
+     * @Assert\Email()
+     */
     public $email;
 
-  /**
-   * @var boolean When the record has created.
-   *
-   * @ORM\Column(type="datetime", nullable=true)
-   */
+    /**
+     * @var boolean When the record has created.
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
     public $created;
 
-  /**
-   * @var boolean When the record has been updated.
-   *
-   * @ORM\Column(type="datetime", nullable=true)
-   */
+    /**
+     * @var boolean When the record has been updated.
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
     public $updated;
 
     /**
@@ -100,63 +100,55 @@ class User extends AbstractEntity implements UserInterface
      */
     private $defaultExpenses;
 
-  /**
-   * Setting the password for a user.
-   *
-   * @param string $password
-   *  The new password.
-   */
-    public function setPassword(string $password)
-    {
+    /**
+     * Setting the password for a user.
+     *
+     * @param string $password
+     *  The new password.
+     */
+    public function setPassword(string $password) {
         $this->password = $password;
     }
 
-  /**
-   * Get the password of the user.
-   *
-   * @return string
-   */
-    public function getPassword() : string
-    {
+    /**
+     * Get the password of the user.
+     *
+     * @return string
+     */
+    public function getPassword(): string {
         return $this->password;
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function getRoles()
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function getRoles() {
         return [];
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function getSalt()
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function getSalt() {
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function getUsername()
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function getUsername() {
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function eraseCredentials()
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function eraseCredentials() {
     }
 
-    public function getDefault(): ?UserDefault
-    {
+    public function getDefault(): ?UserDefault {
         return $this->default;
     }
 
-    public function setDefault(UserDefault $default): self
-    {
+    public function setDefault(UserDefault $default): self {
         $this->default = $default;
 
         // set the owning side of the relation if necessary
@@ -167,13 +159,11 @@ class User extends AbstractEntity implements UserInterface
         return $this;
     }
 
-    public function getRecurringPayments(): ?RecurringPayment
-    {
+    public function getRecurringPayments(): ?RecurringPayment {
         return $this->recurringPayments;
     }
 
-    public function setRecurringPayments(RecurringPayment $recurringPayments): self
-    {
+    public function setRecurringPayments(RecurringPayment $recurringPayments): self {
         $this->recurringPayments = $recurringPayments;
 
         // set the owning side of the relation if necessary
@@ -184,13 +174,11 @@ class User extends AbstractEntity implements UserInterface
         return $this;
     }
 
-    public function getDefaultExpenses(): ?DefaultExpenses
-    {
+    public function getDefaultExpenses(): ?DefaultExpenses {
         return $this->defaultExpenses;
     }
 
-    public function setDefaultExpenses(DefaultExpenses $defaultExpenses): self
-    {
+    public function setDefaultExpenses(DefaultExpenses $defaultExpenses): self {
         $this->defaultExpenses = $defaultExpenses;
 
         // set the owning side of the relation if necessary

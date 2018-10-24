@@ -14,14 +14,13 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class RecurringPaymentRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    public function __construct(RegistryInterface $registry) {
         parent::__construct($registry, RecurringPayment::class);
     }
 
-//    /**
-//     * @return RecurringPayments[] Returns an array of RecurringPayments objects
-//     */
+    //    /**
+    //     * @return RecurringPayments[] Returns an array of RecurringPayments objects
+    //     */
     /*
     public function findByExampleField($value)
     {

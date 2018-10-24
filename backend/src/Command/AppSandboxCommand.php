@@ -18,28 +18,23 @@ class AppSandboxCommand extends Command
 {
     protected static $defaultName = 'app:sandbox';
 
-  /**
-   * @var TahiniUser
-   */
+    /**
+     * @var TahiniUser
+     */
     protected $tahiniUser;
 
-  /**
-   * @var TahiniAccessToken
-   */
+    /**
+     * @var TahiniAccessToken
+     */
     protected $accessToken;
 
-  /**
-   * @var ObjectManager
-   */
+    /**
+     * @var ObjectManager
+     */
     protected $entityManager;
 
 
-    public function __construct(
-        ?string $name = null,
-        TahiniUser $tahiniUser,
-        TahiniAccessToken $accessToken,
-        \Doctrine\Common\Persistence\ManagerRegistry $registry
-    ) {
+    public function __construct(?string $name = null, TahiniUser $tahiniUser, TahiniAccessToken $accessToken, \Doctrine\Common\Persistence\ManagerRegistry $registry) {
         parent::__construct($name);
 
         $this->tahiniUser = $tahiniUser;
@@ -47,13 +42,11 @@ class AppSandboxCommand extends Command
         $this->entityManager = $registry->getManager();
     }
 
-    protected function configure()
-    {
+    protected function configure() {
         $this->setDescription('This is a sandbox for testing stuff');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    protected function execute(InputInterface $input, OutputInterface $output) {
         $foo = new \stdClass();
         d(serialize($foo));
     }

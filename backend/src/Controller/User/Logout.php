@@ -22,18 +22,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class Logout extends AbstractTahiniController
 {
 
-  /**
-   * @Route("logout", methods={"GET"})
-   *
-   * @param Request $request
-   *  The request service.
-   * @param TahiniAccessToken $tahiniAccessToken
-   *  The tahini access token service.
-   *
-   * @return JsonResponse
-   */
-    public function revoking(Request $request, TahiniAccessToken $tahiniAccessToken)
-    {
+    /**
+     * @Route("logout", methods={"GET"})
+     *
+     * @param Request $request
+     *  The request service.
+     * @param TahiniAccessToken $tahiniAccessToken
+     *  The tahini access token service.
+     *
+     * @return JsonResponse
+     */
+    public function revoking(Request $request, TahiniAccessToken $tahiniAccessToken) {
         $tahiniAccessToken->revokeAccessToken($tahiniAccessToken->getAccessTokenFromRequest($request));
         return $this->json('The access token has been removed.');
     }

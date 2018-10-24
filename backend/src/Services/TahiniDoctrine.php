@@ -30,8 +30,7 @@ class TahiniDoctrine
      * @param \Doctrine\Common\Persistence\ManagerRegistry $doctrine
      *  The doctrine manager.
      */
-    public function __construct(\Doctrine\Common\Persistence\ManagerRegistry $doctrine)
-    {
+    public function __construct(\Doctrine\Common\Persistence\ManagerRegistry $doctrine) {
         $this->doctrine = $doctrine;
     }
 
@@ -40,8 +39,7 @@ class TahiniDoctrine
      *
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
-    public function getUserRepository(): \Doctrine\Common\Persistence\ObjectRepository
-    {
+    public function getUserRepository(): \Doctrine\Common\Persistence\ObjectRepository {
         return $this->doctrine->getRepository(\App\Entity\User::class);
     }
 
@@ -50,8 +48,7 @@ class TahiniDoctrine
      *
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
-    public function getAccessTokenRepository(): \Doctrine\Common\Persistence\ObjectRepository
-    {
+    public function getAccessTokenRepository(): \Doctrine\Common\Persistence\ObjectRepository {
         return $this->doctrine->getRepository(\App\Entity\AccessToken::class);
     }
 
@@ -59,8 +56,7 @@ class TahiniDoctrine
      * Get the default expenses repository.
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
-    public function getDefaultExpensesRepository(): \Doctrine\Common\Persistence\ObjectRepository
-    {
+    public function getDefaultExpensesRepository(): \Doctrine\Common\Persistence\ObjectRepository {
         return $this->doctrine->getRepository(\App\Entity\DefaultExpenses::class);
     }
 
@@ -69,8 +65,7 @@ class TahiniDoctrine
      *
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
-    public function getEmployeeRepository(): \Doctrine\Common\Persistence\ObjectRepository
-    {
+    public function getEmployeeRepository(): \Doctrine\Common\Persistence\ObjectRepository {
         return $this->doctrine->getRepository(\App\Entity\Employee::class);
     }
 
@@ -79,8 +74,7 @@ class TahiniDoctrine
      *
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
-    public function getIncomeRepository(): \Doctrine\Common\Persistence\ObjectRepository
-    {
+    public function getIncomeRepository(): \Doctrine\Common\Persistence\ObjectRepository {
         return $this->doctrine->getRepository(\App\Entity\Income::class);
     }
 
@@ -89,8 +83,7 @@ class TahiniDoctrine
      *
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
-    public function getRecurringPaymentRepository(): \Doctrine\Common\Persistence\ObjectRepository
-    {
+    public function getRecurringPaymentRepository(): \Doctrine\Common\Persistence\ObjectRepository {
         return $this->doctrine->getRepository(\App\Entity\RecurringPayment::class);
     }
 
@@ -99,8 +92,7 @@ class TahiniDoctrine
      *
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
-    public function getUserDefaultRepository(): \Doctrine\Common\Persistence\ObjectRepository
-    {
+    public function getUserDefaultRepository(): \Doctrine\Common\Persistence\ObjectRepository {
         return $this->doctrine->getRepository(\App\Entity\UserDefault::class);
     }
 }

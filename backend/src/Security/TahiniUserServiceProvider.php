@@ -11,14 +11,12 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 class TahiniUserServiceProvider implements UserProviderInterface
 {
 
-    public function loadUserByUsername($username)
-    {
+    public function loadUserByUsername($username) {
         $user = new User();
         return $user;
     }
 
-    public function refreshUser(UserInterface $user)
-    {
+    public function refreshUser(UserInterface $user) {
         if (!$user instanceof User) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
@@ -26,8 +24,7 @@ class TahiniUserServiceProvider implements UserProviderInterface
         return $user;
     }
 
-    public function supportsClass($class)
-    {
+    public function supportsClass($class) {
         return User::class === $class;
     }
 }

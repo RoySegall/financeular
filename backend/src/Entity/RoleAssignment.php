@@ -18,30 +18,30 @@ use Symfony\Component\Validator\Constraints as Assert;
 class RoleAssignment extends AbstractEntity
 {
 
-  /**
-   * @var int The id of the user.
-   *
-   * @ORM\Id
-   * @ORM\GeneratedValue
-   * @ORM\Column(type="integer", options={"unsigned":true})
-   */
+    /**
+     * @var int The id of the user.
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", options={"unsigned":true})
+     */
     public $id;
 
-  /**
-   * @var string The username.
-   *
-   * @Assert\NotNull()
-   * @ORM\Column(type="integer", nullable=false)
-   * @OneToOne(targetEntity="\App\Entity\Personal\Role")
-   */
+    /**
+     * @var string The username.
+     *
+     * @Assert\NotNull()
+     * @ORM\Column(type="integer", nullable=false)
+     * @OneToOne(targetEntity="\App\Entity\Personal\Role")
+     */
     public $roleId;
 
-  /**
-   * @var string The description.
-   *
-   * @Assert\NotNull()
-   * @ORM\Column(type="integer", nullable=false)
-   * @OneToOne(targetEntity="\App\Entity\Personal\User")
-   */
+    /**
+     * @var string The description.
+     *
+     * @Assert\NotNull()
+     * @ORM\Column(type="integer", nullable=false)
+     * @OneToOne(targetEntity="\App\Entity\Personal\User")
+     */
     public $userId;
 }

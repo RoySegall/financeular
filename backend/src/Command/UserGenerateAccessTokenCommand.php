@@ -15,31 +15,28 @@ class UserGenerateAccessTokenCommand extends Command
 
     protected static $defaultName = 'user:generate-access-token';
 
-  /**
-   * @var TahiniAccessToken
-   */
+    /**
+     * @var TahiniAccessToken
+     */
     protected $TahiniAccessToken;
 
-  /**
-   * @var TahiniUser
-   */
+    /**
+     * @var TahiniUser
+     */
     protected $TahiniUser;
 
-    public function __construct(?string $name = null, TahiniUser $tahini_user, TahiniAccessToken $tahini_access_token)
-    {
+    public function __construct(?string $name = null, TahiniUser $tahini_user, TahiniAccessToken $tahini_access_token) {
         parent::__construct($name);
 
         $this->TahiniUser = $tahini_user;
         $this->TahiniAccessToken = $tahini_access_token;
     }
 
-    protected function configure()
-    {
+    protected function configure() {
         $this->setDescription('Generate an access token');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    protected function execute(InputInterface $input, OutputInterface $output) {
         $io = new SymfonyStyle($input, $output);
 
         $username = $io->askQuestion(new Question('Enter the user name'));

@@ -14,13 +14,11 @@ class UserGetAuthCommand extends Command
 {
     protected static $defaultName = 'user:get-auth';
 
-    protected function configure()
-    {
+    protected function configure() {
         $this->setDescription('Get the auth for a user');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    protected function execute(InputInterface $input, OutputInterface $output) {
         $io = new SymfonyStyle($input, $output);
         $username = $io->askQuestion(new Question('What is the username'));
         $password = $io->askQuestion(new Question('What is the password'));

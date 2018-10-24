@@ -14,14 +14,13 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EmployeeRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    public function __construct(RegistryInterface $registry) {
         parent::__construct($registry, Employee::class);
     }
 
-//    /**
-//     * @return Employee[] Returns an array of Employee objects
-//     */
+    //    /**
+    //     * @return Employee[] Returns an array of Employee objects
+    //     */
     /*
     public function findByExampleField($value)
     {

@@ -31,42 +31,35 @@ class Employee
      */
     private $incomes;
 
-    public function getId(): ?int
-    {
+    public function getId(): ?int {
         return $this->id;
     }
 
-    public function getTitle(): ?string
-    {
+    public function getTitle(): ?string {
         return $this->title;
     }
 
-    public function setTitle(string $title): self
-    {
+    public function setTitle(string $title): self {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getLogo(): ?string
-    {
+    public function getLogo(): ?string {
         return $this->logo;
     }
 
-    public function setLogo(?string $logo): self
-    {
+    public function setLogo(?string $logo): self {
         $this->logo = $logo;
 
         return $this;
     }
 
-    public function getIncomes(): ?Income
-    {
+    public function getIncomes(): ?Income {
         return $this->incomes;
     }
 
-    public function setIncomes(?Income $incomes): self
-    {
+    public function setIncomes(?Income $incomes): self {
         $this->incomes = $incomes;
 
         // set (or unset) the owning side of the relation if necessary

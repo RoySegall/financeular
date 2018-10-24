@@ -10,11 +10,10 @@ abstract class AbstractEntity
 
     protected $mapper = [];
 
-  /**
-   * @return array
-   */
-    public function getMapper()
-    {
+    /**
+     * @return array
+     */
+    public function getMapper() {
         return $this->mapper;
     }
 }

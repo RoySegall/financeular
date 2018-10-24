@@ -17,28 +17,28 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Role extends AbstractEntity
 {
 
-  /**
-   * @var int The id of the user.
-   *
-   * @ORM\Id
-   * @ORM\GeneratedValue
-   * @ORM\Column(type="integer", options={"unsigned":true})
-   */
+    /**
+     * @var int The id of the user.
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", options={"unsigned":true})
+     */
     public $id;
 
-  /**
-   * @var string The username.
-   *
-   * @Assert\NotNull()
-   * @ORM\Column(type="string", nullable=false)
-   */
+    /**
+     * @var string The username.
+     *
+     * @Assert\NotNull()
+     * @ORM\Column(type="string", nullable=false)
+     */
     public $name;
 
-  /**
-   * @var string The description.
-   *
-   * @Assert\NotNull()
-   * @ORM\Column(type="string", nullable=false)
-   */
+    /**
+     * @var string The description.
+     *
+     * @Assert\NotNull()
+     * @ORM\Column(type="string", nullable=false)
+     */
     public $description;
 }

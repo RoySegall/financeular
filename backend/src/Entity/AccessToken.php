@@ -18,32 +18,32 @@ use Symfony\Component\Validator\Constraints as Assert;
 class AccessToken extends AbstractEntity
 {
 
-  /**
-   * @ORM\Id()
-   * @ORM\GeneratedValue()
-   * @ORM\Column(type="integer")
-   */
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
     public $id;
 
-  /**
-   * @ORM\Column(type="string", length=255)
-   */
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     public $access_token;
 
-  /**
-   * @ORM\Column(type="string", length=255)
-   */
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     public $refresh_token;
 
-  /**
-   * @ORM\Column(type="integer")
-   */
+    /**
+     * @ORM\Column(type="integer")
+     */
     public $expires;
 
-  /**
-   * @var User
-   * @ORM\OneToOne(targetEntity="\App\Entity\User", cascade={"persist", "remove"})
-   * @ORM\JoinColumn(nullable=false)
-   */
+    /**
+     * @var User
+     * @ORM\OneToOne(targetEntity="\App\Entity\User", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
     public $user;
 }

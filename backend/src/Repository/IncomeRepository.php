@@ -14,14 +14,13 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class IncomeRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
+    public function __construct(RegistryInterface $registry) {
         parent::__construct($registry, Income::class);
     }
 
-//    /**
-//     * @return Incomes[] Returns an array of Incomes objects
-//     */
+    //    /**
+    //     * @return Incomes[] Returns an array of Incomes objects
+    //     */
     /*
     public function findByExampleField($value)
     {

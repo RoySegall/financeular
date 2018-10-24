@@ -49,78 +49,65 @@ class Income
      */
     private $ending_date;
 
-    public function getId(): ?int
-    {
+    public function getId(): ?int {
         return $this->id;
     }
 
-    public function getUser(): ?User
-    {
+    public function getUser(): ?User {
         return $this->user;
     }
 
-    public function setUser(User $user): self
-    {
+    public function setUser(User $user): self {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getValue(): ?float
-    {
+    public function getValue(): ?float {
         return $this->value;
     }
 
-    public function setValue(float $value): self
-    {
+    public function setValue(float $value): self {
         $this->value = $value;
 
         return $this;
     }
 
-    public function getWorkPlace(): ?Employee
-    {
+    public function getWorkPlace(): ?Employee {
         return $this->work_place;
     }
 
-    public function setWorkPlace(?Employee $work_place): self
-    {
+    public function setWorkPlace(?Employee $work_place): self {
         $this->work_place = $work_place;
 
         return $this;
     }
 
-    public function getCurrent(): ?bool
-    {
+    public function getCurrent(): ?bool {
         return $this->current;
     }
 
-    public function setCurrent(bool $current): self
-    {
+    public function setCurrent(bool $current): self {
         $this->current = $current;
 
         return $this;
     }
 
-    public function getStartingDate(): ?int
-    {
+    public function getStartingDate(): ?int {
         return $this->starting_date;
     }
 
-    public function setStartingDate(int $starting_date): self
-    {
+    public function setStartingDate(int $starting_date): self {
         $this->starting_date = $starting_date;
 
         return $this;
     }
 
-    public function getEndingDate(): ?int
-    {
+    public function getEndingDate(): ?int {
         return $this->ending_date;
     }
 
-    public function setEndingDate(int $ending_date): self
-    {
+    public function setEndingDate(int $ending_date): self {
         $this->ending_date = $ending_date;
 
         return $this;
