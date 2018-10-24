@@ -10,6 +10,7 @@ env:
   - SCRIPT=travis/phpunit.sh
 
 before_script:
+  - cd backend
   - composer self-update
   - mysql -e 'CREATE DATABASE tahini;'
   - rm phpunit.xml.dist
