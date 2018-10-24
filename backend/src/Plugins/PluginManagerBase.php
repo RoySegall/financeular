@@ -40,7 +40,8 @@ abstract class PluginManagerBase implements PluginManagerInterface
      * @param ContainerInterface $container
      *  The container service.
      */
-    public function __construct(Reader $annotationReader, ContainerInterface $container) {
+    public function __construct(Reader $annotationReader, ContainerInterface $container)
+    {
         $this->finder = new Finder();
         $this->annotationReader = $annotationReader;
         $this->container = $container;
@@ -49,7 +50,8 @@ abstract class PluginManagerBase implements PluginManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getPlugins(): array {
+    public function getPlugins(): array
+    {
 
         if ($this->plugins) {
             return $this->plugins;
@@ -60,14 +62,23 @@ abstract class PluginManagerBase implements PluginManagerInterface
         $this->finder->files()->in($path);
 
         foreach ($this->finder as $file) {
-            $class = $this->getNamespace() . '\\' . $file->getBasename('.php');
-            $annotation = $this->annotationReader->getClassAnnotation(new \ReflectionClass($class), $this->getAnnotationHandler());
+            $class =
+                $this->getNamespace() . '\\' .
+                $file->getBasename('.php');
+            $annotation = $this->annotationReader->getClassAnnotation(
+                new \ReflectionClass($class),
+                $this->getAnnotationHandler()
+            );
 
             if (!$annotation) {
                 continue;
             }
 
-            $this->plugins[$annotation->id] = ['name' => $annotation->name, 'class' => $class, 'annotation' => $annotation,];
+            $this->plugins[$annotation->id] = [
+                'name' => $annotation->name,
+                'class' => $class,
+                'annotation' => $annotation,
+            ];
         }
 
         return $this->plugins;
@@ -76,7 +87,8 @@ abstract class PluginManagerBase implements PluginManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getPlugin(string $plugin_id): PluginBase {
+    public function getPlugin(string $plugin_id): PluginBase
+    {
 
         if (!$this->plugins) {
             // No plugin was found.
@@ -97,7 +109,8 @@ abstract class PluginManagerBase implements PluginManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function convertNamespaceToPath(string $path): string {
+    public function convertNamespaceToPath(string $path): string
+    {
         $paths = explode('\\', $path);
         $paths[0] = getcwd() . '/src';
 

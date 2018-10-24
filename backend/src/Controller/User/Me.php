@@ -26,7 +26,8 @@ class Me extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function userDetails(Request $request, TahiniAccessToken $tahiniAccessToken) {
+    public function userDetails(Request $request, TahiniAccessToken $tahiniAccessToken)
+    {
         return $this->json($tahiniAccessToken->getAccessTokenFromRequest($request)->user);
     }
 }

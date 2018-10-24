@@ -60,7 +60,12 @@ class TahiniAccessToken
      *  The validator service.
      * @param AccessTokenRepository $accessTokenRepository
      */
-    public function __construct(TahiniDoctrine $tahini_doctrine, ManagerRegistry $registry, TahiniValidator $tahini_validator, AccessTokenRepository $accessTokenRepository) {
+    public function __construct(
+        TahiniDoctrine $tahini_doctrine,
+        ManagerRegistry $registry,
+        TahiniValidator $tahini_validator,
+        AccessTokenRepository $accessTokenRepository
+    ) {
         $this->doctrine = $tahini_doctrine;
         $this->doctrineManager = $registry->getManager();
         $this->tahiniValidator = $tahini_validator;
@@ -76,7 +81,8 @@ class TahiniAccessToken
      * @return AccessToken
      *  The access token object.
      */
-    public function createAccessToken(\App\Entity\User $user): AccessToken {
+    public function createAccessToken(\App\Entity\User $user): AccessToken
+    {
         $access_token = new AccessToken();
 
         $access_token->expires = time() + $this->getAccessTokenExpires();
@@ -101,7 +107,8 @@ class TahiniAccessToken
      * @return AccessToken
      *  The access token object.
      */
-    public function getAccessToken(\App\Entity\User $user, bool $unvalid_create_new = false): AccessToken {
+    public function getAccessToken(\App\Entity\User $user, bool $unvalid_create_new = false): AccessToken
+    {
         /** @var AccessToken $access_token */
         if (!$access_token = $this->hasAccessToken($user)) {
             // No access token for the user. Create an access token and return it.
@@ -128,7 +135,8 @@ class TahiniAccessToken
      *
      * @return bool
      */
-    public function hasAccessToken(\App\Entity\User $user) {
+    public function hasAccessToken(\App\Entity\User $user)
+    {
 
         if ($access_token = $this->doctrine->getAccessTokenRepository()->findBy(['user' => $user->id])) {
             return reset($access_token);
@@ -145,7 +153,8 @@ class TahiniAccessToken
      *
      * @return AccessToken
      */
-    public function refreshAccessToken(string $refresh_token): AccessToken {
+    public function refreshAccessToken(string $refresh_token): AccessToken
+    {
 
         /** @var AccessToken[]|null $results */
         if ($results = $this->doctrine->getAccessTokenRepository()->findBy(['refresh_token' => $refresh_token])) {
@@ -168,7 +177,8 @@ class TahiniAccessToken
     /**
      * Get the user object by the access token.
      */
-    public function loadByAccessToken(string $access_token): AccessToken {
+    public function loadByAccessToken(string $access_token): AccessToken
+    {
         if ($results = $this->doctrine->getAccessTokenRepository()->findBy(['access_token' => $access_token])) {
             /** @var AccessToken $access_token */
             $access_token = reset($results);
@@ -191,14 +201,16 @@ class TahiniAccessToken
      *
      * @return AccessToken
      */
-    public function getAccessTokenFromRequest(Request $request): AccessToken {
+    public function getAccessTokenFromRequest(Request $request): AccessToken
+    {
         return $this->loadByAccessToken($request->headers->get(self::ACCESS_TOKEN_HEADER_KEY));
     }
 
     /**
      * Revoking the access token from the user.
      */
-    public function revokeAccessToken(AccessToken $access_token) {
+    public function revokeAccessToken(AccessToken $access_token)
+    {
         $access_token->user = null;
 
         // Delete the old access token.
@@ -212,7 +224,8 @@ class TahiniAccessToken
      * @param AccessToken $access_token
      *  The access token object.
      */
-    public function clearAccessToken(AccessToken $access_token) {
+    public function clearAccessToken(AccessToken $access_token)
+    {
         $access_token->access_token = "";
         $this->doctrineManager->persist($access_token);
         $this->doctrineManager->flush();
@@ -225,7 +238,8 @@ class TahiniAccessToken
      *
      * @return integer
      */
-    public function getAccessTokenExpires() {
+    public function getAccessTokenExpires()
+    {
         return \App\Services\TahiniAccessToken::ACCESS_TOKEN_DURATION;
     }
 
@@ -239,7 +253,12 @@ class TahiniAccessToken
      *
      * @return string
      */
-    protected function generateHash(string $type, User $user): string {
-        return password_hash($type . $user->id . $user->username . $user->email . time() . microtime(), PASSWORD_BCRYPT, ['cost' => 12]);
+    protected function generateHash(string $type, User $user): string
+    {
+        return password_hash(
+            $type . $user->id . $user->username . $user->email . time() . microtime(),
+            PASSWORD_BCRYPT,
+            ['cost' => 12]
+        );
     }
 }

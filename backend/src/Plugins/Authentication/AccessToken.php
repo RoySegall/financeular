@@ -5,7 +5,6 @@ namespace App\Plugins\Authentication;
 use App\Plugins\Annotations\Authentication;
 use Symfony\Component\HttpFoundation\Request;
 
-
 /**
  * @Authentication(
  *   id = "access_token",
@@ -30,7 +29,8 @@ class AccessToken extends AuthenticationPluginBase
      *
      * @param \App\Services\TahiniAccessToken $tahini_access_token
      */
-    public function __construct(\App\Services\TahiniAccessToken $tahini_access_token) {
+    public function __construct(\App\Services\TahiniAccessToken $tahini_access_token)
+    {
         $this->request = new Request();
         $this->tahiniAccessToken = $tahini_access_token;
     }
@@ -38,7 +38,8 @@ class AccessToken extends AuthenticationPluginBase
     /**
      * Making sure the user is valid.
      */
-    public function validateUser() {
+    public function validateUser()
+    {
         return true;
     }
 }

@@ -13,7 +13,8 @@ abstract class AbstractEntity
     /**
      * @return array
      */
-    public function getMapper() {
+    public function getMapper()
+    {
         return $this->mapper;
     }
 }

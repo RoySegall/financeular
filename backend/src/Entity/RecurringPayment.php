@@ -43,55 +43,66 @@ class RecurringPayment
      */
     private $valid_until;
 
-    public function getId(): ?int {
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
-    public function getUser(): ?User {
+    public function getUser(): ?User
+    {
         return $this->user;
     }
 
-    public function setUser(User $user): self {
+    public function setUser(User $user): self
+    {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getValue(): ?float {
+    public function getValue(): ?float
+    {
         return $this->value;
     }
 
-    public function setValue(float $value): self {
+    public function setValue(float $value): self
+    {
         $this->value = $value;
 
         return $this;
     }
 
-    public function getAmountOfRecurring(): ?int {
+    public function getAmountOfRecurring(): ?int
+    {
         return $this->amount_of_recurring;
     }
 
-    public function setAmountOfRecurring(int $amount_of_recurring): self {
+    public function setAmountOfRecurring(int $amount_of_recurring): self
+    {
         $this->amount_of_recurring = $amount_of_recurring;
 
         return $this;
     }
 
-    public function getValidFrom(): ?int {
+    public function getValidFrom(): ?int
+    {
         return $this->valid_from;
     }
 
-    public function setValidFrom(int $valid_from): self {
+    public function setValidFrom(int $valid_from): self
+    {
         $this->valid_from = $valid_from;
 
         return $this;
     }
 
-    public function getValidUntil(): ?int {
+    public function getValidUntil(): ?int
+    {
         return $this->valid_until;
     }
 
-    public function setValidUntil(int $valid_until): self {
+    public function setValidUntil(int $valid_until): self
+    {
         $this->valid_until = $valid_until;
 
         return $this;

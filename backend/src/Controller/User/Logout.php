@@ -32,7 +32,8 @@ class Logout extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function revoking(Request $request, TahiniAccessToken $tahiniAccessToken) {
+    public function revoking(Request $request, TahiniAccessToken $tahiniAccessToken)
+    {
         $tahiniAccessToken->revokeAccessToken($tahiniAccessToken->getAccessTokenFromRequest($request));
         return $this->json('The access token has been removed.');
     }

@@ -32,7 +32,8 @@ class Login extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function loginController(Request $request, TahiniUser $tahini_user, TahiniAccessToken $tahiniAccessToken) {
+    public function loginController(Request $request, TahiniUser $tahini_user, TahiniAccessToken $tahiniAccessToken)
+    {
         if (!$payload = $this->processPayload($request)) {
             return $this->error("The payload is not correct.", Response::HTTP_BAD_REQUEST);
         }
@@ -66,7 +67,12 @@ class Login extends AbstractTahiniController
         }
 
         // Yeah, we got an access token. Bring back to the user.
-        return $this->json(['user_id' => $user->id, 'expires' => $access_token->expires, 'access_token' => $access_token->access_token, 'refresh_token' => $access_token->refresh_token,]);
+        return $this->json([
+            'user_id' => $user->id,
+            'expires' => $access_token->expires,
+            'access_token' => $access_token->access_token,
+            'refresh_token' => $access_token->refresh_token,
+        ]);
     }
 
     /**
@@ -79,7 +85,8 @@ class Login extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function refreshToken(Request $request, TahiniAccessToken $tahiniAccessToken) {
+    public function refreshToken(Request $request, TahiniAccessToken $tahiniAccessToken)
+    {
 
         if (!$payload = $this->processPayload($request)) {
             return $this->error("The payload is not correct.", Response::HTTP_BAD_REQUEST);
@@ -95,6 +102,11 @@ class Login extends AbstractTahiniController
             return $this->error('It seems that the given refresh token does not exists.');
         }
 
-        return $this->json(['user_id' => $access_token->user->id, 'expires' => $access_token->expires, 'access_token' => $access_token->access_token, 'refresh_token' => $access_token->refresh_token,]);
+        return $this->json([
+            'user_id' => $access_token->user->id,
+            'expires' => $access_token->expires,
+            'access_token' => $access_token->access_token,
+            'refresh_token' => $access_token->refresh_token,
+        ]);
     }
 }

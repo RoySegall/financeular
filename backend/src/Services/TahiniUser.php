@@ -49,7 +49,12 @@ class TahiniUser
      *  The tahini validator service.
      * @param ManagerRegistry $registry
      */
-    public function __construct(TahiniDoctrine $tahini_doctrine, UserPasswordEncoderInterface $encoder, TahiniValidator $tahini_validator, ManagerRegistry $registry) {
+    public function __construct(
+        TahiniDoctrine $tahini_doctrine,
+        UserPasswordEncoderInterface $encoder,
+        TahiniValidator $tahini_validator,
+        ManagerRegistry $registry
+    ) {
         $this->doctrine = $tahini_doctrine;
         $this->encoder = $encoder;
         $this->tahiniValidator = $tahini_validator;
@@ -64,7 +69,8 @@ class TahiniUser
      *
      * @return string
      */
-    public function hashPassword(string $password): string {
+    public function hashPassword(string $password): string
+    {
         return $this->encoder->encodePassword(new User(), $password);
     }
 
@@ -81,7 +87,8 @@ class TahiniUser
      * @return User|null
      *  The user object.
      */
-    public function findUserByUsername(string $username, string $password = null) {
+    public function findUserByUsername(string $username, string $password = null)
+    {
         $attributes = ['username' => $username,];
 
         if ($password) {
@@ -103,7 +110,8 @@ class TahiniUser
      *
      * @return array
      */
-    public function findUserByMail(string $email) {
+    public function findUserByMail(string $email)
+    {
         $users = $this->doctrine->getUserRepository()->findBy(['email' => $email]);
 
         if ($user = reset($users)) {
@@ -124,7 +132,8 @@ class TahiniUser
      *
      * @throws \Exception
      */
-    public function createUser(User $user) {
+    public function createUser(User $user)
+    {
 
         if ($errors = $this->tahiniValidator->validate($user, true)) {
             throw $errors;
@@ -157,7 +166,8 @@ class TahiniUser
      * @return User $user
      *  The new user object.
      */
-    public function updateUser(User $user): User {
+    public function updateUser(User $user): User
+    {
         $this->doctrineManager->persist($user);
         $this->doctrineManager->flush();
 
@@ -170,7 +180,8 @@ class TahiniUser
      * @param User $user
      *  The user object.
      */
-    public function deleteUser(User $user) {
+    public function deleteUser(User $user)
+    {
         $this->doctrineManager->remove($user);
         $this->doctrineManager->flush();
     }

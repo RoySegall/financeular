@@ -27,7 +27,8 @@ class TahiniValidator
      * @param ValidatorInterface $validator
      *  The validator service.
      */
-    public function __construct(ValidatorInterface $validator) {
+    public function __construct(ValidatorInterface $validator)
+    {
         $this->validator = $validator;
     }
 
@@ -42,7 +43,8 @@ class TahiniValidator
      *
      * @return array|ValidationException
      */
-    public function validate(AbstractEntity $entity, bool $return_exception = false) {
+    public function validate(AbstractEntity $entity, bool $return_exception = false)
+    {
         $error_list = [];
 
         try {

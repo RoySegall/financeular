@@ -30,7 +30,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      * TokenAuthenticator constructor.
      * @param TahiniAccessToken $tahini_access_token
      */
-    public function __construct(TahiniAccessToken $tahini_access_token) {
+    public function __construct(TahiniAccessToken $tahini_access_token)
+    {
         $this->TahiniAccessToken = $tahini_access_token;
     }
 
@@ -51,7 +52,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
-    public function supports(Request $request) {
+    public function supports(Request $request)
+    {
         $path = $request->getRequestUri();
 
         // Check first if we need to skip the access token auth for paths which
@@ -73,14 +75,16 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
-    public function getCredentials(Request $request) {
+    public function getCredentials(Request $request)
+    {
         return array('token' => $request->headers->get(\App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY));
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUser($credentials, UserProviderInterface $userProvider) {
+    public function getUser($credentials, UserProviderInterface $userProvider)
+    {
         // todo: use the authentication plugin.
 
         if (empty($credentials['token'])) {
@@ -99,7 +103,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
-    public function checkCredentials($credentials, UserInterface $user) {
+    public function checkCredentials($credentials, UserInterface $user)
+    {
         // todo: use the authentication plugin.
         $this->token = $this->TahiniAccessToken->loadByAccessToken($credentials['token']);
 
@@ -116,7 +121,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey) {
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    {
         // On success, let the request continue.
         return null;
     }
@@ -124,7 +130,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception) {
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    {
         $data = array('message' => strtr('You are not valid. Try again later.', $exception->getMessageData()));
 
         return new JsonResponse($data, Response::HTTP_FORBIDDEN);
@@ -133,7 +140,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
-    public function start(Request $request, AuthenticationException $authException = null) {
+    public function start(Request $request, AuthenticationException $authException = null)
+    {
         $data = array(// you might translate this message
             'message' => 'Authentication Required');
 
@@ -143,7 +151,8 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
-    public function supportsRememberMe() {
+    public function supportsRememberMe()
+    {
         return false;
     }
 }

@@ -29,7 +29,8 @@ class Template extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function getTemplate(Request $request, TahiniAccessToken $tahiniAccessToken) {
+    public function getTemplate(Request $request, TahiniAccessToken $tahiniAccessToken)
+    {
         // Get the current user.
         if (!$default = $tahiniAccessToken->getAccessTokenFromRequest($request)->user->getDefault()) {
             return $this->error('The user has no template');
@@ -50,7 +51,8 @@ class Template extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function setTemplate(Request $request, TahiniAccessToken $tahiniAccessToken, ManagerRegistry $registry) {
+    public function setTemplate(Request $request, TahiniAccessToken $tahiniAccessToken, ManagerRegistry $registry)
+    {
 
         if (!$template = $request->get('template')) {
             return $this->error('You need to provide the template.');
@@ -60,7 +62,6 @@ class Template extends AbstractTahiniController
         $manager = $registry->getManager();
 
         if (!$default = $user->getDefault()) {
-
             // Creating a new one.
             $user_default = new UserDefault();
             $user_default->setTemplate($template);

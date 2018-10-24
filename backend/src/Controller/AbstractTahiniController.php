@@ -22,7 +22,8 @@ abstract class AbstractTahiniController extends AbstractController
      *
      * @return JsonResponse
      */
-    protected function payloadToEntity(AbstractEntity $entity, Request $request) {
+    protected function payloadToEntity(AbstractEntity $entity, Request $request)
+    {
 
         if (!$new_data = $this->processPayload($request)) {
             return $this->error('The post is empty', Response::HTTP_BAD_REQUEST);
@@ -41,7 +42,8 @@ abstract class AbstractTahiniController extends AbstractController
      * @param AbstractEntity $entity
      *  The entity object.
      */
-    protected function updateEntity(AbstractEntity $entity) {
+    protected function updateEntity(AbstractEntity $entity)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($entity);
         $entityManager->flush();
@@ -53,7 +55,8 @@ abstract class AbstractTahiniController extends AbstractController
      * @return \Doctrine\Common\Collections\ArrayCollection
      *   Return the payload as an object.
      */
-    protected function processPayload(Request $request) {
+    protected function processPayload(Request $request)
+    {
         $content = $request->getContent();
 
         if (!$decoded = json_decode($content, true)) {
@@ -73,8 +76,8 @@ abstract class AbstractTahiniController extends AbstractController
      *
      * @return JsonResponse
      */
-    protected function error($error, $code = Response::HTTP_NOT_FOUND) {
+    protected function error($error, $code = Response::HTTP_NOT_FOUND)
+    {
         return $this->json(['error' => $error], $code);
     }
-
 }

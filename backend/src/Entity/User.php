@@ -106,7 +106,8 @@ class User extends AbstractEntity implements UserInterface
      * @param string $password
      *  The new password.
      */
-    public function setPassword(string $password) {
+    public function setPassword(string $password)
+    {
         $this->password = $password;
     }
 
@@ -115,40 +116,47 @@ class User extends AbstractEntity implements UserInterface
      *
      * @return string
      */
-    public function getPassword(): string {
+    public function getPassword(): string
+    {
         return $this->password;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getRoles() {
+    public function getRoles()
+    {
         return [];
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getSalt() {
+    public function getSalt()
+    {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUsername() {
+    public function getUsername()
+    {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function eraseCredentials() {
+    public function eraseCredentials()
+    {
     }
 
-    public function getDefault(): ?UserDefault {
+    public function getDefault(): ?UserDefault
+    {
         return $this->default;
     }
 
-    public function setDefault(UserDefault $default): self {
+    public function setDefault(UserDefault $default): self
+    {
         $this->default = $default;
 
         // set the owning side of the relation if necessary
@@ -159,11 +167,13 @@ class User extends AbstractEntity implements UserInterface
         return $this;
     }
 
-    public function getRecurringPayments(): ?RecurringPayment {
+    public function getRecurringPayments(): ?RecurringPayment
+    {
         return $this->recurringPayments;
     }
 
-    public function setRecurringPayments(RecurringPayment $recurringPayments): self {
+    public function setRecurringPayments(RecurringPayment $recurringPayments): self
+    {
         $this->recurringPayments = $recurringPayments;
 
         // set the owning side of the relation if necessary
@@ -174,11 +184,13 @@ class User extends AbstractEntity implements UserInterface
         return $this;
     }
 
-    public function getDefaultExpenses(): ?DefaultExpenses {
+    public function getDefaultExpenses(): ?DefaultExpenses
+    {
         return $this->defaultExpenses;
     }
 
-    public function setDefaultExpenses(DefaultExpenses $defaultExpenses): self {
+    public function setDefaultExpenses(DefaultExpenses $defaultExpenses): self
+    {
         $this->defaultExpenses = $defaultExpenses;
 
         // set the owning side of the relation if necessary

@@ -20,7 +20,8 @@ class HomeController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      *  Return a json info about the system.
      */
-    public function index() {
+    public function index()
+    {
         return $this->json(['message' => 'Welcome!']);
     }
 }

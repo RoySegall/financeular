@@ -13,21 +13,24 @@ class Authentication extends PluginManagerBase
     /**
      * {@inheritdoc}
      */
-    public function getNamespace(): string {
+    public function getNamespace(): string
+    {
         return 'App\Plugins\Authentication';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getAnnotationHandler(): string {
+    public function getAnnotationHandler(): string
+    {
         return 'App\Plugins\Annotations\Authentication';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function negotiate(): PluginBase {
+    public function negotiate(): PluginBase
+    {
         $plugins = array_keys($this->getPlugins());
 
         foreach ($plugins as $id) {

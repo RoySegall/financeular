@@ -33,18 +33,21 @@ class UserCreateUserCommand extends Command
      * @param TahiniUser $tahini_user
      * @param TahiniValidator $tahini_validator
      */
-    public function __construct(?string $name = null, TahiniUser $tahini_user, TahiniValidator $tahini_validator) {
+    public function __construct(?string $name = null, TahiniUser $tahini_user, TahiniValidator $tahini_validator)
+    {
         parent::__construct($name);
 
         $this->TahiniUser = $tahini_user;
         $this->TahiniValidator = $tahini_validator;
     }
 
-    protected function configure() {
+    protected function configure()
+    {
         $this->setDescription('Creating a user');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
         $io = new SymfonyStyle($input, $output);
         $username = $io->askQuestion(new Question('What is the username'));
         $password = $io->askQuestion(new Question('What is the password'));

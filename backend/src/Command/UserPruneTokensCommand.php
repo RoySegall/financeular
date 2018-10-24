@@ -32,18 +32,24 @@ class UserPruneTokensCommand extends Command
      * @param TahiniDoctrine $tahini_doctrine
      * @param TahiniAccessToken $tahini_access_token
      */
-    public function __construct(?string $name = null, TahiniDoctrine $tahini_doctrine, TahiniAccessToken $tahini_access_token) {
+    public function __construct(
+        ?string $name = null,
+        TahiniDoctrine $tahini_doctrine,
+        TahiniAccessToken $tahini_access_token
+    ) {
         parent::__construct($name);
 
         $this->TahiniDoctrine = $tahini_doctrine;
         $this->TahiniAccessToken = $tahini_access_token;
     }
 
-    protected function configure() {
+    protected function configure()
+    {
         $this->setDescription('Removing old access token from the system');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
         $io = new SymfonyStyle($input, $output);
 
         /** @var AccessToken[] $tokens */
@@ -52,7 +58,11 @@ class UserPruneTokensCommand extends Command
         foreach ($tokens as $token) {
             if (time() > $token->expires) {
                 $this->TahiniAccessToken->clearAccessToken($token);
-                $io->writeln('The access token for the user ' . $token->user->username . ' has been pruned from tye system');
+                $io->writeln(
+                    'The access token for the user ' .
+                    $token->user->username .
+                    ' has been pruned from tye system'
+                );
                 $counts++;
             }
         }
