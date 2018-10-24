@@ -54,11 +54,7 @@ class AppSandboxCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $user = $this->tahiniUser->findUserByUsername('admin');
-
-        $access_token = $this->accessToken
-            ->refreshAccessToken('$2y$12$syxxCHNIoZGCBrQEvhwaTuv4mNwgKyCMZFr0cf4I2OQ7Bnb7O8YJO');
-
-        d($access_token);
+        $foo = new \stdClass();
+        d(serialize($foo));
     }
 }

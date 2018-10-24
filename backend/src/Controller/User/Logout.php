@@ -2,7 +2,7 @@
 
 namespace App\Controller\User;
 
-use App\Controller\AbstractTaiazController;
+use App\Controller\AbstractTahiniController;
 use App\Entity\Main\JobProcess;
 use App\Repository\JobProcessRepository;
 use App\Services\TahiniAccessToken;
@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Route("/api/user/")
  */
-class Logout extends AbstractTaiazController
+class Logout extends AbstractTahiniController
 {
 
   /**

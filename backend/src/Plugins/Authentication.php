@@ -10,31 +10,28 @@ use App\Plugins\Authentication\AuthenticationPluginBase;
 class Authentication extends PluginManagerBase
 {
 
-  /**
-   * {@inheritdoc}
-   */
-    public function getNamespace() : string
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function getNamespace(): string {
         return 'App\Plugins\Authentication';
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function getAnnotationHandler() : string
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function getAnnotationHandler(): string {
         return 'App\Plugins\Annotations\Authentication';
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function negotiate() : PluginBase
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function negotiate(): PluginBase {
         $plugins = array_keys($this->getPlugins());
 
         foreach ($plugins as $id) {
-          /** @var AuthenticationPluginBase $plugin */
+            /** @var AuthenticationPluginBase $plugin */
             $plugin = $this->getPlugin($id);
 
             if ($plugin->validateUser()) {

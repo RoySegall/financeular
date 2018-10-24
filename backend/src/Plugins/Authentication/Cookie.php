@@ -18,5 +18,6 @@ class Cookie extends AuthenticationPluginBase
      */
     public function validateUser()
     {
+        return false;
     }
 }

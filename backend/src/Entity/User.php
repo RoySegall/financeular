@@ -86,7 +86,7 @@ class User extends AbstractEntity implements UserInterface
     public $updated;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\UserDefault", mappedBy="user_id", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\UserDefault", mappedBy="user", cascade={"persist", "remove"})
      */
     private $default;
 
@@ -160,8 +160,8 @@ class User extends AbstractEntity implements UserInterface
         $this->default = $default;
 
         // set the owning side of the relation if necessary
-        if ($this !== $default->getUserId()) {
-            $default->setUserId($this);
+        if ($this !== $default->getUser()) {
+            $default->setUser($this);
         }
 
         return $this;

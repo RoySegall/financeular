@@ -18,5 +18,6 @@ class IP extends AuthenticationPluginBase
    */
     public function validateUser()
     {
+        return false;
     }
 }

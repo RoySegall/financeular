@@ -12,46 +12,44 @@ use Symfony\Component\Finder\Finder;
 abstract class PluginManagerBase implements PluginManagerInterface
 {
 
-  /**
-   * @var Finder
-   */
+    /**
+     * @var Finder
+     */
     protected $finder;
 
-  /**
-   * @var Reader
-   */
+    /**
+     * @var Reader
+     */
     protected $annotationReader;
 
-  /**
-   * @var
-   */
+    /**
+     * @var
+     */
     protected $plugins;
 
-  /**
-   * @var ContainerInterface
-   */
+    /**
+     * @var ContainerInterface
+     */
     protected $container;
 
-  /**
-   * PluginManagerBase constructor.
-   *
-   * @param Reader $annotationReader
-   *  The ready service.
-   * @param ContainerInterface $container
-   *  The container service.
-   */
-    public function __construct(Reader $annotationReader, ContainerInterface $container)
-    {
-        $this->finder =  new Finder();
+    /**
+     * PluginManagerBase constructor.
+     *
+     * @param Reader $annotationReader
+     *  The ready service.
+     * @param ContainerInterface $container
+     *  The container service.
+     */
+    public function __construct(Reader $annotationReader, ContainerInterface $container) {
+        $this->finder = new Finder();
         $this->annotationReader = $annotationReader;
         $this->container = $container;
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function getPlugins() : array
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function getPlugins(): array {
 
         if ($this->plugins) {
             return $this->plugins;
@@ -63,33 +61,25 @@ abstract class PluginManagerBase implements PluginManagerInterface
 
         foreach ($this->finder as $file) {
             $class = $this->getNamespace() . '\\' . $file->getBasename('.php');
-            $annotation = $this->annotationReader->getClassAnnotation(
-                new \ReflectionClass($class),
-                $this->getAnnotationHandler()
-            );
+            $annotation = $this->annotationReader->getClassAnnotation(new \ReflectionClass($class), $this->getAnnotationHandler());
 
             if (!$annotation) {
                 continue;
             }
 
-            $this->plugins[$annotation->id] = [
-            'name' => $annotation->name,
-            'class' => $class,
-            'annotation' => $annotation,
-            ];
+            $this->plugins[$annotation->id] = ['name' => $annotation->name, 'class' => $class, 'annotation' => $annotation,];
         }
 
         return $this->plugins;
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function getPlugin(string $plugin_id) : PluginBase
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function getPlugin(string $plugin_id): PluginBase {
 
         if (!$this->plugins) {
-          // No plugin was found.
+            // No plugin was found.
             $this->getPlugins();
         }
 
@@ -104,11 +94,10 @@ abstract class PluginManagerBase implements PluginManagerInterface
         }
     }
 
-  /**
-   * {@inheritdoc}
-   */
-    public function convertNamespaceToPath(string $path) : string
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function convertNamespaceToPath(string $path): string {
         $paths = explode('\\', $path);
         $paths[0] = getcwd() . '/src';
 

@@ -2,7 +2,7 @@
 
 namespace App\Controller\User;
 
-use App\Controller\AbstractTaiazController;
+use App\Controller\AbstractTahiniController;
 use App\Services\TahiniAccessToken;
 use App\Services\TahiniUser;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,25 +15,24 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Route("/api/user/")
  */
-class Login extends AbstractTaiazController
+class Login extends AbstractTahiniController
 {
 
     const DATE_FORMAT = 'd/m/Y';
 
-  /**
-   * @Route("login", methods={"POST"})
-   *
-   * @param Request $request
-   *  The request service.
-   * @param TahiniUser $tahini_user
-   *  The tahini user service.
-   * @param TahiniAccessToken $tahiniAccessToken
-   *  The tahini access token service.
-   *
-   * @return JsonResponse
-   */
-    public function loginController(Request $request, TahiniUser $tahini_user, TahiniAccessToken $tahiniAccessToken)
-    {
+    /**
+     * @Route("login", methods={"POST"})
+     *
+     * @param Request $request
+     *  The request service.
+     * @param TahiniUser $tahini_user
+     *  The tahini user service.
+     * @param TahiniAccessToken $tahiniAccessToken
+     *  The tahini access token service.
+     *
+     * @return JsonResponse
+     */
+    public function loginController(Request $request, TahiniUser $tahini_user, TahiniAccessToken $tahiniAccessToken) {
         if (!$payload = $this->processPayload($request)) {
             return $this->error("The payload is not correct.", Response::HTTP_BAD_REQUEST);
         }
@@ -61,32 +60,26 @@ class Login extends AbstractTaiazController
         $access_token = $tahiniAccessToken->getAccessToken($user);
 
         if (empty($access_token->access_token)) {
-          // It seems that we got an empty access token. This could be due to the
-          // face that the access token is no longer valid.
+            // It seems that we got an empty access token. This could be due to the
+            // face that the access token is no longer valid.
             return $this->error('The access token is no longer valid. Please refresh the token');
         }
 
-      // Yeah, we got an access token. Bring back to the user.
-        return $this->json([
-        'user_id' => $user->id,
-        'expires' => $access_token->expires,
-        'access_token' => $access_token->access_token,
-        'refresh_token' => $access_token->refresh_token,
-        ]);
+        // Yeah, we got an access token. Bring back to the user.
+        return $this->json(['user_id' => $user->id, 'expires' => $access_token->expires, 'access_token' => $access_token->access_token, 'refresh_token' => $access_token->refresh_token,]);
     }
 
-  /**
-   * @Route("refresh", methods={"POST"})
-   *
-   * @param Request $request
-   *  The request service.
-   * @param TahiniAccessToken $tahiniAccessToken
-   *  The tahini access token service.
-   *
-   * @return JsonResponse
-   */
-    public function refreshToken(Request $request, TahiniAccessToken $tahiniAccessToken)
-    {
+    /**
+     * @Route("refresh", methods={"POST"})
+     *
+     * @param Request $request
+     *  The request service.
+     * @param TahiniAccessToken $tahiniAccessToken
+     *  The tahini access token service.
+     *
+     * @return JsonResponse
+     */
+    public function refreshToken(Request $request, TahiniAccessToken $tahiniAccessToken) {
 
         if (!$payload = $this->processPayload($request)) {
             return $this->error("The payload is not correct.", Response::HTTP_BAD_REQUEST);
@@ -102,11 +95,6 @@ class Login extends AbstractTaiazController
             return $this->error('It seems that the given refresh token does not exists.');
         }
 
-        return $this->json([
-        'user_id' => $access_token->user->id,
-        'expires' => $access_token->expires,
-        'access_token' => $access_token->access_token,
-        'refresh_token' => $access_token->refresh_token,
-        ]);
+        return $this->json(['user_id' => $access_token->user->id, 'expires' => $access_token->expires, 'access_token' => $access_token->access_token, 'refresh_token' => $access_token->refresh_token,]);
     }
 }
