@@ -27,7 +27,7 @@ class Employee
     private $logo;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Incomes", mappedBy="work_place", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Income", mappedBy="work_place", cascade={"persist", "remove"})
      */
     private $incomes;
 
@@ -60,12 +60,12 @@ class Employee
         return $this;
     }
 
-    public function getIncomes(): ?Incomes
+    public function getIncomes(): ?Income
     {
         return $this->incomes;
     }
 
-    public function setIncomes(?Incomes $incomes): self
+    public function setIncomes(?Income $incomes): self
     {
         $this->incomes = $incomes;
 

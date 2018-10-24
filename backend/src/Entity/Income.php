@@ -7,9 +7,9 @@ use \App\Entity\User;
 use \App\Entity\Employee;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\IncomesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\IncomeRepository")
  */
-class Incomes
+class Income
 {
     /**
      * @ORM\Id()

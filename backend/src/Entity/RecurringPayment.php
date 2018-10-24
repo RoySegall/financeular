@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use \App\Entity\User;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\RecurringPaymentsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RecurringPaymentRepository")
  */
-class RecurringPayments
+class RecurringPayment
 {
     /**
      * @ORM\Id()

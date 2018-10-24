@@ -91,7 +91,7 @@ class User extends AbstractEntity implements UserInterface
     private $default;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\RecurringPayments", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\RecurringPayment", mappedBy="user", cascade={"persist", "remove"})
      */
     private $recurringPayments;
 
@@ -167,12 +167,12 @@ class User extends AbstractEntity implements UserInterface
         return $this;
     }
 
-    public function getRecurringPayments(): ?RecurringPayments
+    public function getRecurringPayments(): ?RecurringPayment
     {
         return $this->recurringPayments;
     }
 
-    public function setRecurringPayments(RecurringPayments $recurringPayments): self
+    public function setRecurringPayments(RecurringPayment $recurringPayments): self
     {
         $this->recurringPayments = $recurringPayments;
 

@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Incomes;
+use App\Entity\Income;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Incomes|null find($id, $lockMode = null, $lockVersion = null)
- * @method Incomes|null findOneBy(array $criteria, array $orderBy = null)
- * @method Incomes[]    findAll()
- * @method Incomes[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Income|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Income|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Income[]    findAll()
+ * @method Income[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class IncomesRepository extends ServiceEntityRepository
+class IncomeRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Incomes::class);
+        parent::__construct($registry, Income::class);
     }
 
 //    /**
