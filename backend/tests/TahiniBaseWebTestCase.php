@@ -60,9 +60,6 @@ class TahiniBaseWebTestCase extends WebTestCase
         };
 
         foreach ($this->entities as $entity) {
-            if ($entity instanceof User) {
-                $delete($this->getTahiniAccessToken()->getAccessToken($entity));
-            }
             $delete($entity);
         }
     }

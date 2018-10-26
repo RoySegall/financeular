@@ -100,7 +100,8 @@ class User extends AbstractEntity implements UserInterface
      */
     private $defaultExpenses;
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 

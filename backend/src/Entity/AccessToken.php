@@ -47,7 +47,8 @@ class AccessToken extends AbstractEntity
      */
     public $user;
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 }

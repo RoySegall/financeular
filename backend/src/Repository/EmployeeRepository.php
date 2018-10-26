@@ -25,7 +25,8 @@ class EmployeeRepository extends ServiceEntityRepository
      * @param $page
      * @param $per_page
      */
-    public function paging($page, $per_page) {
+    public function paging($page, $per_page)
+    {
         return $this
             ->createQueryBuilder('e')
             ->getQuery()
@@ -42,7 +43,8 @@ class EmployeeRepository extends ServiceEntityRepository
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function countPages($per_page): int {
+    public function countPages($per_page): int
+    {
         $elements = $this->createQueryBuilder('e')
             ->select('count(e.id)')
             ->getQuery()
@@ -59,7 +61,8 @@ class EmployeeRepository extends ServiceEntityRepository
      *
      * @return mixed
      */
-    public function getMatchingEmployees($search) {
+    public function getMatchingEmployees($search)
+    {
         return $this->createQueryBuilder('e')
             ->where('e.title LIKE :title')
             ->setParameter('title', '%' . $search . '%')

@@ -61,7 +61,8 @@ class Employee extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function add(Request $request, ManagerRegistry $registry, TahiniDoctrine $tahini_doctrine) {
+    public function add(Request $request, ManagerRegistry $registry, TahiniDoctrine $tahini_doctrine)
+    {
         if (!$payload = $this->processPayload($request)) {
             return $this->json(['error' => 'The payload is wrong'], Response::HTTP_BAD_REQUEST);
         }
@@ -96,12 +97,14 @@ class Employee extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function search($search, TahiniDoctrine $tahini_doctrine) {
+    public function search($search, TahiniDoctrine $tahini_doctrine)
+    {
         if (strlen($search) < 3) {
-            return $this->json(['error' => 'The search term need to be bigger more than 2 characters'], Response::HTTP_BAD_REQUEST);
+            return $this->json([
+                'error' => 'The search term need to be bigger more than 2 characters'
+            ], Response::HTTP_BAD_REQUEST);
         }
 
         return $this->json($tahini_doctrine->getEmployeeRepository()->getMatchingEmployees($search));
     }
-
 }

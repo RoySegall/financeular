@@ -75,6 +75,12 @@ class EmployeeTest extends TahiniBaseWebTestCase
 //        // Sending a request with a good term and make sure it appears.
 //    }
 //
+    /**
+     * Creating employees for testing.
+     *
+     * @param int $amount
+     *  The amount of employees you desire. Default to 30.
+     */
     protected function createEmployees($amount = 30) {
         $manager = $this->getDoctrine()->getManager();
 
