@@ -9,6 +9,7 @@ use App\Services\TahiniAccessToken;
 use App\Services\TahiniDoctrine;
 use App\Services\TahiniUser;
 use App\Services\TahiniValidator;
+use PHPUnit\Runner\Exception;
 use Psr\Container\ContainerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -49,18 +50,18 @@ class TahiniBaseWebTestCase extends WebTestCase
      * Remove the entities we created.
      */
     public function clearEntities() {
-        $delete = function($entity) {
+        foreach ($this->entities as $entity) {
             $repo = $this->getDoctrine()->getRepository(get_class($entity));
 
             $item = $repo->find($entity->getId());
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($item);
-            $entityManager->flush();
-        };
+            try {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->remove($item);
+                $entityManager->flush();
+            } catch (Exception $e) {
 
-        foreach ($this->entities as $entity) {
-            $delete($entity);
+            }
         }
     }
 
