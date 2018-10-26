@@ -20,7 +20,6 @@ class UserDefaultIncomeTest extends TahiniBaseWebTestCase
         $this->assertFalse(1 == 1);
     }
 
-
     /**
      * Testing setting the income.
      */
