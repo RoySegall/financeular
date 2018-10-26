@@ -59,6 +59,9 @@ class UserDefaultTemplateTest extends TahiniBaseWebTestCase
 
         $expected_template = ['pizza' => ['toppings' => ["pineapple", "bacon",]]];
 
-        $this->assertEquals($this->getTahiniDoctrine()->getUserDefaultRepository()->findBy(['user' => $this->user])[0]->getTemplate(), $expected_template);
+        $default = $this->getTahiniDoctrine()->getUserDefaultRepository()->findBy(['user' => $this->user])[0];
+        $this->entities[] = $default;
+
+        $this->assertEquals($default->getTemplate(), $expected_template);
     }
 }

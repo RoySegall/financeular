@@ -56,6 +56,8 @@ class UserDefaultIncomeTest extends TahiniBaseWebTestCase
         $client->request('POST', '/api/user-default/income', [], [], ['HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token, 'CONTENT_TYPE' => 'application/json'], '{"income": "300"}');
         $this->assertEquals($client->getResponse()->getContent(), '{"income":"300"}');
 
-        $this->assertEquals($this->getTahiniDoctrine()->getUserDefaultRepository()->findBy(['user' => $this->user])[0]->getIncome(), 300);
+        $default = $this->getTahiniDoctrine()->getUserDefaultRepository()->findBy(['user' => $this->user])[0];
+        $this->entities[] = $default;
+        $this->assertEquals($default->getIncome(), 300);
     }
 }

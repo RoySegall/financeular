@@ -35,7 +35,7 @@ class Employee extends AbstractTahiniController
     public function all(TahiniDoctrine $tahini_doctrine, Request $request)
     {
         $page = $request->get('page', 0);
-        $perpage = 2;
+        $perpage = 25;
 
         $pages = $tahini_doctrine->getEmployeeRepository()->countPages($perpage);
 

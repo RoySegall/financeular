@@ -2,6 +2,7 @@
 
 namespace App\Tests;
 
+use App\Entity\Employee;
 use App\Entity\User;
 use App\Plugins\Authentication;
 use App\Services\TahiniAccessToken;
@@ -21,29 +22,65 @@ use Symfony\Component\HttpFoundation\Request;
 class TahiniBaseWebTestCase extends WebTestCase
 {
 
-    public function setUp()
-    {
+    /**
+     * @var array
+     */
+    public $entities = [];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUp() {
         parent::setUp();
 
-      // Booting up the kernal.
+        // Booting up the kernal.
         self::bootKernel();
     }
 
-  /**
-   * Create a user.
-   *
-   * @param bool $create_user
-   *  Determine if we need to create a user.
-   * @param string $type
-   *  The type of the user.
-   *
-   * @return User
-   *  The user object.
-   *
-   * @throws \Exception
-   */
-    public function createUser(bool $create_user = true, $type = 'app') : User
-    {
+    /**
+     * {@inheritdoc}
+     */
+    public function tearDown() {
+        $this->clearEntities();
+        parent::tearDown();
+    }
+
+    /**
+     * Remove the entities we created.
+     */
+    public function clearEntities() {
+        $delete = function($entity) {
+            $repo = $this->getDoctrine()->getRepository(get_class($entity));
+
+            $item = $repo->find($entity->getId());
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($item);
+            $entityManager->flush();
+        };
+
+        foreach ($this->entities as $entity) {
+            if ($entity instanceof User) {
+                $delete($this->getTahiniAccessToken()->getAccessToken($entity));
+            }
+            $delete($entity);
+        }
+    }
+
+    /**
+     * Create a user.
+     *
+     * @param bool $create_user
+     *  Determine if we need to create a user.
+     * @param string $type
+     *  The type of the user.
+     *
+     * @return User
+     *  The user object.
+     *
+     * @throws \Exception
+     */
+    public function createUser(bool $create_user = true, $type = 'app'): User {
         $user = new User();
         $user->username = 'user' . microtime();
         $user->setPassword('text');
@@ -58,84 +95,76 @@ class TahiniBaseWebTestCase extends WebTestCase
         return $user;
     }
 
-  /**
-   * Get the container service.
-   *
-   * @return \Symfony\Component\DependencyInjection\ContainerInterface
-   */
-    protected function getContainer() : ContainerInterface
-    {
+    /**
+     * Get the container service.
+     *
+     * @return \Symfony\Component\DependencyInjection\ContainerInterface
+     */
+    protected function getContainer(): ContainerInterface {
         return self::$kernel->getContainer();
     }
 
-  /**
-   * Get the doctrine service.
-   *
-   * @return \Symfony\Bridge\Doctrine\ManagerRegistry
-   */
-    protected function getDoctrine() : ManagerRegistry
-    {
+    /**
+     * Get the doctrine service.
+     *
+     * @return \Symfony\Bridge\Doctrine\ManagerRegistry
+     */
+    protected function getDoctrine(): ManagerRegistry {
         return $this->getContainer()->get('doctrine');
     }
 
-  /**
-   * Get the validator service.
-   *
-   * @return TahiniValidator
-   */
-    protected function getTahiniValidator(): TahiniValidator
-    {
+    /**
+     * Get the validator service.
+     *
+     * @return TahiniValidator
+     */
+    protected function getTahiniValidator(): TahiniValidator {
         return $this->getContainer()->get('App\Services\TahiniValidator');
     }
 
-  /**
-   * Get the doctrine service.
-   *
-   * @return TahiniDoctrine
-   */
-    protected function getTahiniDoctrine() : TahiniDoctrine
-    {
+    /**
+     * Get the doctrine service.
+     *
+     * @return TahiniDoctrine
+     */
+    protected function getTahiniDoctrine(): TahiniDoctrine {
         return $this->getContainer()->get('App\Services\TahiniDoctrine');
     }
 
-  /**
-   * Get the authentication service.
-   *
-   * @return Authentication
-   *  The authentication service.
-   */
-    public function getAuthenticationService() : Authentication
-    {
+    /**
+     * Get the authentication service.
+     *
+     * @return Authentication
+     *  The authentication service.
+     */
+    public function getAuthenticationService(): Authentication {
         return $this->getContainer()->get('App\Plugins\Authentication');
     }
 
-  /**
-   * Get the user service.
-   *
-   * @return TahiniUser
-   */
-    protected function getTahiniUser() : TahiniUser
-    {
+    /**
+     * Get the user service.
+     *
+     * @return TahiniUser
+     */
+    protected function getTahiniUser(): TahiniUser {
         return $this->getContainer()->get('App\Services\TahiniUser');
     }
 
-  /**
-   * Get the access token service.
-   *
-   * @return TahiniAccessToken
-   */
-    public function getTahiniAccessToken() : TahiniAccessToken
-    {
+    /**
+     * Get the access token service.
+     *
+     * @return TahiniAccessToken
+     */
+    public function getTahiniAccessToken(): TahiniAccessToken {
         return $this->getContainer()->get('App\Services\TahiniAccessToken');
     }
 
-  /**
-   * Get the request object.
-   *
-   * @return Request
-   */
-    protected function &getRequest() : Request
-    {
+    /**
+     * Get the request object.
+     *
+     * @return Request
+     */
+    protected function &getRequest(): Request {
         static $request;
 
         if ($request) {
