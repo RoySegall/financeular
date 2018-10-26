@@ -16,9 +16,9 @@ use App\Entity\AbstractEntity;
 class TahiniValidator
 {
 
-  /**
-   * @var ValidatorInterface
-   */
+    /**
+     * @var ValidatorInterface
+     */
     protected $validator;
 
     /**
@@ -32,17 +32,17 @@ class TahiniValidator
         $this->validator = $validator;
     }
 
-  /**
-   * Validating the entity object by using the constraints service.
-   *
-   * @param AbstractEntity $entity
-   *  The entity object we need to validate.
-   * @param bool $return_exception
-   *  When the validation failed, you can get the the exception object and
-   *  handle it your self.
-   *
-   * @return array|ValidationException
-   */
+    /**
+     * Validating the entity object by using the constraints service.
+     *
+     * @param AbstractEntity $entity
+     *  The entity object we need to validate.
+     * @param bool $return_exception
+     *  When the validation failed, you can get the the exception object and
+     *  handle it your self.
+     *
+     * @return array|ValidationException
+     */
     public function validate(AbstractEntity $entity, bool $return_exception = false)
     {
         $error_list = [];

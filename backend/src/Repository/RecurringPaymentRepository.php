@@ -19,9 +19,9 @@ class RecurringPaymentRepository extends ServiceEntityRepository
         parent::__construct($registry, RecurringPayment::class);
     }
 
-//    /**
-//     * @return RecurringPayments[] Returns an array of RecurringPayments objects
-//     */
+    //    /**
+    //     * @return RecurringPayments[] Returns an array of RecurringPayments objects
+    //     */
     /*
     public function findByExampleField($value)
     {

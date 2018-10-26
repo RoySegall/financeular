@@ -17,22 +17,22 @@ class UserCreateUserCommand extends Command
 
     protected static $defaultName = 'user:create-user';
 
-  /**
-   * @var TahiniUser
-   */
+    /**
+     * @var TahiniUser
+     */
     protected $TahiniUser;
 
-  /**
-   * @var TahiniValidator
-   */
+    /**
+     * @var TahiniValidator
+     */
     protected $TahiniValidator;
 
-  /**
-   * UserCreateUserCommand constructor.
-   * @param null|string $name
-   * @param TahiniUser $tahini_user
-   * @param TahiniValidator $tahini_validator
-   */
+    /**
+     * UserCreateUserCommand constructor.
+     * @param null|string $name
+     * @param TahiniUser $tahini_user
+     * @param TahiniValidator $tahini_validator
+     */
     public function __construct(?string $name = null, TahiniUser $tahini_user, TahiniValidator $tahini_validator)
     {
         parent::__construct($name);
@@ -52,10 +52,7 @@ class UserCreateUserCommand extends Command
         $username = $io->askQuestion(new Question('What is the username'));
         $password = $io->askQuestion(new Question('What is the password'));
 
-        $question = new ChoiceQuestion(
-            'What is the user type',
-            array('app' => 'Application', 'user' => 'Normal user')
-        );
+        $question = new ChoiceQuestion('What is the user type', array('app' => 'Application', 'user' => 'Normal user'));
 
         $type = $this->getHelper('question')->ask($input, $output, $question);
 

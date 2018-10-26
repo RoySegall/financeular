@@ -19,9 +19,9 @@ class DefaultExpensesRepository extends ServiceEntityRepository
         parent::__construct($registry, DefaultExpenses::class);
     }
 
-//    /**
-//     * @return DefaultExpenses[] Returns an array of DefaultExpenses objects
-//     */
+    //    /**
+    //     * @return DefaultExpenses[] Returns an array of DefaultExpenses objects
+    //     */
     /*
     public function findByExampleField($value)
     {

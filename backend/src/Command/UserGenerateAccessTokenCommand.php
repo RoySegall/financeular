@@ -15,14 +15,14 @@ class UserGenerateAccessTokenCommand extends Command
 
     protected static $defaultName = 'user:generate-access-token';
 
-  /**
-   * @var TahiniAccessToken
-   */
+    /**
+     * @var TahiniAccessToken
+     */
     protected $TahiniAccessToken;
 
-  /**
-   * @var TahiniUser
-   */
+    /**
+     * @var TahiniUser
+     */
     protected $TahiniUser;
 
     public function __construct(?string $name = null, TahiniUser $tahini_user, TahiniAccessToken $tahini_access_token)

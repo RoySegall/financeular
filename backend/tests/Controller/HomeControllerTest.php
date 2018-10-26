@@ -9,21 +9,22 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  *
  * @package App\Tests\Controller
  */
-class HomeControllerTest extends WebTestCase {
+class HomeControllerTest extends WebTestCase
+{
 
   /**
    * Testing the job process crud operations.
    */
-  public function testHomeController() {
-    $client = static::createClient();
+    public function testHomeController()
+    {
+        $client = static::createClient();
 
-    $client->request('GET', '/');
+        $client->request('GET', '/');
 
-    $response = $client->getResponse();
-    $this->assertEquals(200, $response->getStatusCode());
-    $this->assertEquals(json_decode($response->getContent(), true), [
-      'message' => 'Welcome!',
-    ]);
-  }
-
+        $response = $client->getResponse();
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(json_decode($response->getContent(), true), [
+        'message' => 'Welcome!',
+        ]);
+    }
 }

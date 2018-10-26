@@ -19,9 +19,9 @@ class UserDefaultRepository extends ServiceEntityRepository
         parent::__construct($registry, UserDefault::class);
     }
 
-//    /**
-//     * @return UserDefault[] Returns an array of UserDefault objects
-//     */
+    //    /**
+    //     * @return UserDefault[] Returns an array of UserDefault objects
+    //     */
     /*
     public function findByExampleField($value)
     {
