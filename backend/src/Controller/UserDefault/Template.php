@@ -9,6 +9,7 @@ use App\Services\TahiniDoctrine;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -54,7 +55,11 @@ class Template extends AbstractTahiniController
     public function setTemplate(Request $request, TahiniAccessToken $tahiniAccessToken, ManagerRegistry $registry)
     {
 
-        if (!$template = $request->get('template')) {
+        if (!$payload = $this->processPayload($request)) {
+            return $this->error("The payload is not correct.", Response::HTTP_BAD_REQUEST);
+        }
+
+        if (!$template = $payload->get('template')) {
             return $this->error('You need to provide the template.');
         }
 
