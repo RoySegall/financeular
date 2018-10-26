@@ -59,6 +59,7 @@ class TahiniAccessToken
      * @param TahiniValidator $tahini_validator
      *  The validator service.
      * @param AccessTokenRepository $accessTokenRepository
+     *  The access token repository.
      */
     public function __construct(
         TahiniDoctrine $tahini_doctrine,
