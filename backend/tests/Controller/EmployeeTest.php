@@ -69,16 +69,49 @@ class EmployeeTest extends TahiniBaseWebTestCase
         $client->request('POST', '/api/employee', [], [], $this->createHeaderWithAccessToken(), json_encode(['title' => $title]));
         $this->assertEquals($client->getResponse()->getContent(), '{"message":"The company ' . $title . ' already exists"}');
     }
-//
-//    /**
-//     * Testing we can search items.
-//     */
-//    public function testSearch() {
-//        // Sending a request with a short search term.
-//
-//        // Sending a request with a good term and make sure it appears.
-//    }
-//
+
+    /**
+     * Testing we can search items.
+     */
+    public function testSearch() {
+        // Create two employees.
+        $this->createEmployees(2);
+
+        // Sending a request with a short search term.
+        $client = static::createClient();
+        $client->request('GET', '/api/employee/search/fo', [], [], $this->createHeaderWithAccessToken());
+        $this->assertEquals($client->getResponse()->getContent(), '{"error":"The search term need to be bigger more than 2 characters"}');
+
+        // Sending a request with a good term and make sure it appears.
+
+        $options = [
+            ['search' => 'dummy title', 'should' => ['dummy title 0', 'dummy title 1']],
+            ['search' => 'dummy title 0', 'should' => ['dummy title 0'], 'should_not' => ['dummy title 1']],
+            ['search' => 'dummy title 1', 'should' => ['dummy title 1'], 'should_not' => ['dummy title 0']],
+        ];
+
+        foreach ($options as $option) {
+            $client->request('GET', '/api/employee/search/' . $option['search'], [], [], $this->createHeaderWithAccessToken());
+            $results = $client->getResponse()->getContent();
+
+            // Testing what we need to find.
+            foreach ($option['should'] as $should) {
+                if (strpos($results, $should) === false) {
+                    $this->fail('The title ' . $should . ' was not found but it should');
+                }
+            }
+
+            if (!empty($option['should_not'])) {
+                // Testing what we don't need to find.
+                foreach ($option['should_not'] as $should) {
+                    if (strpos($results, $should) !== false) {
+                        $this->fail('The title ' . $should . ' need was fount when it should not');
+                    }
+                }
+            }
+        }
+    }
+
     /**
      * Creating employees for testing.
      *
