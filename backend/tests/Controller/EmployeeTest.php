@@ -83,7 +83,6 @@ class EmployeeTest extends TahiniBaseWebTestCase
         $this->assertEquals($client->getResponse()->getContent(), '{"error":"The search term need to be bigger more than 2 characters"}');
 
         // Sending a request with a good term and make sure it appears.
-
         $options = [
             ['search' => 'dummy title', 'should' => ['dummy title 0', 'dummy title 1']],
             ['search' => 'dummy title 0', 'should' => ['dummy title 0'], 'should_not' => ['dummy title 1']],
