@@ -57,7 +57,6 @@ class UserDefaultIncomeTest extends TahiniBaseWebTestCase
         $this->assertEquals($client->getResponse()->getContent(), '{"income":"300"}');
 
         $default = $this->getTahiniDoctrine()->getUserDefaultRepository()->findBy(['user' => $this->user])[0];
-        $this->entities[] = $default;
         $this->assertEquals($default->getIncome(), 300);
     }
 }
