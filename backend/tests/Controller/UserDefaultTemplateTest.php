@@ -15,16 +15,6 @@ class UserDefaultTemplateTest extends TahiniBaseWebTestCase
 {
 
     /**
-     * @var User
-     */
-    protected $user;
-
-    /**
-     * @var AccessToken
-     */
-    protected $accessToken;
-
-    /**
      * {@inheritdoc}
      */
     public function setUp()
@@ -43,7 +33,7 @@ class UserDefaultTemplateTest extends TahiniBaseWebTestCase
         $this->assertEquals($this->user->getDefault(), null);
 
         $client = static::createClient();
-        $client->request('GET', '/api/user-default/template', [], [], ['HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token,]);
+        $client->request('GET', '/api/user-default/template', [], [], $this->createHeaderWithAccessToken());
         $this->assertEquals($client->getResponse()->getContent(), '{"error":"The user has no template"}');
         $this->assertEquals($this->getTahiniDoctrine()->getUserDefaultRepository()->findBy(['user' => $this->user]), []);
     }
@@ -54,7 +44,7 @@ class UserDefaultTemplateTest extends TahiniBaseWebTestCase
     public function testSetTemplate()
     {
         $client = static::createClient();
-        $client->request('POST', '/api/user-default/template', [], [], ['HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token, 'CONTENT_TYPE' => 'application/json'], '{"template": {"pizza": {"toppings": ["pineapple", "bacon"]}}}');
+        $client->request('POST', '/api/user-default/template', [], [], $this->createHeaderWithAccessToken() + ['CONTENT_TYPE' => 'application/json'], '{"template": {"pizza": {"toppings": ["pineapple", "bacon"]}}}');
         $this->assertEquals($client->getResponse()->getContent(), '{"template":{"pizza":{"toppings":["pineapple","bacon"]}}}');
 
         $expected_template = ['pizza' => ['toppings' => ["pineapple", "bacon",]]];

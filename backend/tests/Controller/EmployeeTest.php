@@ -16,16 +16,6 @@ class EmployeeTest extends TahiniBaseWebTestCase
 {
 
     /**
-     * @var User
-     */
-    protected $user;
-
-    /**
-     * @var AccessToken
-     */
-    protected $accessToken;
-
-    /**
      * {@inheritdoc}
      */
     public function setUp() {
@@ -44,12 +34,12 @@ class EmployeeTest extends TahiniBaseWebTestCase
 
         // Get all the items.
         $client = static::createClient();
-        $client->request('GET', '/api/employee', [], [], ['HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token]);
+        $client->request('GET', '/api/employee', [], [], $this->createHeaderWithAccessToken());
 
         $items_first = json_decode($client->getResponse()->getContent());
 
         $client = static::createClient();
-        $client->request('GET', '/api/employee?page=1', [], [], ['HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token]);
+        $client->request('GET', '/api/employee?page=1', [], [], $this->createHeaderWithAccessToken());
         $items_second = json_decode($client->getResponse()->getContent());
 
         // Count the items.
@@ -57,14 +47,14 @@ class EmployeeTest extends TahiniBaseWebTestCase
         $this->assertEquals(count($items_second->data), 5);
     }
 
-//    /**
-//     * Testing we can add items.
-//     */
-//    public function testAdd() {
-//        // Sending a request without a title.
-//
-//        // Sending a proper request.
-//    }
+    /**
+     * Testing we can add items.
+     */
+    public function testAdd() {
+        // Sending a request without a title.
+
+        // Sending a proper request.
+    }
 //
 //    /**
 //     * Testing we can search items.

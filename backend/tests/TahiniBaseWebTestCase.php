@@ -29,6 +29,16 @@ class TahiniBaseWebTestCase extends WebTestCase
     public $entities = [];
 
     /**
+     * @var User
+     */
+    protected $user;
+
+    /**
+     * @var AccessToken
+     */
+    protected $accessToken;
+
+    /**
      * {@inheritdoc}
      */
     public function setUp() {
@@ -91,6 +101,15 @@ class TahiniBaseWebTestCase extends WebTestCase
         }
 
         return $user;
+    }
+
+    /**
+     * @return array
+     */
+    protected function createHeaderWithAccessToken() {
+        return [
+            'HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token
+        ];
     }
 
     /**
