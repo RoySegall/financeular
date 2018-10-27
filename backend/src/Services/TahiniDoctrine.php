@@ -67,9 +67,9 @@ class TahiniDoctrine
     /**
      * Get the employee repository.
      *
-     * @return \Doctrine\Common\Persistence\ObjectRepository
+     * @return \App\Repository\EmployeeRepository
      */
-    public function getEmployeeRepository(): \Doctrine\Common\Persistence\ObjectRepository
+    public function getEmployeeRepository(): \App\Repository\EmployeeRepository
     {
         return $this->doctrine->getRepository(\App\Entity\Employee::class);
     }

@@ -19,6 +19,57 @@ class EmployeeRepository extends ServiceEntityRepository
         parent::__construct($registry, Employee::class);
     }
 
+    /**
+     * Get elements by paging.
+     *
+     * @param $page
+     * @param $per_page
+     */
+    public function paging($page, $per_page)
+    {
+        return $this
+            ->createQueryBuilder('e')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Return the amount of pages.
+     *
+     * @param $per_page
+     *  The amount of items per page.
+     *
+     * @return int
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countPages($per_page): int
+    {
+        $elements = $this->createQueryBuilder('e')
+            ->select('count(e.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return ceil($elements / $per_page);
+    }
+
+    /**
+     * Get all the employees which matching the given search term.
+     *
+     * @param $search
+     *  The matching terms.
+     *
+     * @return mixed
+     */
+    public function getMatchingEmployees($search)
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.title LIKE :title')
+            ->setParameter('title', '%' . $search . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Employee[] Returns an array of Employee objects
     //     */

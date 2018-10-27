@@ -46,4 +46,9 @@ class AccessToken extends AbstractEntity
      * @ORM\JoinColumn(nullable=false)
      */
     public $user;
+
+    public function getId()
+    {
+        return $this->id;
+    }
 }
