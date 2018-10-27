@@ -52,8 +52,22 @@ class EmployeeTest extends TahiniBaseWebTestCase
      */
     public function testAdd() {
         // Sending a request without a title.
+        $client = static::createClient();
+        $client->request('POST', '/api/employee', [], [], $this->createHeaderWithAccessToken(), json_encode(['foo' => 'bar']));
+        $this->assertEquals($client->getResponse()->getContent(), '{"error":"You need to provide a title"}');
 
         // Sending a proper request.
+        $title = 'dummy employee ' . time();
+        $client = static::createClient();
+        $client->request('POST', '/api/employee', [], [], $this->createHeaderWithAccessToken(), json_encode(['title' => $title]));
+
+        $result = json_decode($client->getResponse()->getContent());
+        $this->assertEquals($result->title, $title);
+
+        // Trying to crate another company.
+        $client = static::createClient();
+        $client->request('POST', '/api/employee', [], [], $this->createHeaderWithAccessToken(), json_encode(['title' => $title]));
+        $this->assertEquals($client->getResponse()->getContent(), '{"message":"The company ' . $title . ' already exists"}');
     }
 //
 //    /**
