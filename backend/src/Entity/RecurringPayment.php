@@ -8,7 +8,7 @@ use \App\Entity\User;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecurringPaymentRepository")
  */
-class RecurringPayment
+class RecurringPayment extends AbstractEntity
 {
     /**
      * @ORM\Id()

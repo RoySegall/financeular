@@ -3,9 +3,11 @@
 namespace App\Controller\Incomes;
 
 use App\Controller\AbstractTahiniController;
+use App\Entity\Income;
 use App\Entity\UserDefault;
 use App\Services\TahiniAccessToken;
 use App\Services\TahiniDoctrine;
+use App\Services\TahiniValidator;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,30 +22,84 @@ use Symfony\Component\Routing\Annotation\Route;
 class Incomes extends AbstractTahiniController
 {
     /**
+     * @Route("", methods={"GET"})
+     *
      * Get all the incomes of the user.
      *
      * @return JsonResponse
      */
-    public function getAll()
+    public function getAll(TahiniDoctrine $tahini_doctrine, Request $request, TahiniAccessToken $access_token)
     {
-        return $this->json([]);
+        $user = $access_token->getAccessTokenFromRequest($request)->user;
+
+        // Get all the incomes of the current user.
+        return $this->json($tahini_doctrine->getIncomeRepository()->findBy(['user' => $user]));
     }
 
     /**
+     * @Route("", methods={"POST"})
+     *
      * Adding an income.
      *
      * @return JsonResponse
      */
-    public function add()
-    {
+    public function add(
+        Request $request,
+        TahiniDoctrine $tahini_doctrine,
+        TahiniValidator $tahini_validator,
+        TahiniAccessToken $access_token
+    ) {
+        if (!$payload = $this->processPayload($request)) {
+            return $this->json(['error' => 'The payload seems to be empty'], Response::HTTP_BAD_REQUEST);
+        }
+
+        $income = new Income();
+
+        $fields = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getClassMetadata(\App\Entity\Income::class)
+            ->getFieldNames();
+
+        foreach ($fields as $field) {
+            if ($field == 'id') {
+                continue;
+            }
+
+            $names = explode('_', $field);
+
+            foreach ($names as &$name) {
+                $name = ucfirst($name);
+            }
+
+            $income->{'set' . implode('', $names)}($payload->get($field));
+        }
+
+        // Setting the user.
+        $income->setUser($access_token->getAccessTokenFromRequest($request)->user);
+
+        if ($errors = $this->json($tahini_validator->validate($income))) {
+            return $errors;
+        }
+
         // Check if we have an open income.
-        if (true) {
-            // close the current income.
+        if ($this->incomeExists()) {
+            // close the current income and set a new one.
             return $this->json([]);
         }
 
         // Add the income.
         return $this->json([]);
+    }
+
+    /**
+     * Return the income.
+     *
+     * @return Income
+     */
+    protected function incomeExists(): Income
+    {
+        return new Income();
     }
 
     /**
