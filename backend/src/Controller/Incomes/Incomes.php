@@ -78,18 +78,23 @@ class Incomes extends AbstractTahiniController
         // Setting the user.
         $income->setUser($access_token->getAccessTokenFromRequest($request)->user);
 
-        if ($errors = $this->json($tahini_validator->validate($income))) {
-            return $errors;
+        if ($errors = $tahini_validator->validate($income)) {
+            return $this->json($errors, Response::HTTP_BAD_REQUEST);
         }
 
+        // todo: add constaint for an open current income.
         // Check if we have an open income.
-        if ($this->incomeExists()) {
-            // close the current income and set a new one.
-            return $this->json([]);
-        }
+//        if ($this->incomeExists()) {
+//            // close the current income and set a new one.
+//            return $this->json([]);
+//        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($income);
+        $em->flush();
 
         // Add the income.
-        return $this->json([]);
+        return $this->json($income);
     }
 
     /**

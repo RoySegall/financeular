@@ -21,7 +21,7 @@ class Income extends AbstractEntity
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\User", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="\App\Entity\User", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -39,7 +39,7 @@ class Income extends AbstractEntity
     private $work_place;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $current;
 
@@ -51,7 +51,7 @@ class Income extends AbstractEntity
     private $starting_date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @CheckTypeIfNotNull("integer")
      */
     private $ending_date;
