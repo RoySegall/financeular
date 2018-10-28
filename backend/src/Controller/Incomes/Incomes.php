@@ -24,7 +24,8 @@ class Incomes extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function getAll() {
+    public function getAll()
+    {
         return $this->json([]);
     }
 
@@ -33,7 +34,8 @@ class Incomes extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function add() {
+    public function add()
+    {
         // Check if we have an open income.
         if (true) {
             // close the current income.
@@ -49,7 +51,8 @@ class Incomes extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->json([]);
     }
 
@@ -58,7 +61,8 @@ class Incomes extends AbstractTahiniController
      *
      * @return JsonResponse
      */
-    public function update() {
+    public function update()
+    {
         return $this->json([]);
     }
 }
