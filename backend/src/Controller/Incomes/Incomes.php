@@ -4,6 +4,7 @@ namespace App\Controller\Incomes;
 
 use App\Controller\AbstractTahiniController;
 use App\Entity\Income;
+use App\Entity\User;
 use App\Entity\UserDefault;
 use App\Services\TahiniAccessToken;
 use App\Services\TahiniDoctrine;
@@ -53,6 +54,15 @@ class Incomes extends AbstractTahiniController
             return $this->json(['error' => 'The payload seems to be empty'], Response::HTTP_BAD_REQUEST);
         }
 
+        // Check if we have an open income.
+        if ($income = $this->incomeExists($tahini_doctrine, $access_token->getAccessTokenFromRequest($request)->user)) {
+            // close the current income and set a new one.
+            $income->setCurrent(false);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($income);
+            $em->flush();
+        }
+
         $income = new Income();
 
         $fields = $this
@@ -75,19 +85,14 @@ class Incomes extends AbstractTahiniController
             $income->{'set' . implode('', $names)}($payload->get($field));
         }
 
+        $income->setCurrent(1);
+
         // Setting the user.
         $income->setUser($access_token->getAccessTokenFromRequest($request)->user);
 
         if ($errors = $tahini_validator->validate($income)) {
             return $this->json($errors, Response::HTTP_BAD_REQUEST);
         }
-
-        // todo: add constaint for an open current income.
-        // Check if we have an open income.
-//        if ($this->incomeExists()) {
-//            // close the current income and set a new one.
-//            return $this->json([]);
-//        }
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($income);
@@ -100,11 +105,15 @@ class Incomes extends AbstractTahiniController
     /**
      * Return the income.
      *
-     * @return Income
+     * @return Income|null
      */
-    protected function incomeExists(): Income
+    protected function incomeExists(TahiniDoctrine $tahini_doctrine, User $user)
     {
-        return new Income();
+        if ($income = $tahini_doctrine->getIncomeRepository()->findOneBy(['user' => $user, 'current' => true])) {
+            return $income;
+        }
+
+        return;
     }
 
     /**
