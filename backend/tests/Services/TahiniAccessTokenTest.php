@@ -17,7 +17,7 @@ class TahiniAccessTokenTest extends TahiniBaseWebTestCase
     public function testCreateAccessToken()
     {
         // Making sure the createAccessToken creates an access token.
-        $user = $this->createUser();
+        $user = $this->createUser(false);
         $access_token = $this->getTahiniAccessToken()->createAccessToken($user);
 
         $this->assertNotEmpty($user->id);
@@ -32,7 +32,7 @@ class TahiniAccessTokenTest extends TahiniBaseWebTestCase
     public function testGetAccessToken()
     {
         // Making sure the getAccessToken returns a token.
-        $user = $this->createUser();
+        $user = $this->createUser(false);
         $access_token = $this->getTahiniAccessToken()->getAccessToken($user);
 
         $this->assertNotEmpty($user->id);
@@ -45,8 +45,8 @@ class TahiniAccessTokenTest extends TahiniBaseWebTestCase
     public function testHasAccessToken()
     {
         // Creating two users and making sure one has a token and one don't.
-        $one_user = $this->createUser();
-        $second_user = $this->createUser();
+        $one_user = $this->createUser(false);
+        $second_user = $this->createUser(true);
 
         $access_token = $this->getTahiniAccessToken()->createAccessToken($one_user);
 
@@ -60,7 +60,7 @@ class TahiniAccessTokenTest extends TahiniBaseWebTestCase
     public function testRefreshAccessToken()
     {
         // Get some basic elements.
-        $user = $this->createUser();
+        $user = $this->createUser(false);
         $access_token = $this->getTahiniAccessToken()->createAccessToken($user);
 
         // Save the ID for later.
@@ -83,7 +83,7 @@ class TahiniAccessTokenTest extends TahiniBaseWebTestCase
      */
     public function testLoadByAccessToken()
     {
-        $user = $this->createUser();
+        $user = $this->createUser(false);
         $access_token = $this->getTahiniAccessToken()->createAccessToken($user);
         $this->assertEquals(
             $access_token,
@@ -106,7 +106,7 @@ class TahiniAccessTokenTest extends TahiniBaseWebTestCase
 
         // Create a new access token and make sure we get the access token via
         // the request.
-        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser());
+        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser(false));
         $request->headers->set(TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY, $access_token->access_token);
         $this->assertEquals($access_token, $this->getTahiniAccessToken()->getAccessTokenFromRequest($request));
     }
@@ -116,7 +116,7 @@ class TahiniAccessTokenTest extends TahiniBaseWebTestCase
      */
     public function testRevokeAccessToken()
     {
-        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser());
+        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser(false));
 
         $id = $access_token->id;
 
@@ -131,7 +131,7 @@ class TahiniAccessTokenTest extends TahiniBaseWebTestCase
      */
     public function testClearAccessToken()
     {
-        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser());
+        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser(false));
 
         $id = $access_token->id;
 

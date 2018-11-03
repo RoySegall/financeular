@@ -21,7 +21,7 @@ class UserDefaultIncomeTest extends TahiniBaseWebTestCase
     {
         parent::setUp();
 
-        $this->user = $this->createUser();
+        $this->user = $this->createUser(false);
         $this->accessToken = $this->getTahiniAccessToken()->getAccessToken($this->user);
     }
 

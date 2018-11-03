@@ -78,6 +78,8 @@ class TahiniBaseWebTestCase extends WebTestCase
     /**
      * Create a user.
      *
+     * @param bool $create_user
+     *  Determine if we need to create a user.
      * @param string $type
      *  The type of the user.
      *
@@ -86,7 +88,7 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @throws \Exception
      */
-    public function createUser($type = 'app'): User {
+    public function createUser(bool $create_user = true, $type = 'app'): User {
         $user = new User();
         $user->username = 'user' . microtime();
         $user->setPassword('text');
@@ -94,7 +96,9 @@ class TahiniBaseWebTestCase extends WebTestCase
         $user->type = $type;
         $user->email = 'dummy' . microtime() . '@example.com';
 
-        $this->getTahiniUser()->createUser($user);
+        if ($create_user) {
+            $this->getTahiniUser()->createUser($user);
+        }
 
         return $user;
     }
@@ -103,7 +107,9 @@ class TahiniBaseWebTestCase extends WebTestCase
      * @return array
      */
     protected function createHeaderWithAccessToken() {
-        return ['HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token];
+        return [
+            'HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token
+        ];
     }
 
     /**
