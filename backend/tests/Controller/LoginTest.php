@@ -19,7 +19,7 @@ class LoginTest extends TahiniBaseWebTestCase
    */
     public function testLoginController()
     {
-        $user = $this->createUser(true);
+        $user = $this->createUser();
 
       // Try to fail the login controller.
         $client = static::createClient();
@@ -67,7 +67,7 @@ class LoginTest extends TahiniBaseWebTestCase
         $this->assertEquals($client->getResponse()->getContent(), '{"error":"The refresh token is missing"}');
 
       // Get the access token.
-        $access_token = $this->getTahiniAccessToken()->getAccessToken($this->createUser(false));
+        $access_token = $this->getTahiniAccessToken()->getAccessToken($this->createUser());
 
       // Refreshing the access token.
         $client = static::createClient();

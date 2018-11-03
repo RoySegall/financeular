@@ -19,7 +19,7 @@ class MeTest extends TahiniBaseWebTestCase
     public function testMe()
     {
       // Create a user and an access token.
-        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser(false));
+        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser());
 
       // Checking the me endpoint.
         $client = static::createClient();
@@ -34,7 +34,7 @@ class MeTest extends TahiniBaseWebTestCase
 
         $this->assertEquals($decoded_request->id, $access_token->user->id);
 
-        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser(false));
+        $access_token = $this->getTahiniAccessToken()->createAccessToken($this->createUser());
 
       // Set the token as un-valid.
         $entity_manager = $this->getDoctrine()->getManager();
