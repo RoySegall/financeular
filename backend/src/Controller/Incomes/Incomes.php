@@ -5,11 +5,9 @@ namespace App\Controller\Incomes;
 use App\Controller\AbstractTahiniController;
 use App\Entity\Income;
 use App\Entity\User;
-use App\Entity\UserDefault;
 use App\Services\TahiniAccessToken;
 use App\Services\TahiniDoctrine;
 use App\Services\TahiniValidator;
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,6 +33,25 @@ class Incomes extends AbstractTahiniController
 
         // Get all the incomes of the current user.
         return $this->json($tahini_doctrine->getIncomeRepository()->findBy(['user' => $user]));
+    }
+
+    /**
+     * @Route("/{entity_id}", methods={"GET"})
+     *
+     * Get a single income.
+     *
+     * @return JsonResponse
+     */
+    public function getSingle(
+        TahiniDoctrine $tahini_doctrine,
+        Request $request,
+        TahiniAccessToken $access_token,
+        int $entity_id
+    ) {
+        $user = $access_token->getAccessTokenFromRequest($request)->user;
+
+        // Get all the incomes of the current user.
+        return $this->json($tahini_doctrine->getIncomeRepository()->findBy(['user' => $user, 'id' => $entity_id]));
     }
 
     /**
@@ -64,26 +81,7 @@ class Incomes extends AbstractTahiniController
         }
 
         $income = new Income();
-
-        $fields = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getClassMetadata(\App\Entity\Income::class)
-            ->getFieldNames();
-
-        foreach ($fields as $field) {
-            if ($field == 'id') {
-                continue;
-            }
-
-            $names = explode('_', $field);
-
-            foreach ($names as &$name) {
-                $name = ucfirst($name);
-            }
-
-            $income->{'set' . implode('', $names)}($payload->get($field));
-        }
+        $this->processPayloadToEntity($income, $payload);
 
         $income->setCurrent(1);
 
@@ -127,12 +125,37 @@ class Incomes extends AbstractTahiniController
     }
 
     /**
-     * Updating a given income.
+     * @Route("/{entity_id}", methods={"PATCH"})
+     *
+     * Get all the incomes of the user.
      *
      * @return JsonResponse
      */
-    public function update()
-    {
-        return $this->json([]);
+    public function update(
+        TahiniDoctrine $tahini_doctrine,
+        Request $request,
+        TahiniAccessToken $access_token,
+        int $entity_id
+    ) {
+        $user = $access_token->getAccessTokenFromRequest($request)->user;
+
+        // Get all the incomes of the current user.
+        $item = $tahini_doctrine->getIncomeRepository()->findOneBy(['user' => $user, 'id' => $entity_id]);
+
+        if (!$item) {
+            return $this->error('The requested item does not exists', Response::HTTP_NOT_FOUND);
+        }
+
+        if (!$payload = $this->processPayload($request)) {
+            return $this->json(['error' => 'The payload seems to be empty'], Response::HTTP_BAD_REQUEST);
+        }
+
+        $this->processPayloadToEntity($item, $payload, false);
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->persist($item);
+        $manager->flush();
+
+        return $this->json($item);
     }
 }
