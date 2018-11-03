@@ -18,7 +18,7 @@ class RecurringPayment extends AbstractEntity
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="recurringPayments", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="recurringPayments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

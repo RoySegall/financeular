@@ -18,7 +18,7 @@ class DefaultExpenses extends AbstractEntity
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="defaultExpenses", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="defaultExpenses")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

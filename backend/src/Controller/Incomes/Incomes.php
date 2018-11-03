@@ -83,10 +83,13 @@ class Incomes extends AbstractTahiniController
         $income = new Income();
         $this->processPayloadToEntity($income, $payload);
 
+        // Setting the user and the income as the default one.
         $income->setCurrent(1);
-
-        // Setting the user.
         $income->setUser($access_token->getAccessTokenFromRequest($request)->user);
+
+        if ($work_place = $payload->get('work_place')) {
+            $income->setWorkPlace($tahini_doctrine->getEmployeeRepository()->find($work_place));
+        }
 
         if ($errors = $tahini_validator->validate($income)) {
             return $this->json($errors, Response::HTTP_BAD_REQUEST);
@@ -115,13 +118,31 @@ class Incomes extends AbstractTahiniController
     }
 
     /**
-     * Delete a given income.
+     * @Route("/{entity_id}", methods={"DELETE"})
      *
      * @return JsonResponse
      */
-    public function delete()
-    {
-        return $this->json([]);
+    public function delete(
+        TahiniDoctrine $tahini_doctrine,
+        Request $request,
+        TahiniAccessToken $access_token,
+        int $entity_id
+    ) {
+
+        $user = $access_token->getAccessTokenFromRequest($request)->user;
+
+        // Get all the incomes of the current user.
+        $item = $tahini_doctrine->getIncomeRepository()->findOneBy(['user' => $user, 'id' => $entity_id]);
+
+        if (!$item) {
+            return $this->error('The requested item does not exists', Response::HTTP_NOT_FOUND);
+        }
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($item);
+        $manager->flush();
+
+        return $this->json(['message' => 'The entity has been removed']);
     }
 
     /**
@@ -139,7 +160,7 @@ class Incomes extends AbstractTahiniController
     ) {
         $user = $access_token->getAccessTokenFromRequest($request)->user;
 
-        // Get all the incomes of the current user.
+        /** @var Income $item */
         $item = $tahini_doctrine->getIncomeRepository()->findOneBy(['user' => $user, 'id' => $entity_id]);
 
         if (!$item) {
@@ -148,6 +169,10 @@ class Incomes extends AbstractTahiniController
 
         if (!$payload = $this->processPayload($request)) {
             return $this->json(['error' => 'The payload seems to be empty'], Response::HTTP_BAD_REQUEST);
+        }
+
+        if ($work_place = $payload->get('work_place')) {
+            $item->setWorkPlace($tahini_doctrine->getEmployeeRepository()->find($work_place));
         }
 
         $this->processPayloadToEntity($item, $payload, false);

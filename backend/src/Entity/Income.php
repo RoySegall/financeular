@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use \App\Validator\CheckTypeIfNotNull as CheckTypeIfNotNull;
+use \App\Validator\WorkingPlaceReference as WorkingPlaceReference;
 use \App\Entity\User;
 use \App\Entity\Employee;
 
@@ -21,7 +22,7 @@ class Income extends AbstractEntity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\App\Entity\User", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="\App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -34,7 +35,8 @@ class Income extends AbstractEntity
     private $value;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\Employee", inversedBy="incomes", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="\App\Entity\Employee", inversedBy="incomes")
+     * @WorkingPlaceReference()
      */
     private $work_place;
 
