@@ -76,7 +76,8 @@ class EmployeeTest extends TahiniBaseWebTestCase
     /**
      * Testing we can search items.
      */
-    public function testSearch() {
+    public function testSearch()
+    {
         // Create two employees.
         $this->createEmployees(2);
 

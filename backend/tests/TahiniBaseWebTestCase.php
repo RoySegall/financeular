@@ -63,7 +63,9 @@ class TahiniBaseWebTestCase extends WebTestCase
         foreach ($this->entities as $entity) {
             $repo = $this->getDoctrine()->getRepository(get_class($entity));
 
-            $item = $repo->find($entity->getId());
+            if (!$item = $repo->find($entity->getId())) {
+                continue;
+            }
 
             try {
                 $entityManager = $this->getDoctrine()->getManager();
