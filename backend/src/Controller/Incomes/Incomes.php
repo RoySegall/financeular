@@ -88,7 +88,11 @@ class Incomes extends AbstractTahiniController
         $income->setUser($access_token->getAccessTokenFromRequest($request)->user);
 
         if ($work_place = $payload->get('work_place')) {
-            $income->setWorkPlace($tahini_doctrine->getEmployeeRepository()->find($work_place));
+            if ($ref = $tahini_doctrine->getEmployeeRepository()->find($work_place)) {
+                $work_place = $ref;
+            }
+
+            $income->setWorkPlace($work_place);
         }
 
         if ($errors = $tahini_validator->validate($income)) {
@@ -172,7 +176,11 @@ class Incomes extends AbstractTahiniController
         }
 
         if ($work_place = $payload->get('work_place')) {
-            $item->setWorkPlace($tahini_doctrine->getEmployeeRepository()->find($work_place));
+            if ($ref = $tahini_doctrine->getEmployeeRepository()->find($work_place)) {
+                $work_place = $ref;
+            }
+
+            $item->setWorkPlace($work_place);
         }
 
         $this->processPayloadToEntity($item, $payload, false);

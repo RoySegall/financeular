@@ -92,7 +92,7 @@ class Income extends AbstractEntity
         return $this->work_place;
     }
 
-    public function setWorkPlace(?Employee $work_place): self
+    public function setWorkPlace($work_place): self
     {
         $this->work_place = $work_place;
 
