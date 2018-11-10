@@ -13,26 +13,46 @@ abstract class AbstractTahiniController extends AbstractController
 {
 
     /**
-     * Convert the payload to object.
+     * Processing a payload to entity object.
      *
-     * @param AbstractEntity $entity
+     * @param \App\Entity\AbstractEntity $entity
      *  The entity object.
-     * @param Request $request
-     *  The request object.
-     *
-     * @return JsonResponse
+     * @param \Doctrine\Common\Collections\ArrayCollection $payload
+     *  The pyalod to handle.
+     * @param bool $set_when_not_exists
+     *  When a field has no value in the payload and this set to true - we will
+     *  skip setting any value to the field. Come in handy when updating an
+     *  entity.
      */
-    protected function payloadToEntity(AbstractEntity $entity, Request $request)
-    {
+    protected function processPayloadToEntity(
+        AbstractEntity $entity,
+        ArrayCollection $payload,
+        bool $set_when_not_exists = true
+    ) {
+        $fields = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getClassMetadata(get_class($entity))
+            ->getFieldNames();
 
-        if (!$new_data = $this->processPayload($request)) {
-            return $this->error('The post is empty', Response::HTTP_BAD_REQUEST);
-        }
+        foreach ($fields as $field) {
+            if ($field == 'id') {
+                continue;
+            }
 
-        $flipped = array_flip($entity->getMapper());
+            $names = explode('_', $field);
 
-        foreach ($new_data as $key => $value) {
-            $entity->{$flipped[$key]} = $value;
+            foreach ($names as &$name) {
+                $name = ucfirst($name);
+            }
+
+            $value = $payload->get($field);
+
+            if ($value == null && !$set_when_not_exists) {
+                continue;
+            }
+
+            $entity->{'set' . implode('', $names)}($value);
         }
     }
 

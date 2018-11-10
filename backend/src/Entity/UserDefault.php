@@ -8,7 +8,7 @@ use \App\Entity\User;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserDefaultRepository")
  */
-class UserDefault
+class UserDefault extends AbstractEntity
 {
     /**
      * @ORM\Id()
@@ -18,7 +18,7 @@ class UserDefault
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="income", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="income")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmployeeRepository")
  */
-class Employee
+class Employee extends AbstractEntity
 {
     /**
      * @ORM\Id()
@@ -26,10 +26,6 @@ class Employee
      */
     private $logo;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Income", mappedBy="work_place", cascade={"persist", "remove"})
-     */
-    private $incomes;
 
     public function getId(): ?int
     {
@@ -56,24 +52,6 @@ class Employee
     public function setLogo(?string $logo): self
     {
         $this->logo = $logo;
-
-        return $this;
-    }
-
-    public function getIncomes(): ?Income
-    {
-        return $this->incomes;
-    }
-
-    public function setIncomes(?Income $incomes): self
-    {
-        $this->incomes = $incomes;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newWork_place = $incomes === null ? null : $this;
-        if ($newWork_place !== $incomes->getWorkPlace()) {
-            $incomes->setWorkPlace($newWork_place);
-        }
 
         return $this;
     }

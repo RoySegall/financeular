@@ -8,7 +8,7 @@ use \App\Entity\User;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecurringPaymentRepository")
  */
-class RecurringPayment
+class RecurringPayment extends AbstractEntity
 {
     /**
      * @ORM\Id()
@@ -18,7 +18,7 @@ class RecurringPayment
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="recurringPayments", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="recurringPayments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

@@ -18,7 +18,8 @@ class EmployeeTest extends TahiniBaseWebTestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         $this->user = $this->createUser(false);
@@ -28,7 +29,8 @@ class EmployeeTest extends TahiniBaseWebTestCase
     /**
      * Testing we get all the items with the paging.
      */
-    public function testGetAll() {
+    public function testGetAll()
+    {
         // Create items.
         $this->createEmployees(30);
 
@@ -50,7 +52,8 @@ class EmployeeTest extends TahiniBaseWebTestCase
     /**
      * Testing we can add items.
      */
-    public function testAdd() {
+    public function testAdd()
+    {
         // Sending a request without a title.
         $client = static::createClient();
         $client->request('POST', '/api/employee', [], [], $this->createHeaderWithAccessToken(), json_encode(['foo' => 'bar']));
@@ -73,7 +76,8 @@ class EmployeeTest extends TahiniBaseWebTestCase
     /**
      * Testing we can search items.
      */
-    public function testSearch() {
+    public function testSearch()
+    {
         // Create two employees.
         $this->createEmployees(2);
 
@@ -117,7 +121,8 @@ class EmployeeTest extends TahiniBaseWebTestCase
      * @param int $amount
      *  The amount of employees you desire. Default to 30.
      */
-    protected function createEmployees($amount = 30) {
+    protected function createEmployees($amount = 30)
+    {
         $manager = $this->getDoctrine()->getManager();
 
         for ($i = 0; $i < $amount; $i++) {

@@ -3,13 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use \App\Validator\CheckTypeIfNotNull as CheckTypeIfNotNull;
+use \App\Validator\WorkingPlaceReference as WorkingPlaceReference;
 use \App\Entity\User;
 use \App\Entity\Employee;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\IncomeRepository")
  */
-class Income
+class Income extends AbstractEntity
 {
     /**
      * @ORM\Id()
@@ -19,33 +22,39 @@ class Income
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\User", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="\App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank()
+     * @Assert\Type("float")
      */
     private $value;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\Employee", inversedBy="incomes", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="\App\Entity\Employee", inversedBy="incomes")
+     * @WorkingPlaceReference()
      */
     private $work_place;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $current;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Type("integer")
      */
     private $starting_date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
+     * @CheckTypeIfNotNull("integer")
      */
     private $ending_date;
 
@@ -71,7 +80,7 @@ class Income
         return $this->value;
     }
 
-    public function setValue(float $value): self
+    public function setValue($value): self
     {
         $this->value = $value;
 
@@ -83,7 +92,7 @@ class Income
         return $this->work_place;
     }
 
-    public function setWorkPlace(?Employee $work_place): self
+    public function setWorkPlace($work_place): self
     {
         $this->work_place = $work_place;
 
@@ -95,7 +104,7 @@ class Income
         return $this->current;
     }
 
-    public function setCurrent(bool $current): self
+    public function setCurrent($current): self
     {
         $this->current = $current;
 
@@ -107,7 +116,7 @@ class Income
         return $this->starting_date;
     }
 
-    public function setStartingDate(int $starting_date): self
+    public function setStartingDate($starting_date): self
     {
         $this->starting_date = $starting_date;
 
@@ -119,7 +128,7 @@ class Income
         return $this->ending_date;
     }
 
-    public function setEndingDate(int $ending_date): self
+    public function setEndingDate($ending_date): self
     {
         $this->ending_date = $ending_date;
 
