@@ -19,7 +19,7 @@ class DefaultExpenses extends AbstractEntity
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="defaultExpenses")
+     * @ORM\ManyToOne(targetEntity="\App\Entity\User", inversedBy="defaultExpenses")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
