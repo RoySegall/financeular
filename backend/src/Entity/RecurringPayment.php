@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
+use App\Validator\ValidField;
 use Doctrine\ORM\Mapping as ORM;
-use \App\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RecurringPaymentRepository")
@@ -25,27 +26,58 @@ class RecurringPayment extends AbstractEntity
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank()
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="float")
+     * @Assert\NotBlank()
      */
     private $value;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $amount_of_recurring;
 
     /**
      * @ORM\Column(type="integer")
+     * @ValidField(period="past")
+     * @Assert\NotBlank()
      */
     private $valid_from;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @ValidField(period="future")
      */
     private $valid_until;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     *
+     * @return RecurringPayment
+     */
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
     }
 
     public function getUser(): ?User
@@ -65,7 +97,7 @@ class RecurringPayment extends AbstractEntity
         return $this->value;
     }
 
-    public function setValue(float $value): self
+    public function setValue(?float $value): self
     {
         $this->value = $value;
 
@@ -77,7 +109,7 @@ class RecurringPayment extends AbstractEntity
         return $this->amount_of_recurring;
     }
 
-    public function setAmountOfRecurring(int $amount_of_recurring): self
+    public function setAmountOfRecurring(?int $amount_of_recurring): self
     {
         $this->amount_of_recurring = $amount_of_recurring;
 
@@ -89,7 +121,7 @@ class RecurringPayment extends AbstractEntity
         return $this->valid_from;
     }
 
-    public function setValidFrom(int $valid_from): self
+    public function setValidFrom(?int $valid_from): self
     {
         $this->valid_from = $valid_from;
 
@@ -101,7 +133,7 @@ class RecurringPayment extends AbstractEntity
         return $this->valid_until;
     }
 
-    public function setValidUntil(int $valid_until): self
+    public function setValidUntil(?int $valid_until): self
     {
         $this->valid_until = $valid_until;
 

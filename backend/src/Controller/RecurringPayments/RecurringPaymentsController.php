@@ -3,9 +3,7 @@
 namespace App\Controller\RecurringPayments;
 
 use App\Controller\AbstractTahiniController;
-use App\Entity\Income;
 use App\Entity\RecurringPayment;
-use App\Entity\User;
 use App\Services\TahiniAccessToken;
 use App\Services\TahiniDoctrine;
 use App\Services\TahiniValidator;
@@ -137,7 +135,7 @@ class RecurringPaymentsController extends AbstractTahiniController
     ) {
         $user = $access_token->getAccessTokenFromRequest($request)->user;
 
-        /** @var Income $item */
+        /** @var RecurringPayment $item */
         $item = $tahini_doctrine->getRecurringPaymentRepository()->findOneBy(['user' => $user, 'id' => $entity_id]);
 
         if (!$item) {
