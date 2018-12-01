@@ -90,16 +90,6 @@ class User extends AbstractEntity implements UserInterface
      */
     private $default;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\RecurringPayment", mappedBy="user", cascade={"persist", "remove"})
-     */
-    private $recurringPayments;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\DefaultExpenses", mappedBy="user", cascade={"persist", "remove"})
-     */
-    private $defaultExpenses;
-
     public function getId()
     {
         return $this->id;
@@ -167,40 +157,6 @@ class User extends AbstractEntity implements UserInterface
         // set the owning side of the relation if necessary
         if ($this !== $default->getUser()) {
             $default->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function getRecurringPayments(): ?RecurringPayment
-    {
-        return $this->recurringPayments;
-    }
-
-    public function setRecurringPayments(RecurringPayment $recurringPayments): self
-    {
-        $this->recurringPayments = $recurringPayments;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $recurringPayments->getUser()) {
-            $recurringPayments->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function getDefaultExpenses(): ?DefaultExpenses
-    {
-        return $this->defaultExpenses;
-    }
-
-    public function setDefaultExpenses(DefaultExpenses $defaultExpenses): self
-    {
-        $this->defaultExpenses = $defaultExpenses;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $defaultExpenses->getUser()) {
-            $defaultExpenses->setUser($this);
         }
 
         return $this;
