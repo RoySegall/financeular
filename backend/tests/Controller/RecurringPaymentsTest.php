@@ -244,9 +244,15 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
         $income = $incomes[0];
 
         $client = static::createClient();
-        $client->request('DELETE', '/api/recurring_payments/' . $income->getId(), [], [], $this->createHeaderWithAccessToken());
+        $client->request(
+            'DELETE',
+            '/api/recurring_payments/' . $income->getId(),
+            [],
+            [],
+            $this->createHeaderWithAccessToken()
+        );
 
-        $this->assertEmpty($this->getTahiniDoctrine()->getIncomeRepository()->find($income->getId()));
+        $this->assertEmpty($this->getTahiniDoctrine()->getRecurringPaymentRepository()->find($income->getId()));
     }
 
     /**
