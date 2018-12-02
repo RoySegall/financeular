@@ -2,7 +2,7 @@
 
 namespace App\Controller\User;
 
-use App\Controller\AbstractTaiazController;
+use App\Controller\AbstractTahiniController;
 use App\Entity\Main\JobProcess;
 use App\Repository\JobProcessRepository;
 use App\Services\TahiniAccessToken;
@@ -19,19 +19,19 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Route("/api/user/")
  */
-class Logout extends AbstractTaiazController
+class Logout extends AbstractTahiniController
 {
 
-  /**
-   * @Route("logout", methods={"GET"})
-   *
-   * @param Request $request
-   *  The request service.
-   * @param TahiniAccessToken $tahiniAccessToken
-   *  The tahini access token service.
-   *
-   * @return JsonResponse
-   */
+    /**
+     * @Route("logout", methods={"GET"})
+     *
+     * @param Request $request
+     *  The request service.
+     * @param TahiniAccessToken $tahiniAccessToken
+     *  The tahini access token service.
+     *
+     * @return JsonResponse
+     */
     public function revoking(Request $request, TahiniAccessToken $tahiniAccessToken)
     {
         $tahiniAccessToken->revokeAccessToken($tahiniAccessToken->getAccessTokenFromRequest($request));

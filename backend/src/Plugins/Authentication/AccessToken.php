@@ -3,6 +3,7 @@
 namespace App\Plugins\Authentication;
 
 use App\Plugins\Annotations\Authentication;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Authentication(
@@ -13,9 +14,30 @@ use App\Plugins\Annotations\Authentication;
 class AccessToken extends AuthenticationPluginBase
 {
 
-  /**
-   * Making sure the user is valid.
-   */
+    /**
+     * @var \Symfony\Component\HttpFoundation\Request
+     */
+    protected $request;
+
+    /**
+     * @var \App\Services\TahiniAccessToken
+     */
+    protected $tahiniAccessToken;
+
+    /**
+     * AccessToken constructor.
+     *
+     * @param \App\Services\TahiniAccessToken $tahini_access_token
+     */
+    public function __construct(\App\Services\TahiniAccessToken $tahini_access_token)
+    {
+        $this->request = new Request();
+        $this->tahiniAccessToken = $tahini_access_token;
+    }
+
+    /**
+     * Making sure the user is valid.
+     */
     public function validateUser()
     {
         return true;

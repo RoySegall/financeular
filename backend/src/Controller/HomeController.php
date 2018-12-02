@@ -14,12 +14,12 @@ class HomeController extends AbstractController
 
     public const VERSION = '2.1';
 
-  /**
-   * @Route("/", methods={"GET"})
-   *
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
-   *  Return a json info about the system.
-   */
+    /**
+     * @Route("/", methods={"GET"})
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     *  Return a json info about the system.
+     */
     public function index()
     {
         return $this->json(['message' => 'Welcome!']);
