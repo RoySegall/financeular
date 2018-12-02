@@ -15,7 +15,8 @@
         "symfony/framework-bundle": "^4.1",
         "symfony/lts": "^4@dev",
         "symfony/proxy-manager-bridge": "^4.1",
-        "symfony/yaml": "^4.1"
+        "symfony/yaml": "^4.1",
+        "ext-json": "*"
     },
     "require-dev": {
         "escapestudios/symfony2-coding-standard": "^3.4",

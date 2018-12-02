@@ -33,12 +33,14 @@ class RecurringPayment extends AbstractEntity
     /**
      * @ORM\Column(type="float")
      * @Assert\NotBlank()
+     * @Assert\Type("float")
      */
     private $value;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank()
+     * @Assert\Type("int")
      */
     private $amount_of_recurring;
 
@@ -92,24 +94,24 @@ class RecurringPayment extends AbstractEntity
         return $this;
     }
 
-    public function getValue(): ?float
+    public function getValue(): float
     {
         return $this->value;
     }
 
-    public function setValue(?float $value): self
+    public function setValue($value): self
     {
         $this->value = $value;
 
         return $this;
     }
 
-    public function getAmountOfRecurring(): ?int
+    public function getAmountOfRecurring(): int
     {
         return $this->amount_of_recurring;
     }
 
-    public function setAmountOfRecurring(?int $amount_of_recurring): self
+    public function setAmountOfRecurring($amount_of_recurring): self
     {
         $this->amount_of_recurring = $amount_of_recurring;
 
@@ -121,7 +123,7 @@ class RecurringPayment extends AbstractEntity
         return $this->valid_from;
     }
 
-    public function setValidFrom(?int $valid_from): self
+    public function setValidFrom($valid_from): self
     {
         $this->valid_from = $valid_from;
 
@@ -133,7 +135,7 @@ class RecurringPayment extends AbstractEntity
         return $this->valid_until;
     }
 
-    public function setValidUntil(?int $valid_until): self
+    public function setValidUntil($valid_until): self
     {
         $this->valid_until = $valid_until;
 

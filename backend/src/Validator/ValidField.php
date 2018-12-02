@@ -20,5 +20,4 @@ class ValidField extends Constraint
      * Then, use these in your validator class.
      */
     public $message = 'The value cannot be in the {{ time_period }}.';
-
 }
