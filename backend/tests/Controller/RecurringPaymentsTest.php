@@ -90,21 +90,21 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
      */
     public function testGetSingle()
     {
-        $incomes = $this->createRecurringPayments(1);
-        $income = $incomes[0];
+        $recurring_payments = $this->createRecurringPayments(1);
+        $recurring_payment = $recurring_payments[0];
 
         $client = static::createClient();
         $client->request(
             'GET',
-            '/api/recurring_payments/' . $income->getId(),
+            '/api/recurring_payments/' . $recurring_payment->getId(),
             [],
             [],
             $this->createHeaderWithAccessToken()
         );
         $results = json_decode($client->getResponse()->getContent(), true);
 
-        $this->assertEquals($income->getId(), $results[0]['id']);
-        $this->assertEquals($income->getValue(), $results[0]['value']);
+        $this->assertEquals($recurring_payment->getId(), $results[0]['id']);
+        $this->assertEquals($recurring_payment->getValue(), $results[0]['value']);
     }
 
     /**
@@ -240,8 +240,8 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
      */
     public function testDelete()
     {
-        $incomes = $this->createRecurringPayments(1);
-        $income = $incomes[0];
+        $recurring_payments = $this->createRecurringPayments(1);
+        $income = $recurring_payments[0];
 
         $client = static::createClient();
         $client->request(
@@ -283,18 +283,18 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
     }
 
     /**
-     * Testing access for incomes of other users.
+     * Testing access for recurring_payments of other users.
      */
     public function testRecurringPaymentsAccess()
     {
-        // Create incomes for each user.
+        // Create recurring_payments for each user.
         $second_user = $this->createUser(false);
         $second_access_token = $this->getTahiniAccessToken()->getAccessToken($second_user);
 
-        $default_user_incomes = $this->createRecurringPayments(1);
-        $second_user_incomes = $this->createRecurringPayments(1, $second_user);
+        $default_user_recurring_payments = $this->createRecurringPayments(1);
+        $second_user_recurring_payments = $this->createRecurringPayments(1, $second_user);
 
-        // try to access the incomes of another user.
+        // try to access the recurring_payments of another user.
         $client = static::createClient();
         $client->request(
             'GET',
@@ -304,7 +304,7 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
             $this->createHeaderWithAccessToken()
         );
         $this->assertEquals(
-            $default_user_incomes[0]->getId(),
+            $default_user_recurring_payments[0]->getId(),
             json_decode($client->getResponse()->getContent(), true)[0]['id']
         );
 
@@ -319,12 +319,12 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
         );
 
         $this->assertEquals(
-            $second_user_incomes[0]->getId(),
+            $second_user_recurring_payments[0]->getId(),
             json_decode($client->getResponse()->getContent(), true)[0]['id']
         );
 
         $this->assertNotEquals(
-            $default_user_incomes[0]->getId(),
+            $default_user_recurring_payments[0]->getId(),
             json_decode($client->getResponse()->getContent(), true)[0]['id']
         );
     }
