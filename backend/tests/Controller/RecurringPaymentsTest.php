@@ -70,7 +70,7 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
      */
     public function testGetAll()
     {
-        $incomes = $this->createRecurringPayments(5);
+        $recurring_payments = $this->createRecurringPayments(5);
 
         $client = static::createClient();
         $client->request('GET', '/api/recurring_payments', [], [], $this->createHeaderWithAccessToken());
@@ -79,9 +79,9 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
 
         $this->assertCount(5, $results);
 
-        foreach ($incomes as $key => $income) {
-            $this->assertEquals($income->getId(), $results[$key]['id']);
-            $this->assertEquals($income->getValue(), $results[$key]['value']);
+        foreach ($recurring_payments as $key => $recurring_payment) {
+            $this->assertEquals($recurring_payment->getId(), $results[$key]['id']);
+            $this->assertEquals($recurring_payment->getValue(), $results[$key]['value']);
         }
     }
 
@@ -120,53 +120,53 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
         $manager->flush();
 
         $operations = [
-//            [
-//                'data' => '{}',
-//                'expected' => [
-//                    'error' => 'The payload seems to be empty',
-//                ],
-//            ],
-//            [
-//                'data' => '{"foo": "bar"}',
-//                'expected' => [
-//                    'title' => ['This value should not be blank.'],
-//                    'value' => ['This value should not be blank.'],
-//                    'amount_of_recurring' => ['This value should not be blank.'],
-//                    'valid_from' => ['This value should not be blank.'],
-//                ],
-//            ],
-//            [
-//                'data' => '{"foo": "bar"}',
-//                'expected' => [
-//                    'title' => ['This value should not be blank.'],
-//                    'value' => ['This value should not be blank.'],
-//                    'amount_of_recurring' => ['This value should not be blank.'],
-//                    'valid_from' => ['This value should not be blank.'],
-//                ],
-//            ],
-//            [
-//                'data' => '{"title": "bar"}',
-//                'expected' => [
-//                    'value' => ['This value should not be blank.'],
-//                    'amount_of_recurring' => ['This value should not be blank.'],
-//                    'valid_from' => ['This value should not be blank.'],
-//                ],
-//            ],
-//            [
-//                'data' => '{"title": "bar", "value": "foo"}',
-//                'expected' => [
-//                    'value' => ['This value should be of type float.'],
-//                    'amount_of_recurring' => ['This value should not be blank.'],
-//                    'valid_from' => ['This value should not be blank.'],
-//                ],
-//            ],
-//            [
-//                'data' => '{"title": "bar", "value": 20.5, "amount_of_recurring": "foo"}',
-//                'expected' => [
-//                    'amount_of_recurring' => ['This value should be of type int.'],
-//                    'valid_from' => ['This value should not be blank.'],
-//                ],
-//            ],
+            [
+                'data' => '{}',
+                'expected' => [
+                    'error' => 'The payload seems to be empty',
+                ],
+            ],
+            [
+                'data' => '{"foo": "bar"}',
+                'expected' => [
+                    'title' => ['This value should not be blank.'],
+                    'value' => ['This value should not be blank.'],
+                    'amount_of_recurring' => ['This value should not be blank.'],
+                    'valid_from' => ['This value should not be blank.'],
+                ],
+            ],
+            [
+                'data' => '{"foo": "bar"}',
+                'expected' => [
+                    'title' => ['This value should not be blank.'],
+                    'value' => ['This value should not be blank.'],
+                    'amount_of_recurring' => ['This value should not be blank.'],
+                    'valid_from' => ['This value should not be blank.'],
+                ],
+            ],
+            [
+                'data' => '{"title": "bar"}',
+                'expected' => [
+                    'value' => ['This value should not be blank.'],
+                    'amount_of_recurring' => ['This value should not be blank.'],
+                    'valid_from' => ['This value should not be blank.'],
+                ],
+            ],
+            [
+                'data' => '{"title": "bar", "value": "foo"}',
+                'expected' => [
+                    'value' => ['This value should be of type float.'],
+                    'amount_of_recurring' => ['This value should not be blank.'],
+                    'valid_from' => ['This value should not be blank.'],
+                ],
+            ],
+            [
+                'data' => '{"title": "bar", "value": 20.5, "amount_of_recurring": "foo"}',
+                'expected' => [
+                    'amount_of_recurring' => ['This value should be of type int.'],
+                    'valid_from' => ['This value should not be blank.'],
+                ],
+            ],
             [
                 'data' => json_encode([
                     "title" => "bar",
@@ -200,8 +200,6 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
                 ]),
                 'expected' => function ($value) {
                     $entity = $this->getTahiniDoctrine()->getRecurringPaymentRepository()->find($value['id']);
-
-                    d($entity);
 
                     if ($entity) {
                         $this->entities[] = $entity;
@@ -256,28 +254,32 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
      */
     public function testUpdate()
     {
-        $incomes = $this->createRecurringPayments(1);
-        $income = $incomes[0];
+        $recurring_payments = $this->createRecurringPayments(1);
+        $recurring_payment = $recurring_payments[0];
 
         $content = '{"value": 50}';
         $client = static::createClient();
         $client->request(
             'PATCH',
-            '/api/recurring_payments/' . $income->getId(),
+            '/api/recurring_payments/' . $recurring_payment->getId(),
             [],
             [],
             $this->createHeaderWithAccessToken(),
             $content
         );
 
-        $loaded_income = $this->getTahiniDoctrine()->getIncomeRepository()->find($income->getId());
-        $this->assertEquals($loaded_income->getValue(), 50);
+        $loaded_recurring = $this
+            ->getTahiniDoctrine()
+            ->getRecurringPaymentRepository()
+            ->find($recurring_payment->getId());
+
+        $this->assertEquals($loaded_recurring->getValue(), 50);
     }
 
     /**
      * Testing access for incomes of other users.
      */
-    public function testIncomeAccess()
+    public function testRecurringPaymentsAccess()
     {
         // Create incomes for each user.
         $second_user = $this->createUser(false);
@@ -307,9 +309,7 @@ class RecurringPaymentsTest extends TahiniBaseWebTestCase
             '/api/recurring_payments',
             [],
             [],
-            [
-                'HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $second_access_token->access_token,
-            ]
+            ['HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $second_access_token->access_token]
         );
 
         $this->assertEquals(

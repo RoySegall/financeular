@@ -19,13 +19,13 @@ class RecurringPayment extends AbstractEntity
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Entity\User", inversedBy="recurringPayments")
+     * @ORM\ManyToOne(targetEntity="\App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      */
     private $title;
