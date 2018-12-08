@@ -45,7 +45,7 @@
             </div>
 
             <div class="row blocks">
-                <div class="block col-md-5 col-12 animated fadeInDown fast" v-for="block in blocks">
+                <div class="block col-md-5 col-12 animated fadeInDown fast" v-for="(block, blockIndex) in blocks">
 
                     <div class="block-header">
                         <div class="title">
@@ -53,23 +53,13 @@
                                    class="form-control title"/>
 
                             <div class="dropdown">
-                                <span id="dropdownMenu2"
-                                      data-toggle="dropdown"
-                                      aria-haspopup="true"
-                                      aria-expanded="false">
-                                    <i class="fal fa-bars"></i>
-                                </span>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item"
-                                            type="button"
-                                            v-on:click="addBlock"><i class="fal fa-layer-plus"></i> Add another section
-                                    </button>
-                                </div>
+                                <a @click="removeExpenseBlock(blockIndex)" title="Remove item"><i class="far fa-trash text-danger"></i></a>
+                                <a @click="addBlock" title="Add another block"><i class="far fa-layer-plus text-success"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="expenses" v-for="item in block.items">
+                    <div class="expenses" v-for="(item, itemIndex) in block.items">
                         <div class="expense row">
                             <div class="title col-6">
                                 <input type="text"
@@ -84,24 +74,17 @@
                                        v-model="item.value"
                                        v-on:keyup="calculateBalance"/>
                             </div>
+                            <div class="remove" v-if="block.items.length-1 !== itemIndex">
+                                <a @click="removeExpenseItem(blockIndex, itemIndex)"><i class="far fa-trash text-danger"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="budget-actions animated fadeInDown fast" v-if="getShowAwesomeButtons() !== ''">
-                    <a class="btn btn-info d-inline text-white"
-                       @click="setCurrentBudgetAsDefault"
-                       v-html="setCurrentBudgetText"></a>
 
-                    <a class="btn btn-danger d-inline text-white"
-                       @click="removeCurrentBudget"
-                       v-if="getShowDelete() !== null"
-                       v-html="removeCurrentBudgetText"></a>
-
-                </div>
             </div>
 
             <div class="actions row animated slideInLeft fast d-none d-md-block">
-                <div class="col-md-8 text-left">
+                <div class="col-md-4 d-inline-block text-left">
                     <button type="button"
                             class="btn btn-primary"
                             v-on:click="addBlock">
@@ -114,6 +97,18 @@
                     <router-link to="dashboard" class="btn btn-success" v-if="getShowAwesomeButtons() !== ''">
                         <i class="fal fa-chart-line"></i> Dashboard
                     </router-link>
+                </div>
+
+                <div class="col-md-8 text-right d-inline-block" v-if="getShowAwesomeButtons() !== ''">
+                    <a class="btn btn-info d-inline text-white"
+                       @click="setCurrentBudgetAsDefault"
+                       v-html="setCurrentBudgetText"></a>
+
+                    <a class="btn btn-danger d-inline text-white"
+                       @click="removeCurrentBudget"
+                       v-if="getShowDelete() !== null"
+                       v-html="removeCurrentBudgetText"></a>
+
                 </div>
             </div>
 
@@ -130,10 +125,25 @@
                     <router-link to="authenticate" class="btn btn-success" v-if="getShowAwesomeButtons() === ''">
                         <i class="fal fa-sign-in-alt"></i> Login and save
                     </router-link>
+                </div>
+
+                <div class="col-12">
                     <a class="btn btn-danger text-white" @click="logout" v-if="getShowAwesomeButtons() !== ''"><i class="fal fa-sign-out-alt"></i> Logout</a>
                     <router-link to="dashboard" class="btn btn-success" v-if="getShowAwesomeButtons() !== ''">
                         <i class="fal fa-chart-line"></i> Dashboard
                     </router-link>
+                </div>
+
+                <div class="col-12" v-if="getShowAwesomeButtons() !== ''">
+                    <a class="btn btn-info text-white"
+                       @click="setCurrentBudgetAsDefault"
+                       v-html="setCurrentBudgetText"></a>
+
+                    <a class="btn btn-danger text-white"
+                       @click="removeCurrentBudget"
+                       v-if="getShowDelete() !== null"
+                       v-html="removeCurrentBudgetText"></a>
+
                 </div>
             </div>
         </div>
@@ -193,9 +203,14 @@
                     z-index: 1;
                     right: 5px;
                     top: 5px;
+
+                    a {
+                        padding: 0 0.5em;
+                    }
                 }
 
                 .expense {
+                    position: relative;
 
                     .title {
                         padding-right: 0;
@@ -204,6 +219,12 @@
 
                     .value {
                         padding-left: 0;
+                    }
+
+                    .remove {
+                        position: absolute;
+                        right: 1.75em;
+                        top: 0.5em;
                     }
 
                     border-bottom: none;
@@ -249,7 +270,7 @@
 
             }
             .actions {
-                button {
+                button, a {
                     margin-top: .5em;
                     width: 100%;
                 }
@@ -262,7 +283,7 @@
 <script lang="ts">
     import {Component, Vue, Watch} from 'vue-property-decorator';
     import Block from './Block';
-    import Item from './Item';
+    import Item, {default as Item} from './Item';
 
     @Component({})
 
@@ -348,6 +369,15 @@
             });
 
             this.processBalance();
+        }
+
+        public removeExpenseItem(blockIndex: number, itemIndex: number) {
+            this.$store.commit('removeItem', {'block': blockIndex, 'item': itemIndex});
+        }
+
+        public removeExpenseBlock(blockIndex: number) {
+            this.$store.commit('removeBlock', blockIndex);
+            this.blocks = this.getBudgetTemplate();
         }
 
         public processBalance() {
