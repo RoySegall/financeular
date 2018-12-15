@@ -288,7 +288,7 @@ export default class Authenticate extends Vue {
             }
         }
 
-        if (self.errors.length == 0) {
+        if (self.errors.length === 0) {
             this.errors = [];
             self.loginIcon = 'fal fa-spinner-third fa-spin';
 
