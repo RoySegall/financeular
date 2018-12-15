@@ -34,11 +34,11 @@ export default {
          *
          * @param store
          *  The state object.
-         * @param {number} temp_income
+         * @param {number} tempIncome
          *  The temp income.
          */
-        setTempIncome(store: any, temp_income: number) {
-          store.TempIncome = temp_income;
+        setTempIncome(store: any, tempIncome: number) {
+          store.TempIncome = tempIncome;
         },
         /**
          * Removing the temp income.
@@ -65,7 +65,7 @@ export default {
          * @param context
          */
         starting(context: any) {
-            let localStorageIncome = window.localStorage.getItem('defaultIncome');
+            const localStorageIncome = window.localStorage.getItem('defaultIncome');
 
             if (localStorageIncome !== undefined) {
                 context.commit('setIncome', localStorageIncome);
@@ -80,6 +80,6 @@ export default {
             // Remove teh default income and the temp income.
             context.commit('clearDefaultIncome');
             context.commit('clearTempIncome');
-        }
+        },
     },
-}
+};

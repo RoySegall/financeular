@@ -80,36 +80,34 @@
 </style>
 
 <script lang="ts">
-    import {Component, Vue} from 'vue-property-decorator';
-    import GeneralSettings from './GeneralSettings.vue';
-    import RecurringSettings from './RecurringSettings.vue';
-    import IncomeSettings from './IncomeSettings.vue';
-    import ExpensesSettings from './ExpensesSettings.vue';
+import {Component, Vue} from 'vue-property-decorator';
+import GeneralSettings from './GeneralSettings.vue';
+import RecurringSettings from './RecurringSettings.vue';
+import IncomeSettings from './IncomeSettings.vue';
+import ExpensesSettings from './ExpensesSettings.vue';
 
-    @Component({
-        components : { GeneralSettings, RecurringSettings, IncomeSettings, ExpensesSettings }
-    })
+@Component({
+    components : { GeneralSettings, RecurringSettings, IncomeSettings, ExpensesSettings },
+})
 
-    export default class Dashboard extends Vue {
+export default class Dashboard extends Vue {
 
-        private menu_items: object;
-        private active: string = 'general';
+    private active: string = 'general';
 
-        public data() {
-            return {
-                menu_items: {
-                    general: '<i class="fal fa-cog"></i> General settings',
-                    payments: '<i class="fal fa-recycle"></i> Recurring payments',
-                    incomes: '<i class="fal fa-credit-card"></i> Manage incomes',
-                    expenses: '<i class="fal fa-hands-usd"></i> Default expenses',
-                },
-                active: 'general',
-            };
-        }
-
-        public changeActiveMenu(key) {
-            this.active = key;
-        }
+    public data() {
+        return {
+            menu_items: {
+                general: '<i class="fal fa-cog"></i> General settings',
+                payments: '<i class="fal fa-recycle"></i> Recurring payments',
+                incomes: '<i class="fal fa-credit-card"></i> Manage incomes',
+                expenses: '<i class="fal fa-hands-usd"></i> Default expenses',
+            },
+            active: 'general',
+        };
     }
 
+    public changeActiveMenu(key: string) {
+        this.active = key;
+    }
+}
 </script>

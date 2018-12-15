@@ -18,7 +18,7 @@ export default {
         removeAccessToken(store: any) {
             store.AccessToken = '';
             window.localStorage.removeItem('access_token');
-        }
+        },
     },
     actions: {
         /**
@@ -27,7 +27,7 @@ export default {
          * @param context
          */
         starting(context: any) {
-            let at = window.localStorage.getItem('access_token');
+            const at = window.localStorage.getItem('access_token');
 
             if (at !== null) {
                 context.commit('setAccessToken', at);
@@ -43,6 +43,6 @@ export default {
             context.commit('removeAccessToken');
 
             // todo: invalidate the token in the DB.
-        }
+        },
     },
-}
+};

@@ -65,7 +65,7 @@ export default {
             store.BudgetTemplate = store.BudgetTemplate.filter((value: any, index: any) => {
                 return index !== block;
             });
-        }
+        },
     },
     actions: {
         /**
@@ -76,10 +76,9 @@ export default {
         starting(context: any) {
             let budgetFromData: any = window.localStorage.getItem('budgetTemplate');
 
-           if (budgetFromData === null) {
+            if (budgetFromData === null) {
                budgetFromData = [];
-           }
-           else {
+           } else {
                budgetFromData = JSON.parse(budgetFromData);
            }
 
@@ -96,6 +95,6 @@ export default {
             // Clearing up the template the local storage template.
             context.commit('clearBudgetTemplate');
             context.commit('setBudgetTemplate', '');
-        }
+        },
     },
-}
+};

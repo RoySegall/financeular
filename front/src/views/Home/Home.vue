@@ -281,176 +281,176 @@
 </style>
 
 <script lang="ts">
-    import {Component, Vue, Watch} from 'vue-property-decorator';
-    import Block from './Block';
-    import Item, {default as Item} from './Item';
+import {Component, Vue, Watch} from 'vue-property-decorator';
+import Block from './Block';
+import Item from './Item';
 
-    @Component({})
+@Component({})
 
-    export default class Home extends Vue {
+export default class Home extends Vue {
 
-        private budget: any = 0;
-        private tempBudget: any = null;
-        private total: number = 0;
-        private balance: number = 0;
-        private balanceClass: string = 'text-primary';
-        private setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
-        private setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
-        private removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
-        private blocks = [
-            new Block(),
-        ];
+    private budget: any = 0;
+    private tempBudget: any = null;
+    private total: number = 0;
+    private balance: number = 0;
+    private balanceClass: string = 'text-primary';
+    private setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
+    private setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
+    private removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
+    private blocks = [
+        new Block(),
+    ];
 
-        data() {
-            let budget = 0;
-            let blocks = [new Block()];
+    public data() {
+        let budget = 0;
+        let blocks = [new Block()];
 
-            if (this.$store.state.income.DefaultIncome !== null) {
-                // Getting the income from the state.
-                budget = this.$store.state.income.DefaultIncome;
+        if (this.$store.state.income.DefaultIncome !== null) {
+            // Getting the income from the state.
+            budget = this.$store.state.income.DefaultIncome;
+        }
+
+        if (this.$store.state.budget.BudgetTemplate !== null) {
+            if (this.getBudgetTemplate().length !== 0) {
+                blocks = this.getBudgetTemplate();
             }
-
-            if (this.$store.state.budget.BudgetTemplate !== null) {
-                if (this.getBudgetTemplate().length !== 0) {
-                    blocks = this.getBudgetTemplate();
-                }
-            }
-
-            return {
-                budget: budget,
-                blocks: blocks,
-            };
         }
 
-        getBudgetTemplate() {
-            return this.$store.state.budget.BudgetTemplate;
-        }
-
-        getShowDelete() {
-            return window.localStorage.getItem('budgetTemplate');
-        }
-
-        /**
-         * Saving the current income as the default income.
-         */
-        public setCurrentIncomeAsDefault() {
-            this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
-            this.$store.commit('saveIncome', this.budget);
-
-            this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
-            let self = this;
-
-            setTimeout(() => {
-                self.setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
-            }, 3000)
-        }
-
-        public applyBudget() {
-            this.$store.commit('setTempIncome', this.tempBudget);
-            this.budget = this.tempBudget;
-        }
-
-        public addItem(items: any) {
-            items.push(new Item());
-        }
-
-        public addBlock() {
-            this.blocks.push(new Block());
-        }
-
-        public calculateBalance() {
-            this.balance = 0;
-            this.total = 0;
-
-            this.blocks.forEach((block) => {
-                block.items.forEach((item) => {
-                    this.total = this.total + parseInt(item.value);
-                });
-            });
-
-            this.processBalance();
-        }
-
-        public removeExpenseItem(blockIndex: number, itemIndex: number) {
-            this.$store.commit('removeItem', {'block': blockIndex, 'item': itemIndex});
-        }
-
-        public removeExpenseBlock(blockIndex: number) {
-            this.$store.commit('removeBlock', blockIndex);
-            this.blocks = this.getBudgetTemplate();
-        }
-
-        public processBalance() {
-
-            this.balance = this.budget - this.total;
-
-            if (this.balance <= 0) {
-                this.balanceClass = 'text-danger';
-                return;
-            }
-
-            this.balanceClass = 'text-success';
-        }
-
-        @Watch('blocks', {immediate: true, deep: true})
-        onBlocksChanged(val: string, oldVal: string) {
-            this.$store.commit('setBudgetTemplate', val);
-
-            // Go over the blocks an empty one.
-            if (oldVal !== undefined) {
-
-                // This is not the init of the blocks and the
-                this.leaveEmptyItem();
-            }
-
-            // Calculating the balance.
-            this.calculateBalance();
-        }
-
-        @Watch('budget')
-        onBudgetChanged(val: any) {
-            this.calculateBalance();
-            this.$store.commit('setTempIncome', val);
-        }
-
-        leaveEmptyItem() {
-            this.blocks.forEach(block => {
-                // Get the last item.
-                let lastItem = block.items[block.items.length - 1];
-
-                if (lastItem.title !== '' || lastItem.value != 0) {
-                    // The last item has a title or a value. Append a new one in the bottom of the block.
-                    this.addItem(block.items);
-                }
-
-            });
-        }
-
-        setCurrentBudgetAsDefault() {
-            this.setCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
-            this.$store.commit('saveBudgetForNextTime', this.blocks);
-
-            this.setCurrentBudgetText = '<i class="fal fa-check"></i> Done';
-            let self = this;
-
-            setTimeout(() => {
-                self.setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
-            }, 3000)
-        }
-
-        removeCurrentBudget() {
-            this.removeCurrentBudgetText = '';
-            this.$store.commit('clearBudgetTemplate', this.blocks);
-            this.removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
-        }
-
-        getShowAwesomeButtons() {
-            return this.$store.state.auth.AccessToken;
-        }
-
-        logout() {
-            this.$store.dispatch('logout');
-            window.location.reload();
-        }
+        return {
+            budget,
+            blocks,
+        };
     }
+
+    public getBudgetTemplate() {
+        return this.$store.state.budget.BudgetTemplate;
+    }
+
+    public getShowDelete() {
+        return window.localStorage.getItem('budgetTemplate');
+    }
+
+    /**
+     * Saving the current income as the default income.
+     */
+    public setCurrentIncomeAsDefault() {
+        this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
+        this.$store.commit('saveIncome', this.budget);
+
+        this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
+        const self = this;
+
+        setTimeout(() => {
+            self.setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
+        }, 3000);
+    }
+
+    public applyBudget() {
+        this.$store.commit('setTempIncome', this.tempBudget);
+        this.budget = this.tempBudget;
+    }
+
+    public addItem(items: any) {
+        items.push(new Item());
+    }
+
+    public addBlock() {
+        this.blocks.push(new Block());
+    }
+
+    public calculateBalance() {
+        this.balance = 0;
+        this.total = 0;
+
+        this.blocks.forEach((block) => {
+            block.items.forEach((item) => {
+                this.total = this.total + parseInt('' + item.value, 10);
+            });
+        });
+
+        this.processBalance();
+    }
+
+    public removeExpenseItem(blockIndex: number, itemIndex: number) {
+        this.$store.commit('removeItem', {block: blockIndex, item: itemIndex});
+    }
+
+    public removeExpenseBlock(blockIndex: number) {
+        this.$store.commit('removeBlock', blockIndex);
+        this.blocks = this.getBudgetTemplate();
+    }
+
+    public processBalance() {
+
+        this.balance = this.budget - this.total;
+
+        if (this.balance <= 0) {
+            this.balanceClass = 'text-danger';
+            return;
+        }
+
+        this.balanceClass = 'text-success';
+    }
+
+    @Watch('blocks', {immediate: true, deep: true})
+    public onBlocksChanged(val: string, oldVal: string) {
+        this.$store.commit('setBudgetTemplate', val);
+
+        // Go over the blocks an empty one.
+        if (oldVal !== undefined) {
+
+            // This is not the init of the blocks and the
+            this.leaveEmptyItem();
+        }
+
+        // Calculating the balance.
+        this.calculateBalance();
+    }
+
+    @Watch('budget')
+    public onBudgetChanged(val: any) {
+        this.calculateBalance();
+        this.$store.commit('setTempIncome', val);
+    }
+
+    public leaveEmptyItem() {
+        this.blocks.forEach((block) => {
+            // Get the last item.
+            const lastItem = block.items[block.items.length - 1];
+
+            if (lastItem.title !== '' || lastItem.value !== 0) {
+                // The last item has a title or a value. Append a new one in the bottom of the block.
+                this.addItem(block.items);
+            }
+
+        });
+    }
+
+    public setCurrentBudgetAsDefault() {
+        this.setCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
+        this.$store.commit('saveBudgetForNextTime', this.blocks);
+
+        this.setCurrentBudgetText = '<i class="fal fa-check"></i> Done';
+        const self = this;
+
+        setTimeout(() => {
+            self.setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
+        }, 3000);
+    }
+
+    public removeCurrentBudget() {
+        this.removeCurrentBudgetText = '';
+        this.$store.commit('clearBudgetTemplate', this.blocks);
+        this.removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
+    }
+
+    public getShowAwesomeButtons() {
+        return this.$store.state.auth.AccessToken;
+    }
+
+    public logout() {
+        this.$store.dispatch('logout');
+        window.location.reload();
+    }
+}
 </script>

@@ -186,124 +186,125 @@
 
 
 <script lang="ts">
-    import {Component, Vue} from 'vue-property-decorator';
+import {Component, Vue} from 'vue-property-decorator';
 
-    @Component({})
+@Component({})
 
-    export default class Authenticate extends Vue {
+export default class Authenticate extends Vue {
 
-        public texts = {
-            'sign-in': 'Sign in',
-            'sign-up': 'Sign up',
+    public texts: { [s: string]: string; } = {
+        'sign-in': 'Sign in',
+        'sign-up': 'Sign up',
+    };
+
+    public icons: { [s: string]: string; } = {
+        'sign-in': 'fal fa-sign-in-alt text-primary',
+        'sign-up': 'fal fa-user-edit text-primary',
+    };
+
+    public context = 'sign-in';
+    public submitButtonText = this.texts[this.context];
+    public loginIcon: string = 'fal fa-sign-in-alt text-primary';
+    public errors: string[] = [];
+    public touchedInputs: any;
+    public success = '';
+    public user = {
+        name: '',
+        pass: '',
+        passAgain: '',
+        email: '',
+        emailAgain: '',
+    };
+
+    public data() {
+        return {
+            errors: [],
+            wait: false,
         };
-
-        public icons = {
-            'sign-in': 'fal fa-sign-in-alt text-primary',
-            'sign-up': 'fal fa-user-edit text-primary',
-        };
-
-        public context = 'sign-in';
-        public submitButtonText = this.texts[this.context];
-        public loginIcon = 'fal fa-sign-in-alt text-primary';
-        public errors = [];
-        public touchedInputs = {};
-        public success = '';
-        public user = {
-            name: '',
-            pass: '',
-            passAgain: '',
-            email: '',
-            emailAgain: '',
-        };
-
-        public data() {
-            return {
-                errors: [],
-                wait: false,
-            };
-        }
-
-        public contextSwitch(context) {
-            this.context = context;
-
-            this.submitButtonText = this.texts[context];
-            this.loginIcon = this.icons[context];
-        }
-
-        public validEmail(email: string) {
-            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-        public submitForm(e) {
-            const self = this;
-
-            e.preventDefault();
-
-            self.errors = [];
-            self.touchedInputs = {};
-
-            if (this.user.name === '') {
-                this.errors.push('Please fill in the username');
-                self.touchedInputs['name'] = true;
-            }
-            if (this.user.pass === '') {
-                this.errors.push('Please fill in the password');
-                self.touchedInputs['pass'] = true;
-            }
-
-            if (this.context === 'sign-up') {
-                if (this.user.passAgain == '') {
-                    this.errors.push('Please fill in the password(again)');
-                    self.touchedInputs['passAgain'] = true;
-                }
-
-                if (this.user.pass != '' && this.user.passAgain != this.user.pass) {
-                    this.errors.push('The passwords are not matching');
-                    self.touchedInputs['pass'] = true;
-                    self.touchedInputs['passAgain'] = true;
-                }
-
-                if (this.user.email == '') {
-                    this.errors.push('Please fill in the email');
-                    self.touchedInputs['email'] = true;
-                }
-
-                if (this.user.emailAgain == '') {
-                    this.errors.push('Please fill in the email(again)');
-                    self.touchedInputs['emailAgain'] = true;
-                }
-
-                if (!this.validEmail(this.user.email)) {
-                    this.errors.push('The email should be valid');
-                    self.touchedInputs['email'] = true;
-                }
-
-                if (this.user.emailAgain != '' && this.user.emailAgain != this.user.email) {
-                    this.errors.push('The emails addresses are not matching');
-                    self.touchedInputs['email'] = true;
-                    self.touchedInputs['emailAgain'] = true;
-                }
-            }
-
-            if (self.errors.length === 0) {
-                this.errors = [];
-                self.loginIcon = 'fal fa-spinner-third fa-spin';
-
-                setTimeout(() => {
-                    self.$store.commit('setAccessToken', 100);
-                    self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
-                    self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
-                    self.$store.commit('clearTempIncome');
-                    self.loginIcon = 'fal fa-check text-success';
-
-                    this.$router.go(-1)
-                }, 1500);
-            }
-            else {
-                this.loginIcon = 'fal fa-times text-danger';
-            }
-        }
-
     }
+
+    public contextSwitch(context: string) {
+        this.context = context;
+
+        this.submitButtonText = this.texts[context];
+        this.loginIcon = this.icons[context];
+    }
+
+    public validEmail(email: string) {
+        /* tslint:disable:max-line-length */
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        /* tslint:enable:max-line-length */
+        return re.test(String(email).toLowerCase());
+    }
+
+    public submitForm(e: any) {
+        const self = this;
+
+        e.preventDefault();
+
+        self.errors = [];
+        self.touchedInputs = {};
+
+        if (this.user.name === '') {
+            this.errors.push('Please fill in the username');
+            self.touchedInputs.name = true;
+        }
+        if (this.user.pass === '') {
+            this.errors.push('Please fill in the password');
+            self.touchedInputs.pass = true;
+        }
+
+        if (this.context === 'sign-up') {
+            if (this.user.passAgain === '') {
+                this.errors.push('Please fill in the password(again)');
+                self.touchedInputs.passAgain = true;
+            }
+
+            if (this.user.pass !== '' && this.user.passAgain !== this.user.pass) {
+                this.errors.push('The passwords are not matching');
+                self.touchedInputs.pass = true;
+                self.touchedInputs.passAgain = true;
+            }
+
+            if (this.user.email === '') {
+                this.errors.push('Please fill in the email');
+                self.touchedInputs.email = true;
+            }
+
+            if (this.user.emailAgain === '') {
+                this.errors.push('Please fill in the email(again)');
+                self.touchedInputs.emailAgain = true;
+            }
+
+            if (!this.validEmail(this.user.email)) {
+                this.errors.push('The email should be valid');
+                self.touchedInputs.email = true;
+            }
+
+            if (this.user.emailAgain !== '' && this.user.emailAgain !== this.user.email) {
+                this.errors.push('The emails addresses are not matching');
+                self.touchedInputs.email = true;
+                self.touchedInputs.emailAgain = true;
+            }
+        }
+
+        if (self.errors.length === 0) {
+            this.errors = [];
+            self.loginIcon = 'fal fa-spinner-third fa-spin';
+
+            setTimeout(() => {
+                self.$store.commit('setAccessToken', 100);
+                self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
+                self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
+                self.$store.commit('clearTempIncome');
+                self.loginIcon = 'fal fa-check text-success';
+
+                this.$router.go(-1);
+            }, 1500);
+        } else {
+            this.loginIcon = 'fal fa-times text-danger';
+        }
+    }
+
+}
 </script>
