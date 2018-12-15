@@ -6,9 +6,9 @@ services:
   - mysql
 
 env:
-  - SCRIPT=travis/cs.sh BEFORE_SCRIPT=php.sh
-  - SCRIPT=travis/phpunit.sh BEFORE_SCRIPT=php.sh
-  - SCRIPT=travis/front.sh BEFORE_SCRIPT=js.sh
+  - SCRIPT=travis/cs.sh BEFORE_SCRIPT=travis/php.sh
+  - SCRIPT=travis/phpunit.sh BEFORE_SCRIPT=travis/php.sh
+  - SCRIPT=travis/front.sh BEFORE_SCRIPT=travis/js.sh
 
 before_script: "bash $BEFORE_SCRIPT"
 
