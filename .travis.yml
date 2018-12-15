@@ -6,17 +6,10 @@ services:
   - mysql
 
 env:
-  - SCRIPT=travis/cs.sh
-  - SCRIPT=travis/phpunit.sh
+  - SCRIPT=travis/cs.sh BEFORE_SCRIPT=php.sh
+  - SCRIPT=travis/phpunit.sh BEFORE_SCRIPT=php.sh
+  - SCRIPT=travis/front.sh BEFORE_SCRIPT=js.sh
 
-before_script:
-  - cd backend
-  - composer self-update
-  - mysql -e 'CREATE DATABASE tahini;'
-  - rm phpunit.xml.dist
-  - cp .travis.env .env
-  - cp .travis.phpunit.xml.dist phpunit.xml.dist
-  - composer install
-  - bin/console doctrine:schema:create
+before_script: "bash $BEFORE_SCRIPT"
 
 script: "bash $SCRIPT"
