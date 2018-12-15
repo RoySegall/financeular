@@ -4,11 +4,15 @@ php: 7.2
 
 services:
   - mysql
+cache:
+  directories:
+    - /home/travis/build/RoySegall/financeular/backend/vendor
+    - /home/travis/build/RoySegall/financeular/front/node_modules
 
 env:
   - SCRIPT=travis/cs.sh BEFORE_SCRIPT=travis/php.sh
   - SCRIPT=travis/phpunit.sh BEFORE_SCRIPT=travis/php.sh
-  - SCRIPT=travis/front.sh BEFORE_SCRIPT=travis/js.sh
+  - SCRIPT=travis/lint.sh BEFORE_SCRIPT=travis/js.sh
 
 before_script: "bash $BEFORE_SCRIPT"
 
