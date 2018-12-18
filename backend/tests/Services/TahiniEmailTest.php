@@ -14,8 +14,6 @@ class TahiniEmailTest extends TahiniBaseWebTestCase
      */
     public function testMailSending()
     {
-
-
         $send_grid_mock = new SendGridMock('dummy');
         $mail = $this->getTahiniEmail()->setSendGrid($send_grid_mock);
 

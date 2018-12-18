@@ -128,6 +128,7 @@ class TahiniEmailService
     public function addTo($email, $name = ''): self
     {
         $this->sendGridMail->addTo($email, $name);
+
         return $this;
     }
 
@@ -142,6 +143,7 @@ class TahiniEmailService
     public function addContent($content): self
     {
         $this->contents[] = $content;
+
         return $this;
     }
 
