@@ -19,6 +19,11 @@ class TahiniEmailService
     /**
      * @var \SendGrid\Mail\Mail
      */
+    protected $sendGridMail;
+
+    /**
+     * @var \SendGrid
+     */
     protected $sendGrid;
 
     /**
@@ -32,29 +37,80 @@ class TahiniEmailService
      */
     public function __construct()
     {
-        $this->sendGrid = new \SendGrid\Mail\Mail();
-        $this->sendGrid->setFrom(getenv('email_from_mail'), getenv('email_from_name'));
+        $this->sendGridMail = new \SendGrid\Mail\Mail();
+        $this->sendGridMail->setFrom(getenv('EMAIL_FROM_MAIL'), getenv('EMAIL_FROM_NAME'));
+        $this->sendGrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
     }
 
     /**
      * @return \SendGrid\Mail\Mail
      */
-    public function getSendGrid(): \SendGrid\Mail\Mail
+    public function getSendGridMail(): \SendGrid\Mail\Mail
     {
-        return $this->sendGrid;
+        return $this->sendGridMail;
     }
 
     /**
      * Get the sendgrid object.
      *
-     * @param \SendGrid\Mail\Mail $sendGrid
+     * @param \SendGrid\Mail\Mail $sendGridMail
      *  The sendgrid object.
      *
      * @return self
      */
-    public function setSendGrid(\SendGrid\Mail\Mail $sendGrid): self
+    public function setSendGridMail(\SendGrid\Mail\Mail $sendGridMail): self
+    {
+        $this->sendGridMail = $sendGridMail;
+
+        return $this;
+    }
+
+    /**
+     * Get the sendgrid object.
+     *
+     * @return \SendGrid
+     */
+    public function getSendGrid(): \SendGrid
+    {
+        return $this->sendGrid;
+    }
+
+    /**
+     * Set the sendgrid object.
+     *
+     * @param \SendGrid $sendGrid
+     *  the sendgrid object.
+     *
+     * @return self
+     */
+    public function setSendGrid(\SendGrid $sendGrid): self
     {
         $this->sendGrid = $sendGrid;
+
+        return $this;
+    }
+
+    /**
+     * Get the contents.
+     *
+     * @return array
+     */
+    public function getContents(): array
+    {
+        return $this->contents;
+    }
+
+    /**
+     * Set the contents.
+     *
+     * @param array $contents
+     *  The content of the email.
+     *
+     * @return self
+     */
+    public function setContents(array $contents): self
+    {
+        $this->contents = $contents;
 
         return $this;
     }
@@ -71,7 +127,7 @@ class TahiniEmailService
      */
     public function addTo($email, $name = ''): self
     {
-        $this->sendGrid->addTo($email, $name);
+        $this->sendGridMail->addTo($email, $name);
         return $this;
     }
 
@@ -99,7 +155,7 @@ class TahiniEmailService
      */
     public function setSubject(string $subject): self
     {
-        $this->sendGrid->setSubject($subject);
+        $this->sendGridMail->setSubject($subject);
 
         return $this;
     }
@@ -109,12 +165,10 @@ class TahiniEmailService
      */
     public function send()
     {
-        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
-
         $this
-            ->sendGrid
+            ->sendGridMail
             ->addContent('text/html', implode("<br />\n", $this->contents));
 
-        return $sendgrid->send($this->sendGrid);
+        return $this->sendGrid->send($this->sendGridMail);
     }
 }
