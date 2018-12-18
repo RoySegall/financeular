@@ -7,8 +7,10 @@ use App\Entity\User;
 use App\Plugins\Authentication;
 use App\Services\TahiniAccessToken;
 use App\Services\TahiniDoctrine;
+use App\Services\TahiniEmailService;
 use App\Services\TahiniUser;
 use App\Services\TahiniValidator;
+use App\Tests\Controller\TahiniEmailTest;
 use PHPUnit\Runner\Exception;
 use Psr\Container\ContainerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
@@ -41,7 +43,8 @@ class TahiniBaseWebTestCase extends WebTestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         // Booting up the kernal.
@@ -51,7 +54,8 @@ class TahiniBaseWebTestCase extends WebTestCase
     /**
      * {@inheritdoc}
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         $this->clearEntities();
         parent::tearDown();
     }
@@ -59,7 +63,8 @@ class TahiniBaseWebTestCase extends WebTestCase
     /**
      * Remove the entities we created.
      */
-    public function clearEntities() {
+    public function clearEntities()
+    {
         foreach ($this->entities as $entity) {
             $repo = $this->getDoctrine()->getRepository(get_class($entity));
 
@@ -71,9 +76,7 @@ class TahiniBaseWebTestCase extends WebTestCase
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->remove($item);
                 $entityManager->flush();
-            } catch (Exception $e) {
-
-            }
+            } catch (Exception $e) {}
         }
     }
 
@@ -90,7 +93,8 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @throws \Exception
      */
-    public function createUser(bool $create_user = true, $type = 'app'): User {
+    public function createUser(bool $create_user = true, $type = 'app'): User
+    {
         $user = new User();
         $user->username = 'user' . microtime();
         $user->setPassword('text');
@@ -108,7 +112,8 @@ class TahiniBaseWebTestCase extends WebTestCase
     /**
      * @return array
      */
-    protected function createHeaderWithAccessToken() {
+    protected function createHeaderWithAccessToken()
+    {
         return [
             'HTTP_' . \App\Services\TahiniAccessToken::ACCESS_TOKEN_HEADER_KEY => $this->accessToken->access_token
         ];
@@ -119,7 +124,8 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @return \Symfony\Component\DependencyInjection\ContainerInterface
      */
-    protected function getContainer(): ContainerInterface {
+    protected function getContainer(): ContainerInterface
+    {
         return self::$kernel->getContainer();
     }
 
@@ -128,7 +134,8 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @return \Symfony\Bridge\Doctrine\ManagerRegistry
      */
-    protected function getDoctrine(): ManagerRegistry {
+    protected function getDoctrine(): ManagerRegistry
+    {
         return $this->getContainer()->get('doctrine');
     }
 
@@ -137,7 +144,8 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @return TahiniValidator
      */
-    protected function getTahiniValidator(): TahiniValidator {
+    protected function getTahiniValidator(): TahiniValidator
+    {
         return $this->getContainer()->get('App\Services\TahiniValidator');
     }
 
@@ -146,7 +154,8 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @return TahiniDoctrine
      */
-    protected function getTahiniDoctrine(): TahiniDoctrine {
+    protected function getTahiniDoctrine(): TahiniDoctrine
+    {
         return $this->getContainer()->get('App\Services\TahiniDoctrine');
     }
 
@@ -156,7 +165,8 @@ class TahiniBaseWebTestCase extends WebTestCase
      * @return Authentication
      *  The authentication service.
      */
-    public function getAuthenticationService(): Authentication {
+    public function getAuthenticationService(): Authentication
+    {
         return $this->getContainer()->get('App\Plugins\Authentication');
     }
 
@@ -165,7 +175,8 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @return TahiniUser
      */
-    protected function getTahiniUser(): TahiniUser {
+    protected function getTahiniUser(): TahiniUser
+    {
         return $this->getContainer()->get('App\Services\TahiniUser');
     }
 
@@ -174,8 +185,19 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @return TahiniAccessToken
      */
-    public function getTahiniAccessToken(): TahiniAccessToken {
+    public function getTahiniAccessToken(): TahiniAccessToken
+    {
         return $this->getContainer()->get('App\Services\TahiniAccessToken');
+    }
+
+    /**
+     * Get the tahini email service.
+     *
+     * @return TahiniEmailService
+     */
+    public function getTahiniEmail(): TahiniEmailService
+    {
+        return $this->getContainer()->get('App\Services\TahiniEmailService');
     }
 
     /**
@@ -183,7 +205,8 @@ class TahiniBaseWebTestCase extends WebTestCase
      *
      * @return Request
      */
-    protected function &getRequest(): Request {
+    protected function &getRequest(): Request
+    {
         static $request;
 
         if ($request) {
