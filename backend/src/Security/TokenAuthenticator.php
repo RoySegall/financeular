@@ -40,14 +40,19 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      *
      * List of routes which anonymous user are allowed to access.
      */
-    protected $allowed_anonymous_paths = ['/', '/api/user/login', '/api/user/refresh',];
+    protected $allowed_anonymous_paths = [
+        '/',
+        '/api/user/login',
+        '/api/user/refresh',
+        '/api/user/register',
+    ];
 
     /**
      * @var array
      *
      * List of regex paths.
      */
-    protected $allowed_anonymous_paths_regex = ['(api\/v2\/job-processes\/)[0-9]'];
+    protected $allowed_anonymous_paths_regex = [];
 
     /**
      * {@inheritdoc}

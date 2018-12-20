@@ -206,7 +206,7 @@ export default class Authenticate extends Vue {
     public submitButtonText = this.texts[this.context];
     public loginIcon: string = 'fal fa-sign-in-alt text-primary';
     public errors: string[] = [];
-    public touchedInputs: any;
+    public touchedInputs: any = {};
     public success = '';
     public user = {
         name: '',

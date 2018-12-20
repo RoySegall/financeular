@@ -26,7 +26,7 @@ abstract class AbstractTahiniController extends AbstractController
      */
     protected function processPayloadToEntity(
         AbstractEntity $entity,
-        ArrayCollection $payload,
+        ArrayCollection $payload = null,
         bool $set_when_not_exists = true
     ) {
         $fields = $this
@@ -49,6 +49,12 @@ abstract class AbstractTahiniController extends AbstractController
             $value = $payload->get($field);
 
             if ($value == null && !$set_when_not_exists) {
+                continue;
+            }
+
+            $method = 'set' . implode('', $names);
+
+            if (!is_callable($entity, $method)) {
                 continue;
             }
 
