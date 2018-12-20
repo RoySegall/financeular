@@ -14,7 +14,6 @@ class TahiniUserTest extends TahiniBaseWebTestCase
     public function testUserRegistration()
     {
         $user = new User();
-        $user->setEmail(time() . microtime() . '@gmail.com');
         $first_validation = $this->getTahiniValidator()->validate($user, true);
 
         // Making sure the thrown error is what the validator should be.
