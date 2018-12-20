@@ -25,6 +25,10 @@ class EmailExistsValidator extends ConstraintValidator
 
     public function validate($value, Constraint $constraint)
     {
+        if (!$value) {
+            return;
+        }
+
         if (!$this->tahiniUser->findUserByMail($value)) {
             return;
         }
