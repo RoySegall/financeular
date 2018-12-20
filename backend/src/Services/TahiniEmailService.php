@@ -127,6 +127,11 @@ class TahiniEmailService
      */
     public function addTo($email, $name = ''): self
     {
+        if ($override_email = getenv('OVERRIDE_EMAIL')) {
+            // todo: test it.
+            $email = $override_email;
+        }
+
         $this->sendGridMail->addTo($email, $name);
 
         return $this;

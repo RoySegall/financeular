@@ -54,7 +54,7 @@ abstract class AbstractTahiniController extends AbstractController
 
             $method = 'set' . implode('', $names);
 
-            if (!is_callable($entity, $method)) {
+            if (!method_exists($entity, $method)) {
                 continue;
             }
 

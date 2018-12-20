@@ -33,20 +33,25 @@ class Register extends AbstractTahiniController
      *  The validator service.
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function loginController(Request $request, TahiniUser $tahini_user, TahiniValidator $tahini_validator)
     {
-//        if (!$payload = $this->processPayload($request)) {
-//            return $this->error("The payload is not correct.", Response::HTTP_BAD_REQUEST);
-//        }
+        if (!$payload = $this->processPayload($request)) {
+            return $this->error("The payload is not correct.", Response::HTTP_BAD_REQUEST);
+        }
 
-        $payload = $this->processPayload($request);
         $user = new User();
+        $user->roles = [];
+        $user->type = 'user';
+
         $this->processPayloadToEntity($user, $payload);
 
         if ($errors = $tahini_validator->validate($user)) {
             return $this->json($errors, Response::HTTP_BAD_REQUEST);
         }
+
+        $tahini_user->createUser($user, true);
 
         return $this->json(['message' => 'welcome']);
     }

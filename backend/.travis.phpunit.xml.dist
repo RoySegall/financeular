@@ -19,6 +19,7 @@
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
         <env name="EMAIL_FROM_MAIL" value="foo@gmail.com" />
         <env name="EMAIL_FROM_NAME" value="weak" />
+        <env name="OVERRIDE_EMAIL" value="" />
         <!-- define your env variables for the test env here -->
     </php>
 

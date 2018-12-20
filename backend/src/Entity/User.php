@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping\OneToMany as OneToMany;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use \App\Validator\UsernameExists as UsernameExists;
+use \App\Validator\EmailExists as EmailExists;
 
 /**
  * User entity.
@@ -32,6 +34,7 @@ class User extends AbstractEntity implements UserInterface
      *
      * @Assert\NotNull()
      * @ORM\Column(type="string", nullable=false, unique=true)
+     * @UsernameExists()
      */
     public $username;
 
@@ -68,6 +71,7 @@ class User extends AbstractEntity implements UserInterface
      * @Assert\NotNull()
      * @ORM\Column(type="string", nullable=false, unique=true)
      * @Assert\Email()
+     * @EmailExists
      */
     public $email;
 
@@ -90,6 +94,14 @@ class User extends AbstractEntity implements UserInterface
      */
     private $default;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default" : false})
+     */
+    protected $status = false;
+
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
@@ -101,7 +113,7 @@ class User extends AbstractEntity implements UserInterface
      * @param string $password
      *  The new password.
      */
-    public function setPassword(string $password)
+    public function setPassword(string $password = null)
     {
         $this->password = $password;
     }
@@ -132,10 +144,23 @@ class User extends AbstractEntity implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     *
+     * @return self
+     */
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     /**
@@ -158,6 +183,26 @@ class User extends AbstractEntity implements UserInterface
         if ($this !== $default->getUser()) {
             $default->setUser($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     *
+     * @return self
+     */
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

@@ -7,6 +7,7 @@ security:
     encoders:
             \App\Entity\User: sha512
             App\Security\TahiniUserServiceProvider: sha512
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

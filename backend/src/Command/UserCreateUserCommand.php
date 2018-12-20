@@ -61,7 +61,7 @@ class UserCreateUserCommand extends Command
         $user->setPassword($password);
         $user->email = time() . '@example.com';
         $user->type = $type;
-        $user->roles = [1];
+        $user->roles = [];
 
         if ($error = $this->TahiniValidator->validate($user)) {
             d($error);
