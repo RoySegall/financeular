@@ -96,7 +96,7 @@
         margin: 0 auto;
         padding: 1em;
         top: calc(25vh);
-        left: calc(35vh);
+        left: calc(50vh);
         border-radius: .5em;
 
         .context-switching {
@@ -187,6 +187,7 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
+import axios from 'axios';
 
 @Component({})
 
@@ -217,6 +218,19 @@ export default class Authenticate extends Vue {
     };
 
     public data() {
+        axios({
+            method: 'get',
+            url: `${process.env.VUE_APP_URL}`,
+            data: {
+            }
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error.response);
+            });
+
         return {
             errors: [],
             wait: false,
@@ -228,6 +242,8 @@ export default class Authenticate extends Vue {
 
         this.submitButtonText = this.texts[context];
         this.loginIcon = this.icons[context];
+        this.errors = [];
+        this.touchedInputs = {};
     }
 
     public validEmail(email: string) {
