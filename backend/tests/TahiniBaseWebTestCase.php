@@ -2,6 +2,7 @@
 
 namespace App\Tests;
 
+use App\Entity\AccessToken;
 use App\Entity\Employee;
 use App\Entity\User;
 use App\Plugins\Authentication;
@@ -41,6 +42,11 @@ class TahiniBaseWebTestCase extends WebTestCase
     protected $accessToken;
 
     /**
+     * @var SendGridMock
+     */
+    protected $sendGrid;
+
+    /**
      * {@inheritdoc}
      */
     public function setUp()
@@ -49,6 +55,19 @@ class TahiniBaseWebTestCase extends WebTestCase
 
         // Booting up the kernal.
         self::bootKernel();
+
+        $this->sendGrid = new SendGridMock('dummy');
+
+        // Mock the mail service.
+        $this->mockMail();
+    }
+
+    /**
+     * Mock the mail service.
+     */
+    protected function mockMail()
+    {
+        $this->getTahiniEmail()->setSendGrid($this->sendGrid);
     }
 
     /**
@@ -76,7 +95,8 @@ class TahiniBaseWebTestCase extends WebTestCase
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->remove($item);
                 $entityManager->flush();
-            } catch (Exception $e) {}
+            } catch (Exception $e) {
+            }
         }
     }
 

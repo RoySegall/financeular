@@ -38,7 +38,7 @@ class Register extends AbstractTahiniController
     public function loginController(Request $request, TahiniUser $tahini_user, TahiniValidator $tahini_validator)
     {
         if (!$payload = $this->processPayload($request)) {
-            return $this->error("The payload is not correct.", Response::HTTP_BAD_REQUEST);
+            return $this->error("The payload seems to be empty", Response::HTTP_BAD_REQUEST);
         }
 
         $user = new User();

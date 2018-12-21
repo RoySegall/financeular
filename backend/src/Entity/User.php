@@ -156,7 +156,7 @@ class User extends AbstractEntity implements UserInterface
      *
      * @return self
      */
-    public function setUsername(string $username): self
+    public function setUsername(string $username = null): self
     {
         $this->username = $username;
 
@@ -200,7 +200,7 @@ class User extends AbstractEntity implements UserInterface
      *
      * @return self
      */
-    public function setEmail(string $email): self
+    public function setEmail(string $email = null): self
     {
         $this->email = $email;
 
