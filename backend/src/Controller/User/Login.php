@@ -55,7 +55,7 @@ class Login extends AbstractTahiniController
         }
 
         if (!$user = $tahini_user->findUserByUsername($username, $password)) {
-            return $this->error("Username and password are in correct.");
+            return $this->error("Username and password are in correct.", Response::HTTP_BAD_REQUEST);
         }
 
         $access_token = $tahiniAccessToken->getAccessToken($user);
