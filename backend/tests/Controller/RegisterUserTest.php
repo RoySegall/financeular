@@ -2,11 +2,6 @@
 
 namespace App\Tests\Controller;
 
-use App\Entity\AccessToken;
-use App\Entity\DefaultExpenses;
-use App\Entity\Employee;
-use App\Entity\Income;
-use App\Entity\User;
 use App\Tests\TahiniBaseWebTestCase;
 
 /**

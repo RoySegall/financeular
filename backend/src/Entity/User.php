@@ -95,7 +95,7 @@ class User extends AbstractEntity implements UserInterface
     private $default;
 
     /**
-     * @ORM\Column(type="boolean", options={"default" : false})
+     * @ORM\Column(type="boolean", options={"default" : false}, nullable=true)
      */
     protected $status = false;
 

@@ -244,8 +244,6 @@ export default class Authenticate extends Vue {
 
         let state = this.$route.query.state;
 
-        console.log(state);
-
         if (state !== 'validate_user') {
             return;
         }
