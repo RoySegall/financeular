@@ -5,12 +5,14 @@
         </div>
 
         <div class="row context-switching">
-            <div class="col-md-6 sign-in" v-bind:class="{'active': this.context === 'sign-in'}"><a
+            <div v-if="!validate" class="col-md-6 sign-in" v-bind:class="{'active': this.context === 'sign-in'}"><a
                     @click="contextSwitch('sign-in')"
             >Sign in</a></div>
-            <div class="col-md-6 sign-up" v-bind:class="{'active': this.context === 'sign-up'}"><a
+            <div v-if="!validate" class="col-md-6 sign-up" v-bind:class="{'active': this.context === 'sign-up'}"><a
                     @click="contextSwitch('sign-up')"
             >Sign up</a></div>
+
+            <div v-if="validate" class="col-md-12 sign-up active">Validating</div>
         </div>
 
         <div v-if="errors.length !== 0" class="results bg-danger text-white">
@@ -23,7 +25,11 @@
             {{successMessage}}
         </div>
 
-        <div class="login-input">
+        <div v-if="validate">
+            {{validateText}}
+        </div>
+
+        <div class="login-input" v-if="!validate">
             <div class="col-auto">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
@@ -214,6 +220,8 @@ export default class Authenticate extends Vue {
     public errors: string[] = [];
     public touchedInputs: any = {};
     public success = '';
+    public validate: boolean = false;
+    public validateText: string = 'You started the validation process. This could take a while.';
     public user = {
         username: '',
         password: '',
@@ -227,6 +235,48 @@ export default class Authenticate extends Vue {
             errors: [],
             wait: false,
         };
+    }
+
+    public created() {
+        if (this.$route.query.state === undefined || this.$route.query.token === undefined) {
+            return;
+        }
+
+        let state = this.$route.query.state;
+
+        console.log(state);
+
+        if (state !== 'validate_user') {
+            return;
+        }
+
+        // We need to validate the user.
+
+        this.loginIcon = 'fal fa-spinner-third fa-spin text-warning';
+        this.validate = true;
+        const self = this;
+
+        Http.request({
+            method: 'GET',
+            url: `api/user/validate?access_token=${this.$route.query.token}`,
+        })
+            .then((response) => {
+                self.loginIcon = 'fal fa-check text-success';
+                self.validateText = 'Success! You are now a valid user.';
+
+                self.$store.commit('setAccessToken', response.data.access_token);
+                self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
+                self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
+                self.$store.commit('clearTempIncome');
+
+                setTimeout(() => {
+                    window.location = '/';
+                }, 3000);
+            })
+            .catch((error) => {
+                self.loginIcon = 'fal fa-times-circle text-danger';
+                self.validateText = error.response.data.error;
+            });
     }
 
     public contextSwitch(context: string) {
@@ -305,17 +355,12 @@ export default class Authenticate extends Vue {
                 url: 'api/user/register',
                 data: self.user,
             })
-                .then(function (response) {
+                .then((response) => {
                     self.loginIcon = 'fal fa-check text-success';
                     self.successMessage = 'Your registration process has been completed. ' +
                         'Please check your email for more instructions';
-
-                    //     self.$store.commit('setAccessToken', 100);
-                    //     self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
-                    //     self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
-                    //     self.$store.commit('clearTempIncome');
                 })
-                .catch(function (error) {
+                .catch((error) => {
                     self.loginIcon = 'fal fa-times-circle text-danger';
                     Object.keys(error.response.data).forEach((key: string) => {
                         self.touchedInputs[key] = true;

@@ -192,7 +192,7 @@ class TahiniUser
         // Creating an access token and so the user could validate it self.
         $access_token = $this->tahiniAccessToken->createAccessToken($user);
         $address = getenv('FRONT_ADDRESS') .
-            '/authenticate?state=valiate_user&token=' .
+            '/authenticate?state=validate_user&token=' .
             $access_token->access_token;
 
         // todo: if not 200. log it.

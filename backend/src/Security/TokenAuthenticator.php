@@ -52,7 +52,9 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      *
      * List of regex paths.
      */
-    protected $allowed_anonymous_paths_regex = [];
+    protected $allowed_anonymous_paths_regex = [
+        '/\/api\/user\/validate\?access_token=[a-zA-z0-9$.]*/m',
+    ];
 
     /**
      * {@inheritdoc}
@@ -67,9 +69,10 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
             return false;
         }
 
+
         // The path does not exists in a simple format. Check the regex format.
         foreach ($this->allowed_anonymous_paths_regex as $allowed_anonymous_paths_regex) {
-            if (@preg_match($allowed_anonymous_paths_regex . '/m', $path)) {
+            if (@preg_match($allowed_anonymous_paths_regex, $path)) {
                 return false;
             }
         }
