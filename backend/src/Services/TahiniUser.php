@@ -44,6 +44,11 @@ class TahiniUser
     protected $tahiniEmailService;
 
     /**
+     * @var TahiniAccessToken
+     */
+    protected $tahiniAccessToken;
+
+    /**
      * TahiniUser constructor.
      *
      * @param TahiniDoctrine $tahini_doctrine
@@ -56,19 +61,23 @@ class TahiniUser
      *  The registry manager.
      * @param TahiniEmailService $tahini_email_service
      *  Tahini email service.
+     * @param TahiniAccessToken $tahini_access_token
+     *  The tahini access token service.
      */
     public function __construct(
         TahiniDoctrine $tahini_doctrine,
         UserPasswordEncoderInterface $encoder,
         TahiniValidator $tahini_validator,
         ManagerRegistry $registry,
-        TahiniEmailService $tahini_email_service
+        TahiniEmailService $tahini_email_service,
+        TahiniAccessToken $tahini_access_token
     ) {
         $this->doctrine = $tahini_doctrine;
         $this->encoder = $encoder;
         $this->tahiniValidator = $tahini_validator;
         $this->doctrineManager = $registry->getManager();
         $this->tahiniEmailService = $tahini_email_service;
+        $this->tahiniAccessToken = $tahini_access_token;
     }
 
     /**
@@ -91,15 +100,14 @@ class TahiniUser
      *  The username.
      * @param string $password
      *  The password, un-hashed.
-     * @param string $email
-     *  The email of the user.
      *
      * @return User|null
      *  The user object.
      */
     public function findUserByUsername(string $username, string $password = null)
     {
-        $attributes = ['username' => $username,];
+        // todo: cehck status.
+        $attributes = ['username' => $username];
 
         if ($password) {
             $attributes['password'] = $this->hashPassword($password);
@@ -181,6 +189,12 @@ class TahiniUser
      */
     public function sendUserEmail(User $user)
     {
+        // Creating an access token and so the user could validate it self.
+        $access_token = $this->tahiniAccessToken->createAccessToken($user);
+        $address = getenv('FRONT_ADDRESS') .
+            '/authenticate?state=valiate_user&token=' .
+            $access_token->access_token;
+
         // todo: if not 200. log it.
         $this
             ->tahiniEmailService
@@ -188,7 +202,7 @@ class TahiniUser
             ->addTo($user->getEmail())
             ->addContent("Hello " . $user->getUsername())
             ->addContent("You need to do one last thing before you are a valid user.")
-            ->addContent("Please approve your account by clicking <a href='http://foo.com'>here</a>")
+            ->addContent("Please approve your account by clicking <a href='{$address}'>here</a>")
             ->send();
     }
 

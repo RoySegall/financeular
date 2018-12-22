@@ -19,14 +19,18 @@
             </ul>
         </div>
 
+        <div v-if="successMessage !== ''" class="results bg-success text-white">
+            {{successMessage}}
+        </div>
+
         <div class="login-input">
             <div class="col-auto">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fal fa-pen"></i></div>
                     </div>
-                    <input type="text" class="form-control" v-bind:class="{'is-invalid': this.touchedInputs['name']}"
-                           v-model="user.name" placeholder="Username">
+                    <input type="text" class="form-control" v-bind:class="{'is-invalid': this.touchedInputs['username']}"
+                           v-model="user.username" placeholder="Username">
                 </div>
             </div>
 
@@ -36,7 +40,7 @@
                         <div class="input-group-text"><i class="fal fa-unlock"></i></div>
                     </div>
                     <input type="password" class="form-control" placeholder="Password"
-                           v-bind:class="{'is-invalid': this.touchedInputs['pass']}" v-model="user.pass">
+                           v-bind:class="{'is-invalid': this.touchedInputs['password']}" v-model="user.password">
                 </div>
             </div>
 
@@ -92,11 +96,11 @@
         color: black;
         background: white;
         position: absolute;
-        width: 50%;
+        width: 40%;
         margin: 0 auto;
         padding: 1em;
         top: calc(25vh);
-        left: calc(50vh);
+        left: calc(60vh);
         border-radius: .5em;
 
         .context-switching {
@@ -187,7 +191,7 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import axios from 'axios';
+import Http from "../../services/Http";
 
 @Component({})
 
@@ -203,6 +207,7 @@ export default class Authenticate extends Vue {
         'sign-up': 'fal fa-user-edit text-primary',
     };
 
+    public successMessage = '';
     public context = 'sign-in';
     public submitButtonText = this.texts[this.context];
     public loginIcon: string = 'fal fa-sign-in-alt text-primary';
@@ -210,27 +215,14 @@ export default class Authenticate extends Vue {
     public touchedInputs: any = {};
     public success = '';
     public user = {
-        name: '',
-        pass: '',
+        username: '',
+        password: '',
         passAgain: '',
         email: '',
         emailAgain: '',
     };
 
     public data() {
-        axios({
-            method: 'get',
-            url: `${process.env.VUE_APP_URL}`,
-            data: {
-            }
-        })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error.response);
-            });
-
         return {
             errors: [],
             wait: false,
@@ -261,13 +253,13 @@ export default class Authenticate extends Vue {
         self.errors = [];
         self.touchedInputs = {};
 
-        if (this.user.name === '') {
+        if (this.user.username === '') {
             this.errors.push('Please fill in the username');
-            self.touchedInputs.name = true;
+            self.touchedInputs.username = true;
         }
-        if (this.user.pass === '') {
+        if (this.user.password === '') {
             this.errors.push('Please fill in the password');
-            self.touchedInputs.pass = true;
+            self.touchedInputs.password = true;
         }
 
         if (this.context === 'sign-up') {
@@ -276,7 +268,7 @@ export default class Authenticate extends Vue {
                 self.touchedInputs.passAgain = true;
             }
 
-            if (this.user.pass !== '' && this.user.passAgain !== this.user.pass) {
+            if (this.user.password !== '' && this.user.passAgain !== this.user.password) {
                 this.errors.push('The passwords are not matching');
                 self.touchedInputs.pass = true;
                 self.touchedInputs.passAgain = true;
@@ -305,18 +297,31 @@ export default class Authenticate extends Vue {
         }
 
         if (self.errors.length === 0) {
-            this.errors = [];
+            self.errors = [];
             self.loginIcon = 'fal fa-spinner-third fa-spin';
 
-            setTimeout(() => {
-                self.$store.commit('setAccessToken', 100);
-                self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
-                self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
-                self.$store.commit('clearTempIncome');
-                self.loginIcon = 'fal fa-check text-success';
+            Http.request({
+                method: 'POST',
+                url: 'api/user/register',
+                data: self.user,
+            })
+                .then(function (response) {
+                    self.loginIcon = 'fal fa-check text-success';
+                    self.successMessage = 'Your registration process has been completed. ' +
+                        'Please check your email for more instructions';
 
-                this.$router.go(-1);
-            }, 1500);
+                    //     self.$store.commit('setAccessToken', 100);
+                    //     self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
+                    //     self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
+                    //     self.$store.commit('clearTempIncome');
+                })
+                .catch(function (error) {
+                    self.loginIcon = 'fal fa-times-circle text-danger';
+                    Object.keys(error.response.data).forEach((key: string) => {
+                        self.touchedInputs[key] = true;
+                        self.errors.push(error.response.data[key].join("<br />"));
+                    });
+                });
         } else {
             this.loginIcon = 'fal fa-times text-danger';
         }
