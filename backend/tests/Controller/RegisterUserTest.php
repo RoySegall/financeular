@@ -7,7 +7,7 @@ use App\Tests\TahiniBaseWebTestCase;
 /**
  * Testing the registration controller.
  *
- * @4package App\Tests\Controller
+ * @package App\Tests\Controller
  */
 class RegisterUserTest extends TahiniBaseWebTestCase
 {

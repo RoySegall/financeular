@@ -249,7 +249,6 @@ export default class Authenticate extends Vue {
         }
 
         // We need to validate the user.
-
         this.loginIcon = 'fal fa-spinner-third fa-spin text-warning';
         this.validate = true;
         const self = this;

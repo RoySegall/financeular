@@ -44,7 +44,9 @@ class Validate extends AbstractTahiniController
             'error' => 'whoops.. We cannot find a user by that access token'
         ], Response::HTTP_BAD_REQUEST);
 
-        if (!$access_token = $tahini_access_token->loadByAccessToken($request->get('access_token'))) {
+        $access_token = $tahini_access_token->loadByAccessToken($request->get('access_token'));
+
+        if (!$access_token->id) {
             return $bad_response;
         }
 
