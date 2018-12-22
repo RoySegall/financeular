@@ -39,6 +39,16 @@ class TahiniUser
     protected $doctrineManager;
 
     /**
+     * @var TahiniEmailService
+     */
+    protected $tahiniEmailService;
+
+    /**
+     * @var TahiniAccessToken
+     */
+    protected $tahiniAccessToken;
+
+    /**
      * TahiniUser constructor.
      *
      * @param TahiniDoctrine $tahini_doctrine
@@ -48,17 +58,26 @@ class TahiniUser
      * @param TahiniValidator $tahini_validator
      *  The tahini validator service.
      * @param ManagerRegistry $registry
+     *  The registry manager.
+     * @param TahiniEmailService $tahini_email_service
+     *  Tahini email service.
+     * @param TahiniAccessToken $tahini_access_token
+     *  The tahini access token service.
      */
     public function __construct(
         TahiniDoctrine $tahini_doctrine,
         UserPasswordEncoderInterface $encoder,
         TahiniValidator $tahini_validator,
-        ManagerRegistry $registry
+        ManagerRegistry $registry,
+        TahiniEmailService $tahini_email_service,
+        TahiniAccessToken $tahini_access_token
     ) {
         $this->doctrine = $tahini_doctrine;
         $this->encoder = $encoder;
         $this->tahiniValidator = $tahini_validator;
         $this->doctrineManager = $registry->getManager();
+        $this->tahiniEmailService = $tahini_email_service;
+        $this->tahiniAccessToken = $tahini_access_token;
     }
 
     /**
@@ -81,15 +100,14 @@ class TahiniUser
      *  The username.
      * @param string $password
      *  The password, un-hashed.
-     * @param string $email
-     *  The email of the user.
      *
      * @return User|null
      *  The user object.
      */
     public function findUserByUsername(string $username, string $password = null)
     {
-        $attributes = ['username' => $username,];
+        // todo: cehck status.
+        $attributes = ['username' => $username];
 
         if ($password) {
             $attributes['password'] = $this->hashPassword($password);
@@ -126,13 +144,15 @@ class TahiniUser
      *
      * @param User $user
      *  The user object.
+     * @param bool $send_email
+     *  Determine if we need to send email or not.
      *
      * @return User|array
      *  The new user object.
      *
      * @throws \Exception
      */
-    public function createUser(User $user)
+    public function createUser(User $user, bool $send_email = false)
     {
 
         if ($errors = $this->tahiniValidator->validate($user, true)) {
@@ -154,7 +174,36 @@ class TahiniUser
         $this->doctrineManager->persist($user);
         $this->doctrineManager->flush();
 
+        if ($send_email) {
+            $this->sendUserEmail($user);
+        }
+
         return $user;
+    }
+
+    /**
+     * Send to the user a verification email.
+     *
+     * @param User $user
+     *  The user object.
+     */
+    public function sendUserEmail(User $user)
+    {
+        // Creating an access token and so the user could validate it self.
+        $access_token = $this->tahiniAccessToken->createAccessToken($user);
+        $address = getenv('FRONT_ADDRESS') .
+            '/authenticate?state=validate_user&token=' .
+            $access_token->access_token;
+
+        // todo: if not 200. log it.
+        $this
+            ->tahiniEmailService
+            ->setSubject("Welcome! one last step")
+            ->addTo($user->getEmail())
+            ->addContent("Hello " . $user->getUsername())
+            ->addContent("You need to do one last thing before you are a valid user.")
+            ->addContent("Please approve your account by clicking <a href='{$address}'>here</a>")
+            ->send();
     }
 
     /**

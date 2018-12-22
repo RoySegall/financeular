@@ -10,9 +10,9 @@ class SendGridMock extends \SendGrid
     protected $mails;
 
     /**
-     * @return \SendGrid\Mail\Mail[]
+     * @return \SendGrid\Mail\Mail[]|null
      */
-    public function getMails(): array
+    public function getMails(): ?array
     {
         return $this->mails;
     }

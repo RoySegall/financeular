@@ -33,8 +33,11 @@ class UserCreateUserCommand extends Command
      * @param TahiniUser $tahini_user
      * @param TahiniValidator $tahini_validator
      */
-    public function __construct(?string $name = null, TahiniUser $tahini_user, TahiniValidator $tahini_validator)
-    {
+    public function __construct(
+        ?string $name = null,
+        TahiniUser $tahini_user,
+        TahiniValidator $tahini_validator
+    ) {
         parent::__construct($name);
 
         $this->TahiniUser = $tahini_user;
@@ -46,6 +49,12 @@ class UserCreateUserCommand extends Command
         $this->setDescription('Creating a user');
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int|null|void
+     * @throws \Exception
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
@@ -61,10 +70,10 @@ class UserCreateUserCommand extends Command
         $user->setPassword($password);
         $user->email = time() . '@example.com';
         $user->type = $type;
-        $user->roles = [1];
+        $user->roles = [];
+        $user->setStatus(true);
 
         if ($error = $this->TahiniValidator->validate($user)) {
-            d($error);
             return;
         }
 

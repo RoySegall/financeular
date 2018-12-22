@@ -16,7 +16,7 @@ class TahiniUserTest extends TahiniBaseWebTestCase
         $user = new User();
         $first_validation = $this->getTahiniValidator()->validate($user, true);
 
-      // Making sure the thrown error is what the validator should be.
+        // Making sure the thrown error is what the validator should be.
         try {
             $this->getTahiniUser()->createUser($user);
         } catch (\ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException $e) {
