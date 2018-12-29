@@ -22,6 +22,13 @@ export default {
             window.localStorage.setItem('refresh_token', at.refresh_token);
             window.localStorage.setItem('expires', at.expires);
         },
+
+        /**
+         * Remove the access token.
+         *
+         * @param store
+         *  The store object.
+         */
         removeAccessToken(store: any) {
             store.AccessToken = '';
             store.RefreshToken = '';

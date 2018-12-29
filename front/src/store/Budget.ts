@@ -25,6 +25,8 @@ export default {
          */
         saveBudgetForNextTime(store: any, budget: any) {
             window.localStorage.setItem('budgetTemplate', JSON.stringify(budget));
+
+            // todo: check if we have access token. If yes - update the backend.
         },
 
         /**

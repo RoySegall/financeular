@@ -28,6 +28,8 @@ export default {
 
             // todo: handle DB saving.
             store.DefaultIncome = income;
+
+            // todo: check if we have access token. If yes - update the backend.
         },
         /**
          * Setting the income as the temp income so we would know to save after the user is logged in.
