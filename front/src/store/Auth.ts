@@ -1,6 +1,8 @@
 export default {
     state: {
         AccessToken: '',
+        RefreshToken: '',
+        Expires: 0
     },
     mutations: {
         /**
@@ -11,13 +13,23 @@ export default {
          * @param {string} at
          *  The access token.
          */
-        setAccessToken(store: any, at: string) {
-            store.AccessToken = at;
-            window.localStorage.setItem('access_token', at);
+        setAccessToken(store: any, at: AccessToken) {
+            store.AccessToken = at.access_token;
+            store.RefreshToken = at.refresh_token;
+            store.Expires = at.expires;
+
+            window.localStorage.setItem('access_token', at.access_token);
+            window.localStorage.setItem('refresh_token', at.refresh_token);
+            window.localStorage.setItem('expires', at.expires);
         },
         removeAccessToken(store: any) {
             store.AccessToken = '';
+            store.RefreshToken = '';
+            store.Expires = '';
+
             window.localStorage.removeItem('access_token');
+            window.localStorage.removeItem('refresh_token');
+            window.localStorage.removeItem('expires');
         },
     },
     actions: {
@@ -27,11 +39,18 @@ export default {
          * @param context
          */
         starting(context: any) {
-            const at = window.localStorage.getItem('access_token');
+            context.state.Expires = window.localStorage.getItem('expires');
 
-            if (at !== null) {
-                context.commit('setAccessToken', at);
+            const currentTimeStamp = new Date().getTime() / 1000;
+
+            if (currentTimeStamp > context.state.Expires) {
+                // Logging out sine the access token is no longer valid.
+                context.dispatch('logout');
+                return;
             }
+
+            context.state.AccessToken = window.localStorage.getItem('access_token');
+            context.state.RefreshToken = window.localStorage.getItem('refresh_token');
         },
         /**
          * Invoking action when the user is logging out.

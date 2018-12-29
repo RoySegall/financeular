@@ -58,12 +58,19 @@ class Login extends AbstractTahiniController
             return $this->error("Username and password are in correct.", Response::HTTP_BAD_REQUEST);
         }
 
+        if (!$user->getStatus()) {
+            $message = 'It seems that your account has not completed the validation process';
+            $message .= 'Try again one you validated your account.';
+
+            return $this->error($message);
+        }
+
         $access_token = $tahiniAccessToken->getAccessToken($user);
 
         if (empty($access_token->access_token)) {
-            // It seems that we got an empty access token. This could be due to the
-            // face that the access token is no longer valid.
-            return $this->error('The access token is no longer valid. Please refresh the token');
+            // It seems that we got an empty access token. This could be due to
+            // the face that the access token is no longer valid.
+            $access_token = $tahiniAccessToken->createAccessToken($user);
         }
 
         // Yeah, we got an access token. Bring back to the user.
