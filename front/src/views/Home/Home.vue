@@ -307,7 +307,7 @@ export default class Home extends Vue {
 
         if (this.$store.state.income.DefaultIncome !== null) {
             // Getting the income from the state.
-            budget = this.$store.state.income.DefaultIncome;
+            budget = this.getIncome();
         }
 
         if (this.$store.state.budget.BudgetTemplate !== null) {
@@ -320,6 +320,10 @@ export default class Home extends Vue {
             budget,
             blocks,
         };
+    }
+
+    public getIncome() {
+        return this.$store.state.income.DefaultIncome;
     }
 
     public getBudgetTemplate() {
@@ -336,6 +340,7 @@ export default class Home extends Vue {
     public setCurrentIncomeAsDefault() {
         this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
         this.$store.commit('saveIncome', this.budget);
+        // todo: sync only income.
         this.$store.dispatch('sync');
 
         this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
@@ -423,7 +428,6 @@ export default class Home extends Vue {
                 // The last item has a title or a value. Append a new one in the bottom of the block.
                 this.addItem(block.items);
             }
-
         });
     }
 

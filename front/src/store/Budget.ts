@@ -97,7 +97,7 @@ export default {
         },
 
         sync(context: any) {
-            console.log(context);
+            console.log('b');
         },
     },
 };

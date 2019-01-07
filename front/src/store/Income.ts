@@ -67,7 +67,23 @@ export default {
          */
         starting(context: any) {
 
-            console.log(context.rootState.auth.AccessToken);
+            const http = Http;
+
+            http.request({
+                method: 'get',
+                url: 'api/user-default/income',
+                headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
+            }).then((response) => {
+                context.commit('setIncome', response.data.income);
+            }).catch(() => {
+                const localStorageIncome = window.localStorage.getItem('defaultIncome');
+
+                if (localStorageIncome !== undefined) {
+                    context.commit('setIncome', localStorageIncome);
+                }
+            });
+
+
             const localStorageIncome = window.localStorage.getItem('defaultIncome');
 
             if (localStorageIncome !== undefined) {
