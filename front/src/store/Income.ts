@@ -66,10 +66,7 @@ export default {
          * @param context
          */
         starting(context: any) {
-
-            const http = Http;
-
-            http.request({
+            Http.request({
                 method: 'get',
                 url: 'api/user-default/income',
                 headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
@@ -82,13 +79,6 @@ export default {
                     context.commit('setIncome', localStorageIncome);
                 }
             });
-
-
-            const localStorageIncome = window.localStorage.getItem('defaultIncome');
-
-            if (localStorageIncome !== undefined) {
-                context.commit('setIncome', localStorageIncome);
-            }
         },
         /**
          * Invoking action when the user is logging out.
@@ -112,9 +102,7 @@ export default {
                 income = context.state.TempIncome;
             }
 
-            const http = Http;
-
-            http.request({
+            Http.request({
                 method: 'post',
                 url: 'api/user-default/income',
                 data: {

@@ -340,7 +340,6 @@ export default class Home extends Vue {
     public setCurrentIncomeAsDefault() {
         this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
         this.$store.commit('saveIncome', this.budget);
-        // todo: sync only income.
         this.$store.dispatch('sync');
 
         this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
@@ -434,6 +433,7 @@ export default class Home extends Vue {
     public setCurrentBudgetAsDefault() {
         this.setCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
         this.$store.commit('saveBudgetForNextTime', this.blocks);
+        this.$store.dispatch('sync');
 
         this.setCurrentBudgetText = '<i class="fal fa-check"></i> Done';
         const self = this;

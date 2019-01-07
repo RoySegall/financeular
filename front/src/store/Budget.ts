@@ -1,3 +1,5 @@
+import Http from "@/services/Http";
+
 export default {
     state: {
         BudgetTemplate: {},
@@ -77,10 +79,10 @@ export default {
             let budgetFromData: any = window.localStorage.getItem('budgetTemplate');
 
             if (budgetFromData === null) {
-               budgetFromData = [];
-           } else {
-               budgetFromData = JSON.parse(budgetFromData);
-           }
+                budgetFromData = [];
+            } else {
+                budgetFromData = JSON.parse(budgetFromData);
+            }
 
             if (budgetFromData !== null) {
                 context.commit('setBudgetTemplate', budgetFromData);
@@ -97,7 +99,16 @@ export default {
         },
 
         sync(context: any) {
-            console.log('b');
+            // Http.request({
+            //     method: 'post',
+            //     url: 'api/user-default/template',
+            //     data: {
+            //         template: context.state.BudgetTemplate
+            //     },
+            //     headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
+            // }).then((response) => {
+            //     console.log(response);
+            // });
         },
     },
 };
