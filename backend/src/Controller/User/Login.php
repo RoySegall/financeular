@@ -61,7 +61,6 @@ class Login extends AbstractTahiniController
         if (!$user->getStatus()) {
             $message = 'It seems that your account has not completed the validation process';
             $message .= 'Try again one you validated your account.';
-
             return $this->error($message);
         }
 

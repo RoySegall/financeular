@@ -76,17 +76,34 @@ export default {
          * @param context
          */
         starting(context: any) {
-            let budgetFromData: any = window.localStorage.getItem('budgetTemplate');
-
-            if (budgetFromData === null) {
-                budgetFromData = [];
-            } else {
-                budgetFromData = JSON.parse(budgetFromData);
+            if (context.rootState.auth.AccessToken === "") {
+                return new Promise((resolve, reject) => {
+                    context.commit('setBudgetTemplate', {});
+                    resolve();
+                });
             }
+            return new Promise((resolve, reject) => {
+                Http.request({
+                    method: 'get',
+                    url: 'api/user-default/template',
+                    headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
+                }).then((response) => {
+                    context.commit('setBudgetTemplate',response.data.template);
+                    resolve();
+                }).catch(() => {
+                    let budgetFromData: any = window.localStorage.getItem('budgetTemplate');
 
-            if (budgetFromData !== null) {
-                context.commit('setBudgetTemplate', budgetFromData);
-            }
+                    if (budgetFromData === null) {
+                        budgetFromData = [];
+                    } else {
+                        budgetFromData = JSON.parse(budgetFromData);
+                    }
+
+                    if (budgetFromData !== null) {
+                        context.commit('setBudgetTemplate', budgetFromData);
+                    }
+                });
+            });
         },
         /**
          * Invoking action when the user is logging out.
@@ -99,16 +116,16 @@ export default {
         },
 
         sync(context: any) {
-            // Http.request({
-            //     method: 'post',
-            //     url: 'api/user-default/template',
-            //     data: {
-            //         template: context.state.BudgetTemplate
-            //     },
-            //     headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
-            // }).then((response) => {
-            //     console.log(response);
-            // });
+            Http.request({
+                method: 'post',
+                url: 'api/user-default/template',
+                data: {
+                    template: context.state.BudgetTemplate
+                },
+                headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
+            }).then((response) => {
+                console.log(response);
+            });
         },
     },
 };

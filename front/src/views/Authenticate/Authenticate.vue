@@ -375,7 +375,7 @@ export default class Authenticate extends Vue {
         }
 
         if (self.context === 'sign-in') {
-            const payload = btoa(`${moment().format('DD/M/Y')}_${self.user.username}_${self.user.password}`);
+            const payload = btoa(`${moment().format('DD/MM/Y')}_${self.user.username}_${self.user.password}`);
 
             Http.request({
                 method: 'POST',

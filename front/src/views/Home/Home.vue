@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <div v-if="!budget">
+        <div v-if="!getIncome">
             <div class="col-12 no-income">
                 <input name="income"
                        type="number"
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div v-if="budget">
+        <div v-if="getIncome">
             <div class="row upper">
                 <div class="col-4 col-md-6 text-left animated fadeInLeft fast">
                     <input name="income"

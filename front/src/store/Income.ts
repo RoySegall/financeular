@@ -66,18 +66,28 @@ export default {
          * @param context
          */
         starting(context: any) {
-            Http.request({
-                method: 'get',
-                url: 'api/user-default/income',
-                headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
-            }).then((response) => {
-                context.commit('setIncome', response.data.income);
-            }).catch(() => {
-                const localStorageIncome = window.localStorage.getItem('defaultIncome');
+            if (context.rootState.auth.AccessToken === "") {
+                return new Promise((resolve, reject) => {
+                    context.state.TempIncome = false;
+                    context.state.DefaultIncome = false;
+                    resolve();
+                });
+            }
+            return new Promise((resolve, reject) => {
+                Http.request({
+                    method: 'get',
+                    url: 'api/user-default/income',
+                    headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
+                }).then((response) => {
+                    context.commit('setIncome',response.data.income);
+                    resolve();
+                }).catch(() => {
+                    const localStorageIncome = window.localStorage.getItem('defaultIncome');
 
-                if (localStorageIncome !== undefined) {
-                    context.commit('setIncome', localStorageIncome);
-                }
+                    if (localStorageIncome !== undefined) {
+                        context.commit('setIncome', localStorageIncome);
+                    }
+                });
             });
         },
         /**
