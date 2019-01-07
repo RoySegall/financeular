@@ -25,8 +25,6 @@ export default {
          */
         saveBudgetForNextTime(store: any, budget: any) {
             window.localStorage.setItem('budgetTemplate', JSON.stringify(budget));
-
-            // todo: check if we have access token. If yes - update the backend.
         },
 
         /**
@@ -96,6 +94,10 @@ export default {
         logout(context: any) {
             // Clearing up the template the local storage template.
             context.commit('clearBudgetTemplate');
+        },
+
+        sync(context: any) {
+            console.log(context);
         },
     },
 };

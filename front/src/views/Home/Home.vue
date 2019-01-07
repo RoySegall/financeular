@@ -336,6 +336,7 @@ export default class Home extends Vue {
     public setCurrentIncomeAsDefault() {
         this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
         this.$store.commit('saveIncome', this.budget);
+        this.$store.dispatch('sync');
 
         this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
         const self = this;

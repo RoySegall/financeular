@@ -358,6 +358,9 @@ export default class Authenticate extends Vue {
                         self.loginIcon = 'fal fa-check text-success';
                         self.successMessage = 'Your registration process has been completed. ' +
                             'Please check your email for more instructions';
+
+                        self.$store.commit('setAccessToken', response.data.access_token);
+                        self.$store.dispatch('sync');
                     })
                     .catch((error) => {
                         self.loginIcon = 'fal fa-times-circle text-danger';

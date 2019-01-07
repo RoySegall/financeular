@@ -1,3 +1,5 @@
+import Http from "@/services/Http";
+
 export default {
     state: {
         DefaultIncome: 0,
@@ -26,10 +28,7 @@ export default {
         saveIncome(store: any, income: number) {
             window.localStorage.setItem('defaultIncome', income.toString());
 
-            // todo: handle DB saving.
             store.DefaultIncome = income;
-
-            // todo: check if we have access token. If yes - update the backend.
         },
         /**
          * Setting the income as the temp income so we would know to save after the user is logged in.
@@ -67,6 +66,8 @@ export default {
          * @param context
          */
         starting(context: any) {
+
+            console.log(context.rootState.auth.AccessToken);
             const localStorageIncome = window.localStorage.getItem('defaultIncome');
 
             if (localStorageIncome !== undefined) {
@@ -82,6 +83,31 @@ export default {
             // Remove teh default income and the temp income.
             context.commit('clearDefaultIncome');
             context.commit('clearTempIncome');
+        },
+
+        sync(context: any) {
+            if (context.rootState.auth.AccessToken === '') {
+                return;
+            }
+
+            let income = context.state.DefaultIncome;
+
+            if (income === null) {
+                income = context.state.TempIncome;
+            }
+
+            const http = Http;
+
+            http.request({
+                method: 'post',
+                url: 'api/user-default/income',
+                data: {
+                    income: income
+                },
+                headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
+            }).then((response) => {
+                console.log(response);
+            });
         },
     },
 };
