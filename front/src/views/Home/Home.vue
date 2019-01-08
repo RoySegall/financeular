@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <div v-if="!getIncome">
+        <div v-if="getConsiderAnonymous()">
             <div class="col-12 no-income">
                 <input name="income"
                        type="number"
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div v-if="getIncome">
+        <div v-if="!getConsiderAnonymous()">
             <div class="row upper">
                 <div class="col-4 col-md-6 text-left animated fadeInLeft fast">
                     <input name="income"
@@ -320,6 +320,26 @@ export default class Home extends Vue {
             budget,
             blocks,
         };
+    }
+
+    public getConsiderAnonymous() {
+        if (this.$store.state.auth.AccessToken) {
+            return false;
+        }
+
+        if (this.$store.state.income.DefaultIncome) {
+            return true;
+        }
+
+        if (!this.$store.state.income.TempIncome) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    public getAccessToken() {
+        return this.$store.state.auth.AccessToken;
     }
 
     public getIncome() {

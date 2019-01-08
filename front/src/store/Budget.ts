@@ -78,7 +78,7 @@ export default {
         starting(context: any) {
             if (context.rootState.auth.AccessToken === "") {
                 return new Promise((resolve, reject) => {
-                    context.commit('setBudgetTemplate', {});
+                    context.commit('setBudgetTemplate', []);
                     resolve();
                 });
             }
@@ -88,7 +88,8 @@ export default {
                     url: 'api/user-default/template',
                     headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
                 }).then((response) => {
-                    context.commit('setBudgetTemplate',response.data.template);
+                    console.log('a');
+                    context.commit('setBudgetTemplate', response.data.template);
                     resolve();
                 }).catch(() => {
                     let budgetFromData: any = window.localStorage.getItem('budgetTemplate');

@@ -46,18 +46,23 @@ export default {
          * @param context
          */
         starting(context: any) {
-            context.state.Expires = window.localStorage.getItem('expires');
+            return new Promise((resolve, reject) => {
+                // todo: handle if the access token if expires ot not.
+                context.state.Expires = window.localStorage.getItem('expires');
 
-            const currentTimeStamp = new Date().getTime() / 1000;
+                const currentTimeStamp = new Date().getTime() / 1000;
 
-            if (currentTimeStamp > context.state.Expires) {
-                // Logging out sine the access token is no longer valid.
-                context.dispatch('logout');
-                return;
-            }
+                if (currentTimeStamp > context.state.Expires) {
+                    // Logging out sine the access token is no longer valid.
+                    context.dispatch('logout');
+                    resolve();
+                    return;
+                }
 
-            context.state.AccessToken = window.localStorage.getItem('access_token');
-            context.state.RefreshToken = window.localStorage.getItem('refresh_token');
+                context.state.AccessToken = window.localStorage.getItem('access_token');
+                context.state.RefreshToken = window.localStorage.getItem('refresh_token');
+                resolve();
+            });
         },
         /**
          * Invoking action when the user is logging out.
