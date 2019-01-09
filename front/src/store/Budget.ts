@@ -123,7 +123,6 @@ export default {
                     template: context.state.BudgetTemplate
                 },
                 headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
-            }).then((response) => {
             });
         },
     },

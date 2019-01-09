@@ -119,7 +119,6 @@ export default {
                     income: income
                 },
                 headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
-            }).then((response) => {
             });
         },
     },
