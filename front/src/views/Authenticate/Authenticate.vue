@@ -354,7 +354,6 @@ export default class Authenticate extends Vue {
                     data: self.user,
                 })
                     .then((response) => {
-                        // todo: get the access token so we could update the user data.
                         self.loginIcon = 'fal fa-check text-success';
                         self.successMessage = 'Your registration process has been completed. ' +
                             'Please check your email for more instructions';
@@ -389,9 +388,7 @@ export default class Authenticate extends Vue {
                     self.successMessage = 'You are not logged in';
 
                     self.$store.commit('setAccessToken', response.data);
-                    self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
-                    self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
-                    self.$store.commit('clearTempIncome');
+                    self.$store.dispatch('sync');
 
                     setTimeout(() => {
                         window.location = '/';

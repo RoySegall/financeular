@@ -69,9 +69,7 @@ class RegisterUserTest extends TahiniBaseWebTestCase
                 'expected' => function ($value) {
                     $this->assertNotEmpty($this->getTahiniUser()->findUserByUsername('testing'));
                     $this->assertNotEmpty($this->getTahiniUser()->findUserByMail('pizza@gmail.com'));
-                    $this->assertEquals($value, [
-                        'message' => 'welcome',
-                    ]);
+                    $this->assertArrayHasKey('access_token', $value);
                 },
             ],
             [

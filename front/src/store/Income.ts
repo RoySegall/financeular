@@ -108,7 +108,7 @@ export default {
 
             let income = context.state.DefaultIncome;
 
-            if (income === null) {
+            if (income === false) {
                 income = context.state.TempIncome;
             }
 
@@ -120,7 +120,6 @@ export default {
                 },
                 headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
             }).then((response) => {
-                console.log(response);
             });
         },
     },

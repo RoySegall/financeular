@@ -88,7 +88,6 @@ export default {
                     url: 'api/user-default/template',
                     headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
                 }).then((response) => {
-                    console.log('a');
                     context.commit('setBudgetTemplate', response.data.template);
                     resolve();
                 }).catch(() => {
@@ -125,7 +124,6 @@ export default {
                 },
                 headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
             }).then((response) => {
-                console.log(response);
             });
         },
     },

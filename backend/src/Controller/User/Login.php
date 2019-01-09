@@ -64,7 +64,7 @@ class Login extends AbstractTahiniController
             return $this->error($message);
         }
 
-        $access_token = $tahiniAccessToken->getAccessToken($user);
+        $access_token = $tahiniAccessToken->getAccessToken($user, true);
 
         if (empty($access_token->access_token)) {
             // It seems that we got an empty access token. This could be due to
