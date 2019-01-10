@@ -60,7 +60,8 @@ class LoginTest extends TahiniBaseWebTestCase
     /**
      * Testing the refresh token works.
      */
-    public function testRefreshToken() {
+    public function testRefreshToken()
+    {
         $client = static::createClient();
 
         $client->request('POST', '/api/user/refresh');
