@@ -102,6 +102,8 @@ export default {
                     if (budgetFromData !== null) {
                         context.commit('setBudgetTemplate', budgetFromData);
                     }
+
+                    resolve();
                 });
             });
         },
