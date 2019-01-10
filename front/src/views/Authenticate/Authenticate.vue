@@ -388,7 +388,12 @@ export default class Authenticate extends Vue {
                     self.successMessage = 'You are not logged in';
 
                     self.$store.commit('setAccessToken', response.data);
-                    self.$store.dispatch('sync');
+
+                    if (self.$store.state.syncWhenLogin) {
+                        // Syncing the data because we need, not because we
+                        // deserve it.
+                        self.$store.dispatch('sync');
+                    }
 
                     setTimeout(() => {
                         window.location = '/';

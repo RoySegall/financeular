@@ -372,6 +372,8 @@ export default class Home extends Vue {
 
     public applyBudget() {
         this.$store.commit('setTempIncome', this.tempBudget);
+        this.$store.commit('setSyncWhenLogin', true);
+
         this.budget = this.tempBudget;
     }
 
