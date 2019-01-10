@@ -1,3 +1,5 @@
+import Http from "@/services/Http";
+
 export default {
     state: {
         DefaultIncome: 0,
@@ -26,7 +28,6 @@ export default {
         saveIncome(store: any, income: number) {
             window.localStorage.setItem('defaultIncome', income.toString());
 
-            // todo: handle DB saving.
             store.DefaultIncome = income;
         },
         /**
@@ -65,11 +66,29 @@ export default {
          * @param context
          */
         starting(context: any) {
-            const localStorageIncome = window.localStorage.getItem('defaultIncome');
-
-            if (localStorageIncome !== undefined) {
-                context.commit('setIncome', localStorageIncome);
+            if (context.rootState.auth.AccessToken === "") {
+                return new Promise((resolve, reject) => {
+                    context.state.TempIncome = false;
+                    context.state.DefaultIncome = false;
+                    resolve();
+                });
             }
+            return new Promise((resolve, reject) => {
+                Http.request({
+                    method: 'get',
+                    url: 'api/user-default/income',
+                    headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
+                }).then((response) => {
+                    context.commit('setIncome',response.data.income);
+                    resolve();
+                }).catch(() => {
+                    const localStorageIncome = window.localStorage.getItem('defaultIncome');
+
+                    if (localStorageIncome !== undefined) {
+                        context.commit('setIncome', localStorageIncome);
+                    }
+                });
+            });
         },
         /**
          * Invoking action when the user is logging out.
@@ -80,6 +99,27 @@ export default {
             // Remove teh default income and the temp income.
             context.commit('clearDefaultIncome');
             context.commit('clearTempIncome');
+        },
+
+        sync(context: any) {
+            if (context.rootState.auth.AccessToken === '') {
+                return;
+            }
+
+            let income = context.state.DefaultIncome;
+
+            if (income === false) {
+                income = context.state.TempIncome;
+            }
+
+            Http.request({
+                method: 'post',
+                url: 'api/user-default/income',
+                data: {
+                    income: income
+                },
+                headers: {'X-AUTH-TOKEN': context.rootState.auth.AccessToken},
+            });
         },
     },
 };

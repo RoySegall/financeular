@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <div v-if="!budget">
+        <div v-if="getConsiderAnonymous()">
             <div class="col-12 no-income">
                 <input name="income"
                        type="number"
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div v-if="budget">
+        <div v-if="!getConsiderAnonymous()">
             <div class="row upper">
                 <div class="col-4 col-md-6 text-left animated fadeInLeft fast">
                     <input name="income"
@@ -307,7 +307,7 @@ export default class Home extends Vue {
 
         if (this.$store.state.income.DefaultIncome !== null) {
             // Getting the income from the state.
-            budget = this.$store.state.income.DefaultIncome;
+            budget = this.getIncome();
         }
 
         if (this.$store.state.budget.BudgetTemplate !== null) {
@@ -320,6 +320,30 @@ export default class Home extends Vue {
             budget,
             blocks,
         };
+    }
+
+    public getConsiderAnonymous() {
+        if (this.$store.state.auth.AccessToken) {
+            return false;
+        }
+
+        if (this.$store.state.income.DefaultIncome) {
+            return true;
+        }
+
+        if (!this.$store.state.income.TempIncome) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    public getAccessToken() {
+        return this.$store.state.auth.AccessToken;
+    }
+
+    public getIncome() {
+        return this.$store.state.income.DefaultIncome;
     }
 
     public getBudgetTemplate() {
@@ -336,6 +360,7 @@ export default class Home extends Vue {
     public setCurrentIncomeAsDefault() {
         this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
         this.$store.commit('saveIncome', this.budget);
+        this.$store.dispatch('sync');
 
         this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
         const self = this;
@@ -347,6 +372,8 @@ export default class Home extends Vue {
 
     public applyBudget() {
         this.$store.commit('setTempIncome', this.tempBudget);
+        this.$store.commit('setSyncWhenLogin', true);
+
         this.budget = this.tempBudget;
     }
 
@@ -422,13 +449,13 @@ export default class Home extends Vue {
                 // The last item has a title or a value. Append a new one in the bottom of the block.
                 this.addItem(block.items);
             }
-
         });
     }
 
     public setCurrentBudgetAsDefault() {
         this.setCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
         this.$store.commit('saveBudgetForNextTime', this.blocks);
+        this.$store.dispatch('sync');
 
         this.setCurrentBudgetText = '<i class="fal fa-check"></i> Done';
         const self = this;

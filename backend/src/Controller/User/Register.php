@@ -35,8 +35,12 @@ class Register extends AbstractTahiniController
      * @return JsonResponse
      * @throws \Exception
      */
-    public function loginController(Request $request, TahiniUser $tahini_user, TahiniValidator $tahini_validator)
-    {
+    public function registerController(
+        Request $request,
+        TahiniUser $tahini_user,
+        TahiniValidator $tahini_validator,
+        TahiniAccessToken $tahini_access_token
+    ) {
         if (!$payload = $this->processPayload($request)) {
             return $this->error("The payload seems to be empty", Response::HTTP_BAD_REQUEST);
         }
@@ -44,6 +48,7 @@ class Register extends AbstractTahiniController
         $user = new User();
         $user->roles = [];
         $user->type = 'user';
+        $user->setStatus(0);
 
         $this->processPayloadToEntity($user, $payload);
 
@@ -53,6 +58,6 @@ class Register extends AbstractTahiniController
 
         $tahini_user->createUser($user, true);
 
-        return $this->json(['message' => 'welcome']);
+        return $this->json(['access_token' => $tahini_access_token->getAccessToken($user)]);
     }
 }

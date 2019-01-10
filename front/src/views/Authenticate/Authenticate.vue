@@ -198,6 +198,7 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
 import Http from "../../services/Http";
+import moment from 'moment';
 
 @Component({})
 
@@ -261,6 +262,7 @@ export default class Authenticate extends Vue {
                 self.loginIcon = 'fal fa-check text-success';
                 self.validateText = 'Success! You are now a valid user.';
 
+                // todo: the refresh token and the expires and set all the data.
                 self.$store.commit('setAccessToken', response.data.access_token);
                 self.$store.commit('saveBudgetForNextTime', self.$store.state.budget.BudgetTemplate);
                 self.$store.commit('saveIncome', self.$store.state.income.TempIncome);
@@ -341,31 +343,69 @@ export default class Authenticate extends Vue {
                 self.touchedInputs.email = true;
                 self.touchedInputs.emailAgain = true;
             }
+
+            if (self.errors.length === 0) {
+                self.errors = [];
+                self.loginIcon = 'fal fa-spinner-third fa-spin';
+
+                Http.request({
+                    method: 'POST',
+                    url: 'api/user/register',
+                    data: self.user,
+                })
+                    .then((response) => {
+                        self.loginIcon = 'fal fa-check text-success';
+                        self.successMessage = 'Your registration process has been completed. ' +
+                            'Please check your email for more instructions';
+
+                        self.$store.commit('setAccessToken', response.data.access_token);
+                        self.$store.dispatch('sync');
+                    })
+                    .catch((error) => {
+                        self.loginIcon = 'fal fa-times-circle text-danger';
+                        Object.keys(error.response.data).forEach((key: string) => {
+                            self.touchedInputs[key] = true;
+                            self.errors.push(error.response.data[key].join("<br />"));
+                        });
+                    });
+            } else {
+                this.loginIcon = 'fal fa-times text-danger';
+            }
         }
 
-        if (self.errors.length === 0) {
-            self.errors = [];
-            self.loginIcon = 'fal fa-spinner-third fa-spin';
+        if (self.context === 'sign-in') {
+            const payload = btoa(`${moment().format('DD/MM/Y')}_${self.user.username}_${self.user.password}`);
 
             Http.request({
                 method: 'POST',
-                url: 'api/user/register',
-                data: self.user,
+                url: 'api/user/login',
+                data: {
+                    auth: payload
+                }
             })
                 .then((response) => {
                     self.loginIcon = 'fal fa-check text-success';
-                    self.successMessage = 'Your registration process has been completed. ' +
-                        'Please check your email for more instructions';
+                    self.successMessage = 'You are not logged in';
+
+                    self.$store.commit('setAccessToken', response.data);
+
+                    if (self.$store.state.syncWhenLogin) {
+                        // Syncing the data because we need, not because we
+                        // deserve it.
+                        self.$store.dispatch('sync');
+                    }
+
+                    setTimeout(() => {
+                        window.location = '/';
+                    }, 3000);
                 })
                 .catch((error) => {
                     self.loginIcon = 'fal fa-times-circle text-danger';
                     Object.keys(error.response.data).forEach((key: string) => {
                         self.touchedInputs[key] = true;
-                        self.errors.push(error.response.data[key].join("<br />"));
+                        self.errors.push(error.response.data.error);
                     });
                 });
-        } else {
-            this.loginIcon = 'fal fa-times text-danger';
         }
     }
 
