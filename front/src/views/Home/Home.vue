@@ -32,11 +32,6 @@
                            placeholder="Income"
                            v-model="budget"
                            class="form-control income-setter d-inline"/>
-
-                    <a class="btn btn-info d-inline text-white"
-                       @click="setCurrentIncomeAsDefault"
-                       v-html="setCurrentIncomeText"
-                       v-if="getShowAwesomeButtons() !== ''"></a>
                 </div>
                 <div class="col-8 col-md-6 text-right animated fadeInRight fast">
 
@@ -102,7 +97,7 @@
             </div>
 
             <div class="actions row animated slideInLeft fast d-none d-md-block">
-                <div class="col-md-4 d-inline-block text-left">
+                <div class="col-md-12 d-inline-block text-center">
                     <button type="button"
                             class="btn btn-primary"
                             v-on:click="addBlock">
@@ -115,18 +110,6 @@
                     <router-link to="dashboard" class="btn btn-success" v-if="getShowAwesomeButtons() !== ''">
                         <i class="fal fa-chart-line"></i> Dashboard
                     </router-link>
-                </div>
-
-                <div class="col-md-8 text-right d-inline-block" v-if="getShowAwesomeButtons() !== ''">
-                    <a class="btn btn-info d-inline text-white"
-                       @click="setCurrentBudgetAsDefault"
-                       v-html="setCurrentBudgetText"></a>
-
-                    <a class="btn btn-danger d-inline text-white"
-                       @click="removeCurrentBudget"
-                       v-if="getShowDelete() !== null"
-                       v-html="removeCurrentBudgetText"></a>
-
                 </div>
             </div>
 
@@ -150,18 +133,6 @@
                     <router-link to="dashboard" class="btn btn-success" v-if="getShowAwesomeButtons() !== ''">
                         <i class="fal fa-chart-line"></i> Dashboard
                     </router-link>
-                </div>
-
-                <div class="col-12" v-if="getShowAwesomeButtons() !== ''">
-                    <a class="btn btn-info text-white"
-                       @click="setCurrentBudgetAsDefault"
-                       v-html="setCurrentBudgetText"></a>
-
-                    <a class="btn btn-danger text-white"
-                       @click="removeCurrentBudget"
-                       v-if="getShowDelete() !== null"
-                       v-html="removeCurrentBudgetText"></a>
-
                 </div>
             </div>
         </div>
@@ -319,9 +290,7 @@ export default class Home extends Vue {
     private total: number = 0;
     private balance: number = 0;
     private balanceClass: string = 'btn-primary';
-    private setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
-    private setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
-    private removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
+
     private blocks = [
         new Block(),
     ];
@@ -377,22 +346,6 @@ export default class Home extends Vue {
 
     public getShowDelete() {
         return window.localStorage.getItem('budgetTemplate');
-    }
-
-    /**
-     * Saving the current income as the default income.
-     */
-    public setCurrentIncomeAsDefault() {
-        this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
-        this.$store.commit('saveIncome', this.budget);
-        this.$store.dispatch('sync');
-
-        this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
-        const self = this;
-
-        setTimeout(() => {
-            self.setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
-        }, 3000);
     }
 
     public applyBudget() {
@@ -480,25 +433,6 @@ export default class Home extends Vue {
                 this.addItem(block.items);
             }
         });
-    }
-
-    public setCurrentBudgetAsDefault() {
-        this.setCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
-        this.$store.commit('saveBudgetForNextTime', this.blocks);
-        this.$store.dispatch('sync');
-
-        this.setCurrentBudgetText = '<i class="fal fa-check"></i> Done';
-        const self = this;
-
-        setTimeout(() => {
-            self.setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
-        }, 3000);
-    }
-
-    public removeCurrentBudget() {
-        this.removeCurrentBudgetText = '';
-        this.$store.commit('clearBudgetTemplate', this.blocks);
-        this.removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
     }
 
     public getShowAwesomeButtons() {
