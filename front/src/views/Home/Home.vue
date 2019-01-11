@@ -39,8 +39,26 @@
                        v-if="getShowAwesomeButtons() !== ''"></a>
                 </div>
                 <div class="col-8 col-md-6 text-right animated fadeInRight fast">
-                    Balance: <span v-bind:class="this.balanceClass">{{this.balance}}</span>
-                    Total: <span>{{this.total}}</span>
+
+                    <a class="btn btn-info d-inline text-white"
+                       v-if="getShowAwesomeButtons() !== ''">
+                        Sync <i class="fal fa-cloud-upload"></i>
+                    </a>
+
+
+                    <a class="btn d-inline text-white" v-bind:class="this.balanceClass"
+                       v-if="getShowAwesomeButtons() !== ''">
+                        <i v-bind:class="{
+                        'fal fa-balance-scale-right': this.balance < 0,
+                        'fal fa-balance-scale': this.balance === 0,
+                        'fal fa-balance-scale-left': this.balance > 0,
+                        }"></i> {{this.balance}}
+                    </a>
+
+                    <a class="btn btn-primary d-inline text-white"
+                       v-if="getShowAwesomeButtons() !== ''">
+                        <i class="fal fa-sigma"></i> {{this.total}}
+                    </a>
                 </div>
             </div>
 
@@ -153,6 +171,13 @@
 <style lang="scss">
 
     .home {
+
+        .upper {
+            .btn {
+                margin-left: 0.25em;
+                cursor: default;
+            }
+        }
 
         .no-income {
 
@@ -293,7 +318,7 @@ export default class Home extends Vue {
     private tempBudget: any = null;
     private total: number = 0;
     private balance: number = 0;
-    private balanceClass: string = 'text-primary';
+    private balanceClass: string = 'btn-primary';
     private setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
     private setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
     private removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
@@ -411,12 +436,17 @@ export default class Home extends Vue {
 
         this.balance = this.budget - this.total;
 
-        if (this.balance <= 0) {
-            this.balanceClass = 'text-danger';
+        if (this.balance === 0) {
+            this.balanceClass = 'btn-info';
             return;
         }
 
-        this.balanceClass = 'text-success';
+        if (this.balance <= 0) {
+            this.balanceClass = 'btn-danger';
+            return;
+        }
+
+        this.balanceClass = 'btn-success';
     }
 
     @Watch('blocks', {immediate: true, deep: true})
