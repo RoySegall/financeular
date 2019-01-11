@@ -1,3 +1,5 @@
+import Http from "@/services/Http";
+
 export default {
     state: {
         AccessToken: '',
@@ -47,20 +49,39 @@ export default {
          */
         starting(context: any) {
             return new Promise((resolve, reject) => {
-                // todo: handle if the access token if expires ot not.
                 context.state.Expires = window.localStorage.getItem('expires');
+                context.state.AccessToken = window.localStorage.getItem('access_token');
+                context.state.RefreshToken = window.localStorage.getItem('refresh_token');
+
+                if (context.state.AccessToken === null) {
+                    resolve();
+                }
 
                 const currentTimeStamp = new Date().getTime() / 1000;
 
                 if (currentTimeStamp > context.state.Expires) {
                     // Logging out sine the access token is no longer valid.
-                    context.dispatch('logout');
-                    resolve();
+                    // context.dispatch('logout');
+                    // resolve();
+                    // return;
+
+                    Http.request({
+                        method: 'post',
+                        url: 'api/user/refresh',
+                        data: {
+                            refresh_token: context.state.RefreshToken
+                        },
+                    }).then((response) => {
+                        context.commit('setAccessToken', response.data);
+                        location.reload();
+                        resolve();
+                    }).catch(() => {
+                        // Move user to re-login.
+                        resolve();
+                    });
                     return;
                 }
 
-                context.state.AccessToken = window.localStorage.getItem('access_token');
-                context.state.RefreshToken = window.localStorage.getItem('refresh_token');
                 resolve();
             });
         },

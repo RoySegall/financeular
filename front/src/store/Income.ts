@@ -87,6 +87,9 @@ export default {
                     if (localStorageIncome !== undefined) {
                         context.commit('setIncome', localStorageIncome);
                     }
+
+                    resolve();
+
                 });
             });
         },
