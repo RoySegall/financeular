@@ -32,15 +32,28 @@
                            placeholder="Income"
                            v-model="budget"
                            class="form-control income-setter d-inline"/>
-
-                    <a class="btn btn-info d-inline text-white"
-                       @click="setCurrentIncomeAsDefault"
-                       v-html="setCurrentIncomeText"
-                       v-if="getShowAwesomeButtons() !== ''"></a>
                 </div>
                 <div class="col-8 col-md-6 text-right animated fadeInRight fast">
-                    Balance: <span v-bind:class="this.balanceClass">{{this.balance}}</span>
-                    Total: <span>{{this.total}}</span>
+
+                    <a class="btn btn-info d-inline text-white"
+                       v-if="getShowAwesomeButtons()" @click="syncToServer()">
+                        <i class="fal fa-cloud-upload"></i> Sync
+                    </a>
+
+
+                    <a class="btn d-inline text-white" v-bind:class="this.balanceClass"
+                       v-if="getShowAwesomeButtons() !== ''">
+                        <i v-bind:class="{
+                        'fal fa-balance-scale-right': this.balance < 0,
+                        'fal fa-balance-scale': this.balance === 0,
+                        'fal fa-balance-scale-left': this.balance > 0,
+                        }"></i> {{this.balance}}
+                    </a>
+
+                    <a class="btn btn-primary d-inline text-white"
+                       v-if="getShowAwesomeButtons() !== ''">
+                        <i class="fal fa-calculator"></i> {{this.total}}
+                    </a>
                 </div>
             </div>
 
@@ -84,7 +97,7 @@
             </div>
 
             <div class="actions row animated slideInLeft fast d-none d-md-block">
-                <div class="col-md-4 d-inline-block text-left">
+                <div class="col-md-12 d-inline-block text-center">
                     <button type="button"
                             class="btn btn-primary"
                             v-on:click="addBlock">
@@ -97,18 +110,6 @@
                     <router-link to="dashboard" class="btn btn-success" v-if="getShowAwesomeButtons() !== ''">
                         <i class="fal fa-chart-line"></i> Dashboard
                     </router-link>
-                </div>
-
-                <div class="col-md-8 text-right d-inline-block" v-if="getShowAwesomeButtons() !== ''">
-                    <a class="btn btn-info d-inline text-white"
-                       @click="setCurrentBudgetAsDefault"
-                       v-html="setCurrentBudgetText"></a>
-
-                    <a class="btn btn-danger d-inline text-white"
-                       @click="removeCurrentBudget"
-                       v-if="getShowDelete() !== null"
-                       v-html="removeCurrentBudgetText"></a>
-
                 </div>
             </div>
 
@@ -133,18 +134,6 @@
                         <i class="fal fa-chart-line"></i> Dashboard
                     </router-link>
                 </div>
-
-                <div class="col-12" v-if="getShowAwesomeButtons() !== ''">
-                    <a class="btn btn-info text-white"
-                       @click="setCurrentBudgetAsDefault"
-                       v-html="setCurrentBudgetText"></a>
-
-                    <a class="btn btn-danger text-white"
-                       @click="removeCurrentBudget"
-                       v-if="getShowDelete() !== null"
-                       v-html="removeCurrentBudgetText"></a>
-
-                </div>
             </div>
         </div>
     </div>
@@ -153,6 +142,13 @@
 <style lang="scss">
 
     .home {
+
+        .upper {
+            .btn {
+                margin-left: 0.25em;
+                cursor: default;
+            }
+        }
 
         .no-income {
 
@@ -293,10 +289,8 @@ export default class Home extends Vue {
     private tempBudget: any = null;
     private total: number = 0;
     private balance: number = 0;
-    private balanceClass: string = 'text-primary';
-    private setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
-    private setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
-    private removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
+    private balanceClass: string = 'btn-primary';
+
     private blocks = [
         new Block(),
     ];
@@ -322,6 +316,9 @@ export default class Home extends Vue {
         };
     }
 
+    /**
+     * Checking if the user is anonymous.
+     */
     public getConsiderAnonymous() {
         if (this.$store.state.auth.AccessToken) {
             return false;
@@ -337,39 +334,31 @@ export default class Home extends Vue {
 
         return false;
     }
-    
+
+    /**
+     * Getting the access token from the store.
+     */
     public getAccessToken() {
         return this.$store.state.auth.AccessToken;
     }
 
+    /**
+     * Get the income from the store.
+     */
     public getIncome() {
         return this.$store.state.income.DefaultIncome;
     }
 
+    /**
+     * Get the budget template from the store.
+     */
     public getBudgetTemplate() {
         return this.$store.state.budget.BudgetTemplate;
     }
 
-    public getShowDelete() {
-        return window.localStorage.getItem('budgetTemplate');
-    }
-
     /**
-     * Saving the current income as the default income.
+     * Saving the temp budget as the current budget.
      */
-    public setCurrentIncomeAsDefault() {
-        this.setCurrentIncomeText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
-        this.$store.commit('saveIncome', this.budget);
-        this.$store.dispatch('sync');
-
-        this.setCurrentIncomeText = '<i class="fal fa-check"></i> Done';
-        const self = this;
-
-        setTimeout(() => {
-            self.setCurrentIncomeText = '<i class="fal fa-wallet"></i> Save as default income';
-        }, 3000);
-    }
-
     public applyBudget() {
         this.$store.commit('setTempIncome', this.tempBudget);
         this.$store.commit('setSyncWhenLogin', true);
@@ -377,14 +366,16 @@ export default class Home extends Vue {
         this.budget = this.tempBudget;
     }
 
-    public addItem(items: any) {
-        items.push(new Item());
-    }
-
+    /**
+     * Add a block.
+     */
     public addBlock() {
         this.blocks.push(new Block());
     }
 
+    /**
+     * Iterate over all the items and calculating the blance.
+     */
     public calculateBalance() {
         this.balance = 0;
         this.total = 0;
@@ -395,30 +386,61 @@ export default class Home extends Vue {
             });
         });
 
-        this.processBalance();
+        this.calculateProcessBalanceClass();
     }
 
+    /**
+     * Remove an expense item from the blocks.
+     *
+     * @param blockIndex
+     *  The index of the blocks.
+     * @param itemIndex
+     *  The index of the item.
+     */
     public removeExpenseItem(blockIndex: number, itemIndex: number) {
         this.$store.commit('removeItem', {block: blockIndex, item: itemIndex});
     }
 
+    /**
+     * Remove a complete expense block.
+     *
+     * @param blockIndex
+     *  The block index in the block arrays.
+     */
     public removeExpenseBlock(blockIndex: number) {
         this.$store.commit('removeBlock', blockIndex);
         this.blocks = this.getBudgetTemplate();
     }
 
-    public processBalance() {
+    /**
+     * Calculating the class of the balance item in the upper row.
+     */
+    public calculateProcessBalanceClass() {
 
         this.balance = this.budget - this.total;
 
-        if (this.balance <= 0) {
-            this.balanceClass = 'text-danger';
+        if (this.balance === 0) {
+            this.balanceClass = 'btn-info';
             return;
         }
 
-        this.balanceClass = 'text-success';
+        if (this.balance <= 0) {
+            this.balanceClass = 'btn-danger';
+            return;
+        }
+
+        this.balanceClass = 'btn-success';
     }
 
+    /**
+     * For every change in the blocks we need to see which item need to be
+     * removed and calculate the balance.
+     *
+     * @param val
+     *  The new value.
+     * @param oldVal
+     *  The original value.
+     */
     @Watch('blocks', {immediate: true, deep: true})
     public onBlocksChanged(val: string, oldVal: string) {
         this.$store.commit('setBudgetTemplate', val);
@@ -434,12 +456,18 @@ export default class Home extends Vue {
         this.calculateBalance();
     }
 
+    /**
+     * On temp income change - set the tempincome of the store.
+     */
     @Watch('budget')
     public onBudgetChanged(val: any) {
         this.calculateBalance();
         this.$store.commit('setTempIncome', val);
     }
 
+    /**
+     * Go over a block item and remove what we don't need.
+     */
     public leaveEmptyItem() {
         this.blocks.forEach((block) => {
             // Get the last item.
@@ -447,37 +475,34 @@ export default class Home extends Vue {
 
             if (lastItem.title !== '' || lastItem.value !== 0) {
                 // The last item has a title or a value. Append a new one in the bottom of the block.
-                this.addItem(block.items);
+                block.items.push(new Item());
             }
         });
     }
 
-    public setCurrentBudgetAsDefault() {
-        this.setCurrentBudgetText = '<i class="fal fa-spin fa-spinner-third"></i> Saving';
-        this.$store.commit('saveBudgetForNextTime', this.blocks);
-        this.$store.dispatch('sync');
-
-        this.setCurrentBudgetText = '<i class="fal fa-check"></i> Done';
-        const self = this;
-
-        setTimeout(() => {
-            self.setCurrentBudgetText = '<i class="fal fa-file-spreadsheet"></i> Save as default budget';
-        }, 3000);
-    }
-
-    public removeCurrentBudget() {
-        this.removeCurrentBudgetText = '';
-        this.$store.commit('clearBudgetTemplate', this.blocks);
-        this.removeCurrentBudgetText = '<i class="fal fa-times"></i> Remove the default budget';
-    }
-
+    /**
+     * Check if we need to show the awesome buttons.
+     *
+     * todo: check if we can use consider as anonymous.
+     */
     public getShowAwesomeButtons() {
         return this.$store.state.auth.AccessToken;
     }
 
+    /**
+     * Logging out the user.
+     */
     public logout() {
         this.$store.dispatch('logout');
         window.location.reload();
     }
+
+    /**
+     * Syncing the data to the server.
+     */
+    public syncToServer() {
+        this.$store.dispatch('sync');
+    }
+
 }
 </script>
