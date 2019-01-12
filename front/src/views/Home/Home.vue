@@ -36,7 +36,7 @@
                 <div class="col-8 col-md-6 text-right animated fadeInRight fast">
 
                     <a class="btn btn-info d-inline text-white"
-                       v-if="showSyncButton()">
+                       v-if="getShowAwesomeButtons()" @click="syncToServer()">
                         Sync <i class="fal fa-cloud-upload"></i>
                     </a>
 
@@ -52,7 +52,7 @@
 
                     <a class="btn btn-primary d-inline text-white"
                        v-if="getShowAwesomeButtons() !== ''">
-                        <i class="fal fa-sigma"></i> {{this.total}}
+                        <i class="fal fa-calculator"></i> {{this.total}}
                     </a>
                 </div>
             </div>
@@ -498,19 +498,11 @@ export default class Home extends Vue {
     }
 
     /**
-     * Determine if we need to show the sync button.
+     * Syncing the data to the server.
      */
-    public showSyncButton() {
-        if (this.getShowAwesomeButtons() === '') {
-            return false;
-        }
-
-        if (this.budget !== this.getIncome()) {
-            // return true;
-        }
-
-        // console.log(JSON.stringify(this.getBudgetTemplate()));
-        // console.log(JSON.stringify(this.blocks));
+    public syncToServer() {
+        this.$store.dispatch('sync');
     }
+
 }
 </script>
