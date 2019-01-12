@@ -37,7 +37,7 @@
 
                     <a class="btn btn-info d-inline text-white"
                        v-if="getShowAwesomeButtons()" @click="syncToServer()">
-                        Sync <i class="fal fa-cloud-upload"></i>
+                        <i class="fal fa-cloud-upload"></i> Sync
                     </a>
 
 
