@@ -36,7 +36,7 @@
                 <div class="col-8 col-md-6 text-right animated fadeInRight fast">
 
                     <a class="btn btn-info d-inline text-white"
-                       v-if="getShowAwesomeButtons() !== ''">
+                       v-if="showSyncButton()">
                         Sync <i class="fal fa-cloud-upload"></i>
                     </a>
 
@@ -316,6 +316,9 @@ export default class Home extends Vue {
         };
     }
 
+    /**
+     * Checking if the user is anonymous.
+     */
     public getConsiderAnonymous() {
         if (this.$store.state.auth.AccessToken) {
             return false;
@@ -331,23 +334,31 @@ export default class Home extends Vue {
 
         return false;
     }
-    
+
+    /**
+     * Getting the access token from the store.
+     */
     public getAccessToken() {
         return this.$store.state.auth.AccessToken;
     }
 
+    /**
+     * Get the income from the store.
+     */
     public getIncome() {
         return this.$store.state.income.DefaultIncome;
     }
 
+    /**
+     * Get the budget template from the store.
+     */
     public getBudgetTemplate() {
         return this.$store.state.budget.BudgetTemplate;
     }
 
-    public getShowDelete() {
-        return window.localStorage.getItem('budgetTemplate');
-    }
-
+    /**
+     * Saving the temp budget as the current budget.
+     */
     public applyBudget() {
         this.$store.commit('setTempIncome', this.tempBudget);
         this.$store.commit('setSyncWhenLogin', true);
@@ -355,14 +366,16 @@ export default class Home extends Vue {
         this.budget = this.tempBudget;
     }
 
-    public addItem(items: any) {
-        items.push(new Item());
-    }
-
+    /**
+     * Add a block.
+     */
     public addBlock() {
         this.blocks.push(new Block());
     }
 
+    /**
+     * Iterate over all the items and calculating the blance.
+     */
     public calculateBalance() {
         this.balance = 0;
         this.total = 0;
@@ -373,19 +386,36 @@ export default class Home extends Vue {
             });
         });
 
-        this.processBalance();
+        this.calculateProcessBalanceClass();
     }
 
+    /**
+     * Remove an expense item from the blocks.
+     *
+     * @param blockIndex
+     *  The index of the blocks.
+     * @param itemIndex
+     *  The index of the item.
+     */
     public removeExpenseItem(blockIndex: number, itemIndex: number) {
         this.$store.commit('removeItem', {block: blockIndex, item: itemIndex});
     }
 
+    /**
+     * Remove a complete expense block.
+     *
+     * @param blockIndex
+     *  The block index in the block arrays.
+     */
     public removeExpenseBlock(blockIndex: number) {
         this.$store.commit('removeBlock', blockIndex);
         this.blocks = this.getBudgetTemplate();
     }
 
-    public processBalance() {
+    /**
+     * Calculating the class of the balance item in the upper row.
+     */
+    public calculateProcessBalanceClass() {
 
         this.balance = this.budget - this.total;
 
@@ -402,6 +432,15 @@ export default class Home extends Vue {
         this.balanceClass = 'btn-success';
     }
 
+    /**
+     * For every change in the blocks we need to see which item need to be
+     * removed and calculate the balance.
+     *
+     * @param val
+     *  The new value.
+     * @param oldVal
+     *  The original value.
+     */
     @Watch('blocks', {immediate: true, deep: true})
     public onBlocksChanged(val: string, oldVal: string) {
         this.$store.commit('setBudgetTemplate', val);
@@ -417,12 +456,18 @@ export default class Home extends Vue {
         this.calculateBalance();
     }
 
+    /**
+     * On temp income change - set the tempincome of the store.
+     */
     @Watch('budget')
     public onBudgetChanged(val: any) {
         this.calculateBalance();
         this.$store.commit('setTempIncome', val);
     }
 
+    /**
+     * Go over a block item and remove what we don't need.
+     */
     public leaveEmptyItem() {
         this.blocks.forEach((block) => {
             // Get the last item.
@@ -430,18 +475,42 @@ export default class Home extends Vue {
 
             if (lastItem.title !== '' || lastItem.value !== 0) {
                 // The last item has a title or a value. Append a new one in the bottom of the block.
-                this.addItem(block.items);
+                block.items.push(new Item());
             }
         });
     }
 
+    /**
+     * Check if we need to show the awesome buttons.
+     *
+     * todo: check if we can use consider as anonymous.
+     */
     public getShowAwesomeButtons() {
         return this.$store.state.auth.AccessToken;
     }
 
+    /**
+     * Logging out the user.
+     */
     public logout() {
         this.$store.dispatch('logout');
         window.location.reload();
+    }
+
+    /**
+     * Determine if we need to show the sync button.
+     */
+    public showSyncButton() {
+        if (this.getShowAwesomeButtons() === '') {
+            return false;
+        }
+
+        if (this.budget !== this.getIncome()) {
+            // return true;
+        }
+
+        // console.log(JSON.stringify(this.getBudgetTemplate()));
+        // console.log(JSON.stringify(this.blocks));
     }
 }
 </script>
