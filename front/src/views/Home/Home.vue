@@ -97,7 +97,7 @@
             </div>
 
             <div class="actions row animated slideInLeft fast d-none d-md-block">
-                <div class="col-md-12 d-inline-block text-center">
+                <div class="col-md-12 d-inline-block text-left">
                     <button type="button"
                             class="btn btn-primary"
                             v-on:click="addBlock">
@@ -164,7 +164,7 @@
         .income-setter {
             width: 25%;
             border: none;
-            border-bottom: solid 1px $blue1;
+            border-bottom: solid 1px $color5;
             border-radius: 0;
             background: $background;
             margin-right: 1em;
@@ -177,7 +177,7 @@
                 height: fit-content;
                 margin: 1em auto;
                 padding: 0;
-                border: solid 1px $blue1;
+                border: solid 1px $color1;
                 background: $white2;
                 border-bottom: none;
 
@@ -185,12 +185,12 @@
                     margin: 0;
                     border-radius: 0;
                     border: none;
-                    border-bottom: 1px solid $blue1;
+                    border-bottom: 1px solid $color1;
 
                     &.title {
                         text-align: center;
-                        border-bottom: solid 1px $blue2;
-                        color: $blue3;
+                        border-bottom: solid 1px $color2;
+                        color: $color3;
                     }
                 }
 
@@ -210,7 +210,7 @@
 
                     .title {
                         padding-right: 0;
-                        border-right: $blue1 solid 1px;
+                        border-right: $color1 solid 1px;
                     }
 
                     .value {

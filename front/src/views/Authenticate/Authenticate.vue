@@ -118,7 +118,7 @@
                 &:hover {
                     font-weight: bold;
                     cursor: pointer;
-                    color: $blue2;
+                    color: $color2;
                 }
             }
 
@@ -126,8 +126,8 @@
                 max-width: 40%;
                 margin: 0 auto;
                 font-weight: bold;
-                color: $blue1;
-                border-bottom: solid $blue2 1px;
+                color: $color1;
+                border-bottom: solid $color2 1px;
                 padding-bottom: .5em;
             }
         }
