@@ -27,7 +27,7 @@
 
     .settings-wrapper {
         margin: 0;
-        border: $blue1 solid 1px;
+        border: $color1 solid 1px;
         min-height: 75vh;
 
         .page {
@@ -39,7 +39,7 @@
                 background: white;
                 padding: 1em;
                 height: 100%;
-                border: $blue1 solid 1px;
+                border: $color1 solid 1px;
             }
         }
 
@@ -60,12 +60,12 @@
 
                     &:hover {
                         cursor: pointer;
-                        color: $blue7;
+                        color: $color4;
                     }
 
                     &.selected {
                         background: $background-blue;
-                        color: $blue6;
+                        color: $color4;
                     }
 
                     &.first {
