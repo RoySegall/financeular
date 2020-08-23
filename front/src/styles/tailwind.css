@@ -22227,6 +22227,14 @@ video {
           animation: bounce 1s infinite;
 }
 
+.font-rubik {
+  font-family: 'Rubik', sans-serif;
+}
+
+.font-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

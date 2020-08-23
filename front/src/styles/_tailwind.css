@@ -3,3 +3,11 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.font-rubik {
+    font-family: 'Rubik', sans-serif;
+}
+
+.font-sans {
+    font-family: 'Open Sans', sans-serif;
+}
