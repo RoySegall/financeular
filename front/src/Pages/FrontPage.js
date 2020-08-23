@@ -2,7 +2,7 @@ import React from "react";
 import PageTitle from "../Components/PageTitle/PageTitle";
 import {Upload, Download} from "../Components/Buttons/Buttons";
 
-export const FrontPage = () => <div className="flex flex-col">
+export default () => <div className="flex flex-col">
     <PageTitle>Welcome to <b>Financular</b></PageTitle>
     <div className="w-11/12 m-auto">
         <p className="text-3xl pt-8 text-center font-sans font-hairline leading-loose">
