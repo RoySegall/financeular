@@ -18,6 +18,32 @@
     background: #68d391;
     border-bottom: 2px solid #feb2b2;
 }
+
+.button.submit {
+    background: #68d391;
+}
+
+.button.submit:focus {
+    outline: 0;
+    background: #68d391;
+}
+
+.login-in {
+    margin-top: 0;
+}
+
+.login-in.facebook {
+    background: #1392ec;
+}
+
+.login-in.google {
+    background: #d54a39;
+}
+
+.login-in.apple {
+    background: black
+}
+
 .button.download {
     background: #6893d3;
     border-bottom: 2px solid #fee2b2;

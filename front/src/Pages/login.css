@@ -1,6 +1,15 @@
+.login-wrapper {
+    width: 30%;
+    border: solid 1px #e46bb2;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-radius: 4px;
+}
+
 .login-form .input-element {
     background: white;
     border-bottom: 2px solid #fee2b2;
+    font-size: 1.25em;
     min-width: 75%;
     padding: .25em;
     padding-left: .75em;
