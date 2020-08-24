@@ -1,6 +1,7 @@
 import React from "react";
 import PageTitle from "../Components/PageTitle/PageTitle";
 import {Upload, Download} from "../Components/Buttons/Buttons";
+import {Link} from "react-router-dom";
 
 export default () => <div className="flex flex-col">
     <PageTitle>Welcome to <b>Financular</b></PageTitle>
@@ -13,9 +14,9 @@ export default () => <div className="flex flex-col">
             the income and outcomes, set your budget and see where you success, where you can improve and more.
         </p>
 
-        <div className="flex justify-center">
-            <Upload />
-            <Download />
+        <div className="flex justify-around">
+            <Link to="/login"><Upload /></Link>
+            <Link to="/download"><Download /></Link>
         </div>
 
     </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import PageTitle from "../Components/PageTitle/PageTitle";
 import "./login.css";
-import {LoginWith, Submit} from "../Components/Buttons/Buttons";
+import {LoginWith, Submit, Upload} from "../Components/Buttons/Buttons";
 import {Apple, Facebook, Google, Login} from "../Components/Icons/Icons";
+import {Link} from "react-router-dom";
 
 export default () => <div className="login-screen">
 
@@ -23,7 +24,7 @@ export default () => <div className="login-screen">
             </div>
 
             <div className="">
-                <Submit><Login /> Login</Submit>
+                <Link to="/results"><Submit><Login /> Login</Submit></Link>
             </div>
 
             <div className="pt-10">
