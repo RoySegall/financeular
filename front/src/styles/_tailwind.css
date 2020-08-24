@@ -11,3 +11,8 @@
 .font-sans {
     font-family: 'Open Sans', sans-serif;
 }
+
+.login-screen {
+    height: 70vh;
+    @apply w-screen flex justify-center items-center
+}

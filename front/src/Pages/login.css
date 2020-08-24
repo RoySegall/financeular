@@ -1,0 +1,9 @@
+.login-form .input-element {
+    background: white;
+    border-bottom: 2px solid #fee2b2;
+    min-width: 75%;
+    padding: .25em;
+    padding-left: .75em;
+    height: 60%;
+    border-radius: 5px 5px 0 0;
+}
