@@ -1,4 +1,103 @@
 {
-  "month": "8",
-  "year": 2020
+  "month": "08",
+  "year": 2020,
+  "currency": "nis",
+  "template": "with_limitation",
+  "limitations": [
+    {"total": 1600, "one_time_value": 400, "description": "Every week up to NIS 400 super", "number_of_times": 4, "title": "super"},
+    {"total": 400, "one_time_value": 100, "description": "Every week, up to NIS 100 is ordered outside\n", "number_of_times": 4, "title": "eating out"},
+    {"total": 750, "one_time_value": 1500, "description": "Once every two months up to 1500 electricity", "number_of_times": 0.5, "title": "electricity"},
+    {"total": 100, "one_time_value": 100, "description": "Once every two months up to NIS 200", "number_of_times": 1, "title": "water"},
+    {"total": 500, "one_time_value": 500, "description": "", "number_of_times": 1, "title": "life insurance"},
+    {"total": 400, "one_time_value": 400, "description": "", "number_of_times": 1, "title": "Motorcycle insurance"},
+    {"total": 200, "one_time_value": 200, "description": "", "number_of_times": 1, "title": "Fuel"},
+    {"total": 1000, "one_time_value": 50, "description": "Up to fifty shekels per day of food at work", "number_of_times": 20, "title": "Food at work"},
+    {"total": 4000, "one_time_value": 4000, "description": "", "number_of_times": 1, "title": "Rent"},
+    {"total": 80, "one_time_value": 80, "description": "", "number_of_times": 1, "title": "House hold"}
+  ],
+  "months": {
+    "08": {
+      "income": [
+        {"title":  "Husband paycheck", "value":  10000},
+        {"title":  "Help from the family", "value":  1000},
+        {"title":  "Wife paycheck ", "value":  10000}
+      ],
+      "expenses": [
+        {"title": "Rent", "value": 4000, "date": "08/01"},
+        {"title": "House hold", "value": 80, "date": "08/01"},
+        {"title": "Gophercon ticket", "value": 300, "date": "08/02"},
+        {"title": "University", "value": 295, "date": "08/02"},
+        {"title": "Bakery", "value": 48, "date": "08/02"},
+        {"title": "iMovie", "value": 60, "date": "08/01"},
+        {"title": "Toys", "value": 110, "date": "08/03"},
+        {"title": "Super Pharm", "value": 138, "date": "08/01"},
+        {"title": "Spicez", "value": 59, "date": "08/04"},
+        {"title": "Haircut", "value": 60, "date": "08/05"}
+      ]
+    }
+  },
+  "charts": {
+    "bars": [
+      {
+        "country": "June",
+        "expense": 200
+      },
+      {
+        "country": "July",
+        "expense": 64
+      },
+      {
+        "country": "August",
+        "expense": 28
+      },
+      {
+        "country": "Sept",
+        "expense": 147
+      },
+      {
+        "country": "November",
+        "expense": 61
+      },
+      {
+        "country": "October",
+        "expense": 89
+      },
+      {
+        "country": "December",
+        "expense": 12
+      }
+    ],
+    "pie": [
+      {
+        "id": "first",
+        "label": "First",
+        "value": 119,
+        "color": "hsl(272, 70%, 50%)"
+      },
+      {
+        "id": "second",
+        "label": "Second",
+        "value": 263,
+        "color": "hsl(214, 70%, 50%)"
+      },
+      {
+        "id": "elixir",
+        "label": "elixir",
+        "value": 458,
+        "color": "hsl(103, 70%, 50%)"
+      },
+      {
+        "id": "stylus",
+        "label": "stylus",
+        "value": 431,
+        "color": "hsl(329, 70%, 50%)"
+      },
+      {
+        "id": "haskell",
+        "label": "haskell",
+        "value": 173,
+        "color": "hsl(138, 70%, 50%)"
+      }
+    ]
+  }
 }

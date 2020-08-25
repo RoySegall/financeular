@@ -1,38 +1,9 @@
 import {ResponsiveBar} from "@nivo/bar";
 import React from "react";
-const barData = [
-    {
-        "country": "June",
-        "hot dog": 200,
-    },
-    {
-        "country": "July",
-        "hot dog": 64,
-    },
-    {
-        "country": "August",
-        "hot dog": 28,
-    },
-    {
-        "country": "Sept",
-        "hot dog": 147,
-    },
-    {
-        "country": "November",
-        "hot dog": 61,
-    },
-    {
-        "country": "October",
-        "hot dog": 89,
-    },
-    {
-        "country": "December",
-        "hot dog": 12,
-    }
-]
-export default () => <ResponsiveBar
-    data={barData}
-    keys={[ 'hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut' ]}
+
+export default ({data}) => <ResponsiveBar
+    data={data}
+    keys={[ 'expense' ]}
     indexBy="country"
     margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
     padding={0.3}
@@ -85,7 +56,7 @@ export default () => <ResponsiveBar
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'food',
+        legend: 'expensed',
         legendPosition: 'middle',
         legendOffset: -40
     }}

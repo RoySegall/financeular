@@ -1,45 +1,20 @@
 import React from "react";
 import './table.css'
-import {Shekel} from "../Icons/Icons";
 
-export default () => <div className="table-wrapper">
+export default ({data}) => <div className="table-wrapper">
     <table className="table">
         <thead>
             <tr className="headers">
-                <td>Title</td>
-                <td>Date</td>
-                <td>Amount</td>
+            {Object.keys(data[0]).map((item, key) => <td className="capitalize" key={key}>{item.split('_').join(' ')}</td>)}
             </tr>
         </thead>
 
         <tbody>
-            <tr>
-                <td>Burger</td>
-                <td>08/01</td>
-                <td>250 <Shekel /></td>
-            </tr>
-            <tr>
-                <td>Burger</td>
-                <td>08/01</td>
-                <td>200 <Shekel /></td>
-            </tr>
-            <tr>
-                <td>Burger</td>
-                <td>08/01</td>
-                <td>200 <Shekel /></td>
-            </tr>            <tr>
-                <td>Burger</td>
-                <td>08/01</td>
-                <td>200 <Shekel /></td>
-            </tr>            <tr>
-                <td>Burger</td>
-                <td>08/01</td>
-                <td>200 <Shekel /></td>
-            </tr>            <tr>
-                <td>Burger</td>
-                <td>08/01</td>
-                <td>200 <Shekel /></td>
-            </tr>
+            {data.map((item, key) =>
+                <tr key={key}>
+                    {Object.values(item).map((column, columnKey) => <td key={columnKey}>{column}</td>)}
+                </tr>
+            )}
         </tbody>
     </table>
 
