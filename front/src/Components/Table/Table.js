@@ -27,6 +27,18 @@ export default () => <div className="table-wrapper">
                 <td>Burger</td>
                 <td>08/01</td>
                 <td>200 <Shekel /></td>
+            </tr>            <tr>
+                <td>Burger</td>
+                <td>08/01</td>
+                <td>200 <Shekel /></td>
+            </tr>            <tr>
+                <td>Burger</td>
+                <td>08/01</td>
+                <td>200 <Shekel /></td>
+            </tr>            <tr>
+                <td>Burger</td>
+                <td>08/01</td>
+                <td>200 <Shekel /></td>
             </tr>
         </tbody>
     </table>

@@ -8,7 +8,6 @@ const barData = [
     {
         "country": "July",
         "hot dog": 64,
-        "hot dogColor": "hsl(70,23%,21%)",
     },
     {
         "country": "August",
@@ -37,7 +36,7 @@ export default () => <ResponsiveBar
     indexBy="country"
     margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
     padding={0.3}
-    colors={{ scheme: 'nivo' }}
+    colors= {['#b5e8ff']}
     defs={[
         {
             id: 'dots',
@@ -72,7 +71,6 @@ export default () => <ResponsiveBar
             id: 'lines'
         }
     ]}
-    borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
     axisTop={null}
     axisRight={null}
     axisBottom={{
