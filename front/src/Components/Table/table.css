@@ -1,0 +1,32 @@
+.table-wrapper {
+    width: 100%;
+}
+
+.table-wrapper .table {
+    width: 100%;
+    margin: 0 auto;
+    border: #89c3f5 solid 1px;
+
+}
+
+.table-wrapper .table td {
+    padding: .25em;
+    margin-top: .25em;
+    border: #89c3f5 solid 1px;
+
+}
+
+.table-wrapper thead td {
+    background: #54a5ea;
+    color: white;
+}
+
+.table-wrapper tbody tr:nth-child(odd) td {
+    background: #b0e5ff;
+    color: #0062a8;
+}
+
+.table-wrapper tbody tr:nth-child(even) td {
+    background: #8bcdee;
+    color: #22445c;
+}
