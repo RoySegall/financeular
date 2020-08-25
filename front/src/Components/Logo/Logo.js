@@ -1,4 +1,12 @@
 import React from "react";
-import Logo from "./logo.png";
+import "./logo.css";
+import {MoneyBill} from "../Icons/Icons";
 
-export default () => <img src={Logo} alt="Logo" className="w-48 p-4" />
+export default () => <div className="logo block">
+    <div className="flex items-center">
+        <MoneyBill /> <span className="text">Financular</span>
+    </div>
+    <div className="sub-text">
+        Understand money, better
+    </div>
+</div>

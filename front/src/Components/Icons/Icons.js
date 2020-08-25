@@ -7,7 +7,7 @@ import {
     faShekelSign,
     faPiggyBank,
     faCreditCardFront,
-    faAbacus
+    faAbacus, faMoneyBillAlt
 } from "@fortawesome/pro-duotone-svg-icons";
 import {faFacebookSquare, faGoogle, faApple} from "@fortawesome/free-brands-svg-icons";
 
@@ -21,3 +21,4 @@ export const Shekel = () => <FontAwesomeIcon icon={faShekelSign}/>
 export const Income = () => <FontAwesomeIcon icon={faPiggyBank}/>
 export const Expenses = () => <FontAwesomeIcon icon={faCreditCardFront}/>
 export const Calculator = () => <FontAwesomeIcon icon={faAbacus}/>
+export const MoneyBill = () => <FontAwesomeIcon icon={faMoneyBillAlt}/>
