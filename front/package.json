@@ -7,10 +7,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/pro-duotone-svg-icons": "^5.14.0",
-    "@fortawesome/pro-light-svg-icons": "^5.14.0",
-    "@fortawesome/pro-regular-svg-icons": "^5.14.0",
-    "@fortawesome/pro-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@nivo/bar": "^0.62.0",
     "@nivo/pie": "^0.62.0",
@@ -27,7 +23,8 @@
     "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,6 +44,8 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "css-loader": "^4.2.1",
+    "eslint": "^7.7.0",
+    "eslint-plugin-react": "^7.20.6",
     "mini-css-extract-plugin": "^0.10.0",
     "postcss-cli": "^7.1.1",
     "postcss-loader": "^3.0.0",
