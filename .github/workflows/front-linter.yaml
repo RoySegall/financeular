@@ -19,4 +19,4 @@ jobs:
       - name: cd in to the front
         run: |
           cd front
-          cd ls -al
+          ls -al
