@@ -2,12 +2,18 @@ name: Front linter
 on: [push]
 jobs:
   build:
-    name: Front linter
+
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: '12'
-      - name: Install front modules
-        run: ls -al
+          node-version: ${{ matrix.node-version }}
+      - run: npm i
+      - run: npm test
