@@ -17,5 +17,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: ls -al
       - run: cd front
-      - run: npm i
-      - run: npm test
+      - run: ls -al
+#
+#      - run: npm i
+#      - run: npm test
