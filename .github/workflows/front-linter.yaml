@@ -5,5 +5,9 @@ jobs:
     name: Front linter
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
       - name: Install front modules
         run: ls -al
