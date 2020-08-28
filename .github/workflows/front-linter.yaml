@@ -16,5 +16,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: ls -al
-      - run: cd ./front
-      - run: ls -al
+      - name: cd in to the front
+        run: |
+          cd front
+          cd ls -al
