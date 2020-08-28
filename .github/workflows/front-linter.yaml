@@ -15,8 +15,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: ls -al
       - name: cd in to the front
         run: |
           cd front
-          ls -al
+          npm i
+          npm run lint
