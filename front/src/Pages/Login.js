@@ -1,7 +1,7 @@
 import React from "react";
 import PageTitle from "../Components/PageTitle/PageTitle";
 import "./login.css";
-import {LoginWith, Submit, Upload} from "../Components/Buttons/Buttons";
+import {LoginWith, Submit} from "../Components/Buttons/Buttons";
 import {Apple, Facebook, Google, Login} from "../Components/Icons/Icons";
 import {Link} from "react-router-dom";
 

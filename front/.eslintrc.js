@@ -18,7 +18,10 @@ module.exports = {
   },
   plugins: ["react", "import", "react-hooks"],
   ignorePatterns: ["node_modules/"],
-  rules: {},
+  "rules": {
+    "react/display-name": "off",
+    "react/prop-types": "off"
+  },
   settings: {
     react: {
       version: "latest", // "detect" automatically picks the version you have installed.
