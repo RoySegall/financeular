@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install front modules
-        run: cd front && npm install
+        run: ls -al
