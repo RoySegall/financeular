@@ -1,0 +1,8 @@
+name: Front linter
+jobs:
+  build:
+    name: Front linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install front modules
+        run: cd front && npm install
