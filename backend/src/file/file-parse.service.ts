@@ -14,12 +14,30 @@ export class FileParseService {
    * @param sheetName
    *  The sheet name in the file.
    */
-  parseSheet(filePath: string, sheetName: string): parseSheet {
-    const {month, year} = this.getDateDataFromSheetName(sheetName);
+  async parseSheet(filePath: string, sheetName: string): Promise<object> {
+    const sheetData = await readXlsxFile(filePath, {sheet: sheetName});
 
-    return {month, year, results: this.getDataForMonth()}
+    for await (let sheetRow of sheetData) {
+      this.handleRow(sheetRow);
+    }
+
+    return {
+      limitations: {},
+      income: {},
+      expenses: {}
+    };
   }
 
+  /**
+   * Handling a specific row in a given sheet from the file.
+   *
+   * @param row
+   *  The row to handle.
+   */
+  handleRow(row): object {
+    console.log(row);
+    return {};
+  }
   /**
    * Get the month number and the year from the name of the sheet.
    *
@@ -56,14 +74,6 @@ export class FileParseService {
     return {month: selectedMonth, year: year}
   }
 
-  getDataForMonth(): unknown {
-    return {
-      limitations: {},
-      income: {},
-      expenses: {}
-    }
-  }
-
   /**
    * Parsing the file from a given path.
    *
@@ -80,18 +90,11 @@ export class FileParseService {
 
     const sheetsNames = await readXlsxFile(path, {getSheets: true});
 
-    sheetsNames.map(async ({name: sheetName}) => {
-      const {month, year, results} = this.parseSheet(path, sheetName);
+    for await (let sheetName of sheetsNames) {
+      const results = await this.parseSheet(path, sheetName['name']);
+      const {month, year} = this.getDateDataFromSheetName(sheetName['name']);
       defaultReturn.months[`${year}_${month}`] = results;
-    });
-
-    // go over sheets.
-
-    // extract the years of the sheet.
-
-    // Get the income and expenses for each.
-
-    // return the JSON.
+    }
 
     console.log(defaultReturn);
 
