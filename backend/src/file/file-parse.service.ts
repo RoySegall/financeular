@@ -1,5 +1,6 @@
 import {Injectable} from '@nestjs/common';
 import {parsedSheetName, parseSheet} from "./file.interface";
+
 const readXlsxFile = require('read-excel-file/node');
 
 @Injectable()
@@ -55,7 +56,7 @@ export class FileParseService {
     return {month: selectedMonth, year: year}
   }
 
-  getDataForMonth(): object {
+  getDataForMonth(): unknown {
     return {
       limitations: {},
       income: {},
@@ -73,7 +74,7 @@ export class FileParseService {
    * @param currency
    *  The currency from the excel file.
    */
-  async parseFile(path: string, template: string = 'with_limitation', currency: string = 'nis'): Promise<object> {
+  async parseFile(path: string, template = 'with_limitation', currency = 'nis'): Promise<object> {
     // Set the default value.
     const defaultReturn = {currency, template, months: {}}
 

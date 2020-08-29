@@ -1,4 +1,4 @@
-import { Command, Positional } from 'nestjs-command';
+import { Command } from 'nestjs-command';
 import { Injectable } from '@nestjs/common';
 import {FileParseService} from "./file-parse.service";
 
@@ -12,12 +12,7 @@ export class parseFileCommand {
         autoExit: true
     })
     async create(
-        @Positional({
-            name: 'file_path',
-            describe: 'The path to the file',
-            type: 'string',
-        }) path: string,
     ) {
-        const sheets = await this.fileParse.parseFile("/Applications/MAMP/htdocs/financeular/backend/src/file/example_files/dummy_file.xlsx");
+        await this.fileParse.parseFile("/Applications/MAMP/htdocs/financeular/backend/src/file/example_files/dummy_file.xlsx");
     }
 }

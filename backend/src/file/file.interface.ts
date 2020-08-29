@@ -1,5 +1,5 @@
 export interface parseSheet extends parsedSheetName {
-    results: object,
+    results: unknown,
 }
 
 export interface parsedSheetName {
