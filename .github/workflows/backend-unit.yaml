@@ -1,4 +1,4 @@
-name: Front linter
+name: Backend linter
 on: [push]
 jobs:
   build:
@@ -19,4 +19,4 @@ jobs:
         run: |
           cd backend
           npm i
-          npm run lint
+          npm run test

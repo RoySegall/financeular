@@ -12,7 +12,7 @@ describe('FileParseService', () => {
     service = module.get<FileParseService>(FileParseService);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  it('Should have the same parsed data as the mock one', () => {
+    expect(1).toBe(2);
   });
 });
