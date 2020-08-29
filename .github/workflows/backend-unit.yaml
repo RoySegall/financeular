@@ -1,4 +1,4 @@
-name: Backend linter
+name: Backend Unit test
 on: [push]
 jobs:
   build:

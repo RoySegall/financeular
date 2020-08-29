@@ -1,4 +1,4 @@
-name: Backend linter
+name: Front linter
 on: [push]
 jobs:
   build:

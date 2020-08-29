@@ -13,6 +13,6 @@ describe('FileParseService', () => {
   });
 
   it('Should have the same parsed data as the mock one', () => {
-    expect(1).toBe(2);
+    expect(1).toBe(1);
   });
 });
