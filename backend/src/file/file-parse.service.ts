@@ -1,5 +1,5 @@
 import {Injectable} from '@nestjs/common';
-import {parsedSheetName, parseSheet} from "./file.interface";
+import {parsedSheetName} from "./file.interface";
 
 const readXlsxFile = require('read-excel-file/node');
 
@@ -14,18 +14,21 @@ export class FileParseService {
    * @param sheetName
    *  The sheet name in the file.
    */
-  async parseSheet(filePath: string, sheetName: string): Promise<object> {
+  async parseSheet(filePath: string, sheetName: string): Promise<object[]> {
     const sheetData = await readXlsxFile(filePath, {sheet: sheetName});
 
-    for await (let sheetRow of sheetData) {
-      this.handleRow(sheetRow);
+    const sheetsRows = [];
+    let index = 0;
+    for await (const sheetRow of sheetData) {
+      if (index < 2) {
+        index++;
+        continue;
+      }
+      sheetsRows.push(this.handleRow(sheetRow));
+      index++;
     }
 
-    return {
-      limitations: {},
-      income: {},
-      expenses: {}
-    };
+    return sheetsRows;
   }
 
   /**
@@ -35,8 +38,54 @@ export class FileParseService {
    *  The row to handle.
    */
   handleRow(row): object {
-    console.log(row);
-    return {};
+    // Income keys.
+    const incomeValueKey = 3;
+    const incomeValueName = 4;
+
+    // Limitation Keys.
+    const limitationTotalValueKey = 5;
+    const limitationOneTimeValueKey = 6;
+    const limitationDescriptionKey = 8;
+    const limitationAllowedTimesKey = 8;
+    const limitationTitleKey = 8;
+
+    // Expenses keys.
+    const expenseValueKey = 11;
+    const expenseDateKey = 12;
+    const expenseTitleKey = 13;
+
+    const baseRow = {
+      limitations: {},
+      income: {},
+      expenses: {}
+    };
+
+    if (row[incomeValueName]) {
+      baseRow.income = {
+        'title': row[incomeValueName],
+        'value': row[incomeValueKey]
+      };
+    }
+
+    if (row[limitationTotalValueKey]) {
+      baseRow.limitations = {
+        total_value: row[limitationTotalValueKey],
+        value_per_week: row[limitationOneTimeValueKey],
+        description: row[limitationDescriptionKey],
+        time_per_month: row[limitationAllowedTimesKey],
+        title: row[limitationTitleKey],
+      };
+    }
+
+    if (row[expenseValueKey]) {
+      baseRow.expenses = {
+        value: row[expenseValueKey],
+        date: row[expenseDateKey],
+        title: row[expenseTitleKey],
+      };
+    }
+
+    return baseRow;
   }
   /**
    * Get the month number and the year from the name of the sheet.
@@ -90,13 +139,11 @@ export class FileParseService {
 
     const sheetsNames = await readXlsxFile(path, {getSheets: true});
 
-    for await (let sheetName of sheetsNames) {
+    for await (const sheetName of sheetsNames) {
       const results = await this.parseSheet(path, sheetName['name']);
       const {month, year} = this.getDateDataFromSheetName(sheetName['name']);
       defaultReturn.months[`${year}_${month}`] = results;
     }
-
-    console.log(defaultReturn);
 
     return defaultReturn;
   }
