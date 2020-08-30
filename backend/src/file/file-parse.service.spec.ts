@@ -25,7 +25,7 @@ describe('FileParseService', () => {
       {
         input: ["כמה ציפינו להוציא", 9030, "צפי הוצאות", 10000, "משכורת", 1600, 400, 2.5, "כל שבוע עד 400 שקל סופר", 4, "סופר", null, null, null],
         results: {
-          "limitations": {
+          "limitation": {
             "total_value": 1600,
             "value_per_week": 400,
             "description": "כל שבוע עד 400 שקל סופר",
@@ -42,7 +42,7 @@ describe('FileParseService', () => {
       {
         input: ["כמה ציפינו שישאר", 3170, "צפי שארית", 1200, "עזרה מאמא", 400, 100, 3.5, "כל שבוע מזמינים בחוץ עד 100 שקל", 4, "מזמינים אוכל", -1255.06, 43477, "כסף מפייפל"],
         results: {
-          "limitations": {
+          "limitation": {
             "total_value": 400,
             "value_per_week": 100,
             "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
