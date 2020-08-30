@@ -1,0 +1,4181 @@
+{
+  "currency": "nis",
+  "template": "with_limitation",
+  "months": {
+    "2019_12": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {
+          "title": "עזרה מאמא",
+          "value": 1200
+        },
+        "expenses": {
+          "value": -1255.06,
+          "date": 43477,
+          "title": "כסף מפייפל"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {
+          "title": "שארית מחודש שעבר",
+          "value": 0
+        },
+        "expenses": {
+          "value": 3750,
+          "date": 43477,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {
+          "title": "עזרה מנוי",
+          "value": 1000
+        },
+        "expenses": {
+          "value": 80,
+          "date": 43477,
+          "title": "ועד בית"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 9,
+          "date": 43477,
+          "title": "עמלת עוש"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 300,
+          "date": 43477,
+          "title": "כרטיס לכנס"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 120,
+          "date": 43477,
+          "title": "קופסאת ממתקים"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 91,
+          "date": 43477,
+          "title": "קפה ויולה"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 35,
+          "date": 43477,
+          "title": "פטריאון"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 21,
+          "date": 43477,
+          "title": "גוגל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 295,
+          "date": 43508,
+          "title": "שכר לימוד"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 60,
+          "date": 43508,
+          "title": "אפל - סרט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 30,
+          "date": 43508,
+          "title": "אפל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 477,
+          "date": 43536,
+          "title": "מסטרקארד"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 24,
+          "date": 43536,
+          "title": "עמלה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": 43537,
+          "title": "פיצה רומא"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 45,
+          "date": 43567,
+          "title": "מקדונלדס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": -60,
+          "date": 43567,
+          "title": "מפעל הפיס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 48,
+          "date": 43628,
+          "title": "שיבולת ארצנו"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 110,
+          "date": 43628,
+          "title": "צעצויעים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 91,
+          "date": 43628,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 109,
+          "date": 43628,
+          "title": "קניה פיצוציה שישי בערב"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 275,
+          "date": 43658,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 500,
+          "date": 43658,
+          "title": "שכר לימוד"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 61,
+          "date": 43658,
+          "title": "טוני וספה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 37,
+          "date": 43689,
+          "title": "אוכל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": 43720,
+          "title": "אוכל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 28.5,
+          "date": 43720,
+          "title": "פיצוציה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 1000,
+          "date": 43750,
+          "title": "אייפון"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": 43750,
+          "title": "שניצל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 38,
+          "date": 43781,
+          "title": "אוכל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 124,
+          "date": 43811,
+          "title": "קניות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 70,
+          "date": 43811,
+          "title": "בלאק"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 59,
+          "date": 43811,
+          "title": "ספייסז"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": 43811,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 75,
+          "date": "13/12",
+          "title": "בשר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 36,
+          "date": "13/12",
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 70.12,
+          "date": "13/12",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 200,
+          "date": "15/12",
+          "title": "משחקים + אוכל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 602,
+          "date": "18/12",
+          "title": "חשמל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 55,
+          "date": "18/12",
+          "title": "מיניסו"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "18/12",
+          "title": "אוכל בקניון"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 59,
+          "date": "19/12",
+          "title": "ביגה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 479,
+          "date": "20/12",
+          "title": "תיקון למחשב"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 79,
+          "date": "20/12",
+          "title": "בשר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "20/12",
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 109,
+          "date": "20/12",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 66.12,
+          "date": "20/12",
+          "title": "ירקות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "20/12",
+          "title": "דלק"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 360,
+          "date": "25/13",
+          "title": "סופר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 60,
+          "date": "27/12",
+          "title": "תספורת"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "27/12",
+          "title": "ניקוי יבש"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 20,
+          "date": "27/12",
+          "title": "ירקות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 22,
+          "date": "27/12",
+          "title": "אפונה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 21,
+          "date": "27/12",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 45,
+          "date": "29/12",
+          "title": "מקדונלדס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 89,
+          "date": "29/12",
+          "title": "תיבת נוח בכיכר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 105,
+          "date": "29/12",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": "31/12",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 36,
+          "date": "31/12",
+          "title": "שניצל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 20,
+          "date": "31/12",
+          "title": "פיצה רומא"
+        }
+      }
+    ],
+    "2020_1": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {
+          "title": "עזרה מאמא",
+          "value": 1000
+        },
+        "expenses": {
+          "value": 3750,
+          "date": 43831,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {
+          "title": "זיכוי",
+          "value": 10000
+        },
+        "expenses": {
+          "value": 80,
+          "date": 43831,
+          "title": "ועד בית"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 88,
+          "date": 43831,
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 29,
+          "date": 43831,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": 43831,
+          "title": "מקדולנדס"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 295,
+          "date": 43831,
+          "title": "שכר לימוד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 414,
+          "date": 43831,
+          "title": "אייפון"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 350,
+          "date": 43862,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 52,
+          "date": 43891,
+          "title": "בלונים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": 43891,
+          "title": "מגן מסך"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 39,
+          "date": 43891,
+          "title": "בשר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": 43891,
+          "title": "דברים לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 169,
+          "date": 43891,
+          "title": "תנור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 100,
+          "date": 43922,
+          "title": "פיצה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 290,
+          "date": 43922,
+          "title": "אמזון"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 55,
+          "date": 43983,
+          "title": "דלק"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 390,
+          "date": 44013,
+          "title": "טסט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": 44013,
+          "title": "אוכל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 53,
+          "date": 44044,
+          "title": "מקדולנדס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 49,
+          "date": 44075,
+          "title": "פסטה בסטה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 350,
+          "date": 44075,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 56,
+          "date": 44105,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 100,
+          "date": 44105,
+          "title": "טמבור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 38,
+          "date": 44105,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 10,
+          "date": 44105,
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 203,
+          "date": 44105,
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 110,
+          "date": 44136,
+          "title": "אמורה מיו"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 44136,
+          "title": "מונית"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 170,
+          "date": 44105,
+          "title": "צחי"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 69,
+          "date": "14/01",
+          "title": "שיבולת ארצנו"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 100,
+          "date": "14/01",
+          "title": "רב קו"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 390,
+          "date": "14/01",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 4700,
+          "date": "15/01",
+          "title": "מחשב"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 79,
+          "date": "16/01",
+          "title": "ג'פניקה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 30,
+          "date": "19/01",
+          "title": "פלאפל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 365,
+          "date": "20/01",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 85,
+          "date": "17/01",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 132,
+          "date": "19/01",
+          "title": "שיין"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 53,
+          "date": "18/01",
+          "title": "גולדה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 44,
+          "date": "21/01",
+          "title": "שווארמה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 180,
+          "date": "23/01",
+          "title": "אחריות למדיח"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 178,
+          "date": "23/01",
+          "title": "תיבת נוח"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 55,
+          "date": "23/01",
+          "title": "פיצה רומא"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": "23/01",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": "23/01",
+          "title": "לחמנינה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 90,
+          "date": "23/01",
+          "title": "ביקורופא"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "23/01",
+          "title": "באבל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 161,
+          "date": "30/01",
+          "title": "מים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 400,
+          "date": "30/01",
+          "title": "ארנונה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": "30/01",
+          "title": "רובן"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 375,
+          "date": "30/01",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 88,
+          "date": "26/01",
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "27/01",
+          "title": "דלק"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 430,
+          "date": null,
+          "title": "הוצאות 26-30"
+        }
+      }
+    ],
+    "2020_2": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {
+          "title": "תשלום על מחשב של נוי",
+          "value": 1000
+        },
+        "expenses": {
+          "value": 4000,
+          "date": 43832,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 43832,
+          "title": "ועד בית"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 52,
+          "date": 43863,
+          "title": "ארומה"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 250,
+          "date": 43863,
+          "title": "אמזון"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 415,
+          "date": 43832,
+          "title": "אייפון"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 45,
+          "date": 43892,
+          "title": "באבל"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": 43923,
+          "title": "סלט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 1000,
+          "date": 43923,
+          "title": "מקבוק"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 400,
+          "date": 43953,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 45,
+          "date": 43953,
+          "title": "מקדונלדס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 45,
+          "date": 43953,
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": 43953,
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 44,
+          "date": 43953,
+          "title": "כתר רימון"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 49,
+          "date": 44014,
+          "title": "טמבור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 25,
+          "date": 44015,
+          "title": "שמסי"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 48,
+          "date": 44016,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 47,
+          "date": 44017,
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 120,
+          "date": 44018,
+          "title": "בזק"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 103,
+          "date": 43984,
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 65,
+          "date": 44014,
+          "title": "דברים לשישי במיני מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 110,
+          "date": 44076,
+          "title": "גפניקה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 45,
+          "date": 44076,
+          "title": "מקדונלדס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 333,
+          "date": 44137,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 77,
+          "date": 44137,
+          "title": "דברים לארוחת ערב"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 995,
+          "date": "16/02",
+          "title": "חשמל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 290,
+          "date": "16/02",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 275,
+          "date": "25/02",
+          "title": "עוד דברים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 600,
+          "date": null,
+          "title": "בריתות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {}
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 500,
+          "date": null,
+          "title": "אוכל בעבודה"
+        }
+      }
+    ],
+    "2020_3": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {
+          "title": "כסף מאבא של נוי",
+          "value": 500
+        },
+        "expenses": {
+          "value": 4000,
+          "date": 43832,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 415,
+          "date": 43832,
+          "title": "אייפון"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 1000,
+          "date": 43921,
+          "title": "מקבוק"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 43893,
+          "title": "ועד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 13,
+          "date": 43894,
+          "title": "מינימרקט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 34,
+          "date": 43864,
+          "title": "סלט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 406,
+          "date": 43864,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": 43924,
+          "title": "ניו דלי"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 70,
+          "date": 43954,
+          "title": "ג'פניקה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 30,
+          "date": 43954,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 25,
+          "date": 43985,
+          "title": "שיבולת ארצנו"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 70,
+          "date": 43985,
+          "title": "תחפושת"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 318,
+          "date": 43985,
+          "title": "אוכל לתום וסאם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 60,
+          "date": 43985,
+          "title": "גט טקסי"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 88,
+          "date": 43985,
+          "title": "סרט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 60,
+          "date": 43985,
+          "title": "אוכל בסרט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 109,
+          "date": 43985,
+          "title": "ג׳פניקה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 392,
+          "date": 44015,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 58,
+          "date": 44046,
+          "title": "נאפיס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 30,
+          "date": 44046,
+          "title": "קניות ללזינה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 47,
+          "date": 44077,
+          "title": "פסטה בסטה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 132,
+          "date": 44077,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 62,
+          "date": 44107,
+          "title": "ג'פניקה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 38,
+          "date": 44138,
+          "title": "סלט שניצל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 45,
+          "date": 44168,
+          "title": "מקדונלדס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 25,
+          "date": 44138,
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 114,
+          "date": "14/03",
+          "title": "דומינוס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 210,
+          "date": "14/03",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 119,
+          "date": 44138,
+          "title": "באג"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 303,
+          "date": "13/03",
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 47,
+          "date": "13/03",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 36,
+          "date": "15/03",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 70.6,
+          "date": "15/03",
+          "title": "סופר מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 100,
+          "date": "16/03",
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 96,
+          "date": "17/03",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 15,
+          "date": "17/03",
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 366,
+          "date": "17/03",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 78,
+          "date": "17/03",
+          "title": "ג׳וני קריספי"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 33,
+          "date": "20/03",
+          "title": "שיבולת ארצנו"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 447,
+          "date": "20/03",
+          "title": "מתקן לסאם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 85,
+          "date": "20/03",
+          "title": "סופרמארקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 75,
+          "date": "20/03",
+          "title": "בשר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 73,
+          "date": "20/03",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 22,
+          "date": "18/03",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 72,
+          "date": "21/03",
+          "title": "פינקמרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 153,
+          "date": "22/03",
+          "title": "שופרסל אקספרס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 86,
+          "date": "23/03",
+          "title": "פיצה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 97,
+          "date": "24/03",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 100,
+          "date": "24/03",
+          "title": "סופרמרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 336,
+          "date": "24/03",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 130,
+          "date": "26/03",
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 180,
+          "date": "25/03",
+          "title": "אוכל לתום וסאם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 72,
+          "date": "25/03",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 84,
+          "date": "25/03",
+          "title": "סופרמרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 73,
+          "date": "29/03",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 71,
+          "date": "28/03",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 133,
+          "date": "27/03",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 379,
+          "date": "31/03",
+          "title": "ארנונה"
+        }
+      }
+    ],
+    "2020_4": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {
+          "title": "כסף מאבא של נוי",
+          "value": 500
+        },
+        "expenses": {
+          "value": 4000,
+          "date": 43834,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 415,
+          "date": 43834,
+          "title": "אייפון"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 1000,
+          "date": 43834,
+          "title": "מקבוק"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 43834,
+          "title": "ועד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 84,
+          "date": 43834,
+          "title": "מינימרקט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 51,
+          "date": 43834,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 390,
+          "date": 43865,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 85,
+          "date": 43894,
+          "title": "בשר"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 68,
+          "date": 43955,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 100,
+          "date": 43865,
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 67,
+          "date": 43955,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 67,
+          "date": 43955,
+          "title": "סופרמרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 105,
+          "date": 43925,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 108,
+          "date": 43986,
+          "title": "מקדונלדס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 172,
+          "date": 43986,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 60,
+          "date": 43986,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 65,
+          "date": 44047,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 57,
+          "date": 44047,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 43,
+          "date": 44016,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 60,
+          "date": 44016,
+          "title": "גולדה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 112,
+          "date": 44139,
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 75,
+          "date": "17/04",
+          "title": "בשר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 138,
+          "date": "17/04",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 176,
+          "date": "15/04",
+          "title": "פיצה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 103,
+          "date": "16/04",
+          "title": "קניות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 20,
+          "date": "16/04",
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 65,
+          "date": "16/04",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 272,
+          "date": "24/04",
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 216,
+          "date": "18/04",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 103,
+          "date": "18/04",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 103,
+          "date": "23/04",
+          "title": "ג׳פניקה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 180,
+          "date": "23/04",
+          "title": "טבמור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 222,
+          "date": "23/04",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 96,
+          "date": "21/04",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 340,
+          "date": "25/04",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 215,
+          "date": "25/04",
+          "title": "פינק מרקט"
+        }
+      }
+    ],
+    "2020_5": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {
+          "title": "משקפיים",
+          "value": 2000
+        },
+        "expenses": {
+          "value": 4000,
+          "date": 43835,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 415,
+          "date": 43835,
+          "title": "אייפון"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 1000,
+          "date": 43835,
+          "title": "מקבוק"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 43835,
+          "title": "ועד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 120,
+          "date": 43835,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 26,
+          "date": 43835,
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 47,
+          "date": 43835,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 150,
+          "date": 43835,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 110,
+          "date": 43866,
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 388,
+          "date": 43895,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 250,
+          "date": 43895,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 132,
+          "date": 43956,
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 44017,
+          "title": "פיצה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 31,
+          "date": 44048,
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 58,
+          "date": 44048,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 131,
+          "date": 44048,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 70,
+          "date": 44079,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 36,
+          "date": 44079,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 36,
+          "date": "13/05",
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 23,
+          "date": "13/05",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 75,
+          "date": "13/05",
+          "title": "סופרמרקאט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 135,
+          "date": "14/05",
+          "title": "מקדונלדס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 256,
+          "date": "14/05",
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "15/05",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 36,
+          "date": "15/05",
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 90,
+          "date": "15/05",
+          "title": "סופרמרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 291,
+          "date": "16/04",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": "18/05",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 280,
+          "date": "20/05",
+          "title": "דין מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 118,
+          "date": "21/05",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 146,
+          "date": "21/05",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": "22/05",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 115,
+          "date": "22/05",
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 276,
+          "date": "23/05",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 56,
+          "date": "24/05",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 290,
+          "date": "24/05",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 70,
+          "date": "25/05",
+          "title": "סופרמרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 34,
+          "date": "25/05",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 62,
+          "date": "26/05",
+          "title": "דברים למטבח"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 28,
+          "date": "26/05",
+          "title": "ריבאר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 52,
+          "date": "28/05",
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 235,
+          "date": "28/05",
+          "title": "כיריים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 117,
+          "date": "28/05",
+          "title": "ירקות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 60,
+          "date": "28/05",
+          "title": "שפורפרות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 136,
+          "date": "30/05",
+          "title": "דברים ליום הולדת של סאם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 395,
+          "date": "30/05",
+          "title": "ארנונה"
+        }
+      }
+    ],
+    "2020_6": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 4000,
+          "date": 43835,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 43836,
+          "title": "ועד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 106,
+          "date": 43836,
+          "title": "דומינוס"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 318,
+          "date": 43836,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 110,
+          "date": 43836,
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 46,
+          "date": 43836,
+          "title": "ג׳פניקה"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 208,
+          "date": 43988,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 110,
+          "date": 44049,
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 277,
+          "date": 44080,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 150,
+          "date": 44080,
+          "title": "סירים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 54,
+          "date": 44171,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 78,
+          "date": 44171,
+          "title": "טמבור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 120,
+          "date": 44168,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 390,
+          "date": "13/06",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": 44171,
+          "title": "גולדה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 110,
+          "date": "13/06",
+          "title": "ויולה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 72,
+          "date": "16/06",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 96,
+          "date": "16/06",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 100,
+          "date": "17/06",
+          "title": "דומינוס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 406,
+          "date": "21/06",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 132,
+          "date": "23/06",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 22,
+          "date": "23/06",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 65,
+          "date": "23/06",
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 160,
+          "date": "25/06",
+          "title": "דומינוס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 36,
+          "date": "25/06",
+          "title": "דברים לסרט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 90,
+          "date": "26/06",
+          "title": "לנדוור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 268,
+          "date": "26/06",
+          "title": "תיבת נוח"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 115,
+          "date": "24/06",
+          "title": "סופרפארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "27/06",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 390,
+          "date": "27/06",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 720,
+          "date": 44110,
+          "title": "חשמל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 200,
+          "date": "30/06",
+          "title": "החלפת בטריה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 94,
+          "date": "28/06",
+          "title": "לנדוור"
+        }
+      }
+    ],
+    "2020_7": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 4000,
+          "date": 43837,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 43837,
+          "title": "ועד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 90,
+          "date": 43897,
+          "title": "דומינוס"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 100,
+          "date": "030/07",
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 96,
+          "date": 43897,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": 43897,
+          "title": "אוכל לחיות"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 300,
+          "date": 43958,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 102,
+          "date": 43958,
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 88,
+          "date": 43958,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 40,
+          "date": 43958,
+          "title": "סופר מאמא"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 105,
+          "date": 44050,
+          "title": "ג'פניקה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 66,
+          "date": 44111,
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 32,
+          "date": 44111,
+          "title": "סופר מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 35,
+          "date": 44111,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 160,
+          "date": 44111,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 90,
+          "date": 44111,
+          "title": "עוגיות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 130,
+          "date": "13/07",
+          "title": "המבורגר לנשמה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 333,
+          "date": "13/07",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": "15/07",
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 169,
+          "date": "15/07",
+          "title": "אוכל לחיות"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 106,
+          "date": "18/07",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 105,
+          "date": "18/07",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "18/07",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 30,
+          "date": "18/07",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 313,
+          "date": "20/07",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 47,
+          "date": "21/07",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 114,
+          "date": "23/07",
+          "title": "לנדוור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 18,
+          "date": "21/07",
+          "title": "סןפר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 102,
+          "date": "23/07",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 166,
+          "date": "22/07",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 110,
+          "date": "23/07",
+          "title": "קפטן בורגר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 361,
+          "date": "23/07",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": "28/07",
+          "title": "לוטו"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 395,
+          "date": "28/07",
+          "title": "ארנונה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 82,
+          "date": "29/07",
+          "title": "ג׳פניקה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 103,
+          "date": "31/07",
+          "title": "דומינוס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 268,
+          "date": "31/07",
+          "title": "אוכל לחיות"
+        }
+      }
+    ],
+    "2020_8": [
+      {
+        "limitations": {
+          "total_value": 1600,
+          "value_per_week": 400,
+          "description": "כל שבוע עד 400 שקל סופר",
+          "time_per_month": "כל שבוע עד 400 שקל סופר",
+          "title": "כל שבוע עד 400 שקל סופר"
+        },
+        "income": {
+          "title": "משכורת",
+          "value": 10000
+        },
+        "expenses": {}
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 100,
+          "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+          "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+        },
+        "income": {
+          "title": "מענק",
+          "value": 750
+        },
+        "expenses": {
+          "value": 4000,
+          "date": 43838,
+          "title": "שכד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 750,
+          "value_per_week": 1500,
+          "description": "אחת לחודשיים עד 1500 חשמל",
+          "time_per_month": "אחת לחודשיים עד 1500 חשמל",
+          "title": "אחת לחודשיים עד 1500 חשמל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 80,
+          "date": 43838,
+          "title": "ועד"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 100,
+          "value_per_week": 100,
+          "description": "אחת לחודשיים עד 200 שקל",
+          "time_per_month": "אחת לחודשיים עד 200 שקל",
+          "title": "אחת לחודשיים עד 200 שקל"
+        },
+        "income": {},
+        "expenses": {
+          "value": 398,
+          "date": 43838,
+          "title": "שופרסך"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 500,
+          "value_per_week": 500,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 119,
+          "date": 43929,
+          "title": "לנדוור"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 400,
+          "value_per_week": 400,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 191,
+          "date": 43990,
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 200,
+          "value_per_week": 200,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 120,
+          "date": 43990,
+          "title": "ג׳פניקה"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 1000,
+          "value_per_week": 50,
+          "description": "עד חמישים שקל ליום אוכל בעבודה",
+          "time_per_month": "עד חמישים שקל ליום אוכל בעבודה",
+          "title": "עד חמישים שקל ליום אוכל בעבודה"
+        },
+        "income": {},
+        "expenses": {
+          "value": 60,
+          "date": 44020,
+          "title": "גולדה"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 4000,
+          "value_per_week": 4000,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": 44020,
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {
+          "total_value": 80,
+          "value_per_week": 80,
+          "description": null,
+          "time_per_month": null,
+          "title": null
+        },
+        "income": {},
+        "expenses": {
+          "value": 92,
+          "date": 44020,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 111,
+          "date": 44082,
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 33,
+          "date": 44082,
+          "title": "סופר מארקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 104,
+          "date": 44051,
+          "title": "דומינוס"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 410,
+          "date": 44082,
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 112,
+          "date": 44143,
+          "title": "לנדוור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 86,
+          "date": 44173,
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 950,
+          "date": 44173,
+          "title": "חשמל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 250,
+          "date": 44143,
+          "title": "טיפול אופנוע"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 560,
+          "date": 44143,
+          "title": "חתונה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 35,
+          "date": 44173,
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 15,
+          "date": "13/08",
+          "title": "שמסי"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 17,
+          "date": "13/08",
+          "title": "סופר פארם"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 82,
+          "date": "13/08",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 31,
+          "date": "14/08",
+          "title": "אפונה וגזר"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 30,
+          "date": "13/08",
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 184,
+          "date": "13/08",
+          "title": "אקדמון"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 169,
+          "date": "17/08",
+          "title": "אוכל לחתולים"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 132,
+          "date": "21/08",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 26,
+          "date": "18/08",
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 73,
+          "date": "19/08",
+          "title": "סיצילאנית"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 50,
+          "date": "21/08",
+          "title": "מאפיה"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 395,
+          "date": "22/08",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 90,
+          "date": "24/08",
+          "title": "לנדוור"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 191,
+          "date": "24/08",
+          "title": "שוקיט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 10,
+          "date": "26/08",
+          "title": "שופרסל"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 75,
+          "date": "26/08",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 130,
+          "date": "28/08",
+          "title": "פינק מרקט"
+        }
+      },
+      {
+        "limitations": {},
+        "income": {},
+        "expenses": {
+          "value": 64,
+          "date": "28/08",
+          "title": "סופר פארם"
+        }
+      }
+    ]
+  }
+}
