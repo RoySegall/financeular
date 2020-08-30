@@ -17,7 +17,7 @@ describe('FileParseService', () => {
   it('Should have the same parsed data as the mock one', async () => {
     const results = await service.parseFile(path.join(__dirname, '/example_files/dummy_file.xlsx'));
 
-    expect(results).toStrictEqual(FullJson);
+    expect(results).toEqual(FullJson);
   });
 
   it('Should return the expected values for a given row', () => {
