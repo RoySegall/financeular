@@ -1,7 +1,22 @@
 import {Injectable} from '@nestjs/common';
-import {parsedSheetName} from "./file.interface";
-
+import {parsedSheetName, ParsedSheetRow, Income, Limitation, Expense, ParsedFile} from "./file.interface";
 const readXlsxFile = require('read-excel-file/node');
+
+// Income keys.
+const incomeValueKey = 3;
+const incomeValueName = 4;
+
+// Limitation Keys.
+const limitationTotalValueKey = 5;
+const limitationOneTimeValueKey = 6;
+const limitationDescriptionKey = 8;
+const limitationAllowedTimesKey = 8;
+const limitationTitleKey = 8;
+
+// Expenses keys.
+const expenseValueKey = 11;
+const expenseDateKey = 12;
+const expenseTitleKey = 13;
 
 @Injectable()
 export class FileParseService {
@@ -14,10 +29,10 @@ export class FileParseService {
    * @param sheetName
    *  The sheet name in the file.
    */
-  async parseSheet(filePath: string, sheetName: string): Promise<object[]> {
+  async parseSheet(filePath: string, sheetName: string): Promise<ParsedSheetRow[]> {
     const sheetData = await readXlsxFile(filePath, {sheet: sheetName});
 
-    const sheetsRows = [];
+    const sheetsRows: ParsedSheetRow[] = [];
     let index = 0;
 
     for await (const sheetRow of sheetData) {
@@ -40,38 +55,22 @@ export class FileParseService {
    * @param row
    *  The row to handle.
    */
-  handleRow(row): object {
-    // Income keys.
-    const incomeValueKey = 3;
-    const incomeValueName = 4;
-
-    // Limitation Keys.
-    const limitationTotalValueKey = 5;
-    const limitationOneTimeValueKey = 6;
-    const limitationDescriptionKey = 8;
-    const limitationAllowedTimesKey = 8;
-    const limitationTitleKey = 8;
-
-    // Expenses keys.
-    const expenseValueKey = 11;
-    const expenseDateKey = 12;
-    const expenseTitleKey = 13;
-
-    const baseRow = {
-      limitations: {},
-      income: {},
-      expenses: {}
+  handleRow(row): ParsedSheetRow {
+    const baseRow: ParsedSheetRow = {
+      limitations: undefined,
+      income: undefined,
+      expense: undefined
     };
 
     if (row[incomeValueName]) {
-      baseRow.income = {
+      baseRow.income = <Income>{
         'title': row[incomeValueName],
         'value': row[incomeValueKey]
       };
     }
 
     if (row[limitationTotalValueKey]) {
-      baseRow.limitations = {
+      baseRow.limitations = <Limitation>{
         total_value: row[limitationTotalValueKey],
         value_per_week: row[limitationOneTimeValueKey],
         description: row[limitationDescriptionKey],
@@ -81,7 +80,7 @@ export class FileParseService {
     }
 
     if (row[expenseValueKey]) {
-      baseRow.expenses = {
+      baseRow.expense = <Expense>{
         value: row[expenseValueKey],
         date: row[expenseDateKey],
         title: row[expenseTitleKey],
@@ -136,16 +135,14 @@ export class FileParseService {
    * @param currency
    *  The currency from the excel file.
    */
-  async parseFile(path: string, template = 'with_limitation', currency = 'nis'): Promise<object> {
+  async parseFile(path: string, template = 'with_limitation', currency = 'nis'): Promise<ParsedFile> {
     // Set the default value.
     const defaultReturn = {currency, template, months: {}}
-
     const sheetsNames = await readXlsxFile(path, {getSheets: true});
 
     for await (const sheetName of sheetsNames) {
-      const results = await this.parseSheet(path, sheetName['name']);
       const {month, year} = this.getDateDataFromSheetName(sheetName['name']);
-      defaultReturn.months[`${year}_${month}`] = results;
+      defaultReturn.months[`${year}_${month}`] = await this.parseSheet(path, sheetName['name']);
     }
 
     return defaultReturn;

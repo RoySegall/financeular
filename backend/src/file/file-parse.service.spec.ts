@@ -36,7 +36,7 @@ describe('FileParseService', () => {
             "title": "משכורת",
             "value": 10000
           },
-          "expenses": {}
+          "expense": undefined,
         }
       },
       {
@@ -53,7 +53,7 @@ describe('FileParseService', () => {
             "title": "עזרה מאמא",
             "value": 1200
           },
-          "expenses": {
+          "expense": {
             "value": -1255.06,
             "date": 43477,
             "title": "כסף מפייפל",

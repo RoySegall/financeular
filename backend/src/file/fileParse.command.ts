@@ -13,6 +13,8 @@ export class parseFileCommand {
     })
     async create(
     ) {
-        await this.fileParse.parseFile("/Applications/MAMP/htdocs/financeular/backend/src/file/example_files/dummy_file.xlsx");
+        const results = await this.fileParse.parseFile("/Applications/MAMP/htdocs/financeular/backend/src/file/example_files/dummy_file.xlsx");
+
+        console.log(JSON.stringify(results));
     }
 }
