@@ -19,11 +19,14 @@ export class FileParseService {
 
     const sheetsRows = [];
     let index = 0;
+
     for await (const sheetRow of sheetData) {
+
       if (index < 2) {
         index++;
         continue;
       }
+
       sheetsRows.push(this.handleRow(sheetRow));
       index++;
     }

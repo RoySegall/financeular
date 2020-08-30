@@ -21,8 +21,51 @@ describe('FileParseService', () => {
   });
 
   it('Should return the expected values for a given row', () => {
-    // service.handleRow({});
-    expect(true).toBe(true);
+    const rows = [
+      {
+        input: ["כמה ציפינו להוציא", 9030, "צפי הוצאות", 10000, "משכורת", 1600, 400, 2.5, "כל שבוע עד 400 שקל סופר", 4, "סופר", null, null, null],
+        results: {
+          "limitations": {
+            "total_value": 1600,
+            "value_per_week": 400,
+            "description": "כל שבוע עד 400 שקל סופר",
+            "time_per_month": "כל שבוע עד 400 שקל סופר",
+            "title": "כל שבוע עד 400 שקל סופר"
+          },
+          "income": {
+            "title": "משכורת",
+            "value": 10000
+          },
+          "expenses": {}
+        }
+      },
+      {
+        input: ["כמה ציפינו שישאר", 3170, "צפי שארית", 1200, "עזרה מאמא", 400, 100, 3.5, "כל שבוע מזמינים בחוץ עד 100 שקל", 4, "מזמינים אוכל", -1255.06, 43477, "כסף מפייפל"],
+        results: {
+          "limitations": {
+            "total_value": 400,
+            "value_per_week": 100,
+            "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
+            "time_per_month": "כל שבוע מזמינים בחוץ עד 100 שקל",
+            "title": "כל שבוע מזמינים בחוץ עד 100 שקל"
+          },
+          "income": {
+            "title": "עזרה מאמא",
+            "value": 1200
+          },
+          "expenses": {
+            "value": -1255.06,
+            "date": 43477,
+            "title": "כסף מפייפל",
+          }
+        },
+      },
+    ];
+
+    rows.map(({input, results}) => {
+      expect(service.handleRow(input)).toStrictEqual(results);
+    });
+
   })
 
   it('Should return the proper month name and year from a sheet title', () => {
