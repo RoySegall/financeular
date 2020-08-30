@@ -57,7 +57,7 @@ export class FileParseService {
    */
   handleRow(row): ParsedSheetRow {
     const baseRow: ParsedSheetRow = {
-      limitations: undefined,
+      limitation: undefined,
       income: undefined,
       expense: undefined
     };
@@ -70,7 +70,7 @@ export class FileParseService {
     }
 
     if (row[limitationTotalValueKey]) {
-      baseRow.limitations = <Limitation>{
+      baseRow.limitation = <Limitation>{
         total_value: row[limitationTotalValueKey],
         value_per_week: row[limitationOneTimeValueKey],
         description: row[limitationDescriptionKey],

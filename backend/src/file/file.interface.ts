@@ -27,7 +27,7 @@ export interface Expense {
 }
 
 export interface ParsedSheetRow {
-    limitations: Limitation;
+    limitation: Limitation;
     income: Income;
     expense: Expense;
 }

@@ -4,7 +4,7 @@
   "months": {
     "2019_12": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -17,7 +17,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -35,7 +35,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -53,7 +53,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -71,7 +71,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -85,7 +85,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -99,7 +99,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -113,7 +113,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -127,7 +127,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -141,7 +141,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
@@ -514,7 +514,7 @@
     ],
     "2020_1": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -527,7 +527,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -545,7 +545,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -563,7 +563,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -577,7 +577,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -591,7 +591,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -605,7 +605,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -619,7 +619,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -633,7 +633,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -647,7 +647,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
@@ -978,7 +978,7 @@
     ],
     "2020_2": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -991,7 +991,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -1009,7 +1009,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -1023,7 +1023,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -1037,7 +1037,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -1051,7 +1051,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -1065,7 +1065,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -1079,7 +1079,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -1093,7 +1093,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -1107,7 +1107,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
@@ -1264,7 +1264,7 @@
     ],
     "2020_3": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -1277,7 +1277,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -1295,7 +1295,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -1309,7 +1309,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -1323,7 +1323,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -1337,7 +1337,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -1351,7 +1351,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -1365,7 +1365,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -1379,7 +1379,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -1393,7 +1393,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
@@ -1752,7 +1752,7 @@
     ],
     "2020_4": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -1765,7 +1765,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -1783,7 +1783,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -1797,7 +1797,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -1811,7 +1811,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -1825,7 +1825,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -1839,7 +1839,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -1853,7 +1853,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -1867,7 +1867,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -1881,7 +1881,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
@@ -2086,7 +2086,7 @@
     ],
     "2020_5": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -2099,7 +2099,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -2117,7 +2117,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -2131,7 +2131,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -2145,7 +2145,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -2159,7 +2159,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -2173,7 +2173,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -2187,7 +2187,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -2201,7 +2201,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -2215,7 +2215,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
@@ -2490,7 +2490,7 @@
     ],
     "2020_6": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -2503,7 +2503,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -2517,7 +2517,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -2531,7 +2531,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -2545,7 +2545,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -2559,7 +2559,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -2573,7 +2573,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -2587,7 +2587,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -2601,7 +2601,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -2615,7 +2615,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
@@ -2799,7 +2799,7 @@
     ],
     "2020_7": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -2812,7 +2812,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -2826,7 +2826,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -2840,7 +2840,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -2854,7 +2854,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -2868,7 +2868,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -2882,7 +2882,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -2896,7 +2896,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -2910,7 +2910,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -2924,7 +2924,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
@@ -3136,7 +3136,7 @@
     ],
     "2020_8": [
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1600,
           "value_per_week": 400,
           "description": "כל שבוע עד 400 שקל סופר",
@@ -3149,7 +3149,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 100,
           "description": "כל שבוע מזמינים בחוץ עד 100 שקל",
@@ -3167,7 +3167,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 750,
           "value_per_week": 1500,
           "description": "אחת לחודשיים עד 1500 חשמל",
@@ -3181,7 +3181,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 100,
           "value_per_week": 100,
           "description": "אחת לחודשיים עד 200 שקל",
@@ -3195,7 +3195,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 500,
           "value_per_week": 500,
           "description": null,
@@ -3209,7 +3209,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 400,
           "value_per_week": 400,
           "description": null,
@@ -3223,7 +3223,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 200,
           "value_per_week": 200,
           "description": null,
@@ -3237,7 +3237,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 1000,
           "value_per_week": 50,
           "description": "עד חמישים שקל ליום אוכל בעבודה",
@@ -3251,7 +3251,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 4000,
           "value_per_week": 4000,
           "description": null,
@@ -3265,7 +3265,7 @@
         }
       },
       {
-        "limitations": {
+        "limitation": {
           "total_value": 80,
           "value_per_week": 80,
           "description": null,
