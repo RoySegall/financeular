@@ -5,16 +5,19 @@ import { CommandModule } from 'nestjs-command';
 import { FileModule } from './file/file.module';
 import { UserModule } from './user/user.module';
 import { CategoryModule } from './category/category.module';
-import { FileRowModule } from './file-row/file-row.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import {RowModule} from "./row/row.module";
 
 @Module({
+  controllers: [AppController],
+  providers: [AppService],
   imports: [
     FileModule,
     CommandModule,
     UserModule,
     CategoryModule,
-    FileRowModule, TypeOrmModule.forRoot({
+    RowModule,
+    TypeOrmModule.forRoot({
         "type": "mysql",
         "host": "localhost",
         "port": 3306,
@@ -26,7 +29,5 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }
     )
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

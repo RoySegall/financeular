@@ -1,5 +1,6 @@
-import {Entity, Column, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany} from 'typeorm';
 import {File} from "../file/file.entity";
+import {Row} from "../row/row.entity";
 
 export enum Period {
   MONTH = "month",
@@ -32,4 +33,7 @@ export class Category {
 
   @ManyToOne(type => File, file => file.categories)
   file: File;
+
+  @OneToMany(type => Row, row => row.file)
+  rows: Row[];
 }
