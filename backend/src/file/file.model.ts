@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import {UserModel} from "../user/user.model";
+import {CategoryModel} from "../category/category.model";
 
 @ObjectType()
 export class FileModel {
@@ -18,4 +19,7 @@ export class FileModel {
 
   @Field(type => UserModel)
   user?: UserModel;
+
+  @Field(type => [CategoryModel])
+  categories?: [CategoryModel];
 }

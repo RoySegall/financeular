@@ -9,12 +9,23 @@ type UserModel {
   files: [FileModel!]!
 }
 
+type CategoryModel {
+  id: Int!
+  title: String!
+  amount: Int!
+  year: Int!
+  month: Int!
+  period: String!
+  file: FileModel!
+}
+
 type FileModel {
   id: Int!
   name: String!
   path: String!
   createDate: DateTime!
   user: UserModel!
+  categories: [CategoryModel!]!
 }
 
 """
@@ -25,4 +36,5 @@ scalar DateTime
 type Query {
   files: [FileModel!]!
   users: [UserModel!]!
+  categories: [CategoryModel!]!
 }
