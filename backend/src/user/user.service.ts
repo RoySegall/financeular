@@ -12,6 +12,7 @@ export class UserService {
   ) {}
 
   async getAll(): Promise<User[]> {
-    return this.userRepository.find();
+    const foo = await this.userRepository.find({relations: ['files']});
+    return this.userRepository.find({relations: ['files']});
   }
 }

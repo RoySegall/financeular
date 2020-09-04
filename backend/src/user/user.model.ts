@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import {FileModel} from "../file/file.model";
 
 @ObjectType()
 export class UserModel {
@@ -10,4 +11,7 @@ export class UserModel {
 
   @Field({ nullable: true })
   email?: string;
+
+  @Field(type => [FileModel])
+  files?: [FileModel];
 }
