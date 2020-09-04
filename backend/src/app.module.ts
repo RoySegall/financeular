@@ -20,15 +20,15 @@ import {join} from "path";
     CategoryModule,
     RowModule,
     TypeOrmModule.forRoot({
-        "type": "mysql",
-        "host": "localhost",
-        "port": 3306,
-        "username": "root",
-        "password": "root",
-        "database": "fincaular",
-        "autoLoadEntities": true,
-        "synchronize": true
-      }),
+      "type": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "username": "root",
+      "password": "root",
+      "database": "fincaular",
+      "autoLoadEntities": true,
+      "synchronize": true
+    }),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
