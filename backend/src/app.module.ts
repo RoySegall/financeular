@@ -7,6 +7,8 @@ import { UserModule } from './user/user.module';
 import { CategoryModule } from './category/category.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {RowModule} from "./row/row.module";
+import { GraphQLModule } from '@nestjs/graphql';
+import {join} from "path";
 
 @Module({
   controllers: [AppController],
@@ -26,8 +28,10 @@ import {RowModule} from "./row/row.module";
         "database": "fincaular",
         "autoLoadEntities": true,
         "synchronize": true
-      }
-    )
+      }),
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
   ],
 })
 export class AppModule {}
