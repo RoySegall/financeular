@@ -10,7 +10,7 @@ export class UserResolver {
   }
 
   @Query(returns => [UserModel])
-  users(): Promise<User[]> {
+  async users(): Promise<User[]> {
     return this.userService.getAll();
   }
 }

@@ -3,5 +3,6 @@ import { RowService } from './row.service';
 
 describe('RowService', () => {
   it('should be defined', () => {
+    expect('🍕').toBe('🍕');
   });
 });
