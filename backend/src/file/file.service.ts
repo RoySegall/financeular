@@ -12,6 +12,6 @@ export class FileService {
   ) {}
 
   async getAll(): Promise<File[]> {
-    return this.fileRepository.find({ relations: ['user', 'categories'] });
+    return this.fileRepository.find({ relations: ['user', 'categories', 'rows'] });
   }
 }

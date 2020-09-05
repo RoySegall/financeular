@@ -12,7 +12,7 @@ export class CategoryService {
   ) {}
 
   async getAll(): Promise<Category[]> {
-    return this.categoryRepository.find({relations: ['file']})
+    return this.categoryRepository.find({relations: ['file', 'rows']})
   }
 
 }

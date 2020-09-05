@@ -2,6 +2,7 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
 import {FileModel} from "../file/file.model";
 import {Column} from "typeorm";
 import {Period} from "./category.entity";
+import {RowModel} from "../row/row.model";
 
 @ObjectType()
 export class CategoryModel {
@@ -26,4 +27,7 @@ export class CategoryModel {
 
   @Field(type => FileModel)
   file?: FileModel;
+
+  @Field(type => [RowModel])
+  rows?: [RowModel];
 }
