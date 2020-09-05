@@ -9,6 +9,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import {RowModule} from "./row/row.module";
 import { GraphQLModule } from '@nestjs/graphql';
 import {join} from "path";
+import {ConfigModule} from "@nestjs/config";
+
+const DB_PORT = parseInt(process.env.DATABASE_PORT);
 
 @Module({
   controllers: [AppController],
@@ -19,13 +22,14 @@ import {join} from "path";
     UserModule,
     CategoryModule,
     RowModule,
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       "type": "mysql",
-      "host": "localhost",
-      "port": 3306,
-      "username": "root",
-      "password": "root",
-      "database": "fincaular",
+      "host": process.env.DATABASE_HOST,
+      "port": DB_PORT,
+      "username": process.env.DATABASE_USER,
+      "password": process.env.DATABASE_PASS,
+      "database": process.env.DATABASE_NAME,
       "autoLoadEntities": true,
       "synchronize": true
     }),
