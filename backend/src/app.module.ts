@@ -10,6 +10,7 @@ import {RowModule} from "./row/row.module";
 import { GraphQLModule } from '@nestjs/graphql';
 import {join} from "path";
 import {ConfigModule} from "@nestjs/config";
+import { AuthModule } from './auth/auth.module';
 
 const DB_PORT = parseInt(process.env.DATABASE_PORT);
 
@@ -36,6 +37,7 @@ const DB_PORT = parseInt(process.env.DATABASE_PORT);
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
+    AuthModule,
   ],
 })
 export class AppModule {}

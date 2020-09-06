@@ -14,4 +14,10 @@ export class UserService {
   async getAll(): Promise<User[]> {
     return this.userRepository.find({relations: ['files']});
   }
+
+  async getByUsername(username: string): Promise<User | undefined> {
+    const results = await this.userRepository.find({where: {username}});
+
+    return results[0];
+  }
 }
