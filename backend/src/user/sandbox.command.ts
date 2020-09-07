@@ -13,6 +13,8 @@ export class SandboxCommand {
   })
   async create(
   ) {
+    // todo: add create a token
+    // todo: change the name.
     console.log(await this.userService.getByUsername('asdasdasdasdasd'));
   }
 }

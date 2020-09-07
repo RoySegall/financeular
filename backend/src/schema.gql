@@ -48,4 +48,5 @@ type Query {
   users: [UserModel!]!
   categories: [CategoryModel!]!
   rows: [RowModel!]!
+  whoAmI: UserModel!
 }

@@ -4,6 +4,7 @@ import {GqlAuthGuard} from "./gql.auth";
 import {CurrentUser} from "./current-user.decorator";
 import {UserService} from "../user/user.service";
 import {User} from "../user/user.entity";
+import {UserModel} from "../user/user.model";
 
 @Resolver()
 export class authResolver {
@@ -11,9 +12,9 @@ export class authResolver {
   constructor(private readonly userService: UserService) {
   }
 
-  @Query(returns => User)
+  @Query(returns => UserModel)
   @UseGuards(GqlAuthGuard)
-  whoAmI(@CurrentUser() user: User) {
-    return this.userService.findById(user.id);
+  async whoAmI(@CurrentUser() user: User) {
+    return await this.userService.findById(user.id);
   }
 }
