@@ -11,6 +11,7 @@ import {jwtConstants} from './constants';
 import {JwtStrategy} from "./jwt.strategy";
 import {ConfigModule} from "@nestjs/config";
 import {authResolver} from "./auth.resolver";
+import {AuthCommand} from "./auth.command";
 
 @Module({
   imports: [
@@ -19,12 +20,13 @@ import {authResolver} from "./auth.resolver";
     PassportModule,
     TypeOrmModule.forFeature([User]),
     PassportModule,
+
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: {expiresIn: '60s'},
     }),
   ],
-  providers: [UserService, AuthService, LocalStrategy, JwtStrategy, authResolver]
+  providers: [UserService, AuthService, LocalStrategy, JwtStrategy, authResolver, AuthCommand]
 })
 export class AuthModule {
 }

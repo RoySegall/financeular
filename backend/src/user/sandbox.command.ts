@@ -1,20 +1,19 @@
 import {Injectable} from "@nestjs/common";
 import {Command} from "nestjs-command";
 import {UserService} from "./user.service";
+import {AuthService} from "../auth/auth.service";
 
 @Injectable()
 export class SandboxCommand {
   constructor(private userService: UserService) {}
 
   @Command({
-    command: 'sandbox',
-    describe: 'sandbox',
+    command: 'get_user_by_name',
+    describe: 'Get the user by name',
     autoExit: true
   })
-  async create(
+  async dummy_stuff(
   ) {
-    // todo: add create a token
-    // todo: change the name.
     console.log(await this.userService.getByUsername('asdasdasdasdasd'));
   }
 }
