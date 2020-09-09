@@ -9,12 +9,11 @@ import {UserModel} from "../user/user.model";
 @Resolver()
 export class authResolver {
 
-  constructor(private readonly userService: UserService) {
-  }
+  constructor(private readonly userService: UserService) {}
 
   @Query(returns => UserModel)
   @UseGuards(GqlAuthGuard)
-  async whoAmI(@CurrentUser() user: User) {
+  async whoAmI(@CurrentUser() user: User): Promise<User> {
     return await this.userService.findById(user.id);
   }
 }

@@ -15,6 +15,7 @@ export class AuthCommand {
   async create_at(
   ) {
     const user = await this.userService.getByUsername('roy');
+    console.log(user);
     const results = await this.authService.login(user);
 
     console.log(results);
