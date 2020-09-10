@@ -4,7 +4,7 @@ import {UserService} from "./user.service";
 import {AuthService} from "../auth/auth.service";
 
 @Injectable()
-export class SandboxCommand {
+export class UserCommand {
   constructor(private userService: UserService) {}
 
   @Command({

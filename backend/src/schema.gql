@@ -50,3 +50,7 @@ type Query {
   rows: [RowModel!]!
   whoAmI: UserModel!
 }
+
+type Mutation {
+  login(password: String!, username: String!): String!
+}

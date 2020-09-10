@@ -9,7 +9,7 @@ export class AuthCommand {
 
   @Command({
     command: 'create_at',
-    describe: 'Create an access toekn for a user',
+    describe: 'Create an access token for a user',
     autoExit: true
   })
   async create_at(
@@ -17,6 +17,17 @@ export class AuthCommand {
     const user = await this.userService.getByUsername('roy');
     console.log(user);
     const results = await this.authService.login(user);
+
+    console.log(results);
+  }
+
+  @Command({
+    command: 'create_user',
+    describe: 'Creating a user',
+    autoExit: true
+  })
+  async create_user() {
+    const results = await this.userService.createUser('sam', '1234');
 
     console.log(results);
   }
