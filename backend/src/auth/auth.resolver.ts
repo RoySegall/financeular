@@ -7,6 +7,7 @@ import {User} from "../user/user.entity";
 import {UserModel} from "../user/user.model";
 import {AuthService} from "./auth.service";
 import {ExceptionHandler} from "@nestjs/core/errors/exception-handler";
+import {LoginModel} from "./auth.model";
 
 @Resolver()
 export class authResolver {
@@ -19,7 +20,8 @@ export class authResolver {
     return await this.userService.findById(user.id);
   }
 
-  @Mutation(returns => String)
+  // todo: create resolver for refresh token.
+  @Mutation(returns => LoginModel)
   async login(
     @Args({ name: 'username', type: () => String }) username: string,
     @Args({ name: 'password', type: () => String }) password: string
@@ -30,7 +32,7 @@ export class authResolver {
     if (user) {
       const results = await this.authService.login(user);
 
-      return results.access_token;
+      return results;
     }
 
     throw new Error('Username or password are wrong. Please check again');

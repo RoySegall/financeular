@@ -43,6 +43,12 @@ type FileModel {
   rows: [RowModel!]!
 }
 
+type LoginModel {
+  access_token: String!
+  expires: Int!
+  refresh_token: String!
+}
+
 type Query {
   files: [FileModel!]!
   users: [UserModel!]!
@@ -52,5 +58,5 @@ type Query {
 }
 
 type Mutation {
-  login(password: String!, username: String!): String!
+  login(password: String!, username: String!): LoginModel!
 }
