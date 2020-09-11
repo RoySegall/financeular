@@ -6,13 +6,17 @@ import {UserService} from "../user/user.service";
 import {User} from "../user/user.entity";
 import {UserModel} from "../user/user.model";
 import {AuthService} from "./auth.service";
-import {ExceptionHandler} from "@nestjs/core/errors/exception-handler";
 import {LoginModel} from "./auth.model";
+import {JwtService} from "@nestjs/jwt";
 
 @Resolver()
 export class authResolver {
 
-  constructor(private readonly userService: UserService, private readonly authService: AuthService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly authService: AuthService,
+    private readonly jwtService: JwtService
+  ) {}
 
   @Query(returns => UserModel)
   @UseGuards(GqlAuthGuard)
@@ -20,13 +24,11 @@ export class authResolver {
     return await this.userService.findById(user.id);
   }
 
-  // todo: create resolver for refresh token.
   @Mutation(returns => LoginModel)
   async login(
     @Args({ name: 'username', type: () => String }) username: string,
     @Args({ name: 'password', type: () => String }) password: string
   ) {
-
     const user = await this.userService.getByUsernameAndPassword(username, password);
 
     if (user) {
@@ -36,5 +38,25 @@ export class authResolver {
     }
 
     throw new Error('Username or password are wrong. Please check again');
+  }
+
+  @Mutation(returns => LoginModel)
+  async refreshToken(@Args({ name: 'refresh_token', type: () => String }) refresh_token: string) {
+    const decoded = this.jwtService.decode(refresh_token);
+
+    if (decoded['token_type'] !== 'refresh_token') {
+      // Not a refresh token.
+      throw new Error('This is not a refresh token');
+    }
+
+    const date = new Date();
+    if ((decoded['created'] - date.getTime()) >= 86400 * 365) {
+      // The time for refreshing the token has expired. Login in again.
+      throw new Error('This refresh token has expired,');
+    }
+
+    const user = await this.userService.findById(decoded['user_id']);
+    const results = await this.authService.login(user);
+    return results;
   }
 }
