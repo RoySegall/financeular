@@ -10,8 +10,7 @@ import {RowModule} from "./row/row.module";
 import { GraphQLModule } from '@nestjs/graphql';
 import {join} from "path";
 import {ConfigModule} from "@nestjs/config";
-
-const DB_PORT = parseInt(process.env.DATABASE_PORT);
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   controllers: [AppController],
@@ -22,11 +21,12 @@ const DB_PORT = parseInt(process.env.DATABASE_PORT);
     UserModule,
     CategoryModule,
     RowModule,
-    ConfigModule.forRoot(),
+    AuthModule,
+    ConfigModule.forRoot({isGlobal: true}),
     TypeOrmModule.forRoot({
       "type": "mysql",
       "host": process.env.DATABASE_HOST,
-      "port": DB_PORT,
+      "port": parseInt(process.env.DATABASE_PORT),
       "username": process.env.DATABASE_USER,
       "password": process.env.DATABASE_PASS,
       "database": process.env.DATABASE_NAME,
@@ -35,6 +35,7 @@ const DB_PORT = parseInt(process.env.DATABASE_PORT);
     }),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      context: ({ req }) => ({ req }),
     }),
   ],
 })
