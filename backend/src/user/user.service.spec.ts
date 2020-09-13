@@ -5,6 +5,7 @@ describe('Testing the user service', () => {
   let userService;
   let UserRepoMock;
   let findMock;
+
   beforeEach(() => {
     findMock = jest.fn();
 
@@ -41,4 +42,18 @@ describe('Testing the user service', () => {
 
     expect(await userService.getByUsername('steve')).toStrictEqual({id: 42});
   });
+
+  // it('Testing the getByUsernameAndPassword function', async() => {
+  //   findMock.mockImplementation((args) => {
+  //     return [{id: 42}];
+  //   });
+  //
+  //   const notFoundUsers = await userService.getByUsernameAndPassword('steve', 'wrong');
+  //
+  //   // expect(notFoundUsers).toBe(undefined);
+  // });
+  //
+  // it('Testing the createUser function', () => {
+  //   expect('🍕').toBe('🍕');
+  // });
 });
