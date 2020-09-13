@@ -2,17 +2,17 @@ import { FileService } from './file.service';
 
 describe('Testing the file service', () => {
   let fileService: FileService;
-  let RowRepoMock;
+  let fileRepoMock;
   let findMock;
 
   beforeEach(() => {
     findMock = jest.fn();
 
-    RowRepoMock = new (jest.fn(() => ({
+    fileRepoMock = new (jest.fn(() => ({
       find: findMock,
     })))();
 
-    fileService = new FileService(RowRepoMock);
+    fileService = new FileService(fileRepoMock);
   });
 
   it('Testing the getAll method', async () => {
