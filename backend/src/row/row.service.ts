@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import {File} from "../file/file.entity";
 import {Repository} from "typeorm";
 import {Row} from "./row.entity";
 
