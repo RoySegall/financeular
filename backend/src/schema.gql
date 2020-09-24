@@ -58,6 +58,10 @@ type Query {
 }
 
 type Mutation {
+  uploadFile(file: Upload!): Boolean!
   login(password: String!, username: String!): LoginModel!
   refreshToken(refresh_token: String!): LoginModel!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
