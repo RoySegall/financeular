@@ -27,3 +27,15 @@ export class FileModel {
   @Field(type => [RowModel])
   rows?: [RowModel];
 }
+
+@ObjectType()
+export class UploadFileModel {
+  @Field(type => String)
+  status: string;
+
+  @Field(type => String)
+  message: string;
+
+  @Field(type => String)
+  fileId?: string;
+}

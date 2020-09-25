@@ -43,6 +43,12 @@ type FileModel {
   rows: [RowModel!]!
 }
 
+type UploadFileModel {
+  status: String!
+  message: String!
+  fileId: String!
+}
+
 type LoginModel {
   access_token: String!
   expires: Int!
@@ -58,7 +64,7 @@ type Query {
 }
 
 type Mutation {
-  uploadFile(file: Upload!): Boolean!
+  uploadFile(file: Upload!): UploadFileModel!
   login(password: String!, username: String!): LoginModel!
   refreshToken(refresh_token: String!): LoginModel!
 }
