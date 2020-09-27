@@ -1,5 +1,5 @@
 import React from "react";
-import "./logo.css";
+import "./logo.scss";
 import {MoneyBill} from "../Icons/Icons";
 
 export default () => <div className="logo block">

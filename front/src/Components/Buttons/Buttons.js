@@ -1,5 +1,5 @@
 import React from "react";
-import "./button.css";
+import "./button.scss";
 import {DownloadCloud, UploadCloud} from "../Icons/Icons";
 
 export const Upload = () => <button className="button upload shadow-md">
