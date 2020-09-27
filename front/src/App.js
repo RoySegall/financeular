@@ -5,7 +5,7 @@ import General from "./Layout/General";
 import Login from "./Pages/Login";
 import Results from "./Pages/Results";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-
+import "./app.scss"
 function App() {
     return <div className="App">
         <Router>
