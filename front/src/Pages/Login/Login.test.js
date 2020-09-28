@@ -47,7 +47,7 @@ describe('Login component', () => {
     await new Promise((r) => setTimeout(r, 1000));
 
     wrapper.update();
-    expect(wrapper.find('.error').html()).toContain('Password is required');
+    expect(wrapper.find('.error').html()).toContain('Password isss required');
 
     // Setting the password.
     const password = wrapper.find('#password');

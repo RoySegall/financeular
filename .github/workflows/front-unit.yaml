@@ -1,4 +1,4 @@
-name: Backend Unit test
+name: Front Unit test
 on: [push]
 jobs:
   build:
