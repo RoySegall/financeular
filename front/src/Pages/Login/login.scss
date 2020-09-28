@@ -14,11 +14,10 @@
         padding-left: .75em;
         height: 60%;
         border-radius: 5px 5px 0 0;
-    }
 
-    .invalid-input {
-        border-radius: 5px;
-        border: #fc8181 solid 1px;
+        &.invalid-input {
+            border-radius: 5px;
+            border: #fc8181 solid 1px;
+        }
     }
-
 }

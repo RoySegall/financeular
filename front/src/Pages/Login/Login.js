@@ -18,14 +18,44 @@ mutation($username: String!, $password: String!) {
 }
 `;
 
-const loginSchema = Yup.object().shape({
-  username: Yup.string().required('Username is required'),
-  password: Yup.string().required('The password is required'),
-});
-
 export default () => {
   const [login, { data }] = useMutation(LOGIN);
   const [submitStatus, setSubmitStatus] = useState({status: null, message: null});
+
+  const initialValues = {
+    username: '',
+    password: ''
+  };
+
+  const loginSchema = Yup.object().shape({
+    username: Yup.string().required('Username is required'),
+    password: Yup.string().required('The password is required'),
+  });
+
+  const onSubmit = async (values) => {
+    setSubmitStatus({});
+    try {
+      const results = await login({
+        variables: {
+          username: values.username,
+          password: values.password
+        }
+      });
+
+      const {access_token, expires, refresh_token} = results.data.login;
+
+      console.log(access_token, expires, refresh_token);
+      setSubmitStatus({
+        status: 'passed',
+        message: 'You are logged in successfully',
+      })
+    } catch (e) {
+      setSubmitStatus({
+        status: 'failed',
+        message: e.graphQLErrors[0].message
+      })
+    }
+  };
 
   return <div className="login-screen">
 
@@ -33,14 +63,9 @@ export default () => {
       <PageTitle>Login</PageTitle>
 
       <Formik
-        initialValues={
-          {username: '', password: ''}
-        }
+        initialValues={initialValues}
         validationSchema={loginSchema}
-        onSubmit={async (values) => {
-          const results = await login({ variables: { username: values.username, password: values.password } });
-          setSubmitStatus({status: 'error', message: 'Login went OK'});
-        }}
+        onSubmit={onSubmit}
         validateOnChange={false}
         validateOnBlur={false}
       >
@@ -61,7 +86,7 @@ export default () => {
             </Error>}
 
             {submitStatus.status === 'passed' && <Success message={submitStatus.message}/>}
-            {submitStatus.status === 'error' && <Error message={submitStatus.message}/>}
+            {submitStatus.status === 'failed' && <Error message={submitStatus.message}/>}
 
             <div className="grid grid-cols-6">
               <label className="block col-span-3 pb-12 text-2xl pr-10">Username</label>
@@ -90,8 +115,6 @@ export default () => {
                 />
               </div>
             </div>
-
-            foo: {isSubmitting ? 'a' : 'b'}
 
             <div className="">
               <button type="submit" className="button submit shadow" disabled={isSubmitting}>
