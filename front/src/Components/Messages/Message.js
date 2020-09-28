@@ -1,7 +1,8 @@
 import React from "react";
 import {ErrorMark, InfoMark, Ok, WarningMark} from "../Icons/Icons";
 
-export const BaseMessage = ({color, icon, message, children}) => <div className={`
+export const BaseMessage = ({type, color, icon, message, children}) => <div className={`
+    ${type}
     pb-2 pt-2
     mb-10
     border
@@ -18,9 +19,9 @@ export const BaseMessage = ({color, icon, message, children}) => <div className=
     </div>
 </div>
 
-export const Error = ({message, children}) => <BaseMessage color="red" icon={<ErrorMark />} message={message}>{children}</BaseMessage>
-export const Notice = ({message, children}) => <BaseMessage color="yellow" icon={<WarningMark />} message={message}>{children}</BaseMessage>
-export const Info = ({message, children}) => <BaseMessage color="blue" icon={<InfoMark />} message={message}>{children}</BaseMessage>
-export const Success = ({message, children}) => <BaseMessage color="green" icon={<Ok />} message={message}>{children}</BaseMessage>
+export const Error = ({message, children}) => <BaseMessage type="error" color="red" icon={<ErrorMark />} message={message}>{children}</BaseMessage>
+export const Notice = ({message, children}) => <BaseMessage type="notice" color="yellow" icon={<WarningMark />} message={message}>{children}</BaseMessage>
+export const Info = ({message, children}) => <BaseMessage type="info" color="blue" icon={<InfoMark />} message={message}>{children}</BaseMessage>
+export const Success = ({message, children}) => <BaseMessage type="success" color="green" icon={<Ok />} message={message}>{children}</BaseMessage>
 
 

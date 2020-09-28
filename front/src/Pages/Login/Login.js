@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import {Error, Success} from "../../Components/Messages/Message";
 import {gql, useMutation} from '@apollo/client';
 
-const LOGIN = gql`
+export const LOGINQUERY = gql`
 mutation($username: String!, $password: String!) {
   login(username: $username, password: $password) {
     access_token
@@ -19,7 +19,7 @@ mutation($username: String!, $password: String!) {
 `;
 
 export default () => {
-  const [login, { data }] = useMutation(LOGIN);
+  const [mutateLogin, { data }] = useMutation(LOGINQUERY);
   const [submitStatus, setSubmitStatus] = useState({status: null, message: null});
 
   const initialValues = {
@@ -29,13 +29,13 @@ export default () => {
 
   const loginSchema = Yup.object().shape({
     username: Yup.string().required('Username is required'),
-    password: Yup.string().required('The password is required'),
+    password: Yup.string().required('Password is required'),
   });
 
   const onSubmit = async (values) => {
     setSubmitStatus({});
     try {
-      const results = await login({
+      const results = await mutateLogin({
         variables: {
           username: values.username,
           password: values.password
