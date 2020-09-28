@@ -43,6 +43,9 @@ export default () => {
       });
 
       const {access_token, expires, refresh_token} = results.data.login;
+      const date = new Date();
+      localStorage.setItem('accessToken', access_token);
+      localStorage.setItem('expires', Math.round(date.getTime()/1000) + expires);
 
       console.log(access_token, expires, refresh_token);
       setSubmitStatus({
