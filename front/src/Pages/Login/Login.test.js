@@ -4,11 +4,8 @@ import {mount} from 'enzyme';
 import {configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { MockedProvider } from '@apollo/client/testing';
-import {Formik} from 'formik';
-import {act} from "react-dom/test-utils";
 
 configure({adapter: new Adapter()});
-
 
 describe('Login component', () => {
 
@@ -60,5 +57,13 @@ describe('Login component', () => {
 
     wrapper.update();
     expect(wrapper.find('.error').length).toBe(0);
+  });
+
+  it('verify we can handle errors from the server when log in', () => {
+    expect(1).toBe(2);
+  });
+
+  it('Verify we can handle successful login', () => {
+    expect(1).toBe(2);
   });
 });
