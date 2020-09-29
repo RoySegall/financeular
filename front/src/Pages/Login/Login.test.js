@@ -26,38 +26,43 @@ describe('Login component', () => {
     },
   ];
 
+  const submitForm = async (wrapper) => {
+    wrapper.find('form').simulate('submit', { preventDefault: () => {} });
+    await new Promise((r) => setTimeout(r, 1000));
+    wrapper.update();
+  };
+
+  const elementShouldContainText = (wrapper, message) => {
+    expect(wrapper.html()).toContain(message);
+  }
+
+  const setInputValue = (wrapper, value) => {
+    wrapper.instance().value = value;
+    wrapper.simulate('change');
+  };
+
+  const elementShouldBeHidden = (wrapper) => {
+    expect(wrapper.find('.error').length).toBe(0);
+  };
+
   it ('Testing the required field', async () => {
     const wrapper = mount(<MockedProvider mocks={mocks} addTypename={false}><Login /></MockedProvider>);
-    wrapper.find('form').simulate('submit', { preventDefault: () => {} });
+    await submitForm(wrapper);
 
-    await new Promise((r) => setTimeout(r, 1000));
-
-    wrapper.update();
-    expect(wrapper.find('.error').html()).toContain('Username is required');
-    expect(wrapper.find('.error').html()).toContain('Password is required');
+    elementShouldContainText(wrapper.find('.error'), 'Username is required');
+    elementShouldContainText(wrapper.find('.error'), 'Password is required');
 
     // Setting only the username and verify we got an error relate to the password.
-    const username = wrapper.find('#username');
-    username.instance().value = 'username';
-    username.simulate('change');
-
-    wrapper.find('form').simulate('submit', { preventDefault: () => {} });
-    await new Promise((r) => setTimeout(r, 1000));
-
-    wrapper.update();
-    expect(wrapper.find('.error').html()).toContain('Password is required');
+    setInputValue(wrapper.find('#username'), 'username');
+    await submitForm(wrapper);
+    elementShouldContainText(wrapper.find('.error'), 'Password is required');
 
     // Setting the password.
-    const password = wrapper.find('#password');
-    password.instance().value = 'password';
-    password.simulate('change');
+    setInputValue(wrapper.find('#password'), 'password');
+    await submitForm(wrapper);
 
-    // Submit the form and make sure no errors are thrown.
-    wrapper.find('form').simulate('submit', { preventDefault: () => {} });
-    await new Promise((r) => setTimeout(r, 1000));
-
-    wrapper.update();
-    expect(wrapper.find('.error').length).toBe(0);
+    // Verify we don't got any errors.
+    elementShouldBeHidden(wrapper.find('.error'));
   });
 
   it('verify we can handle errors from the server when log in', async () => {
@@ -66,37 +71,23 @@ describe('Login component', () => {
       error: new Error('Something went wrong'),
     }];
     const wrapper = mount(<MockedProvider mocks={mockWithError} addTypename={false}><Login /></MockedProvider>);
-    const username = wrapper.find('#username');
-    username.instance().value = 'username';
-    username.simulate('change');
 
-    const password = wrapper.find('#password');
-    password.instance().value = 'password';
-    password.simulate('change');
+    setInputValue(wrapper.find('#username'), 'username');
+    setInputValue(wrapper.find('#password'), 'password');
 
-    // Submit the form and make sure no errors are thrown.
-    wrapper.find('form').simulate('submit', { preventDefault: () => {} });
-    await new Promise((r) => setTimeout(r, 1000));
-
-    wrapper.update();
-    expect(wrapper.find('.error').html()).toContain('Something went wrong');
+    // Verify we got the correct error.
+    await submitForm(wrapper);
+    elementShouldContainText(wrapper.find('.error'), 'Something went wrong');
   });
 
   it('Verify we can handle successful login', async () => {
     const wrapper = mount(<MockedProvider mocks={mocks} addTypename={false}><Login /></MockedProvider>);
-    const username = wrapper.find('#username');
-    username.instance().value = 'username';
-    username.simulate('change');
 
-    const password = wrapper.find('#password');
-    password.instance().value = 'password';
-    password.simulate('change');
+    setInputValue(wrapper.find('#username'), 'username');
+    setInputValue(wrapper.find('#password'), 'password');
 
-    // Submit the form and make sure no errors are thrown.
-    wrapper.find('form').simulate('submit', { preventDefault: () => {} });
-    await new Promise((r) => setTimeout(r, 1000));
-
-    wrapper.update();
-    expect(wrapper.find('.success').html()).toContain('You are logged in successfully');
+    // Verify we got the correct error.
+    await submitForm(wrapper);
+    elementShouldContainText(wrapper.find('.success'), 'You are logged in successfully');
   });
 });
