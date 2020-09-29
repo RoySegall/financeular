@@ -14,12 +14,13 @@ describe('Login component', () => {
       request: {
         query: LOGINQUERY,
         variables: {
-          name: 'Buck',
+          username: 'username',
+          password: 'password',
         },
       },
       result: {
         data: {
-          dog: { id: '1', name: 'Buck', breed: 'bulldog' },
+          login: { access_token: '1', expires: 'Buck', refresh_token: 'bulldog' },
         },
       },
     },
@@ -59,11 +60,43 @@ describe('Login component', () => {
     expect(wrapper.find('.error').length).toBe(0);
   });
 
-  it('verify we can handle errors from the server when log in', () => {
-    expect(1).toBe(2);
+  it('verify we can handle errors from the server when log in', async () => {
+    const mockWithError = [{
+      request: mocks[0].request,
+      error: new Error('Something went wrong'),
+    }];
+    const wrapper = mount(<MockedProvider mocks={mockWithError} addTypename={false}><Login /></MockedProvider>);
+    const username = wrapper.find('#username');
+    username.instance().value = 'username';
+    username.simulate('change');
+
+    const password = wrapper.find('#password');
+    password.instance().value = 'password';
+    password.simulate('change');
+
+    // Submit the form and make sure no errors are thrown.
+    wrapper.find('form').simulate('submit', { preventDefault: () => {} });
+    await new Promise((r) => setTimeout(r, 1000));
+
+    wrapper.update();
+    expect(wrapper.find('.error').html()).toContain('Something went wrong');
   });
 
-  it('Verify we can handle successful login', () => {
-    expect(1).toBe(2);
+  it('Verify we can handle successful login', async () => {
+    const wrapper = mount(<MockedProvider mocks={mocks} addTypename={false}><Login /></MockedProvider>);
+    const username = wrapper.find('#username');
+    username.instance().value = 'username';
+    username.simulate('change');
+
+    const password = wrapper.find('#password');
+    password.instance().value = 'password';
+    password.simulate('change');
+
+    // Submit the form and make sure no errors are thrown.
+    wrapper.find('form').simulate('submit', { preventDefault: () => {} });
+    await new Promise((r) => setTimeout(r, 1000));
+
+    wrapper.update();
+    expect(wrapper.find('.success').html()).toContain('You are logged in successfully');
   });
 });

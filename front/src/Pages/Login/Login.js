@@ -55,7 +55,7 @@ export default () => {
     } catch (e) {
       setSubmitStatus({
         status: 'failed',
-        message: e.graphQLErrors[0].message
+        message: e.message
       })
     }
   };
