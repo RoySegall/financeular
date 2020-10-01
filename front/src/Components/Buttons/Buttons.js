@@ -1,12 +1,12 @@
 import React from "react";
-import "./button.css";
+import "./button.scss";
 import {DownloadCloud, UploadCloud} from "../Icons/Icons";
 
 export const Upload = () => <button className="button upload shadow-md">
     <UploadCloud /> Upload a file
 </button>
 
-export const Submit = ({children}) => <button className="button submit shadow-md">
+export const Submit = ({children}) => <button type="button" className="button submit shadow-md">
     {children}
 </button>
 

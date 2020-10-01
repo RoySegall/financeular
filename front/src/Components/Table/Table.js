@@ -1,5 +1,5 @@
 import React from "react";
-import './table.css'
+import './table.scss'
 
 export default ({data}) => <div className="table-wrapper">
     <table className="table">

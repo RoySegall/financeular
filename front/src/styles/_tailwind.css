@@ -13,6 +13,6 @@
 }
 
 .login-screen {
-    height: 70vh;
+    min-height: 92vh;
     @apply w-screen flex justify-center items-center
 }

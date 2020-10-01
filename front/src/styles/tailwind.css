@@ -22236,7 +22236,7 @@ video {
 }
 
 .login-screen {
-  height: 70vh;
+  min-height: 92vh;
   width: 100vw;
   display: flex;
   justify-content: center;
