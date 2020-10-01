@@ -23,5 +23,3 @@ export const Error = ({message, children}) => <BaseMessage type="error" color="r
 export const Notice = ({message, children}) => <BaseMessage type="notice" color="yellow" icon={<WarningMark />} message={message}>{children}</BaseMessage>
 export const Info = ({message, children}) => <BaseMessage type="info" color="blue" icon={<InfoMark />} message={message}>{children}</BaseMessage>
 export const Success = ({message, children}) => <BaseMessage type="success" color="green" icon={<Ok />} message={message}>{children}</BaseMessage>
-
-

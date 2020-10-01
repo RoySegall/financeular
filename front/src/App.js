@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './styles/tailwind.css';
 import FrontPage from "./Pages/FrontPage";
 import General from "./Layout/General";
@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./app.scss"
 import { ApolloProvider } from '@apollo/client';
 import {client} from "./client";
+
 function App() {
 
     return <ApolloProvider client={client}>
