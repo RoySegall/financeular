@@ -6,30 +6,36 @@ const httpLink = createHttpLink({
 });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  // todo: check if we have only one mutation - login or refresh token.
-  //  If only login - check if the access token is expires or not. If expires, then refresh the token. If not expires -
-  //  send the request. In case the token is no longer valid - remove the access token. listen to an event of local
-  //  storage changes and if any of them was remove redirect to the front page and raise a nce error to the user.
-  //  If only refresh token then continue with the request and don't do anything.
-
-  // Check the number of mutations we have.
+  // First check if the query includes a refresh or login mutation.
   const definitions = operation.query.definitions;
+  let attachRefreshToken = true;
 
   if (definitions.length === 1) {
     const operation = definitions[0].selectionSet.selections[0].name.value;
 
     if (['login', 'refresh_token'].includes(operation)) {
-      // This is a login or a refresh token. We don't need to attach the access token.
-      return;
+      // The query is for login or refreshing the token. No need to attach the access or managing the expiration of the
+      // tokens.
+      attachRefreshToken = false;
     }
   }
 
-  // Add the authorization to the headers
-  operation.setContext({
-    headers: {
-      authorization: localStorage.getItem('token') || null,
+  // First, check if the token has expired or not.
+  if (attachRefreshToken) {
+    const [accessToken, expires] = ['accessToken', 'expires'].map(item => localStorage.getItem(item));
+
+    const date = new Date();
+    if (date.getTime() > expires) {
+      // todo: handle here the refresh token.
     }
-  });
+
+    // Add the authorization to the headers
+    operation.setContext({
+      headers: {
+        authorization: accessToken || null,
+      }
+    });
+  }
 
   return forward(operation);
 })
