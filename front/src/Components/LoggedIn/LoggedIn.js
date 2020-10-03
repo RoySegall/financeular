@@ -21,6 +21,4 @@ export default () => {
   return <div className="pr-5">
     Hello <b>{data.whoAmI.username}</b>. Click here to <a href='#' className="font-bold" onClick={logOut}>logout</a> or <b>View your uploaded files</b>
   </div>
-
 }
-
