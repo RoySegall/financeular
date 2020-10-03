@@ -8,6 +8,8 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./app.scss"
 import { ApolloProvider } from '@apollo/client';
 import {client} from "./client";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import Logout from "./Pages/Logout";
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
                 <General>
                     <Switch>
                         <Route path="/login"><Login/></Route>
+                        <Route path="/logout"><Logout/></Route>
+                        <Route path="/dashboard"><Dashboard/></Route>
                         <Route path="/results"><Results/></Route>
                         <Route path="/"><FrontPage/></Route>
                     </Switch>
