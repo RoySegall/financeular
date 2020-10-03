@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import "./login.scss";
 import {LoginWith} from "../../Components/Buttons/Buttons";
@@ -7,6 +7,7 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {Error, Success} from "../../Components/Messages/Message";
 import {gql, useMutation} from '@apollo/client';
+import {Redirect} from "react-router-dom"
 
 export const LOGINQUERY = gql`
 mutation($username: String!, $password: String!) {
@@ -21,6 +22,7 @@ mutation($username: String!, $password: String!) {
 export default () => {
   const [mutateLogin] = useMutation(LOGINQUERY);
   const [submitStatus, setSubmitStatus] = useState({status: null, message: null});
+  const [redirectAfterLogin, setRedirectAfterLogin] = useState(false);
 
   const initialValues = {
     username: '',
@@ -53,6 +55,11 @@ export default () => {
         status: 'passed',
         message: 'You are logged in successfully',
       })
+
+      setTimeout(() => {
+        setRedirectAfterLogin(true);
+      }, 1000);
+
     } catch (e) {
       setSubmitStatus({
         status: 'failed',
@@ -60,6 +67,10 @@ export default () => {
       })
     }
   };
+
+  if (redirectAfterLogin) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return <div className="login-screen">
 

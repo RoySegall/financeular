@@ -1,4 +1,4 @@
-import {ApolloClient, ApolloLink, createHttpLink, InMemoryCache, concat} from '@apollo/client';
+import {ApolloClient, ApolloLink, createHttpLink, InMemoryCache, concat, gql} from '@apollo/client';
 import {backendAddress} from "./config";
 
 const httpLink = createHttpLink({
@@ -32,13 +32,13 @@ const authMiddleware = new ApolloLink((operation, forward) => {
     // Add the authorization to the headers
     operation.setContext({
       headers: {
-        authorization: accessToken || null,
+        authorization: `Bearer ${accessToken}` || null,
       }
     });
   }
 
   return forward(operation);
-})
+});
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
