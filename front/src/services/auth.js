@@ -1,5 +1,3 @@
-import {client} from "../client";
-
 export const getAuthInfo = () => {
   const [accessToken, expires] = ['accessToken', 'expires'].map(item => localStorage.getItem(item));
 
