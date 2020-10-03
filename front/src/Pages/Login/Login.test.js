@@ -7,6 +7,15 @@ import { MockedProvider } from '@apollo/client/testing';
 
 configure({adapter: new Adapter()});
 
+const mockRedirectLogin = jest.fn();
+
+jest.mock('react-router-dom', () => {
+  return {
+    Redirect: ({ to }) => mockRedirectLogin
+  };
+});
+
+
 describe('Login component', () => {
 
   const mocks = [
@@ -26,9 +35,11 @@ describe('Login component', () => {
     },
   ];
 
+  const sleep = async (time) => await new Promise((r) => setTimeout(r, time));
+
   const submitForm = async (wrapper) => {
     wrapper.find('form').simulate('submit', { preventDefault: () => {} });
-    await new Promise((r) => setTimeout(r, 1000));
+    await sleep(1000);
     wrapper.update();
   };
 
@@ -78,6 +89,7 @@ describe('Login component', () => {
     // Verify we got the correct error.
     await submitForm(wrapper);
     elementShouldContainText(wrapper.find('.error'), 'Something went wrong');
+
   });
 
   it('Verify we can handle successful login', async () => {
