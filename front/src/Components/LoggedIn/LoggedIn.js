@@ -1,7 +1,8 @@
 import React from "react";
 import {gql, useQuery} from "@apollo/client";
+import {logOut} from "../../services/auth";
 
-export const GET_CART_ITEMS = gql`
+export const WHO_AM_I = gql`
   query {
     whoAmI {
       username
@@ -11,14 +12,14 @@ export const GET_CART_ITEMS = gql`
 
 export default () => {
 
-  const { data } = useQuery(GET_CART_ITEMS);
+  const { data } = useQuery(WHO_AM_I);
 
   if (!data) {
     return null;
   }
 
   return <div className="pr-5">
-    Hello <b>{data.whoAmI.username}</b>
+    Hello <b>{data.whoAmI.username}</b>. Click here to <a href='#' className="font-bold" onClick={logOut}>logout</a> or <b>View your uploaded files</b>
   </div>
 
 }

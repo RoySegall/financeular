@@ -1,5 +1,6 @@
 import {ApolloClient, ApolloLink, createHttpLink, InMemoryCache, concat, gql} from '@apollo/client';
 import {backendAddress} from "./config";
+import {getAuthInfo, tokenIsValid} from "./services/auth";
 
 const httpLink = createHttpLink({
   uri: `${backendAddress()}/graphql`
@@ -22,10 +23,9 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
   // First, check if the token has expired or not.
   if (attachRefreshToken) {
-    const [accessToken, expires] = ['accessToken', 'expires'].map(item => localStorage.getItem(item));
+    const {accessToken} = getAuthInfo();
 
-    const date = new Date();
-    if (date.getTime() > expires) {
+    if (tokenIsValid()) {
       // todo: handle here the refresh token.
     }
 

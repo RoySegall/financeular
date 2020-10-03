@@ -89,7 +89,6 @@ describe('Login component', () => {
     // Verify we got the correct error.
     await submitForm(wrapper);
     elementShouldContainText(wrapper.find('.error'), 'Something went wrong');
-
   });
 
   it('Verify we can handle successful login', async () => {

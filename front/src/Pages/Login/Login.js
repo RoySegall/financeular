@@ -8,6 +8,8 @@ import * as Yup from 'yup';
 import {Error, Success} from "../../Components/Messages/Message";
 import {gql, useMutation} from '@apollo/client';
 import {Redirect} from "react-router-dom"
+import {setLocalStorageKeysFromRequest} from "../../services/auth";
+import {client} from "../../client";
 
 export const LOGINQUERY = gql`
 mutation($username: String!, $password: String!) {
@@ -44,12 +46,7 @@ export default () => {
         }
       });
 
-      const {access_token, expires, refresh_token} = results.data.login;
-
-      const date = new Date();
-      localStorage.setItem('accessToken', access_token);
-      localStorage.setItem('expires', Math.round(date.getTime()/1000) + expires);
-      localStorage.setItem('refreshToken', refresh_token);
+      setLocalStorageKeysFromRequest(results.data.login)
 
       setSubmitStatus({
         status: 'passed',
@@ -59,6 +56,8 @@ export default () => {
       setTimeout(() => {
         setRedirectAfterLogin(true);
       }, 1000);
+
+      await client.resetStore();
 
     } catch (e) {
       setSubmitStatus({

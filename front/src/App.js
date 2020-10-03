@@ -13,16 +13,16 @@ function App() {
 
     return <ApolloProvider client={client}>
         <div className="App">
-        <Router>
-            <General>
-                <Switch>
-                    <Route path="/login"><Login/></Route>
-                    <Route path="/results"><Results/></Route>
-                    <Route path="/"><FrontPage/></Route>
-                </Switch>
-            </General>
-        </Router>
-    </div>
+            <Router>
+                <General>
+                    <Switch>
+                        <Route path="/login"><Login/></Route>
+                        <Route path="/results"><Results/></Route>
+                        <Route path="/"><FrontPage/></Route>
+                    </Switch>
+                </General>
+            </Router>
+        </div>
     </ApolloProvider>;
 }
 
