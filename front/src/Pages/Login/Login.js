@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import "./login.scss";
 import {LoginWith} from "../../Components/Buttons/Buttons";
@@ -7,6 +7,9 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {Error, Success} from "../../Components/Messages/Message";
 import {gql, useMutation} from '@apollo/client';
+import {Redirect} from "react-router-dom"
+import {setLocalStorageKeysFromRequest} from "../../services/auth";
+import {client} from "../../client";
 
 export const LOGINQUERY = gql`
 mutation($username: String!, $password: String!) {
@@ -21,6 +24,7 @@ mutation($username: String!, $password: String!) {
 export default () => {
   const [mutateLogin] = useMutation(LOGINQUERY);
   const [submitStatus, setSubmitStatus] = useState({status: null, message: null});
+  const [redirectAfterLogin, setRedirectAfterLogin] = useState(false);
 
   const initialValues = {
     username: '',
@@ -42,17 +46,19 @@ export default () => {
         }
       });
 
-      const {access_token, expires, refresh_token} = results.data.login;
-
-      const date = new Date();
-      localStorage.setItem('accessToken', access_token);
-      localStorage.setItem('expires', Math.round(date.getTime()/1000) + expires);
-      localStorage.setItem('refreshToken', refresh_token);
+      setLocalStorageKeysFromRequest(results.data.login)
 
       setSubmitStatus({
         status: 'passed',
         message: 'You are logged in successfully',
       })
+
+      setTimeout(() => {
+        setRedirectAfterLogin(true);
+      }, 1000);
+
+      await client.resetStore();
+
     } catch (e) {
       setSubmitStatus({
         status: 'failed',
@@ -60,6 +66,10 @@ export default () => {
       })
     }
   };
+
+  if (redirectAfterLogin) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return <div className="login-screen">
 

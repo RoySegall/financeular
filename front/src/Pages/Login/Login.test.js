@@ -7,28 +7,36 @@ import { MockedProvider } from '@apollo/client/testing';
 
 configure({adapter: new Adapter()});
 
+const mockRedirectLogin = jest.fn();
+
+jest.mock('react-router-dom', () => {
+  return {
+    Redirect: ({ to }) => mockRedirectLogin
+  };
+});
+
 describe('Login component', () => {
 
-  const mocks = [
-    {
-      request: {
-        query: LOGINQUERY,
-        variables: {
-          username: 'username',
-          password: 'password',
-        },
-      },
-      result: {
-        data: {
-          login: { access_token: '1', expires: 'Buck', refresh_token: 'bulldog' },
-        },
+  const mocks = [{
+    request: {
+      query: LOGINQUERY,
+      variables: {
+        username: 'username',
+        password: 'password',
       },
     },
-  ];
+    result: {
+      data: {
+        login: { access_token: '1', expires: 'Buck', refresh_token: 'bulldog' },
+      },
+    },
+  }];
+
+  const sleep = async (time) => await new Promise((r) => setTimeout(r, time));
 
   const submitForm = async (wrapper) => {
     wrapper.find('form').simulate('submit', { preventDefault: () => {} });
-    await new Promise((r) => setTimeout(r, 1000));
+    await sleep(1000);
     wrapper.update();
   };
 
@@ -70,6 +78,7 @@ describe('Login component', () => {
       request: mocks[0].request,
       error: new Error('Something went wrong'),
     }];
+
     const wrapper = mount(<MockedProvider mocks={mockWithError} addTypename={false}><Login /></MockedProvider>);
 
     setInputValue(wrapper.find('#username'), 'username');
@@ -90,4 +99,5 @@ describe('Login component', () => {
     await submitForm(wrapper);
     elementShouldContainText(wrapper.find('.success'), 'You are logged in successfully');
   });
+
 });
