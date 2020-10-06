@@ -1,26 +1,24 @@
-//$first-color: #22223b;
-//$second-color: #4a4e69;
-//$third-color: #9a8c98;
-//$fourth-color: #c9ada7;
-//$fifth-color: #f2e9e4;
+$text-color: #006d77;
+$header-background: #006d77;
+$header-text: #edf6f9;
+$third-color: #ffddd2;
+$fourth-color: #e29578;
 
-$first-color: #22223b;
-$second-color: #4a4e69;
-$third-color: #9a8c98;
-$fourth-color: #c9ada7;
-$fifth-color: #f2e9e4;
+img {
+  display: initial;
+}
 
 .App {
   min-height: 100vh;
-  color: $first-color;
+  color: $text-color;
 
   header {
-    background: $second-color;
-    color: $fifth-color;
+    background: $header-background;
+    color: $header-text;
   }
 
   main {
     min-height: 92vh;
-    background: $fifth-color;
+    background: $header-text;
   }
 }

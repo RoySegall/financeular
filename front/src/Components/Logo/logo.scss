@@ -1,27 +1,22 @@
 .logo {
     padding-left: .5em;
-    font-size: 3em;
+    font-size: 4em;
     padding-top: .25em;
     padding-bottom: .25em;
-    width: 245px;
+    font-weight: 700;
 
     .sub-text {
         font-size: .25em;
-        font-weight: lighter;
+        font-weight: 400;
         text-align: center;
+    }
+
+    img {
+        height: 6vh;
     }
 
     .text {
         font-weight: lighter;
         font-size: .75em;
-        padding-left: .25em;
-    }
-
-    .fa-primary {
-        color: #85bb65;
-    }
-
-    .fa-secondary {
-        color: #65bb66;
     }
 }
