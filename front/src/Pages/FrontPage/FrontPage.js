@@ -1,6 +1,5 @@
 import React from "react";
 import PageTitle from "../../Components/PageTitle/PageTitle";
-import {Link} from "react-router-dom";
 import research from "./research.svg"
 import personal from "./personal-settings.svg"
 
