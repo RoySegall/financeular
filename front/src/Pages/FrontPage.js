@@ -16,10 +16,10 @@ export default () => <div className="flex flex-col">
       the income and outcomes, set your budget and see where you success, where you can improve and more.
     </p>
 
-    <div className="flex justify-around">
-      <Link to={tokenIsValid() ? '/dashboard' : '/login'}><Upload/></Link>
-      <Link to="/download"><Download/></Link>
-    </div>
+    {/*<div className="flex justify-around">*/}
+    {/*  <Link to={tokenIsValid() ? '/dashboard' : '/login'}><Upload/></Link>*/}
+    {/*  <Link to="/download"><Download/></Link>*/}
+    {/*</div>*/}
 
   </div>
 

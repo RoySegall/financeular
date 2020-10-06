@@ -1,4 +1,4 @@
-import {ApolloClient, ApolloLink, createHttpLink, InMemoryCache, concat, gql} from '@apollo/client';
+import {ApolloClient, ApolloLink, createHttpLink, InMemoryCache, concat} from '@apollo/client';
 import {backendAddress} from "./config";
 import {getAuthInfo, tokenIsValid} from "./services/auth";
 

@@ -21,7 +21,7 @@ export const tokenIsValid = () => {
     return false;
   }
 
-  return date.getTime() > expires;
+  return expires > date.getTime() / 1000;
 };
 
 export const logOut = () => {

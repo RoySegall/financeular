@@ -12,7 +12,7 @@ export const WHO_AM_I = gql`
 `;
 
 export default () => {
-  const { loading, error, data } = useQuery(WHO_AM_I, { errorPolicy: 'all' });
+  const { loading, data } = useQuery(WHO_AM_I, { errorPolicy: 'all' });
 
   if (loading) {
     return null;

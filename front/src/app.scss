@@ -1,7 +1,26 @@
+//$first-color: #22223b;
+//$second-color: #4a4e69;
+//$third-color: #9a8c98;
+//$fourth-color: #c9ada7;
+//$fifth-color: #f2e9e4;
+
+$first-color: #22223b;
+$second-color: #4a4e69;
+$third-color: #9a8c98;
+$fourth-color: #c9ada7;
+$fifth-color: #f2e9e4;
+
 .App {
   min-height: 100vh;
+  color: $first-color;
+
+  header {
+    background: $second-color;
+    color: $fifth-color;
+  }
 
   main {
     min-height: 92vh;
+    background: $fifth-color;
   }
 }
