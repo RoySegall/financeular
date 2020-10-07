@@ -1,7 +1,20 @@
+@import "variables.scss";
+
+img {
+  display: initial;
+}
+
 .App {
   min-height: 100vh;
+  color: $text-color;
+
+  header {
+    background: $header-background;
+    color: $header-text;
+  }
 
   main {
     min-height: 92vh;
+    background: $header-text;
   }
 }

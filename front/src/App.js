@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/tailwind.css';
-import FrontPage from "./Pages/FrontPage";
+import FrontPage from "./Pages/FrontPage/FrontPage";
 import General from "./Layout/General";
 import Login from "./Pages/Login/Login";
 import Results from "./Pages/Results";

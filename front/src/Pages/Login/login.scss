@@ -1,11 +1,17 @@
+@import "../../variables.scss";
+
 .login-wrapper {
-    min-width: 60vw;
-    border: solid 1px #e46bb2;
+    color: $header-text;
+    min-width: 40%;
+    min-height: 50vh;
+    border: solid 1px $header-background;
     padding-top: 2em;
     padding-bottom: 2em;
     border-radius: 4px;
+    background: $header-background;
 
     .input-element {
+        color: $header-background;
         background: white;
         border-bottom: 2px solid #fee2b2;
         font-size: 1.25em;
@@ -13,7 +19,6 @@
         padding: .25em;
         padding-left: .75em;
         height: 60%;
-        border-radius: 5px 5px 0 0;
 
         &.invalid-input {
             border-radius: 5px;

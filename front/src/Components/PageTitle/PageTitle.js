@@ -5,5 +5,5 @@ export default ({children, align}) => {
         align = 'center';
     }
 
-    return <h1 className={`text-5xl pt-4 text-${align} font-rubik`}>{children}</h1>;
+    return <h1 className={`text-4xl pt-4 text-${align} font-rubik`}>{children}</h1>;
 }
