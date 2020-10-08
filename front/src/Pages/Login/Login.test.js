@@ -1,5 +1,5 @@
 import React from 'react';
-import Login, {LOGINQUERY} from "./Login";
+import Login, {LOGIN} from "./Login";
 import {mount} from 'enzyme';
 import {configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
