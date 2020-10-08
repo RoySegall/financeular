@@ -7,6 +7,7 @@ import {Spinner, UploadCloud} from "../../Components/Icons/Icons";
 import {useMutation} from "@apollo/client";
 import {UPLOAD} from "../../Apollo/UploadFile";
 import {Redirect} from "react-router-dom";
+import {client} from "../../client";
 
 export default () => {
   // Mutation section.
@@ -45,6 +46,7 @@ export default () => {
       setFileUploadError(message);
     } else {
       setFileUploadSuccess('The file has uploaded successfully.');
+      await client.resetStore();
       setTimeout(() => setRedirect(true), 3000);
     }
   }
