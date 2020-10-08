@@ -1,9 +1,10 @@
 import React from 'react';
-import Login, {LOGIN} from "./Login";
+import Login from "./Login";
 import {mount} from 'enzyme';
 import {configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { MockedProvider } from '@apollo/client/testing';
+import {LOGIN} from "../../Apollo/Login";
 
 configure({adapter: new Adapter()});
 
@@ -19,7 +20,7 @@ describe('Login component', () => {
 
   const mocks = [{
     request: {
-      query: LOGINQUERY,
+      query: LOGIN,
       variables: {
         username: 'username',
         password: 'password',
