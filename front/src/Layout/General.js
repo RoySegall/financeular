@@ -9,7 +9,7 @@ export default ({children}) => <>
         <LoggedIn />
     </header>
 
-    <main className="bg-red-100">
+    <main className="flex">
         {children}
     </main>
 </>

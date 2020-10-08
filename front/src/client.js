@@ -1,8 +1,9 @@
 import {ApolloClient, ApolloLink, createHttpLink, InMemoryCache, concat} from '@apollo/client';
 import {backendAddress} from "./config";
 import {getAuthInfo, tokenIsValid} from "./services/auth";
+import {createUploadLink} from "apollo-upload-client/public/index";
 
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: `${backendAddress()}/graphql`
 });
 

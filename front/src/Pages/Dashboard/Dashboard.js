@@ -5,6 +5,7 @@ import NoFiles from "../../Components/NoFiles/NoFiles";
 
 export default () => <div className="files-wrapper">
   <PageTitle align='left'>Your files</PageTitle>
-
-  <NoFiles />
+  <div>
+    <NoFiles />
+  </div>
 </div>

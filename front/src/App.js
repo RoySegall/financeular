@@ -10,6 +10,7 @@ import { ApolloProvider } from '@apollo/client';
 import {client} from "./client";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Logout from "./Pages/Logout";
+import Upload from "./Pages/Upload/Upload";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                         <Route path="/login"><Login/></Route>
                         <Route path="/logout"><Logout/></Route>
                         <Route path="/dashboard"><Dashboard/></Route>
+                        <Route path="/upload"><Upload/></Route>
                         <Route path="/results"><Results/></Route>
                         <Route path="/"><FrontPage/></Route>
                     </Switch>

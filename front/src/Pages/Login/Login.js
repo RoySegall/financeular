@@ -6,23 +6,14 @@ import {Apple, Facebook, Google, Login} from "../../Components/Icons/Icons";
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {Error, Success} from "../../Components/Messages/Message";
-import {gql, useMutation} from '@apollo/client';
+import {useMutation} from '@apollo/client';
 import {Redirect} from "react-router-dom"
 import {setLocalStorageKeysFromRequest} from "../../services/auth";
 import {client} from "../../client";
-
-export const LOGINQUERY = gql`
-mutation($username: String!, $password: String!) {
-  login(username: $username, password: $password) {
-    access_token
-    expires
-    refresh_token
-  }
-}
-`;
+import {LOGIN} from "../../Apollo/Login";
 
 export default () => {
-  const [mutateLogin] = useMutation(LOGINQUERY);
+  const [mutateLogin] = useMutation(LOGIN);
   const [submitStatus, setSubmitStatus] = useState({status: null, message: null});
   const [redirectAfterLogin, setRedirectAfterLogin] = useState(false);
 

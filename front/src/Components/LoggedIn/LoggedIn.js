@@ -1,15 +1,8 @@
 import React from "react";
-import {gql, useQuery} from "@apollo/client";
+import {useQuery} from "@apollo/client";
 import {logOut} from "../../services/auth";
 import {Link} from "react-router-dom";
-
-export const WHO_AM_I = gql`
-  query {
-    whoAmI {
-      username
-    }
-  }
-`;
+import {WHO_AM_I} from "../../Apollo/WhoAmI";
 
 export default () => {
   const { loading, data } = useQuery(WHO_AM_I, { errorPolicy: 'all' });

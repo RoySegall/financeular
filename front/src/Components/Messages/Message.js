@@ -15,7 +15,7 @@ export const BaseMessage = ({type, color, icon, message, children}) => <div clas
 `}>
     <div className="flex items-center">
         <div className="w-1/4 text-3xl">{icon}</div>
-        <div className="w-2/4 text-left">{children ? children : message}</div>
+        <div className="w-3/4 text-left">{children ? children : message}</div>
     </div>
 </div>
 

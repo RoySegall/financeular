@@ -4,6 +4,11 @@ img {
   display: initial;
 }
 
+a {
+  font-weight: 400;
+  text-decoration: underline;
+}
+
 .App {
   min-height: 100vh;
   color: $text-color;
@@ -11,6 +16,10 @@ img {
   header {
     background: $header-background;
     color: $header-text;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   main {
