@@ -54,7 +54,6 @@ export default () => {
   }
 
   return <div className="upload-files ml-auto mr-auto pt-16 text-center">
-    <form>
       <img src={upload} alt="upload illustration" className="pb-5" />
 
       <div {...getRootProps()} className={`file-input ${isDragActive ? 'active' : ''}`}>
@@ -71,8 +70,5 @@ export default () => {
       {!fileUploadError && !fileUploadSuccess && file && <button type="submit" className="button submit shadow" onClick={uploadFile} disabled={uploading}>
         {uploading ? <><Spinner /> Uploading</> : <><UploadCloud /> Upload</>}
       </button>}
-
-    </form>
-
   </div>
 }
