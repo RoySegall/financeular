@@ -8,6 +8,7 @@ import IllustrationWithMessage from "../../Components/IllustrationWithMessage/Il
 import {Link} from "react-router-dom";
 import noFiles from "./noFiles.svg"
 import FilesTable from "../../Components/FilesTable/FilesTable";
+import {Redirect} from "react-router-dom";
 
 const DashboardFiles = ({loading, data}) => {
 
@@ -32,14 +33,18 @@ const DashboardFiles = ({loading, data}) => {
     />
   }
 
-  return <div>
-    <div className="text-right pr-16">Upload button</div>
-    <FilesTable />
+  return <div className="files mr-5">
+    <FilesTable files={files} />
   </div>
 }
 
 export default () => {
-  const { loading, data } = useQuery(FILES);
+  const { loading, error, data } = useQuery(FILES, { errorPolicy: 'all' });
+
+  if (error && error.graphQLErrors[0].message.includes('Unauthorized')) {
+    // todo: handle it better.
+    return <Redirect to="/" />
+  }
 
   return <div className="files-wrapper">
     <PageTitle align='left'>Your files</PageTitle>
