@@ -8,6 +8,7 @@ import {useMutation} from "@apollo/client";
 import {UPLOAD} from "../../Apollo/UploadFile";
 import {Redirect} from "react-router-dom";
 import {client} from "../../client";
+import {Submit} from "../../Components/Buttons/Buttons";
 
 export default () => {
   // Mutation section.
@@ -69,8 +70,8 @@ export default () => {
       {fileUploadError && <div className="mt-5"><Error message={fileUploadError} /></div> }
       {fileUploadSuccess && <div className="mt-5"><Success message={fileUploadSuccess} /></div> }
 
-      {!fileUploadError && !fileUploadSuccess && file && <button type="submit" className="button submit shadow" onClick={uploadFile} disabled={uploading}>
+      {!fileUploadError && !fileUploadSuccess && file && <Submit clickHandler={uploadFile} disabled={uploading}>
         {uploading ? <><Spinner /> Uploading</> : <><UploadCloud /> Upload</>}
-      </button>}
+      </Submit>}
   </div>
 }

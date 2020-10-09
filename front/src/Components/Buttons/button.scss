@@ -42,7 +42,12 @@
 
     &.submit {
         background: $other-color;
+
         &:focus {
+            outline: 0;
+        }
+
+        &:active {
             outline: 0;
             color: $other-color;
             background: $header-text;

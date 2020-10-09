@@ -9,6 +9,8 @@ import {Link} from "react-router-dom";
 import noFiles from "./noFiles.svg"
 import FilesTable from "../../Components/FilesTable/FilesTable";
 import {Redirect} from "react-router-dom";
+import {Submit} from "../../Components/Buttons/Buttons";
+import {UploadCloud} from "../../Components/Icons/Icons";
 
 const DashboardFiles = ({loading, data}) => {
 
@@ -47,7 +49,14 @@ export default () => {
   }
 
   return <div className="files-wrapper">
-    <PageTitle align='left'>Your files</PageTitle>
+    <div className="flex items-center mr-5 pb-5">
+      <PageTitle align='left'>Your files</PageTitle>
+      <div className="ml-auto">
+        <Link to="/upload" className="no-underline">
+          <Submit><UploadCloud /> Upload another file</Submit>
+        </Link>
+      </div>
+    </div>
     <DashboardFiles loading={loading} data={data} />
   </div>
 }
