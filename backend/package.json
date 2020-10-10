@@ -20,7 +20,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "parse-file": "npx nestjs-command file:parse",
-    "sandbox": "npx nestjs-command sandbox"
+    "sandbox": "npx nestjs-command sandbox",
+    "seed:users": "npx nestjs-command seed:users"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
