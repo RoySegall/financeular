@@ -12,8 +12,16 @@ export class UserCommand {
     describe: 'Get the user by name',
     autoExit: true
   })
-  async dummy_stuff(
-  ) {
+  async dummy_stuff() {
     console.log(await this.userService.getByUsername('asdasdasdasdasd'));
+  }
+
+  @Command({
+    command: 'seed:users',
+    describe: 'Seeding the users',
+    autoExit: true
+  })
+  async seed_users() {
+
   }
 }
