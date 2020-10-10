@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard component Should show the list of files when querying the server 1`] = `
+<div
+  className="files mr-5"
+>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          File name
+        </th>
+        <th>
+          Created at
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          john
+        </td>
+        <td>
+          yesterday
+        </td>
+        <td>
+          View | Delete
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
