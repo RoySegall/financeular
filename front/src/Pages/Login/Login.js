@@ -1,16 +1,18 @@
 import React, {useState} from "react";
-import PageTitle from "../../Components/PageTitle/PageTitle";
 import "./login.scss";
-import {LoginWith} from "../../Components/Buttons/Buttons";
-import {Apple, Facebook, Google, Login} from "../../Components/Icons/Icons";
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {Error, Success} from "../../Components/Messages/Message";
 import {useMutation} from '@apollo/client';
-import {Redirect} from "react-router-dom"
-import {setLocalStorageKeysFromRequest} from "../../services/auth";
+import {Redirect} from "react-router-dom";
+
 import {client} from "../../client";
 import {LOGIN} from "../../Apollo/Login";
+
+import PageTitle from "../../Components/PageTitle/PageTitle";
+import {LoginWith} from "../../Components/Buttons/Buttons";
+import {Apple, Facebook, Google, Login} from "../../Components/Icons/Icons";
+import {Error, Success} from "../../Components/Messages/Message";
+import {setLocalStorageKeysFromRequest} from "../../services/auth";
 
 export default () => {
   const [mutateLogin] = useMutation(LOGIN);

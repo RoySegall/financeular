@@ -12,7 +12,7 @@ import {Redirect} from "react-router-dom";
 import {Submit} from "../../Components/Buttons/Buttons";
 import {UploadCloud} from "../../Components/Icons/Icons";
 
-const DashboardFiles = ({loading, data}) => {
+export const DashboardFiles = ({loading, data}) => {
 
   if (loading) {
     return <IllustrationWithMessage

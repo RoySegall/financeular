@@ -1,12 +1,13 @@
 import React from 'react';
 import Login from "./Login";
-import {mount} from 'enzyme';
-import {configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import { MockedProvider } from '@apollo/client/testing';
 import {LOGIN} from "../../Apollo/Login";
-
-configure({adapter: new Adapter()});
+import {
+  elementShouldBeHidden,
+  sleep,
+  elementShouldContainText,
+  mountComponent
+} from "../../Tests/Utils";
 
 const mockRedirectLogin = jest.fn();
 
@@ -33,29 +34,19 @@ describe('Login component', () => {
     },
   }];
 
-  const sleep = async (time) => await new Promise((r) => setTimeout(r, time));
-
   const submitForm = async (wrapper) => {
     wrapper.find('form').simulate('submit', { preventDefault: () => {} });
     await sleep(1000);
     wrapper.update();
   };
 
-  const elementShouldContainText = (wrapper, message) => {
-    expect(wrapper.html()).toContain(message);
-  }
-
   const setInputValue = (wrapper, value) => {
     wrapper.instance().value = value;
     wrapper.simulate('change');
   };
 
-  const elementShouldBeHidden = (wrapper) => {
-    expect(wrapper.find('.error').length).toBe(0);
-  };
-
   it ('Testing the required field', async () => {
-    const wrapper = mount(<MockedProvider mocks={mocks} addTypename={false}><Login /></MockedProvider>);
+    const wrapper = mountComponent({mocks: mocks, component: <Login />});
     await submitForm(wrapper);
 
     elementShouldContainText(wrapper.find('.error'), 'Username is required');
@@ -80,7 +71,7 @@ describe('Login component', () => {
       error: new Error('Something went wrong'),
     }];
 
-    const wrapper = mount(<MockedProvider mocks={mockWithError} addTypename={false}><Login /></MockedProvider>);
+    const wrapper = mountComponent({mocks: mockWithError, component: <Login />});
 
     setInputValue(wrapper.find('#username'), 'username');
     setInputValue(wrapper.find('#password'), 'password');
@@ -91,7 +82,7 @@ describe('Login component', () => {
   });
 
   it('Verify we can handle successful login', async () => {
-    const wrapper = mount(<MockedProvider mocks={mocks} addTypename={false}><Login /></MockedProvider>);
+    const wrapper = mountComponent({mocks: mocks, component: <Login />});
 
     setInputValue(wrapper.find('#username'), 'username');
     setInputValue(wrapper.find('#password'), 'password');
