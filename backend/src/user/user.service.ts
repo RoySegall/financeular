@@ -47,7 +47,12 @@ export class UserService {
     user.username = username;
     user.email = `${username}@example.com`;
     user.password = hashSync(password, 10);
-
-    return await this.userRepository.save(user);
+    try {
+      const results = await this.userRepository.insert(user);
+      console.log(results);
+      return user;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
