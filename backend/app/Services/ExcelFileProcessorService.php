@@ -115,8 +115,45 @@ class ExcelFileProcessorService {
      * Processing a single sheet from a given sheet in the excel file.
      */
     protected function processSheet($sheet_data) {
-        // Process
-        return [];
+        $limitations = [];
+        $incomes = [];
+        $expenses = [];
+
+        foreach ($sheet_data as $row) {
+            if (!array_filter($row)) {
+                continue;
+            }
+
+            if ($limitation = $this->extractLimitationFromRow($row)) {
+                $limitations[] = $limitation;
+            }
+
+            if ($income = $this->extractIncomeFromRow($row)) {
+                $incomes[] = $income;
+            }
+
+            if ($expense = $this->extractExpenseFromRow($row)) {
+                $expenses[] = $expense;
+            }
+        }
+
+        return [
+            'limitations' => $limitations,
+            'incomes' => $incomes,
+            'expenses' => $expenses,
+        ];
+    }
+
+    protected function extractLimitationFromRow($row) {
+        return null;
+    }
+
+    protected function extractIncomeFromRow($row) {
+        return null;
+    }
+
+    protected function extractExpenseFromRow($row) {
+        return null;
     }
 
 }
