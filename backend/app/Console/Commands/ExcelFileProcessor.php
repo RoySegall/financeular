@@ -45,6 +45,6 @@ class ExcelFileProcessor extends Command
     public function handle()
     {
         $file_path = $this->ask('Please enter the file path');
-        \Kint::dump($this->excelFileProcessor->foo());
+        \Kint::dump($this->excelFileProcessor->processFile($file_path));
     }
 }
