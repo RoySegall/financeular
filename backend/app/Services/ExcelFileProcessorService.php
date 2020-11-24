@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Services;
-use Symfony\Component\Filesystem\Filesystem;
 
 class ExcelFileProcessorService {
 
@@ -22,16 +21,11 @@ class ExcelFileProcessorService {
     const expenseTitleKey = 13;
 
     /**
-     * @var Filesystem
+     * Specifying the supported mime types.
      */
-    protected $filesystem;
-
-    /**
-     * ExcelFileProcessorService constructor.
-     */
-    function __construct() {
-        $this->filesystem = new Filesystem();
-    }
+    const allowedTypes = [
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    ];
 
     /**
      * Handling an excel file and return the data as an array.
@@ -47,14 +41,24 @@ class ExcelFileProcessorService {
             throw new \Exception('The file does not exists');
         }
 
-        print(mime_content_type($file_path));
-
         // Check if this an excel file.
+        if (!in_array(mime_content_type($file_path), self::allowedTypes)) {
+            throw new \Exception('The file does not exists');
+        }
 
         // Read the file.
+        $parsed_file = \SimpleXLSX::parse($file_path);
 
-        $data = \SimpleXLSX::parse('book.xlsx');
         return [];
+    }
+
+    /**
+     * Processing a single sheet from a given sheet in the excel file.
+     *
+     * @param $sheet
+     *   The sheet name.
+     */
+    protected function processSheet($sheet) {
     }
 
 }

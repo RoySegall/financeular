@@ -44,7 +44,8 @@ class ExcelFileProcessor extends Command
      */
     public function handle()
     {
-        $file_path = $this->ask('Please enter the file path');
+//        $file_path = $this->ask('Please enter the file path');
+        $file_path = '/Applications/MAMP/htdocs/financeular/backend/app/Console/Commands/example_files/dummy_file.xlsx';
         \Kint::dump($this->excelFileProcessor->processFile($file_path));
     }
 }
