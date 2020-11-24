@@ -47,6 +47,8 @@ class ExcelFileProcessorService {
             throw new \Exception('The file does not exists');
         }
 
+        print(mime_content_type($file_path));
+
         // Check if this an excel file.
 
         // Read the file.
