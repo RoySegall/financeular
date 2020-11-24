@@ -24,7 +24,16 @@ class ExcelFileProcessorService {
      * Specifying the supported mime types.
      */
     const allowedTypes = [
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    ];
+
+    /**
+     * Holds the months representation in text.
+     */
+    const months = [
+        ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"],
     ];
 
     /**
@@ -35,7 +44,7 @@ class ExcelFileProcessorService {
      *
      * @return array The parsed data.
      */
-    public function processFile($file_path) {
+    public function processFile($file_path, $template = 'with_limitation', $currency = 'nis') {
         // Check if the path exists.
         if (!file_exists($file_path)) {
             throw new \Exception('The file does not exists');
@@ -47,18 +56,67 @@ class ExcelFileProcessorService {
         }
 
         // Read the file.
-        $parsed_file = \SimpleXLSX::parse($file_path);
+        $xsl = \SimpleXLSX::parse($file_path);
 
-        return [];
+        $data = [
+            'template' => $template,
+            'currency' => $currency,
+            'months' => [],
+        ];
+
+        $sheets = $xsl->sheetNames();
+        foreach ($sheets as $index => $sheet_name) {
+            if (!$sheet_name = $this->getMonthFromSheetName($sheet_name)) {
+                throw new \Exception("There was an issue getting numeric representation for {$sheet_name}. Please fix the label and try again.");
+            }
+
+            $data['months'][$sheet_name] = $this->processSheet($xsl->rows($index));
+        }
+
+        return $data;
+    }
+
+    /**
+     * Get the numeric representation of the month's name.
+     *
+     * @param $sheet_name
+     *   The sheet name.
+     *
+     * @return string
+     *   A representation of the sheet in the format of YEAR_MONTH.
+     */
+    protected function getMonthFromSheetName($sheet_name) {
+
+        // Get the name of the month and year.
+        list($month, $year) = explode(" ", $sheet_name);
+
+        if (!is_string($month)) {
+            // For some reason the string is in the wrong order. Flip the
+            // variables.
+            list($month, $year) = array_reverse([$month, $year]);
+        }
+
+        // Go over the array ot months representation.
+        foreach (self::months as $months) {
+            $key = array_search($month, $months);
+
+            if (is_int($key)) {
+                // We found an item which match the label. Increase by one,
+                // since array starts from 0, and return the string formatted.
+                $key++;
+                return "{$year}_{$key}";
+            }
+        }
+
+        return NULL;
     }
 
     /**
      * Processing a single sheet from a given sheet in the excel file.
-     *
-     * @param $sheet
-     *   The sheet name.
      */
-    protected function processSheet($sheet) {
+    protected function processSheet($sheet_data) {
+        // Process
+        return [];
     }
 
 }
