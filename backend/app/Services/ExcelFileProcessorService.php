@@ -5,15 +5,14 @@ namespace App\Services;
 class ExcelFileProcessorService {
 
     // Income keys.
-    const incomeValueKey = 3;
-    const incomeValueName = 4;
+    const incomeValueKey = 5;
+    const incomeValueName = 6;
 
     // Limitation Keys.
-    const limitationTotalValueKey = 5;
-    const limitationOneTimeValueKey = 6;
-    const limitationDescriptionKey = 8;
-    const limitationAllowedTimesKey = 8;
-    const limitationTitleKey = 8;
+    const limitationOneTimeValueKey = 9;
+    const limitationDescriptionKey = 11;
+    const limitationTimesKey = 12;
+    const limitationNameKey = 13;
 
     // Expenses keys.
     const expenseValueKey = 11;
@@ -119,8 +118,12 @@ class ExcelFileProcessorService {
         $incomes = [];
         $expenses = [];
 
-        foreach ($sheet_data as $row) {
+        foreach ($sheet_data as $index => $row) {
             if (!array_filter($row)) {
+                continue;
+            }
+
+            if ($index < 3) {
                 continue;
             }
 
@@ -144,14 +147,54 @@ class ExcelFileProcessorService {
         ];
     }
 
+    /**
+     * Extract the limitation from a row.
+     *
+     * @param $row
+     *   A row in the excel file.
+     *
+     * @return null
+     */
     protected function extractLimitationFromRow($row) {
+        if (!empty($row[self::limitationNameKey])) {
+            return [
+                "value_per_week" => $row[self::limitationOneTimeValueKey],
+                "description" => $row[self::limitationDescriptionKey],
+                "time_per_month" => $row[self::limitationTimesKey],
+                "title" => $row[self::limitationNameKey]
+            ];
+        }
         return null;
     }
 
+    /**
+     * Extracting the income form a given row.
+     *
+     * @param $row
+     *   A row in the excel file.
+     *
+     * @return array|null
+     *   An array with title and value.
+     */
     protected function extractIncomeFromRow($row) {
-        return null;
+        if (!empty($row[self::incomeValueKey])) {
+            return [
+                'title' => $row[self::incomeValueKey],
+                'value' => $row[self::incomeValueName],
+            ];
+        }
+
+        return NULL;
     }
 
+    /**
+     * Extract an expenses from row.
+     *
+     * @param $row
+     *   A row in the excel file.
+     *
+     * @return
+     */
     protected function extractExpenseFromRow($row) {
         return null;
     }
