@@ -200,13 +200,25 @@ class ExcelFileProcessorService {
             return null;
         }
 
-        if (!$date = $row[self::expenseDateKey]) {
-            // todo: handle here the failed date processing.
+        $date_from_row = $row[self::expenseDateKey];
+
+        if (!$date = strtotime($date_from_row)) {
+            $re = '/[0-9]{2}\/[0-9]{2}/';
+            $matches = [];
+
+            preg_match($re, $date, $matches);
+
+            if (!preg_match('/[0-9]{2}\/[0-9]{2}/u', $date_from_row, $matches)) {
+                throw new \Exception('There was an error while trying to process the excel file.');
+            }
+
+            // todo: extract the date by splitting up the stirng and then apply
+            //  the date format.
         }
 
         return [
             'title' => $row[self::expenseTitleKey],
-            'date' => strtotime($date),
+            'date' => $date,
             'value' => $row[self::expenseValueKey],
         ];
     }
