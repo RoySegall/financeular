@@ -15,9 +15,9 @@ class ExcelFileProcessorService {
     const limitationNameKey = 13;
 
     // Expenses keys.
-    const expenseValueKey = 11;
-    const expenseDateKey = 12;
-    const expenseTitleKey = 13;
+    const expenseValueKey = 17;
+    const expenseDateKey = 18;
+    const expenseTitleKey = 19;
 
     /**
      * Specifying the supported mime types.
@@ -196,7 +196,19 @@ class ExcelFileProcessorService {
      * @return
      */
     protected function extractExpenseFromRow($row) {
-        return null;
+        if (empty($row[self::expenseTitleKey])) {
+            return null;
+        }
+
+        if (!$date = $row[self::expenseDateKey]) {
+            // todo: handle here the failed date processing.
+        }
+
+        return [
+            'title' => $row[self::expenseTitleKey],
+            'date' => strtotime($date),
+            'value' => $row[self::expenseValueKey],
+        ];
     }
 
 }
