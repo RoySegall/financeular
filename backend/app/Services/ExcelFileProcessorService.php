@@ -69,7 +69,7 @@ class ExcelFileProcessorService {
                 throw new \Exception("There was an issue getting numeric representation for {$sheet_name}. Please fix the label and try again.");
             }
 
-            $data['months'][$sheet_name] = $this->processSheet($xsl->rows($index));
+            $data['months'][$sheet_name] = $this->processSheet($xsl->rows($index), $sheet_name);
         }
 
         return $data;
@@ -113,7 +113,7 @@ class ExcelFileProcessorService {
     /**
      * Processing a single sheet from a given sheet in the excel file.
      */
-    protected function processSheet($sheet_data) {
+    protected function processSheet($sheet_data, $sheet_name) {
         $limitations = [];
         $incomes = [];
         $expenses = [];
@@ -135,7 +135,7 @@ class ExcelFileProcessorService {
                 $incomes[] = $income;
             }
 
-            if ($expense = $this->extractExpenseFromRow($row)) {
+            if ($expense = $this->extractExpenseFromRow($row, $sheet_name)) {
                 $expenses[] = $expense;
             }
         }
@@ -195,30 +195,28 @@ class ExcelFileProcessorService {
      *
      * @return
      */
-    protected function extractExpenseFromRow($row) {
+    protected function extractExpenseFromRow($row, $sheet_name) {
         if (empty($row[self::expenseTitleKey])) {
             return null;
         }
 
         $date_from_row = $row[self::expenseDateKey];
 
-        if (!$date = strtotime($date_from_row)) {
-            $re = '/[0-9]{2}\/[0-9]{2}/';
-            $matches = [];
-
-            preg_match($re, $date, $matches);
+        if (!$time = strtotime($date_from_row)) {
 
             if (!preg_match('/[0-9]{2}\/[0-9]{2}/u', $date_from_row, $matches)) {
                 throw new \Exception('There was an error while trying to process the excel file.');
             }
 
-            // todo: extract the date by splitting up the stirng and then apply
-            //  the date format.
+            list ($day, $month) = explode("/", $date_from_row);
+            list($year,) = explode("_", $sheet_name);
+
+            $time = mktime(0,0,0,$month, $day, $year);
         }
 
         return [
             'title' => $row[self::expenseTitleKey],
-            'date' => $date,
+            'date' => $time,
             'value' => $row[self::expenseValueKey],
         ];
     }
