@@ -44,6 +44,7 @@ class ExcelFileProcessorService {
      * @return array The parsed data.
      */
     public function processFile($file_path, $template = 'with_limitation', $currency = 'nis') {
+
         // Check if the path exists.
         if (!file_exists($file_path)) {
             throw new \Exception('The file does not exists');
@@ -65,6 +66,7 @@ class ExcelFileProcessorService {
 
         $sheets = $xsl->sheetNames();
         foreach ($sheets as $index => $sheet_name) {
+
             if (!$sheet_name = $this->getMonthFromSheetName($sheet_name)) {
                 throw new \Exception("There was an issue getting numeric representation for {$sheet_name}. Please fix the label and try again.");
             }
