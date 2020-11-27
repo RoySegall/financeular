@@ -10,4 +10,4 @@ jobs:
       - name: cd in to the front
         run: |
           cd backend
-          ls -al
+          composer install
