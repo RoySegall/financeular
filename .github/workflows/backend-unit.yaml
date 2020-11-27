@@ -10,4 +10,4 @@ jobs:
       - name: cd in to the front
         run: |
           cd backend
-      - uses: nathanheffley/laravel-phpunit-action@master
+          ls -al
