@@ -1,0 +1,2640 @@
+{
+    "template": "with_limitation",
+    "currency": "nis",
+    "months": {
+        "2019_12": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                },
+                {
+                    "title": 1200,
+                    "value": "\u05e2\u05d6\u05e8\u05d4 \u05de\u05d0\u05de\u05d0"
+                },
+                {
+                    "title": 1000,
+                    "value": "\u05e2\u05d6\u05e8\u05d4 \u05de\u05e0\u05d5\u05d9"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05db\u05e1\u05e3 \u05de\u05e4\u05d9\u05d9\u05e4\u05dc",
+                    "date": 1547251200,
+                    "value": -1255.06
+                },
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1547251200,
+                    "value": 3750
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea",
+                    "date": 1547251200,
+                    "value": 80
+                },
+                {
+                    "title": "\u05e2\u05de\u05dc\u05ea \u05e2\u05d5\u05e9",
+                    "date": 1547251200,
+                    "value": 9
+                },
+                {
+                    "title": "\u05db\u05e8\u05d8\u05d9\u05e1 \u05dc\u05db\u05e0\u05e1",
+                    "date": 1547251200,
+                    "value": 300
+                },
+                {
+                    "title": "\u05e7\u05d5\u05e4\u05e1\u05d0\u05ea \u05de\u05de\u05ea\u05e7\u05d9\u05dd",
+                    "date": 1547251200,
+                    "value": 120
+                },
+                {
+                    "title": "\u05e7\u05e4\u05d4 \u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1547251200,
+                    "value": 91
+                },
+                {
+                    "title": "\u05e4\u05d8\u05e8\u05d9\u05d0\u05d5\u05df",
+                    "date": 1547251200,
+                    "value": 35
+                },
+                {
+                    "title": "\u05d2\u05d5\u05d2\u05dc",
+                    "date": 1547251200,
+                    "value": 21
+                },
+                {
+                    "title": "\u05e9\u05db\u05e8 \u05dc\u05d9\u05de\u05d5\u05d3",
+                    "date": 1549929600,
+                    "value": 295
+                },
+                {
+                    "title": "\u05d0\u05e4\u05dc - \u05e1\u05e8\u05d8",
+                    "date": 1549929600,
+                    "value": 60
+                },
+                {
+                    "title": "\u05d0\u05e4\u05dc",
+                    "date": 1549929600,
+                    "value": 30
+                },
+                {
+                    "title": "\u05de\u05e1\u05d8\u05e8\u05e7\u05d0\u05e8\u05d3",
+                    "date": 1552348800,
+                    "value": 477
+                },
+                {
+                    "title": "\u05e2\u05de\u05dc\u05d4",
+                    "date": 1552348800,
+                    "value": 24
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e6\u05d4 \u05e8\u05d5\u05de\u05d0",
+                    "date": 1552435200,
+                    "value": 50
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3\u05e1",
+                    "date": 1555027200,
+                    "value": 45
+                },
+                {
+                    "title": "\u05de\u05e4\u05e2\u05dc \u05d4\u05e4\u05d9\u05e1",
+                    "date": 1555027200,
+                    "value": -60
+                },
+                {
+                    "title": "\u05e9\u05d9\u05d1\u05d5\u05dc\u05ea \u05d0\u05e8\u05e6\u05e0\u05d5",
+                    "date": 1560297600,
+                    "value": 48
+                },
+                {
+                    "title": "\u05e6\u05e2\u05e6\u05d5\u05d9\u05e2\u05d9\u05dd",
+                    "date": 1560297600,
+                    "value": 110
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1560297600,
+                    "value": 91
+                },
+                {
+                    "title": "\u05e7\u05e0\u05d9\u05d4 \u05e4\u05d9\u05e6\u05d5\u05e6\u05d9\u05d4 \u05e9\u05d9\u05e9\u05d9 \u05d1\u05e2\u05e8\u05d1",
+                    "date": 1560297600,
+                    "value": 109
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1562889600,
+                    "value": 275
+                },
+                {
+                    "title": "\u05e9\u05db\u05e8 \u05dc\u05d9\u05de\u05d5\u05d3",
+                    "date": 1562889600,
+                    "value": 500
+                },
+                {
+                    "title": "\u05d8\u05d5\u05e0\u05d9 \u05d5\u05e1\u05e4\u05d4",
+                    "date": 1562889600,
+                    "value": 61
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc",
+                    "date": 1565568000,
+                    "value": 37
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc",
+                    "date": 1568246400,
+                    "value": 50
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e6\u05d5\u05e6\u05d9\u05d4",
+                    "date": 1568246400,
+                    "value": 28.5
+                },
+                {
+                    "title": "\u05d0\u05d9\u05d9\u05e4\u05d5\u05df",
+                    "date": 1570838400,
+                    "value": 1000
+                },
+                {
+                    "title": "\u05e9\u05e0\u05d9\u05e6\u05dc",
+                    "date": 1570838400,
+                    "value": 40
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc",
+                    "date": 1573516800,
+                    "value": 38
+                },
+                {
+                    "title": "\u05e7\u05e0\u05d9\u05d5\u05ea",
+                    "date": 1576108800,
+                    "value": 124
+                },
+                {
+                    "title": "\u05d1\u05dc\u05d0\u05e7",
+                    "date": 1576108800,
+                    "value": 70
+                },
+                {
+                    "title": "\u05e1\u05e4\u05d9\u05d9\u05e1\u05d6",
+                    "date": 1576108800,
+                    "value": 59
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1576108800,
+                    "value": 40
+                },
+                {
+                    "title": "\u05d1\u05e9\u05e8",
+                    "date": 1576195200,
+                    "value": 75
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1576195200,
+                    "value": 36
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1576195200,
+                    "value": 70.12
+                },
+                {
+                    "title": "\u05de\u05e9\u05d7\u05e7\u05d9\u05dd + \u05d0\u05d5\u05db\u05dc",
+                    "date": 1576368000,
+                    "value": 200
+                },
+                {
+                    "title": "\u05d7\u05e9\u05de\u05dc",
+                    "date": 1576627200,
+                    "value": 602
+                },
+                {
+                    "title": "\u05de\u05d9\u05e0\u05d9\u05e1\u05d5",
+                    "date": 1576627200,
+                    "value": 55
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e7\u05e0\u05d9\u05d5\u05df",
+                    "date": 1576627200,
+                    "value": 50
+                },
+                {
+                    "title": "\u05d1\u05d9\u05d2\u05d4",
+                    "date": 1576713600,
+                    "value": 59
+                },
+                {
+                    "title": "\u05ea\u05d9\u05e7\u05d5\u05df \u05dc\u05de\u05d7\u05e9\u05d1",
+                    "date": 1576800000,
+                    "value": 479
+                },
+                {
+                    "title": "\u05d1\u05e9\u05e8",
+                    "date": 1576800000,
+                    "value": 79
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1576800000,
+                    "value": 50
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1576800000,
+                    "value": 109
+                },
+                {
+                    "title": "\u05d9\u05e8\u05e7\u05d5\u05ea",
+                    "date": 1576800000,
+                    "value": 66.12
+                },
+                {
+                    "title": "\u05d3\u05dc\u05e7",
+                    "date": 1576800000,
+                    "value": 50
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8",
+                    "date": 1579910400,
+                    "value": 360
+                },
+                {
+                    "title": "\u05ea\u05e1\u05e4\u05d5\u05e8\u05ea ",
+                    "date": 1577404800,
+                    "value": 60
+                },
+                {
+                    "title": "\u05e0\u05d9\u05e7\u05d5\u05d9 \u05d9\u05d1\u05e9",
+                    "date": 1577404800,
+                    "value": 50
+                },
+                {
+                    "title": "\u05d9\u05e8\u05e7\u05d5\u05ea",
+                    "date": 1577404800,
+                    "value": 20
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4",
+                    "date": 1577404800,
+                    "value": 22
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1577404800,
+                    "value": 21
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3\u05e1",
+                    "date": 1577577600,
+                    "value": 45
+                },
+                {
+                    "title": "\u05ea\u05d9\u05d1\u05ea \u05e0\u05d5\u05d7 \u05d1\u05db\u05d9\u05db\u05e8",
+                    "date": 1577577600,
+                    "value": 89
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1577577600,
+                    "value": 105
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1577750400,
+                    "value": 40
+                },
+                {
+                    "title": "\u05e9\u05e0\u05d9\u05e6\u05dc",
+                    "date": 1577750400,
+                    "value": 36
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e6\u05d4 \u05e8\u05d5\u05de\u05d0",
+                    "date": 1577750400,
+                    "value": 20
+                }
+            ]
+        },
+        "2020_1": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                },
+                {
+                    "title": 1000,
+                    "value": "\u05e2\u05d6\u05e8\u05d4 \u05de\u05d0\u05de\u05d0"
+                },
+                {
+                    "title": 10000,
+                    "value": "\u05d6\u05d9\u05db\u05d5\u05d9"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1577836800,
+                    "value": 3750
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea",
+                    "date": 1577836800,
+                    "value": 80
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1577836800,
+                    "value": 88
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1577836800,
+                    "value": 29
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05dc\u05e0\u05d3\u05e1",
+                    "date": 1577836800,
+                    "value": 50
+                },
+                {
+                    "title": "\u05e9\u05db\u05e8 \u05dc\u05d9\u05de\u05d5\u05d3",
+                    "date": 1577836800,
+                    "value": 295
+                },
+                {
+                    "title": "\u05d0\u05d9\u05d9\u05e4\u05d5\u05df",
+                    "date": 1577836800,
+                    "value": 414
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1580515200,
+                    "value": 350
+                },
+                {
+                    "title": "\u05d1\u05dc\u05d5\u05e0\u05d9\u05dd",
+                    "date": 1583020800,
+                    "value": 52
+                },
+                {
+                    "title": "\u05de\u05d2\u05df \u05de\u05e1\u05da",
+                    "date": 1583020800,
+                    "value": 40
+                },
+                {
+                    "title": "\u05d1\u05e9\u05e8",
+                    "date": 1583020800,
+                    "value": 39
+                },
+                {
+                    "title": "\u05d3\u05d1\u05e8\u05d9\u05dd \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1583020800,
+                    "value": 50
+                },
+                {
+                    "title": "\u05ea\u05e0\u05d5\u05e8",
+                    "date": 1583020800,
+                    "value": 169
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e6\u05d4",
+                    "date": 1585699200,
+                    "value": 100
+                },
+                {
+                    "title": "\u05d0\u05de\u05d6\u05d5\u05df",
+                    "date": 1585699200,
+                    "value": 290
+                },
+                {
+                    "title": "\u05d3\u05dc\u05e7",
+                    "date": 1590969600,
+                    "value": 55
+                },
+                {
+                    "title": "\u05d8\u05e1\u05d8",
+                    "date": 1593561600,
+                    "value": 390
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc",
+                    "date": 1593561600,
+                    "value": 40
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05dc\u05e0\u05d3\u05e1",
+                    "date": 1596240000,
+                    "value": 53
+                },
+                {
+                    "title": "\u05e4\u05e1\u05d8\u05d4 \u05d1\u05e1\u05d8\u05d4",
+                    "date": 1598918400,
+                    "value": 49
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1598918400,
+                    "value": 350
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1601510400,
+                    "value": 56
+                },
+                {
+                    "title": "\u05d8\u05de\u05d1\u05d5\u05e8",
+                    "date": 1601510400,
+                    "value": 100
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1601510400,
+                    "value": 38
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1601510400,
+                    "value": 10
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1601510400,
+                    "value": 203
+                },
+                {
+                    "title": "\u05d0\u05de\u05d5\u05e8\u05d4 \u05de\u05d9\u05d5",
+                    "date": 1604188800,
+                    "value": 110
+                },
+                {
+                    "title": "\u05de\u05d5\u05e0\u05d9\u05ea",
+                    "date": 1604188800,
+                    "value": 80
+                },
+                {
+                    "title": "\u05e6\u05d7\u05d9",
+                    "date": 1601510400,
+                    "value": 170
+                },
+                {
+                    "title": "\u05e9\u05d9\u05d1\u05d5\u05dc\u05ea \u05d0\u05e8\u05e6\u05e0\u05d5",
+                    "date": 1578960000,
+                    "value": 69
+                },
+                {
+                    "title": "\u05e8\u05d1 \u05e7\u05d5",
+                    "date": 1578960000,
+                    "value": 100
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1578960000,
+                    "value": 390
+                },
+                {
+                    "title": "\u05de\u05d7\u05e9\u05d1",
+                    "date": 1579046400,
+                    "value": 4700
+                },
+                {
+                    "title": "\u05d2'\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1579132800,
+                    "value": 79
+                },
+                {
+                    "title": "\u05e4\u05dc\u05d0\u05e4\u05dc",
+                    "date": 1579392000,
+                    "value": 30
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1579478400,
+                    "value": 365
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1579219200,
+                    "value": 85
+                },
+                {
+                    "title": "\u05e9\u05d9\u05d9\u05df",
+                    "date": 1579392000,
+                    "value": 132
+                },
+                {
+                    "title": "\u05d2\u05d5\u05dc\u05d3\u05d4",
+                    "date": 1579305600,
+                    "value": 53
+                },
+                {
+                    "title": "\u05e9\u05d5\u05d5\u05d0\u05e8\u05de\u05d4",
+                    "date": 1579564800,
+                    "value": 44
+                },
+                {
+                    "title": "\u05d0\u05d7\u05e8\u05d9\u05d5\u05ea \u05dc\u05de\u05d3\u05d9\u05d7",
+                    "date": 1579737600,
+                    "value": 180
+                },
+                {
+                    "title": "\u05ea\u05d9\u05d1\u05ea \u05e0\u05d5\u05d7",
+                    "date": 1579737600,
+                    "value": 178
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e6\u05d4 \u05e8\u05d5\u05de\u05d0",
+                    "date": 1579737600,
+                    "value": 55
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1579737600,
+                    "value": 40
+                },
+                {
+                    "title": "\u05dc\u05d7\u05de\u05e0\u05d9\u05e0\u05d4",
+                    "date": 1579737600,
+                    "value": 80
+                },
+                {
+                    "title": "\u05d1\u05d9\u05e7\u05d5\u05e8\u05d5\u05e4\u05d0",
+                    "date": 1579737600,
+                    "value": 90
+                },
+                {
+                    "title": "\u05d1\u05d0\u05d1\u05dc",
+                    "date": 1579737600,
+                    "value": 50
+                },
+                {
+                    "title": "\u05de\u05d9\u05dd",
+                    "date": 1580342400,
+                    "value": 161
+                },
+                {
+                    "title": "\u05d0\u05e8\u05e0\u05d5\u05e0\u05d4",
+                    "date": 1580342400,
+                    "value": 400
+                },
+                {
+                    "title": "\u05e8\u05d5\u05d1\u05df",
+                    "date": 1580342400,
+                    "value": 80
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1580342400,
+                    "value": 375
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1579996800,
+                    "value": 88
+                },
+                {
+                    "title": "\u05d3\u05dc\u05e7",
+                    "date": 1580083200,
+                    "value": 50
+                },
+                {
+                    "title": "\u05d4\u05d5\u05e6\u05d0\u05d5\u05ea 26-30",
+                    "date": 1580083200,
+                    "value": 430
+                }
+            ]
+        },
+        "2020_2": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                },
+                {
+                    "title": 1000,
+                    "value": "\u05ea\u05e9\u05dc\u05d5\u05dd \u05e2\u05dc \u05de\u05d7\u05e9\u05d1 \u05e9\u05dc \u05e0\u05d5\u05d9"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1577923200,
+                    "value": 4000
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea",
+                    "date": 1577923200,
+                    "value": 80
+                },
+                {
+                    "title": "\u05d0\u05e8\u05d5\u05de\u05d4",
+                    "date": 1580601600,
+                    "value": 52
+                },
+                {
+                    "title": "\u05d0\u05de\u05d6\u05d5\u05df",
+                    "date": 1580601600,
+                    "value": 250
+                },
+                {
+                    "title": "\u05d0\u05d9\u05d9\u05e4\u05d5\u05df",
+                    "date": 1577923200,
+                    "value": 415
+                },
+                {
+                    "title": "\u05d1\u05d0\u05d1\u05dc",
+                    "date": 1583107200,
+                    "value": 45
+                },
+                {
+                    "title": "\u05e1\u05dc\u05d8",
+                    "date": 1585785600,
+                    "value": 40
+                },
+                {
+                    "title": "\u05de\u05e7\u05d1\u05d5\u05e7",
+                    "date": 1585785600,
+                    "value": 1000
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1588377600,
+                    "value": 400
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3\u05e1",
+                    "date": 1588377600,
+                    "value": 45
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1588377600,
+                    "value": 45
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1588377600,
+                    "value": 50
+                },
+                {
+                    "title": "\u05db\u05ea\u05e8 \u05e8\u05d9\u05de\u05d5\u05df",
+                    "date": 1588377600,
+                    "value": 44
+                },
+                {
+                    "title": "\u05d8\u05de\u05d1\u05d5\u05e8",
+                    "date": 1593648000,
+                    "value": 49
+                },
+                {
+                    "title": "\u05e9\u05de\u05e1\u05d9",
+                    "date": 1593734400,
+                    "value": 25
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1593820800,
+                    "value": 48
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1593907200,
+                    "value": 47
+                },
+                {
+                    "title": "\u05d1\u05d6\u05e7",
+                    "date": 1593993600,
+                    "value": 120
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1591056000,
+                    "value": 103
+                },
+                {
+                    "title": "\u05d3\u05d1\u05e8\u05d9\u05dd \u05dc\u05e9\u05d9\u05e9\u05d9 \u05d1\u05de\u05d9\u05e0\u05d9 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1593648000,
+                    "value": 65
+                },
+                {
+                    "title": "\u05d2\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1599004800,
+                    "value": 110
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3\u05e1",
+                    "date": 1599004800,
+                    "value": 45
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1604275200,
+                    "value": 333
+                },
+                {
+                    "title": "\u05d3\u05d1\u05e8\u05d9\u05dd \u05dc\u05d0\u05e8\u05d5\u05d7\u05ea \u05e2\u05e8\u05d1",
+                    "date": 1604275200,
+                    "value": 77
+                },
+                {
+                    "title": "\u05d7\u05e9\u05de\u05dc",
+                    "date": 1581811200,
+                    "value": 995
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1581811200,
+                    "value": 290
+                },
+                {
+                    "title": "\u05e2\u05d5\u05d3 \u05d3\u05d1\u05e8\u05d9\u05dd",
+                    "date": 1582588800,
+                    "value": 275
+                },
+                {
+                    "title": "\u05d1\u05e8\u05d9\u05ea\u05d5\u05ea",
+                    "date": 1582588800,
+                    "value": 600
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "date": 1582588800,
+                    "value": 500
+                }
+            ]
+        },
+        "2020_3": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                },
+                {
+                    "title": 500,
+                    "value": "\u05db\u05e1\u05e3 \u05de\u05d0\u05d1\u05d0 \u05e9\u05dc \u05e0\u05d5\u05d9"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1577923200,
+                    "value": 4000
+                },
+                {
+                    "title": "\u05d0\u05d9\u05d9\u05e4\u05d5\u05df",
+                    "date": 1577923200,
+                    "value": 415
+                },
+                {
+                    "title": "\u05de\u05e7\u05d1\u05d5\u05e7",
+                    "date": 1585612800,
+                    "value": 1000
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3",
+                    "date": 1583193600,
+                    "value": 80
+                },
+                {
+                    "title": "\u05de\u05d9\u05e0\u05d9\u05de\u05e8\u05e7\u05d8",
+                    "date": 1583280000,
+                    "value": 13
+                },
+                {
+                    "title": "\u05e1\u05dc\u05d8",
+                    "date": 1580688000,
+                    "value": 34
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1580688000,
+                    "value": 406
+                },
+                {
+                    "title": "\u05e0\u05d9\u05d5 \u05d3\u05dc\u05d9",
+                    "date": 1585872000,
+                    "value": 40
+                },
+                {
+                    "title": "\u05d2'\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1588464000,
+                    "value": 70
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1588464000,
+                    "value": 30
+                },
+                {
+                    "title": "\u05e9\u05d9\u05d1\u05d5\u05dc\u05ea \u05d0\u05e8\u05e6\u05e0\u05d5",
+                    "date": 1591142400,
+                    "value": 25
+                },
+                {
+                    "title": "\u05ea\u05d7\u05e4\u05d5\u05e9\u05ea",
+                    "date": 1591142400,
+                    "value": 70
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05ea\u05d5\u05dd \u05d5\u05e1\u05d0\u05dd",
+                    "date": 1591142400,
+                    "value": 318
+                },
+                {
+                    "title": "\u05d2\u05d8 \u05d8\u05e7\u05e1\u05d9",
+                    "date": 1591142400,
+                    "value": 60
+                },
+                {
+                    "title": "\u05e1\u05e8\u05d8",
+                    "date": 1591142400,
+                    "value": 88
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e1\u05e8\u05d8",
+                    "date": 1591142400,
+                    "value": 60
+                },
+                {
+                    "title": "\u05d2\u05f3\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1591142400,
+                    "value": 109
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1593734400,
+                    "value": 392
+                },
+                {
+                    "title": "\u05e0\u05d0\u05e4\u05d9\u05e1",
+                    "date": 1596412800,
+                    "value": 58
+                },
+                {
+                    "title": "\u05e7\u05e0\u05d9\u05d5\u05ea \u05dc\u05dc\u05d6\u05d9\u05e0\u05d4",
+                    "date": 1596412800,
+                    "value": 30
+                },
+                {
+                    "title": "\u05e4\u05e1\u05d8\u05d4 \u05d1\u05e1\u05d8\u05d4",
+                    "date": 1599091200,
+                    "value": 47
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1599091200,
+                    "value": 132
+                },
+                {
+                    "title": "\u05d2'\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1601683200,
+                    "value": 62
+                },
+                {
+                    "title": "\u05e1\u05dc\u05d8 \u05e9\u05e0\u05d9\u05e6\u05dc",
+                    "date": 1604361600,
+                    "value": 38
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3\u05e1",
+                    "date": 1606953600,
+                    "value": 45
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1604361600,
+                    "value": 25
+                },
+                {
+                    "title": "\u05d3\u05d5\u05de\u05d9\u05e0\u05d5\u05e1",
+                    "date": 1584144000,
+                    "value": 114
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1584144000,
+                    "value": 210
+                },
+                {
+                    "title": "\u05d1\u05d0\u05d2",
+                    "date": 1604361600,
+                    "value": 119
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1584057600,
+                    "value": 303
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1584057600,
+                    "value": 47
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1584230400,
+                    "value": 36
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1584230400,
+                    "value": 70.6
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1584316800,
+                    "value": 100
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1584403200,
+                    "value": 96
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1584403200,
+                    "value": 15
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1584403200,
+                    "value": 366
+                },
+                {
+                    "title": "\u05d2\u05f3\u05d5\u05e0\u05d9 \u05e7\u05e8\u05d9\u05e1\u05e4\u05d9",
+                    "date": 1584403200,
+                    "value": 78
+                },
+                {
+                    "title": "\u05e9\u05d9\u05d1\u05d5\u05dc\u05ea \u05d0\u05e8\u05e6\u05e0\u05d5",
+                    "date": 1584662400,
+                    "value": 33
+                },
+                {
+                    "title": "\u05de\u05ea\u05e7\u05df \u05dc\u05e1\u05d0\u05dd",
+                    "date": 1584662400,
+                    "value": 447
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8\u05de\u05d0\u05e8\u05e7\u05d8",
+                    "date": 1584662400,
+                    "value": 85
+                },
+                {
+                    "title": "\u05d1\u05e9\u05e8",
+                    "date": 1584662400,
+                    "value": 75
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1584662400,
+                    "value": 73
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1584489600,
+                    "value": 22
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7\u05de\u05e8\u05e7\u05d8",
+                    "date": 1584748800,
+                    "value": 72
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc \u05d0\u05e7\u05e1\u05e4\u05e8\u05e1",
+                    "date": 1584835200,
+                    "value": 153
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e6\u05d4",
+                    "date": 1584921600,
+                    "value": 86
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1585008000,
+                    "value": 97
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8\u05de\u05e8\u05e7\u05d8",
+                    "date": 1585008000,
+                    "value": 100
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1585008000,
+                    "value": 336
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1585180800,
+                    "value": 130
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05ea\u05d5\u05dd \u05d5\u05e1\u05d0\u05dd",
+                    "date": 1585094400,
+                    "value": 180
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1585094400,
+                    "value": 72
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8\u05de\u05e8\u05e7\u05d8",
+                    "date": 1585094400,
+                    "value": 84
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1585440000,
+                    "value": 73
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1585353600,
+                    "value": 71
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1585267200,
+                    "value": 133
+                },
+                {
+                    "title": "\u05d0\u05e8\u05e0\u05d5\u05e0\u05d4",
+                    "date": 1585612800,
+                    "value": 379
+                }
+            ]
+        },
+        "2020_4": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                },
+                {
+                    "title": 500,
+                    "value": "\u05db\u05e1\u05e3 \u05de\u05d0\u05d1\u05d0 \u05e9\u05dc \u05e0\u05d5\u05d9"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1578096000,
+                    "value": 4000
+                },
+                {
+                    "title": "\u05d0\u05d9\u05d9\u05e4\u05d5\u05df",
+                    "date": 1578096000,
+                    "value": 415
+                },
+                {
+                    "title": "\u05de\u05e7\u05d1\u05d5\u05e7",
+                    "date": 1578096000,
+                    "value": 1000
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3",
+                    "date": 1578096000,
+                    "value": 80
+                },
+                {
+                    "title": "\u05de\u05d9\u05e0\u05d9\u05de\u05e8\u05e7\u05d8",
+                    "date": 1578096000,
+                    "value": 84
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1578096000,
+                    "value": 51
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1580774400,
+                    "value": 390
+                },
+                {
+                    "title": "\u05d1\u05e9\u05e8",
+                    "date": 1583280000,
+                    "value": 85
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1588550400,
+                    "value": 68
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1580774400,
+                    "value": 100
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1588550400,
+                    "value": 67
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8\u05de\u05e8\u05e7\u05d8",
+                    "date": 1588550400,
+                    "value": 67
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1585958400,
+                    "value": 105
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3\u05e1",
+                    "date": 1591228800,
+                    "value": 108
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1591228800,
+                    "value": 172
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1591228800,
+                    "value": 60
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1596499200,
+                    "value": 65
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1596499200,
+                    "value": 57
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1593820800,
+                    "value": 43
+                },
+                {
+                    "title": "\u05d2\u05d5\u05dc\u05d3\u05d4",
+                    "date": 1593820800,
+                    "value": 60
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1604448000,
+                    "value": 112
+                },
+                {
+                    "title": "\u05d1\u05e9\u05e8",
+                    "date": 1587081600,
+                    "value": 75
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1587081600,
+                    "value": 138
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e6\u05d4",
+                    "date": 1586908800,
+                    "value": 176
+                },
+                {
+                    "title": "\u05e7\u05e0\u05d9\u05d5\u05ea",
+                    "date": 1586995200,
+                    "value": 103
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1586995200,
+                    "value": 20
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1586995200,
+                    "value": 65
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1587686400,
+                    "value": 272
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1587168000,
+                    "value": 216
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1587168000,
+                    "value": 103
+                },
+                {
+                    "title": "\u05d2\u05f3\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1587600000,
+                    "value": 103
+                },
+                {
+                    "title": "\u05d8\u05d1\u05de\u05d5\u05e8",
+                    "date": 1587600000,
+                    "value": 180
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1587600000,
+                    "value": 222
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1587427200,
+                    "value": 96
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1587772800,
+                    "value": 340
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1587772800,
+                    "value": 215
+                }
+            ]
+        },
+        "2020_5": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                },
+                {
+                    "title": 2000,
+                    "value": "\u05de\u05e9\u05e7\u05e4\u05d9\u05d9\u05dd"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1578182400,
+                    "value": 4000
+                },
+                {
+                    "title": "\u05d0\u05d9\u05d9\u05e4\u05d5\u05df",
+                    "date": 1578182400,
+                    "value": 415
+                },
+                {
+                    "title": "\u05de\u05e7\u05d1\u05d5\u05e7",
+                    "date": 1578182400,
+                    "value": 1000
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3",
+                    "date": 1578182400,
+                    "value": 80
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1578182400,
+                    "value": 120
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1578182400,
+                    "value": 26
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1578182400,
+                    "value": 47
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1578182400,
+                    "value": 150
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1580860800,
+                    "value": 110
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1583366400,
+                    "value": 388
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1583366400,
+                    "value": 250
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1588636800,
+                    "value": 132
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e6\u05d4 ",
+                    "date": 1593907200,
+                    "value": 80
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1596585600,
+                    "value": 31
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1596585600,
+                    "value": 58
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1596585600,
+                    "value": 131
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1599264000,
+                    "value": 70
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1599264000,
+                    "value": 36
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1589328000,
+                    "value": 36
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1589328000,
+                    "value": 23
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8\u05de\u05e8\u05e7\u05d0\u05d8",
+                    "date": 1589328000,
+                    "value": 75
+                },
+                {
+                    "title": "\u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3\u05e1",
+                    "date": 1589414400,
+                    "value": 135
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1589414400,
+                    "value": 256
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1589500800,
+                    "value": 50
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1589500800,
+                    "value": 36
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8\u05de\u05e8\u05e7\u05d8",
+                    "date": 1589500800,
+                    "value": 90
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1586995200,
+                    "value": 291
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1589760000,
+                    "value": 40
+                },
+                {
+                    "title": "\u05d3\u05d9\u05df \u05de\u05e8\u05e7\u05d8",
+                    "date": 1589932800,
+                    "value": 280
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1590019200,
+                    "value": 118
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1590019200,
+                    "value": 146
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1590105600,
+                    "value": 40
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1590105600,
+                    "value": 115
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1590192000,
+                    "value": 276
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1590278400,
+                    "value": 56
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1590278400,
+                    "value": 290
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8\u05de\u05e8\u05e7\u05d8",
+                    "date": 1590364800,
+                    "value": 70
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1590364800,
+                    "value": 34
+                },
+                {
+                    "title": "\u05d3\u05d1\u05e8\u05d9\u05dd \u05dc\u05de\u05d8\u05d1\u05d7",
+                    "date": 1590451200,
+                    "value": 62
+                },
+                {
+                    "title": "\u05e8\u05d9\u05d1\u05d0\u05e8",
+                    "date": 1590451200,
+                    "value": 28
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1590624000,
+                    "value": 52
+                },
+                {
+                    "title": "\u05db\u05d9\u05e8\u05d9\u05d9\u05dd",
+                    "date": 1590624000,
+                    "value": 235
+                },
+                {
+                    "title": "\u05d9\u05e8\u05e7\u05d5\u05ea",
+                    "date": 1590624000,
+                    "value": 117
+                },
+                {
+                    "title": "\u05e9\u05e4\u05d5\u05e8\u05e4\u05e8\u05d5\u05ea",
+                    "date": 1590624000,
+                    "value": 60
+                },
+                {
+                    "title": "\u05d3\u05d1\u05e8\u05d9\u05dd \u05dc\u05d9\u05d5\u05dd \u05d4\u05d5\u05dc\u05d3\u05ea \u05e9\u05dc \u05e1\u05d0\u05dd",
+                    "date": 1590796800,
+                    "value": 136
+                },
+                {
+                    "title": "\u05d0\u05e8\u05e0\u05d5\u05e0\u05d4",
+                    "date": 1590796800,
+                    "value": 395
+                }
+            ]
+        },
+        "2020_6": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1578182400,
+                    "value": 4000
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3",
+                    "date": 1578268800,
+                    "value": 80
+                },
+                {
+                    "title": "\u05d3\u05d5\u05de\u05d9\u05e0\u05d5\u05e1",
+                    "date": 1578268800,
+                    "value": 106
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1578268800,
+                    "value": 318
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1578268800,
+                    "value": 110
+                },
+                {
+                    "title": "\u05d2\u05f3\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1578268800,
+                    "value": 46
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1591401600,
+                    "value": 208
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1596672000,
+                    "value": 110
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1599350400,
+                    "value": 277
+                },
+                {
+                    "title": "\u05e1\u05d9\u05e8\u05d9\u05dd",
+                    "date": 1599350400,
+                    "value": 150
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1607212800,
+                    "value": 54
+                },
+                {
+                    "title": "\u05d8\u05de\u05d1\u05d5\u05e8",
+                    "date": 1607212800,
+                    "value": 78
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1606953600,
+                    "value": 120
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1592006400,
+                    "value": 390
+                },
+                {
+                    "title": "\u05d2\u05d5\u05dc\u05d3\u05d4",
+                    "date": 1607212800,
+                    "value": 50
+                },
+                {
+                    "title": "\u05d5\u05d9\u05d5\u05dc\u05d4",
+                    "date": 1592006400,
+                    "value": 110
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1592265600,
+                    "value": 72
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1592265600,
+                    "value": 96
+                },
+                {
+                    "title": "\u05d3\u05d5\u05de\u05d9\u05e0\u05d5\u05e1",
+                    "date": 1592352000,
+                    "value": 100
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1592697600,
+                    "value": 406
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1592870400,
+                    "value": 132
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1592870400,
+                    "value": 22
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1592870400,
+                    "value": 65
+                },
+                {
+                    "title": "\u05d3\u05d5\u05de\u05d9\u05e0\u05d5\u05e1",
+                    "date": 1593043200,
+                    "value": 160
+                },
+                {
+                    "title": "\u05d3\u05d1\u05e8\u05d9\u05dd \u05dc\u05e1\u05e8\u05d8",
+                    "date": 1593043200,
+                    "value": 36
+                },
+                {
+                    "title": "\u05dc\u05e0\u05d3\u05d5\u05d5\u05e8",
+                    "date": 1593129600,
+                    "value": 90
+                },
+                {
+                    "title": "\u05ea\u05d9\u05d1\u05ea \u05e0\u05d5\u05d7",
+                    "date": 1593129600,
+                    "value": 268
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8\u05e4\u05d0\u05e8\u05dd",
+                    "date": 1592956800,
+                    "value": 115
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1593216000,
+                    "value": 50
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1593216000,
+                    "value": 390
+                },
+                {
+                    "title": "\u05d7\u05e9\u05de\u05dc ",
+                    "date": 1601942400,
+                    "value": 720
+                },
+                {
+                    "title": "\u05d4\u05d7\u05dc\u05e4\u05ea \u05d1\u05d8\u05e8\u05d9\u05d4",
+                    "date": 1593475200,
+                    "value": 200
+                },
+                {
+                    "title": "\u05dc\u05e0\u05d3\u05d5\u05d5\u05e8",
+                    "date": 1593302400,
+                    "value": 94
+                }
+            ]
+        },
+        "2020_7": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1578355200,
+                    "value": 4000
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3",
+                    "date": 1578355200,
+                    "value": 80
+                },
+                {
+                    "title": "\u05d3\u05d5\u05de\u05d9\u05e0\u05d5\u05e1",
+                    "date": 1583539200,
+                    "value": 90
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1596067200,
+                    "value": 100
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1583539200,
+                    "value": 96
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05d9\u05d5\u05ea",
+                    "date": 1583539200,
+                    "value": 40
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1588809600,
+                    "value": 300
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1588809600,
+                    "value": 102
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1588809600,
+                    "value": 88
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05de\u05d0\u05de\u05d0",
+                    "date": 1588809600,
+                    "value": 40
+                },
+                {
+                    "title": "\u05d2'\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1596758400,
+                    "value": 105
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd ",
+                    "date": 1602028800,
+                    "value": 66
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1602028800,
+                    "value": 32
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1602028800,
+                    "value": 35
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1602028800,
+                    "value": 160
+                },
+                {
+                    "title": "\u05e2\u05d5\u05d2\u05d9\u05d5\u05ea",
+                    "date": 1602028800,
+                    "value": 90
+                },
+                {
+                    "title": "\u05d4\u05de\u05d1\u05d5\u05e8\u05d2\u05e8 \u05dc\u05e0\u05e9\u05de\u05d4",
+                    "date": 1594598400,
+                    "value": 130
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1594598400,
+                    "value": 333
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1594771200,
+                    "value": 80
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05d9\u05d5\u05ea",
+                    "date": 1594771200,
+                    "value": 169
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1595030400,
+                    "value": 106
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1595030400,
+                    "value": 105
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1595030400,
+                    "value": 50
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1595030400,
+                    "value": 30
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1595203200,
+                    "value": 313
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1595289600,
+                    "value": 47
+                },
+                {
+                    "title": "\u05dc\u05e0\u05d3\u05d5\u05d5\u05e8",
+                    "date": 1595462400,
+                    "value": 114
+                },
+                {
+                    "title": "\u05e1\u05df\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1595289600,
+                    "value": 18
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1595462400,
+                    "value": 102
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1595376000,
+                    "value": 166
+                },
+                {
+                    "title": "\u05e7\u05e4\u05d8\u05df \u05d1\u05d5\u05e8\u05d2\u05e8",
+                    "date": 1595462400,
+                    "value": 110
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1595462400,
+                    "value": 361
+                },
+                {
+                    "title": "\u05dc\u05d5\u05d8\u05d5",
+                    "date": 1595894400,
+                    "value": 80
+                },
+                {
+                    "title": "\u05d0\u05e8\u05e0\u05d5\u05e0\u05d4",
+                    "date": 1595894400,
+                    "value": 395
+                },
+                {
+                    "title": "\u05d2\u05f3\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1595980800,
+                    "value": 82
+                },
+                {
+                    "title": "\u05d3\u05d5\u05de\u05d9\u05e0\u05d5\u05e1",
+                    "date": 1596153600,
+                    "value": 103
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05d9\u05d5\u05ea",
+                    "date": 1596153600,
+                    "value": 268
+                }
+            ]
+        },
+        "2020_8": {
+            "limitations": [
+                {
+                    "value_per_week": 400,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05e2\u05d3 400 \u05e9\u05e7\u05dc \u05e1\u05d5\u05e4\u05e8",
+                    "time_per_month": 4,
+                    "title": "\u05e1\u05d5\u05e4\u05e8"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05db\u05dc \u05e9\u05d1\u05d5\u05e2 \u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d7\u05d5\u05e5 \u05e2\u05d3 100 \u05e9\u05e7\u05dc",
+                    "time_per_month": 4,
+                    "title": "\u05de\u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05db\u05dc"
+                },
+                {
+                    "value_per_week": 1500,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 1500 \u05d7\u05e9\u05de\u05dc",
+                    "time_per_month": 0.5,
+                    "title": "\u05d7\u05e9\u05de\u05dc"
+                },
+                {
+                    "value_per_week": 100,
+                    "description": "\u05d0\u05d7\u05ea \u05dc\u05d7\u05d5\u05d3\u05e9\u05d9\u05d9\u05dd \u05e2\u05d3 200 \u05e9\u05e7\u05dc",
+                    "time_per_month": 1,
+                    "title": "\u05de\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 500,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d7\u05d9\u05d9\u05dd"
+                },
+                {
+                    "value_per_week": 400,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d1\u05d9\u05d8\u05d5\u05d7 \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2"
+                },
+                {
+                    "value_per_week": 200,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d3\u05dc\u05e7"
+                },
+                {
+                    "value_per_week": 50,
+                    "description": "\u05e2\u05d3 \u05d7\u05de\u05d9\u05e9\u05d9\u05dd \u05e9\u05e7\u05dc \u05dc\u05d9\u05d5\u05dd \u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3\u05d4",
+                    "time_per_month": 20,
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05d1\u05e2\u05d1\u05d5\u05d3"
+                },
+                {
+                    "value_per_week": 4000,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05e9\u05db\u05e8 \u05d3\u05d9\u05e8\u05d4"
+                },
+                {
+                    "value_per_week": 80,
+                    "description": "",
+                    "time_per_month": 1,
+                    "title": "\u05d5\u05e2\u05d3 \u05d1\u05d9\u05ea"
+                }
+            ],
+            "incomes": [
+                {
+                    "title": 10000,
+                    "value": "\u05de\u05e9\u05db\u05d5\u05e8\u05ea"
+                },
+                {
+                    "title": 750,
+                    "value": "\u05de\u05e2\u05e0\u05e7"
+                }
+            ],
+            "expenses": [
+                {
+                    "title": "\u05e9\u05db\u05d3",
+                    "date": 1578441600,
+                    "value": 4000
+                },
+                {
+                    "title": "\u05d5\u05e2\u05d3",
+                    "date": 1578441600,
+                    "value": 80
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05da",
+                    "date": 1578441600,
+                    "value": 398
+                },
+                {
+                    "title": "\u05dc\u05e0\u05d3\u05d5\u05d5\u05e8",
+                    "date": 1586304000,
+                    "value": 119
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1591574400,
+                    "value": 191
+                },
+                {
+                    "title": "\u05d2\u05f3\u05e4\u05e0\u05d9\u05e7\u05d4",
+                    "date": 1591574400,
+                    "value": 120
+                },
+                {
+                    "title": "\u05d2\u05d5\u05dc\u05d3\u05d4",
+                    "date": 1594166400,
+                    "value": 60
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1594166400,
+                    "value": 50
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1594166400,
+                    "value": 92
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1599523200,
+                    "value": 111
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05de\u05d0\u05e8\u05e7\u05d8",
+                    "date": 1599523200,
+                    "value": 33
+                },
+                {
+                    "title": "\u05d3\u05d5\u05de\u05d9\u05e0\u05d5\u05e1",
+                    "date": 1596844800,
+                    "value": 104
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1599523200,
+                    "value": 410
+                },
+                {
+                    "title": "\u05dc\u05e0\u05d3\u05d5\u05d5\u05e8",
+                    "date": 1604793600,
+                    "value": 112
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1607385600,
+                    "value": 86
+                },
+                {
+                    "title": "\u05d7\u05e9\u05de\u05dc",
+                    "date": 1607385600,
+                    "value": 950
+                },
+                {
+                    "title": "\u05d8\u05d9\u05e4\u05d5\u05dc \u05d0\u05d5\u05e4\u05e0\u05d5\u05e2",
+                    "date": 1604793600,
+                    "value": 250
+                },
+                {
+                    "title": "\u05d7\u05ea\u05d5\u05e0\u05d4",
+                    "date": 1604793600,
+                    "value": 560
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1607385600,
+                    "value": 35
+                },
+                {
+                    "title": "\u05e9\u05de\u05e1\u05d9",
+                    "date": 1597276800,
+                    "value": 15
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1597276800,
+                    "value": 17
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1597276800,
+                    "value": 82
+                },
+                {
+                    "title": "\u05d0\u05e4\u05d5\u05e0\u05d4 \u05d5\u05d2\u05d6\u05e8",
+                    "date": 1597363200,
+                    "value": 31
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1597276800,
+                    "value": 30
+                },
+                {
+                    "title": "\u05d0\u05e7\u05d3\u05de\u05d5\u05df",
+                    "date": 1597276800,
+                    "value": 184
+                },
+                {
+                    "title": "\u05d0\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dc\u05d9\u05dd",
+                    "date": 1597622400,
+                    "value": 169
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1597968000,
+                    "value": 132
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1597708800,
+                    "value": 26
+                },
+                {
+                    "title": "\u05e1\u05d9\u05e6\u05d9\u05dc\u05d0\u05e0\u05d9\u05ea",
+                    "date": 1597795200,
+                    "value": 73
+                },
+                {
+                    "title": "\u05de\u05d0\u05e4\u05d9\u05d4",
+                    "date": 1597968000,
+                    "value": 50
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1598054400,
+                    "value": 395
+                },
+                {
+                    "title": "\u05dc\u05e0\u05d3\u05d5\u05d5\u05e8",
+                    "date": 1598227200,
+                    "value": 90
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e7\u05d9\u05d8",
+                    "date": 1598227200,
+                    "value": 191
+                },
+                {
+                    "title": "\u05e9\u05d5\u05e4\u05e8\u05e1\u05dc",
+                    "date": 1598400000,
+                    "value": 10
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1598400000,
+                    "value": 75
+                },
+                {
+                    "title": "\u05e4\u05d9\u05e0\u05e7 \u05de\u05e8\u05e7\u05d8",
+                    "date": 1598572800,
+                    "value": 130
+                },
+                {
+                    "title": "\u05e1\u05d5\u05e4\u05e8 \u05e4\u05d0\u05e8\u05dd",
+                    "date": 1598572800,
+                    "value": 64
+                }
+            ]
+        }
+    }
+}
