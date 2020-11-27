@@ -3,11 +3,12 @@ on: [push]
 
 jobs:
   phpunit:
-    name: PHPUnit
+    name: Backend - Unit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: cd in to the front
+      - name: cd in to the backend
         run: |
           cd backend
           composer install
+          php artisan test
