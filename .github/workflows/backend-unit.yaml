@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: cd in to the backend
+      - name: cd in to the backend and run tests
         run: |
           cd backend
           composer install

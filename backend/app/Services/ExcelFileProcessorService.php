@@ -86,7 +86,7 @@ class ExcelFileProcessorService {
      * @return string
      *   A representation of the sheet in the format of YEAR_MONTH.
      */
-    protected function getMonthFromSheetName($sheet_name) {
+    public function getMonthFromSheetName($sheet_name) {
 
         // Get the name of the month and year.
         list($month, $year) = explode(" ", $sheet_name);
@@ -115,7 +115,7 @@ class ExcelFileProcessorService {
     /**
      * Processing a single sheet from a given sheet in the excel file.
      */
-    protected function processSheet($sheet_data, $sheet_name) {
+    public function processSheet($sheet_data, $sheet_name) {
         $limitations = [];
         $incomes = [];
         $expenses = [];
@@ -157,7 +157,7 @@ class ExcelFileProcessorService {
      *
      * @return null
      */
-    protected function extractLimitationFromRow($row) {
+    public function extractLimitationFromRow($row) {
         if (!empty($row[self::limitationNameKey])) {
             return [
                 "value_per_week" => $row[self::limitationOneTimeValueKey],
@@ -178,7 +178,7 @@ class ExcelFileProcessorService {
      * @return array|null
      *   An array with title and value.
      */
-    protected function extractIncomeFromRow($row) {
+    public function extractIncomeFromRow($row) {
         if (!empty($row[self::incomeValueKey])) {
             return [
                 'title' => $row[self::incomeValueKey],
@@ -197,7 +197,7 @@ class ExcelFileProcessorService {
      *
      * @return
      */
-    protected function extractExpenseFromRow($row, $sheet_name) {
+    public function extractExpenseFromRow($row, $sheet_name) {
         if (empty($row[self::expenseTitleKey])) {
             return null;
         }
