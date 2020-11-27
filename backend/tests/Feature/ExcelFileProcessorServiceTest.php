@@ -3,14 +3,21 @@
 namespace Tests\Feature;
 
 use App\Services\ExcelFileProcessorService;
-use Kint\Kint;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
 class ExcelFileProcessorServiceTest extends TestCase
 {
 
-    protected function getPathFilesPath($type) {
+    /**
+     * Get path for a file based on the type.
+     *
+     * @param $type
+     *   The type of the file.
+     * @return string
+     *   The path of the file.
+     */
+    protected function getPathsForFiles($type) {
         $types = [
             'original' => getcwd() . '/app/Console/Commands/example_files/dummy_file.xlsx',
             'expected' => getcwd() . '/tests/Feature/parsed_excel_json.json',
@@ -23,9 +30,8 @@ class ExcelFileProcessorServiceTest extends TestCase
      */
     public function testCompareExpected() {
         $excel_file = new ExcelFileProcessorService();
-        $results = $excel_file->processFile($this->getPathFilesPath('original'));
-
-        $this->assertEquals(json_decode(file_get_contents($this->getPathFilesPath('expected')), true), $results);
+        $results = $excel_file->processFile($this->getPathsForFiles('original'));
+        $this->assertEquals(json_decode(file_get_contents($this->getPathsForFiles('expected')), true), $results);
     }
 
     /**
@@ -35,11 +41,25 @@ class ExcelFileProcessorServiceTest extends TestCase
         $this->mock(ExcelFileProcessorService::class, function(MockInterface $mock) {
             $mock
                 ->shouldReceive('processFile')
-                ->with('file_path')
+                ->with($this->getPathsForFiles('original'))
                 ->andReturn('this is the processed file');
         });
 
         $this->artisan('excel:process')
-            ->expectsQuestion('Please enter the file path', 'file_path');
+            ->expectsQuestion('Please enter the file path', $this->getPathsForFiles('original'));
+    }
+
+    /**
+     * Testing the exception which are being thrown.
+     */
+    public function testExceptions() {
+        $xsl_service = new ExcelFileProcessorService();
+
+        try {
+            $xsl_service->processFile('foo');
+            $this->fail();
+        } catch (\Exception $e) {
+            $this->assertEquals($e->getMessage(), 'The file does not exists');
+        }
     }
 }
