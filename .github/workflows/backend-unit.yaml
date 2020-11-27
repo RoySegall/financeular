@@ -7,4 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: cd in to the front
+        run: |
+          cd backend
       - uses: nathanheffley/laravel-phpunit-action@master
