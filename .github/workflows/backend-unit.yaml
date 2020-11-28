@@ -20,4 +20,5 @@ jobs:
           cd backend
           cp .githubactions.env .env
           composer install
+          php artisan migrate
           php artisan test
