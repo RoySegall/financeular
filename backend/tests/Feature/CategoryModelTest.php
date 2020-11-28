@@ -33,7 +33,7 @@ class CategoryModelTest extends TestCase
     public function testCategoryCreationWithMonthPeriod() {
         $this->createCategory();
         $this->assertDatabaseHas('categories', ['period' => 'month']);
-        $this->assertDatabaseMissing('categories', ['period' => 'week']);
+        $this->assertDatabaseMissing('categories', ['period' => 'month']);
         $this->assertDatabaseCount('categories', 1);
     }
 
