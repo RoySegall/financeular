@@ -15,6 +15,11 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->integer('amount');
+            $table->integer('year');
+            $table->integer('month');
+            $table->enum('period', ['month', 'week']);
             $table->timestamps();
         });
     }
