@@ -6,9 +6,19 @@ jobs:
     name: Backend - Unit
     runs-on: ubuntu-latest
     steps:
+      - uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql version: 5.7.26
+          mysql database: 'financular'
+          mysql root password: 'root'
+          mysql user: 'root'
+          mysql password: 'root'
+
       - uses: actions/checkout@v1
       - name: cd in to the backend and run tests
         run: |
           cd backend
+          cp .githubactions.env .env
           composer install
+          php artisan migrate
           php artisan test

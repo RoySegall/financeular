@@ -11,4 +11,4 @@ jobs:
         run: |
           cd backend
           composer install
-          compoer run lint
+          composer run lint
