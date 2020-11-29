@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Category;
+use App\Models\Expense;
 use App\Models\File;
 use App\Models\Income;
 use App\Models\Limitation;
@@ -81,7 +82,11 @@ trait FinancularTestUtilsTrait {
     }
 
     /**
+     * Creating an income.
+     *
      * @param null $file
+     *   The file which the limitation belongs to. Optional.
+     *
      * @return Income
      */
     public function createIncome($file = null) {
@@ -101,4 +106,28 @@ trait FinancularTestUtilsTrait {
         return $income;
     }
 
+    /**
+     * Create an expense for a file.
+     *
+     * @param null $file
+     *   The file which the limitation belongs to. Optional.
+     *
+     * @return Expense
+     */
+    public function createExpense($file = null) {
+        if (!$file) {
+            $file = $this->createFile();
+        }
+
+        $expense = new Expense();
+        $expense->file_id = $file->id;
+        $expense->month = $this->faker()->numberBetween(1, 12);
+        $expense->year = $this->faker()->numberBetween(2019, 2020);
+        $expense->title = $this->faker()->sentence;
+        $expense->value = $this->faker()->numberBetween(0, 500);
+        $expense->date = $this->faker()->date();
+        $expense->save();
+
+        return $expense;
+    }
 }
