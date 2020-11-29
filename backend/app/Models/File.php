@@ -32,4 +32,12 @@ class File extends Model
     {
         return $this->hasMany('App\Models\Limitation');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function incomes()
+    {
+        return $this->hasMany('App\Models\Income');
+    }
 }

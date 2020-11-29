@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\File;
+use App\Models\Income;
 use App\Models\Limitation;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -77,6 +78,27 @@ trait FinancularTestUtilsTrait {
         $limitation->save();
 
         return $limitation;
+    }
+
+    /**
+     * @param null $file
+     * @return Income
+     */
+    public function createIncome($file = null) {
+        if (!$file) {
+            $file = $this->createFile();
+        }
+
+        $income = new Income();
+        $income->file_id = $file->id;
+        $income->month = $this->faker()->numberBetween(1, 12);
+        $income->year = $this->faker()->numberBetween(2019, 2020);
+        $income->title = $this->faker()->sentence;
+        $income->value = $this->faker()->numberBetween(0, 500);
+
+        $income->save();
+
+        return $income;
     }
 
 }
