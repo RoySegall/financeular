@@ -5,7 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model {
+/**
+ * The model file class.
+ *
+ * @package App\Models
+ */
+class File extends Model
+{
+
     use HasFactory;
 
     /**
@@ -13,7 +20,8 @@ class File extends Model {
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 }
