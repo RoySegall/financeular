@@ -3,33 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\Income;
-use Tests\TestCase;
 
-class IncomeModelTest extends TestCase
+class IncomeModelTest extends AbstractModelToFileReferenceTest
 {
-    use FinancularTestUtilsTrait;
-
-    /**
-     * @var \App\Models\File
-     */
-    protected $firstFile;
-
-    /**
-     * @var \App\Models\File
-     */
-    protected $secondFile;
-
-    /**
-     * Setting up stuff for the test.
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->firstFile = $this->createFile();
-        $this->secondFile = $this->createFile();
-    }
-
     /**
      * Creating an income model and check the basic reference.
      */

@@ -10,30 +10,8 @@ use Tests\TestCase;
  *
  * @package Tests\Feature
  */
-class LimitationTest extends TestCase
+class LimitationTest extends AbstractModelToFileReferenceTest
 {
-    use FinancularTestUtilsTrait;
-
-    /**
-     * @var \App\Models\File
-     */
-    protected $firstFile;
-
-    /**
-     * @var \App\Models\File
-     */
-    protected $secondFile;
-
-    /**
-     * Setting up stuff for the test.
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->firstFile = $this->createFile();
-        $this->secondFile = $this->createFile();
-    }
 
     /**
      * Testing the model limitation.
