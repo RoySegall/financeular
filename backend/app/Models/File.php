@@ -24,4 +24,12 @@ class File extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function limitations()
+    {
+        return $this->hasMany('App\Models\Limitation');
+    }
 }
