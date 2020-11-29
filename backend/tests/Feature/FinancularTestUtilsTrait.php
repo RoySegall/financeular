@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\File;
+use App\Models\Limitation;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -31,11 +32,16 @@ trait FinancularTestUtilsTrait {
      * Creating a file.
      *
      * @param $user
-     *   The user which owns the file.
+     *   The user which owns the file. Optional.
      *
      * @return File
      */
-    public function createFile($user) {
+    public function createFile($user = null) {
+
+        if (!$user) {
+            $user = $this->createUser();
+        }
+
         $file = new File();
         $file->name = $this->faker()->name;
         $file->path = $this->faker()->name;
@@ -46,21 +52,31 @@ trait FinancularTestUtilsTrait {
     }
 
     /**
-     * Creating a category for testing.
+     * Creating a limitation.
      *
-     * @param string $period
-     *   The period of the category.
+     * @param $file
+     *   The file which the limitation belongs to. Optional.
+     *
+     * @return Limitation
+     *   The model we created.
      */
-    protected function createCategory($period = 'month') {
-        $category = new Category();
-        $category->title = $this->faker()->name;
-        $category->amount = $this->faker()->numberBetween();
-        $category->year = $this->faker()->numberBetween(2019, 2020);
-        $category->month = $this->faker()->numberBetween(1, 12);
-        $category->period = $period;
-        $category->save();
+    public function createLimitation($file = null)
+    {
+        if (!$file) {
+            $file = $this->createFile();
+        }
 
-        return $category;
+        $limitation = new Limitation();
+        $limitation->file_id = $file->id;
+        $limitation->month = $this->faker()->numberBetween(1, 12);
+        $limitation->year = $this->faker()->numberBetween(2019, 2020);
+        $limitation->value_per_week = $this->faker()->numberBetween(0, 500);
+        $limitation->description = $this->faker()->sentence;
+        $limitation->time_per_month = $this->faker()->numberBetween(0, 10);
+        $limitation->title = $this->faker()->sentence;
+        $limitation->save();
+
+        return $limitation;
     }
 
 }
