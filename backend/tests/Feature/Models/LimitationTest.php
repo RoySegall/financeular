@@ -1,9 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Models;
 
 use App\Models\Limitation;
-use Tests\TestCase;
 
 /**
  * Testing the limitation model.
