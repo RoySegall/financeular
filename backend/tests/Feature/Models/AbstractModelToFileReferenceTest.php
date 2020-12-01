@@ -1,7 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Models;
 
+use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
 
 /**
