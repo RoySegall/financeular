@@ -65,7 +65,7 @@ class FileResolverTest extends TestCase
               'path' => $this->firstFile->path,
               'limitations' => [
                 0 => [
-                  'id' => $this->firstFileLimitations->id,
+                  'id' => (string) $this->firstFileLimitations->id,
                   'month' => $this->firstFileLimitations->month,
                   'year' => $this->firstFileLimitations->year,
                   'value_per_week' => $this->firstFileLimitations->value_per_week,
@@ -75,10 +75,23 @@ class FileResolverTest extends TestCase
                 ],
               ],
               'expenses' => [
-                0 => ['b' => 'b'],
+                0 => [
+                  'id' => (string) $this->firstFileExpenses->id,
+                  'month' => $this->firstFileExpenses->month,
+                  'year' => $this->firstFileExpenses->year,
+                  'title' => $this->firstFileExpenses->title,
+                  'value' => $this->firstFileExpenses->value,
+                  'date' => $this->firstFileExpenses->date,
+                ],
               ],
               'incomes' => [
-                0 => ['b' => 'b'],
+                0 => [
+                  'id' => (string) $this->firstFileIncomes->id,
+                  'month' => $this->firstFileIncomes->month,
+                  'year' => $this->firstFileIncomes->year,
+                  'title' => $this->firstFileIncomes->title,
+                  'value' => $this->firstFileIncomes->value,
+                ],
               ],
             ],
             1 => [
@@ -86,20 +99,33 @@ class FileResolverTest extends TestCase
               'path' => $this->secondFile->path,
               'limitations' => [
                 0 => [
-                  'id' => $this->firstFileLimitations->id,
-                  'month' => $this->firstFileLimitations->month,
-                  'year' => $this->firstFileLimitations->year,
-                  'value_per_week' => $this->firstFileLimitations->value_per_week,
-                  'description' => $this->firstFileLimitations->description,
-                  'time_per_month' => $this->firstFileLimitations->time_per_month,
-                  'title' => $this->firstFileLimitations->title,
+                  'id' => (string) $this->secondFileLimitations->id,
+                  'month' => $this->secondFileLimitations->month,
+                  'year' => $this->secondFileLimitations->year,
+                  'value_per_week' => $this->secondFileLimitations->value_per_week,
+                  'description' => $this->secondFileLimitations->description,
+                  'time_per_month' => $this->secondFileLimitations->time_per_month,
+                  'title' => $this->secondFileLimitations->title,
                 ],
               ],
               'expenses' => [
-                0 => ['b' => 'b'],
+                0 => [
+                  'id' => (string) $this->secondFileExpenses->id,
+                  'month' => $this->secondFileExpenses->month,
+                  'year' => $this->secondFileExpenses->year,
+                  'title' => $this->secondFileExpenses->title,
+                  'value' => $this->secondFileExpenses->value,
+                  'date' => $this->secondFileExpenses->date,
+                ],
               ],
               'incomes' => [
-                0 => ['b' => 'b'],
+                0 => [
+                  'id' => (string) $this->secondFileIncomes->id,
+                  'month' => $this->secondFileIncomes->month,
+                  'year' => $this->secondFileIncomes->year,
+                  'title' => $this->secondFileIncomes->title,
+                  'value' => $this->secondFileIncomes->value,
+                ],
               ],
             ],
           ],
@@ -108,11 +134,38 @@ class FileResolverTest extends TestCase
     ]);
   }
 
-//  /**
-//   * Testing the resolver for a single file.
-//   */
-//  public function testSingleFileResolver() {
-////    $this->fail('a');
-//  }
+  /**
+   * Testing the resolver for a single file.
+   */
+  public function testSingleFileResolver() {
+
+    $query = " {
+      file(id: {$this->firstFile->id}) {
+          name
+          path
+          limitations { id  }
+          expenses { id }
+          incomes { id }
+      }
+    }";
+
+    $this->graphQL($query)->assertJson([
+      'data' => [
+        'file' => [
+          'name' => $this->firstFile->name,
+          'path' => $this->firstFile->path,
+          'limitations' => [
+            0 => ['id' => $this->firstFileLimitations->id],
+          ],
+          'expenses' => [
+            0 => ['id' => $this->firstFileExpenses->id],
+          ],
+          'incomes' => [
+            0 => ['id' => $this->firstFileIncomes->id],
+          ],
+        ]
+      ],
+    ]);
+  }
 
 }
