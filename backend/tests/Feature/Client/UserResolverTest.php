@@ -14,53 +14,89 @@ use Tests\TestCase;
 class UserResolverTest extends TestCase
 {
 
-    use MakesGraphQLRequests, FinancularTestUtilsTrait;
+  use MakesGraphQLRequests, FinancularTestUtilsTrait;
 
-    /**
-     * Testing getting all the users from the users resolver.
-     */
-    public function testGetAllUsers() {
-        // Creates a user and send a request for that.
-        $user = $this->createUser();
+  /**
+   * @var \App\Models\User
+   */
+  protected $firstUser;
 
-        $query = '{
-            users {
-                data {
-                    name
-                }
-            }
-        }
-        ';
+  /**
+   * @var \App\Models\User
+   */
+  protected $secondUser;
 
-        $this->graphQL($query)->assertJson([
-            'data' => [
-                'users' => [
-                    'data' => [
-                        0 => ['name' => $user->name]
-                    ]
-                ]
-            ]
-        ]);
+  /**
+   * @var \App\Models\File
+   */
+  protected $file;
+
+  /**
+   * Setting the class and the assets.
+   */
+  protected function setUp(): void {
+    parent::setUp();
+
+    $this->firstUser = $this->createUser();
+    $this->secondUser = $this->createUser();
+    $this->file = $this->createFile($this->firstUser);
+  }
+
+  /**
+   * Testing getting all the users from the users resolver.
+   */
+  public function testGetAllUsers() {
+    $query = '{ users { data { name } } }';
+
+    $this->graphQL($query)->assertJson([
+      'data' => [
+        'users' => [
+          'data' => [
+            0 => ['name' => $this->firstUser->name],
+            1 => ['name' => $this->secondUser->name],
+          ],
+        ],
+      ],
+    ]);
+  }
+
+  public function testSingleUserRetrieve() {
+    $users = [$this->firstUser, $this->secondUser];
+
+    foreach ($users as $user) {
+      $query = "{ user(id:{$user->id}) { id name } }";
+
+      $this->graphQL($query)->assertJson([
+        'data' => [
+          'user' => [
+            'id' => (string) $user->id,
+            'name' => $user->name,
+          ],
+        ],
+      ]);
     }
+  }
 
-    /**
-     * Testing getting a single user.
-     */
-    public function testSingleUserRetrieve() {
-        $this->assertEquals(1, 1);
-    }
+  /**
+   * Testing the file reference from the graphql resolvers.
+   */
+  public function testUserFileReference() {
+    $query = "{ user(id:{$this->firstUser->id}) { id name files { id path } } }";
 
-    /**
-     * Testing the user and users revolsers.
-     */
-    public function testMultipleUserResolvers() {
-        $this->assertEquals(1, 1);
-    }
+    $this->graphQL($query)->assertJson([
+      'data' => [
+        'user' => [
+          'id' => (string) $this->firstUser->id,
+          'name' => $this->firstUser->name,
+          'files' => [
+            0 => [
+              'id' => (string) $this->file->id,
+              'path' => $this->file->path,
+            ],
+          ],
+        ],
+      ],
+    ]);
+  }
 
-    /**
-     * Testing the file reference from the graphql resolvers.
-     */
-    public function testUserFileReference() {
-        $this->assertEquals(1, 1);
-    }
 }
