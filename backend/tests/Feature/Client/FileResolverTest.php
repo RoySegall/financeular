@@ -11,15 +11,44 @@ class FileResolverTest extends TestCase
 
   use MakesGraphQLRequests, FinancularTestUtilsTrait;
 
+  /**
+   * @var \App\Models\File
+   */
   protected $firstFile;
+
+  /**
+   * @var \App\Models\File
+   */
   protected $secondFile;
 
+  /**
+   * @var \App\Models\Limitation
+   */
   protected $firstFileLimitations;
+
+  /**
+   * @var \App\Models\Expense
+   */
   protected $firstFileExpenses;
+
+  /**
+   * @var \App\Models\Income
+   */
   protected $firstFileIncomes;
 
+  /**
+   * @var \App\Models\Limitation
+   */
   protected $secondFileLimitations;
+
+  /**
+   * @var \App\Models\Expense
+   */
   protected $secondFileExpenses;
+  
+  /**
+   * @var \App\Models\Income
+   */
   protected $secondFileIncomes;
 
   /**
