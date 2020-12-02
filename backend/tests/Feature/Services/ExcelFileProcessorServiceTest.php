@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Services;
 
 use App\Services\ExcelFileProcessorService;
 use Mockery\MockInterface;
@@ -52,7 +52,7 @@ class ExcelFileProcessorServiceTest extends TestCase
     /**
      * Testing the exception which are being thrown.
      */
-    public function testExceptions() {
+    public function testFileExceptions() {
         $xsl_service = new ExcelFileProcessorService();
 
         try {

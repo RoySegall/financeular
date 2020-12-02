@@ -2,37 +2,50 @@
 
 namespace App\Services;
 
-class ExcelFileProcessorService {
+use App\Exceptions\UnparsedFileType;
+use App\Exceptions\UnparsedSheetName;
+
+class ExcelFileProcessorService
+{
 
     // Income keys.
-    const incomeValueKey = 5;
-    const incomeValueName = 6;
+    const INCOME_VALUE_KEY = 5;
+    const INCOME_VALUE_NAME = 6;
 
     // Limitation Keys.
-    const limitationOneTimeValueKey = 9;
-    const limitationDescriptionKey = 11;
-    const limitationTimesKey = 12;
-    const limitationNameKey = 13;
+    const LIMITATION_ONE_TIME_VALUE_KEY = 9;
+    const LIMITATION_DESCRIPTION_KEY = 11;
+    const LIMITATION_TIMES_KEY = 12;
+    const LIMITATION_NAME_KEY = 13;
 
     // Expenses keys.
-    const expenseValueKey = 17;
-    const expenseDateKey = 18;
-    const expenseTitleKey = 19;
+    const EXPENSE_VALUE_KEY = 17;
+    const EXPENSE_DATE_KEY = 18;
+    const EXPENSE_TITLE_KEY = 19;
 
     /**
      * Specifying the supported mime types.
      */
-    const allowedTypes = [
+    const ALLOWED_MIME_TYPES = [
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     ];
 
     /**
      * Holds the months representation in text.
      */
-    const months = [
-        ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-        ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"],
+    const MONTHS = [
+        [
+            "January", "February", "March", "April", "May", "June", "July",
+            "August", "September", "October", "November", "December"
+        ],
+        [
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+            "Oct", "Nov", "Dec"
+        ],
+        [
+            "ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט",
+            "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"
+        ],
     ];
 
     /**
@@ -43,7 +56,8 @@ class ExcelFileProcessorService {
      *
      * @return array The parsed data.
      */
-    public function processFile($file_path, $template = 'with_limitation', $currency = 'nis') {
+    public function processFile($file_path, $template = 'with_limitation', $currency = 'nis')
+    {
 
         // Check if the path exists.
         if (!file_exists($file_path)) {
@@ -51,8 +65,9 @@ class ExcelFileProcessorService {
         }
 
         // Check if this an excel file.
-        if (!in_array(mime_content_type($file_path), self::allowedTypes)) {
-            throw new \Exception('The file does not exists');
+        $file_type = mime_content_type($file_path);
+        if (!in_array($file_type, self::ALLOWED_MIME_TYPES)) {
+            UnparsedFileType::raiseFromFileType($file_type);
         }
 
         // Read the file.
@@ -65,10 +80,10 @@ class ExcelFileProcessorService {
         ];
 
         $sheets = $xsl->sheetNames();
-        foreach ($sheets as $index => $sheet_name) {
 
+        foreach ($sheets as $index => $sheet_name) {
             if (!$sheet_name = $this->getMonthFromSheetName($sheet_name)) {
-                throw new \Exception("There was an issue getting numeric representation for {$sheet_name}. Please fix the label and try again.");
+                UnparsedSheetName::raiseFromSheetName($sheet_name);
             }
 
             $data['months'][$sheet_name] = $this->processSheet($xsl->rows($index), $sheet_name);
@@ -86,7 +101,8 @@ class ExcelFileProcessorService {
      * @return string
      *   A representation of the sheet in the format of YEAR_MONTH.
      */
-    public function getMonthFromSheetName($sheet_name) {
+    public function getMonthFromSheetName($sheet_name)
+    {
 
         // Get the name of the month and year.
         list($month, $year) = explode(" ", $sheet_name);
@@ -98,7 +114,7 @@ class ExcelFileProcessorService {
         }
 
         // Go over the array ot months representation.
-        foreach (self::months as $months) {
+        foreach (self::MONTHS as $months) {
             $key = array_search($month, $months);
 
             if (is_int($key)) {
@@ -109,13 +125,14 @@ class ExcelFileProcessorService {
             }
         }
 
-        return NULL;
+        return null;
     }
 
     /**
      * Processing a single sheet from a given sheet in the excel file.
      */
-    public function processSheet($sheet_data, $sheet_name) {
+    public function processSheet($sheet_data, $sheet_name)
+    {
         $limitations = [];
         $incomes = [];
         $expenses = [];
@@ -157,13 +174,14 @@ class ExcelFileProcessorService {
      *
      * @return null
      */
-    public function extractLimitationFromRow($row) {
-        if (!empty($row[self::limitationNameKey])) {
+    public function extractLimitationFromRow($row)
+    {
+        if (!empty($row[self::LIMITATION_NAME_KEY])) {
             return [
-                "value_per_week" => $row[self::limitationOneTimeValueKey],
-                "description" => $row[self::limitationDescriptionKey],
-                "time_per_month" => $row[self::limitationTimesKey],
-                "title" => $row[self::limitationNameKey]
+                "value_per_week" => $row[self::LIMITATION_ONE_TIME_VALUE_KEY],
+                "description" => $row[self::LIMITATION_DESCRIPTION_KEY],
+                "time_per_month" => $row[self::LIMITATION_TIMES_KEY],
+                "title" => $row[self::LIMITATION_NAME_KEY]
             ];
         }
         return null;
@@ -178,15 +196,16 @@ class ExcelFileProcessorService {
      * @return array|null
      *   An array with title and value.
      */
-    public function extractIncomeFromRow($row) {
-        if (!empty($row[self::incomeValueKey])) {
+    public function extractIncomeFromRow($row)
+    {
+        if (!empty($row[self::INCOME_VALUE_KEY])) {
             return [
-                'title' => $row[self::incomeValueKey],
-                'value' => $row[self::incomeValueName],
+                'title' => $row[self::INCOME_VALUE_KEY],
+                'value' => $row[self::INCOME_VALUE_NAME],
             ];
         }
 
-        return NULL;
+        return null;
     }
 
     /**
@@ -197,15 +216,15 @@ class ExcelFileProcessorService {
      *
      * @return
      */
-    public function extractExpenseFromRow($row, $sheet_name) {
-        if (empty($row[self::expenseTitleKey])) {
+    public function extractExpenseFromRow($row, $sheet_name)
+    {
+        if (empty($row[self::EXPENSE_TITLE_KEY])) {
             return null;
         }
 
-        $date_from_row = $row[self::expenseDateKey];
+        $date_from_row = $row[self::EXPENSE_DATE_KEY];
 
         if (!$time = strtotime($date_from_row)) {
-
             if (!preg_match('/[0-9]{2}\/[0-9]{2}/u', $date_from_row, $matches)) {
                 throw new \Exception('There was an error while trying to process the excel file.');
             }
@@ -213,14 +232,13 @@ class ExcelFileProcessorService {
             list ($day, $month) = explode("/", $date_from_row);
             list($year,) = explode("_", $sheet_name);
 
-            $time = mktime(0,0,0,$month, $day, $year);
+            $time = mktime(0, 0, 0, $month, $day, $year);
         }
 
         return [
-            'title' => $row[self::expenseTitleKey],
+            'title' => $row[self::EXPENSE_TITLE_KEY],
             'date' => $time,
-            'value' => $row[self::expenseValueKey],
+            'value' => $row[self::EXPENSE_VALUE_KEY],
         ];
     }
-
 }

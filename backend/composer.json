@@ -15,14 +15,18 @@
         "kint-php/kint": "^3.3",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "mll-lab/laravel-graphql-playground": "^2.4",
+        "nuwave/lighthouse": "^4.18",
         "shuchkin/simplexlsx": "^0.8.19"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "haydenpierce/class-finder": "^0.4.2",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "config": {
         "optimize-autoloader": true,
@@ -58,6 +62,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "lint": [
+            "./vendor/bin/phpcs ./app --colors"
+        ],
+        "lint-fix": [
+            "./vendor/bin/phpcbf ./app"
         ]
     }
 }

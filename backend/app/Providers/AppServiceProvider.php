@@ -14,9 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Services\ExcelFileProcessorService', function($app) {
-            return new ExcelFileProcessorService();
-        });
+        $this->app->bind(
+            'App\Services\ExcelFileProcessorService',
+            function ($app) {
+                return new ExcelFileProcessorService();
+            }
+        );
     }
 
     /**
