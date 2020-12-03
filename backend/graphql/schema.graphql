@@ -11,6 +11,10 @@ type Query {
     file(id: ID @eq): File @find
 }
 
+type Mutation {
+  login(email: String!, password: String!, client_id: String!, client_secret: String!): String!
+}
+
 type User {
     id: ID!
     name: String!

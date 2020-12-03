@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\ExcelFileProcessorService;
+use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
                 return new ExcelFileProcessorService();
             }
         );
+
+        $this->app->bind('App\Services\UserService', function($app) {
+          return new UserService();
+        });
     }
 
     /**
