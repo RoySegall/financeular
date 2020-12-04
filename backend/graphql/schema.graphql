@@ -11,6 +11,10 @@ type Query {
     file(id: ID @eq): File @find
 }
 
+type Mutation {
+  login(email: String!, password: String!, client_id: String!, client_secret: String!): AccessToken!
+}
+
 type User {
     id: ID!
     name: String!
@@ -66,4 +70,9 @@ type Limitations {
     title: String!
 
     file: File! @belongsTo
+}
+
+type AccessToken {
+  accessToken: String!
+  expires: Int!
 }
