@@ -27,7 +27,7 @@ class GraphQlException extends Exception implements RendersErrorsExtensions
    * @param string|null $category
    *  The category of the failure.
    */
-  public function __construct(string $message, string $reason, string $category = NULL)
+  public function __construct(string $message, string $reason = NULL, string $category = NULL)
   {
     parent::__construct($message);
 

@@ -12,6 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\Client;
+use Laravel\Passport\PersonalAccessClient;
 
 trait FinancularTestUtilsTrait
 {
@@ -143,10 +144,15 @@ trait FinancularTestUtilsTrait
     $client->secret = $this->faker()->uuid;
     $client->redirect = 'http://google.com';
     $client->personal_access_client = true;
-    $client->password_client = true;
+    $client->password_client = false;
     $client->revoked = false;
     $client->save();
 
+    $personal = new PersonalAccessClient();
+    $personal->client_id = $client->id;
+    $personal->save();
+
     return $client;
   }
+
 }

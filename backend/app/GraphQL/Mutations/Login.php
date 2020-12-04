@@ -4,6 +4,7 @@ namespace App\GraphQL\Mutations;
 
 use App\Exceptions\GraphQlException;
 use App\Services\UserService;
+use Illuminate\Auth\SessionGuard;
 use Laravel\Passport\Client;
 
 class Login
@@ -55,14 +56,18 @@ class Login
       $query->where('id', $client_id)->where('secret', $client_secret);
     });
 
-    if (!$client) {
+    if (!$client->exists()) {
       $this->throwLoginError();
     }
 
+    /** @var SessionGuard $foo */
+    $token = $user->createToken($client->first()->name);
 
     // Create: token, refresh token and expires.
-
-    return 'pizza';
+    return [
+      'accessToken' => $token->accessToken,
+      'expires' => $token->token->expires_at->timestamp,
+    ];
   }
 
 }

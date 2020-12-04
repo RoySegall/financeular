@@ -12,7 +12,7 @@ type Query {
 }
 
 type Mutation {
-  login(email: String!, password: String!, client_id: String!, client_secret: String!): String!
+  login(email: String!, password: String!, client_id: String!, client_secret: String!): AccessToken!
 }
 
 type User {
@@ -70,4 +70,9 @@ type Limitations {
     title: String!
 
     file: File! @belongsTo
+}
+
+type AccessToken {
+  accessToken: String!
+  expires: Int!
 }

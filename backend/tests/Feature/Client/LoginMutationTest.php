@@ -36,25 +36,44 @@ class LoginMutationTest extends TestCase
     $this->client = $this->createClient();
   }
 
+  protected function loginViaRequest($username, $password='password', $client_id=null, $client_secret=null) {
+    $client_id = $client_id ? $client_id : $this->client->id;
+    $client_secret = $client_secret ? $client_secret : $this->client->getPlainSecretAttribute();
+
+    $query = "mutation { login(
+      email: \"{$username}\"
+      password: \"{$password}\"
+      client_id: \"{$client_id}\"
+      client_secret: \"{$client_secret}\"
+    ) { accessToken expires }}";
+
+    return $this->graphQL($query);
+  }
+
   /**
    * Testing the login mutation.
    */
   public function testLoginMutation() {
-    $query = "mutation { login(
-      email: \"{$this->user->email}\"
-      password: \"password\"
-      client_id: \"{$this->client->id}\"
-      client_secret: \"{$this->client->getPlainSecretAttribute()}\"
-    )}";
+    $data = $this->loginViaRequest($this->user->email)->json('data');
 
-//    $data = $this->graphQL($query)->json('data');
-    $data = $this->graphQL($query)->json();
+    $this->assertArrayHasKey('accessToken', $data['login']);
+    $this->assertArrayHasKey('expires', $data['login']);
+  }
 
-    \Kint::dump($data);
+  /**
+   * Testing logging in with a wrong username.
+   */
+  public function testWrongUsername() {
+    $data = $this->loginViaRequest('foo')->json('errors');
+    $this->assertEquals('The password or user are incorrect', $data[0]['message']);
+  }
 
-    $this->assertArrayHasKey('token', $data);
-    $this->assertArrayHasKey('refresh_token', $data);
-    $this->assertArrayHasKey('expires', $data);
+  /**
+   * Testing logging in with a wrong client ID.
+   */
+  public function testWithWrongClient() {
+    $data = $this->loginViaRequest($this->user->email, 'password', 123)->json('errors');
+    $this->assertEquals('The password or user are incorrect', $data[0]['message']);
   }
 
 }
