@@ -22,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
             }
         );
 
-        $this->app->bind('App\Services\UserService', function($app) {
-          return new UserService();
+        $this->app->bind('App\Services\UserService', function ($app) {
+            return new UserService();
         });
     }
 
