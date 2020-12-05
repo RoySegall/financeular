@@ -183,4 +183,8 @@ trait FinancularTestUtilsTrait
     return $user->createToken($client->name);
   }
 
+  protected function graphQueryWithToken($query, $token) {
+    return $this->postGraphQL(['query' => $query], ['Authorization' => 'Bearer ' . $token]);
+  }
+
 }
