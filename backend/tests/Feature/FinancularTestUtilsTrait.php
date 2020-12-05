@@ -155,4 +155,32 @@ trait FinancularTestUtilsTrait
     return $client;
   }
 
+  /**
+   * Creating an access token for a user.
+   *
+   * @param null $user
+   *   The user object. Optional. If null is passed then a new user will be
+   *   created.
+   * @param null $client
+   *   The client which the token will be associated with. Optional. If null is
+   *   passed then a new client will be created.
+   *
+   * @return string
+   *   The access token it self.
+   */
+  protected function createAccessToken($user = null, $client = null) {
+
+    if (!$client) {
+      $client = $this->createClient();
+    }
+
+    if (!$user) {
+      $user = $this->createUser();
+    }
+
+    $created_access_token = $user->createToken($client->name);
+
+    return $created_access_token->accessToken;
+  }
+
 }

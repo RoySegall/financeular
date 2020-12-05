@@ -9,7 +9,7 @@ type Query {
     user(id: ID @eq): User @find
     files(user_id: ID @eq): [File!]! @paginate(defaultCount: 10)
     file(id: ID @eq): File @find
-    me: String!
+    me: User!
 }
 
 type Mutation {

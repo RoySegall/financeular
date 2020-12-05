@@ -12,8 +12,7 @@ class Income extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function file()
-    {
-        return $this->belongsTo('App\Models\File');
-    }
+  public function file() {
+      return $this->belongsTo('App\Models\File');
+  }
 }

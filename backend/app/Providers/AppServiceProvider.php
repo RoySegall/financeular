@@ -13,27 +13,25 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        $this->app->bind(
-            'App\Services\ExcelFileProcessorService',
-            function ($app) {
-                return new ExcelFileProcessorService();
-            }
-        );
+  public function register() {
+      $this->app->bind(
+          'App\Services\ExcelFileProcessorService',
+          function ($app) {
+              return new ExcelFileProcessorService();
+          }
+      );
 
-        $this->app->bind('App\Services\UserService', function ($app) {
-            return new UserService();
-        });
-    }
+      $this->app->bind('App\Services\UserService', function ($app) {
+          return new UserService();
+      });
+  }
 
     /**
      * Bootstrap any application services.
      *
      * @return void
      */
-    public function boot()
-    {
-        //
-    }
+  public function boot() {
+      //
+  }
 }

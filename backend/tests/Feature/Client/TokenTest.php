@@ -2,16 +2,31 @@
 
 namespace Tests\Feature\Client;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
 use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
 
+/**
+ * Class TokenTest
+ *
+ * @package Tests\Feature\Client
+ */
 class TokenTest extends TestCase
 {
 
   use MakesGraphQLRequests, FinancularTestUtilsTrait;
+
+  /**
+   * TokenTest constructor.
+   *
+   * @param string|null $name
+   * @param array $data
+   * @param string $dataName
+   */
+  public function __construct(?string $name = null, array $data = [], $dataName = '')
+  {
+    parent::__construct($name, $data, $dataName);
+  }
 
   /**
    * A basic feature test example.
@@ -20,8 +35,13 @@ class TokenTest extends TestCase
    */
   public function testExample()
   {
-    $query = "{ me }";
+    $query = "{ me { id email } }";
+    $user = $this->createUser();
 
-    $response = $this->postGraphQL(['query' => $query], ['Authorization' => 'foo']);
+    $data = $this
+      ->postGraphQL(['query' => $query], ['Authorization' => 'Bearer ' . $this->createAccessToken($user)])
+      ->json('data');
+
+    $this->assertEquals($data, ['me' => ['id' => $user->id, 'email' => $user->email]]);
   }
 }

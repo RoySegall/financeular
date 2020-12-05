@@ -13,8 +13,7 @@ class UnparsedFileType extends \Exception
      *
      * @throws UnparsedFileType
      */
-    public static function raiseFromFileType($file_type)
-    {
-        throw new self("The file type, {$file_type}, is not supported");
-    }
+  public static function raiseFromFileType($file_type) {
+      throw new self("The file type, {$file_type}, is not supported");
+  }
 }

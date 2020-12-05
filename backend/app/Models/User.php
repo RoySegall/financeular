@@ -47,8 +47,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function files()
-    {
+    public function files() {
         return $this->hasMany('App\Models\File');
     }
 }

@@ -32,19 +32,17 @@ class ExcelFileProcessor extends Command
      *
      * @return void
      */
-    public function __construct(ExcelFileProcessorService $excel_file_processor)
-    {
-        parent::__construct();
+  public function __construct(ExcelFileProcessorService $excel_file_processor) {
+      parent::__construct();
 
-        $this->excelFileProcessor = $excel_file_processor;
-    }
+      $this->excelFileProcessor = $excel_file_processor;
+  }
 
     /**
      * Execute the console command.
      */
-    public function handle()
-    {
-        $file_path = $this->ask('Please enter the file path');
-        \Kint::dump($this->excelFileProcessor->processFile($file_path));
-    }
+  public function handle() {
+      $file_path = $this->ask('Please enter the file path');
+      \Kint::dump($this->excelFileProcessor->processFile($file_path));
+  }
 }
