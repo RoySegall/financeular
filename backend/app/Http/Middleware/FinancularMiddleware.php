@@ -34,21 +34,27 @@ class FinancularMiddleware
   public function handle(Request $request, Closure $next) {
     $auth = $request->headers->get('authorization');
 
-    list ($type, $token) = explode(" ", $auth);
+    try {
+      list ($type, $token) = explode(" ", $auth);
+    } catch (\Exception $e) {
+      return $next($request);
+    }
 
     if ($type != 'Bearer') {
-      $next($request);
-      return;
+      return $next($request);
     }
 
     // Parsing the token.
-    $parsed_id = $this->jwt->parse($token)->claims()->get('jti');
+    try {
+      $parsed_id = $this->jwt->parse($token)->claims()->get('jti');
+    } catch (\Exception $e) {
+      return $next($request);
+    }
 
     // Search for a token in the DB.
     $token_query = Token::where('id', $parsed_id);
     if (!$token_query->exists()) {
-      $next($request);
-      return;
+      return $next($request);
     }
 
     /** @var Token $token */
@@ -56,8 +62,12 @@ class FinancularMiddleware
 
     // Check if the token is expires or not.
     if ($token->expires_at->isPast()) {
-      $next($request);
-      return;
+      return $next($request);
+    }
+
+    // Check if the client exists.
+    if (!$token->client()->exists()) {
+      return $next($request);
     }
 
     // Load the user and set it on the request.

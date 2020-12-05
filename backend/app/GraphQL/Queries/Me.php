@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Queries;
 
+use App\Exceptions\GraphQlException;
 use Illuminate\Http\Request;
 
 class Me
@@ -28,7 +29,7 @@ class Me
   public function __invoke($_, array $args) {
 
     if (!$user = $this->request->user()) {
-        throw new \Exception('You are not logged in');
+        throw new GraphQlException('You are not logged in');
     }
 
     return $user;
