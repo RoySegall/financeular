@@ -45,7 +45,4 @@ class File extends Model
     return $this->hasMany('App\Models\Expense');
   }
 
-  public function findMySpecialData() {
-    return 'a';
-  }
 }
