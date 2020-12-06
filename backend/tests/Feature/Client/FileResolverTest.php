@@ -45,11 +45,16 @@ class FileResolverTest extends TestCase
    * @var \App\Models\Expense
    */
   protected $secondFileExpenses;
-  
+
   /**
    * @var \App\Models\Income
    */
   protected $secondFileIncomes;
+
+  /**
+   * @var \App\Models\User
+   */
+  protected $user;
 
   /**
    * Setting the class and the assets.
@@ -57,8 +62,9 @@ class FileResolverTest extends TestCase
   protected function setUp(): void {
     parent::setUp();
 
-    $this->firstFile = $this->createFile();
-    $this->secondFile = $this->createFile();
+    $this->user = $this->createUser();
+    $this->firstFile = $this->createFile($this->user);
+    $this->secondFile = $this->createFile($this->user);
 
     $this->firstFileLimitations = $this->createLimitation($this->firstFile);
     $this->firstFileExpenses = $this->createExpense($this->firstFile);
@@ -74,21 +80,21 @@ class FileResolverTest extends TestCase
    */
   public function testGetAllFilesResolvers() {
     $query = " {
-      files {
-        data {
-          name
-          path
-          limitations { id month year value_per_week description time_per_month title }
-          expenses { id month year title value date }
-          incomes { id month year title value }
-        }
+      me {
+        files {
+            name
+            path
+            limitations { id month year value_per_week description time_per_month title }
+            expenses { id month year title value date }
+            incomes { id month year title value }
+          }
       }
     }";
 
-    $this->graphQL($query)->assertJson([
+    $this->graphQueryWithToken($query, $this->createAccessToken($this->user)->accessToken)->assertJson([
       'data' => [
-        'files' => [
-          'data' => [
+        'me' => [
+          'files' => [
             0 => [
               'name' => $this->firstFile->name,
               'path' => $this->firstFile->path,
@@ -159,7 +165,7 @@ class FileResolverTest extends TestCase
             ],
           ],
         ],
-      ]
+      ],
     ]);
   }
 
@@ -178,7 +184,7 @@ class FileResolverTest extends TestCase
       }
     }";
 
-    $this->graphQL($query)->assertJson([
+    $this->graphQueryWithToken($query, $this->createAccessToken($this->user)->accessToken)->assertJson([
       'data' => [
         'file' => [
           'name' => $this->firstFile->name,
@@ -195,6 +201,24 @@ class FileResolverTest extends TestCase
         ]
       ],
     ]);
+  }
+
+  /**
+   * Testing the access of a user to a file which belong to another user.
+   */
+  public function testAccessToAnotherUserFile() {
+    $second_user = $this->createuser();
+
+    $query = " {
+      file(id: {$this->firstFile->id}) {
+          name
+      }
+    }";
+
+    $errors = $this
+      ->graphQueryWithToken($query, $this->createAccessToken($second_user)->accessToken)->json('errors');
+
+    $this->assertEquals($errors[0]['message'], 'You are not authorized to access file');
   }
 
 }

@@ -13,6 +13,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\Client;
 use Laravel\Passport\PersonalAccessClient;
+use Laravel\Passport\PersonalAccessTokenResult;
+use Laravel\Passport\Token;
 
 trait FinancularTestUtilsTrait
 {
@@ -153,6 +155,36 @@ trait FinancularTestUtilsTrait
     $personal->save();
 
     return $client;
+  }
+
+  /**
+   * Creating an access token for a user.
+   *
+   * @param null $user
+   *   The user object. Optional. If null is passed then a new user will be
+   *   created.
+   * @param null $client
+   *   The client which the token will be associated with. Optional. If null is
+   *   passed then a new client will be created.
+   *
+   * @return PersonalAccessTokenResult
+   *   The access token it self.
+   */
+  protected function createAccessToken($user = null, $client = null): PersonalAccessTokenResult {
+
+    if (!$client) {
+      $client = $this->createClient();
+    }
+
+    if (!$user) {
+      $user = $this->createUser();
+    }
+
+    return $user->createToken($client->name);
+  }
+
+  protected function graphQueryWithToken($query, $token) {
+    return $this->postGraphQL(['query' => $query], ['Authorization' => 'Bearer ' . $token]);
   }
 
 }

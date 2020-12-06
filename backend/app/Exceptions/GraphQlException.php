@@ -27,13 +27,12 @@ class GraphQlException extends Exception implements RendersErrorsExtensions
    * @param string|null $category
    *  The category of the failure.
    */
-    public function __construct(string $message, string $reason = null, string $category = null)
-    {
-        parent::__construct($message);
+  public function __construct(string $message, string $reason = null, string $category = null) {
+      parent::__construct($message);
 
-        $this->reason = $reason;
-        $this->category = $category ? $category : 'custom';
-    }
+      $this->reason = $reason;
+      $this->category = $category ? $category : 'custom';
+  }
 
   /**
    * Returns true when exception message is safe to be displayed to a client.
@@ -41,10 +40,9 @@ class GraphQlException extends Exception implements RendersErrorsExtensions
    * @api
    * @return bool
    */
-    public function isClientSafe(): bool
-    {
-        return true;
-    }
+  public function isClientSafe(): bool {
+      return true;
+  }
 
   /**
    * Returns string describing a category of the error.
@@ -55,10 +53,9 @@ class GraphQlException extends Exception implements RendersErrorsExtensions
    * @api
    * @return string
    */
-    public function getCategory(): string
-    {
-        return $this->category;
-    }
+  public function getCategory(): string {
+      return $this->category;
+  }
 
   /**
    * Return the content that is put in the "extensions" part of the returned
@@ -66,11 +63,10 @@ class GraphQlException extends Exception implements RendersErrorsExtensions
    *
    * @return array
    */
-    public function extensionsContent(): array
-    {
-        return [
-        'some' => 'additional information',
-        'reason' => $this->reason,
-        ];
-    }
+  public function extensionsContent(): array {
+      return [
+      'some' => 'additional information',
+      'reason' => $this->reason,
+      ];
+  }
 }

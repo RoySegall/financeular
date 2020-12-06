@@ -13,8 +13,7 @@ class UnparsedSheetName extends \Exception
      *
      * @throws UnparsedSheetName
      */
-    public static function raiseFromSheetName($sheet_name)
-    {
-        throw new self("Cannot convert the sheet name {$sheet_name} to a valid key.");
-    }
+  public static function raiseFromSheetName($sheet_name) {
+      throw new self("Cannot convert the sheet name {$sheet_name} to a valid key.");
+  }
 }

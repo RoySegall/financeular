@@ -4,3 +4,5 @@ backend/src/uploads
 vendor
 .DS_Store
 .phpunit.result.cache
+
+oauth-*.key

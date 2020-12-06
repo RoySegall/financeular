@@ -13,39 +13,39 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model
 {
 
-    use HasFactory;
+  use HasFactory;
 
-    /**
-     * Get the user which owns the file.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
+  /**
+   * Get the user which owns the file.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function user() {
+    return $this->belongsTo('App\Models\User');
+  }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function limitations()
-    {
-        return $this->hasMany('App\Models\Limitation');
-    }
+  /**
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function limitations() {
+    return $this->hasMany('App\Models\Limitation');
+  }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function incomes()
-    {
-        return $this->hasMany('App\Models\Income');
-    }
+  /**
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function incomes() {
+    return $this->hasMany('App\Models\Income');
+  }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function expenses()
-    {
-        return $this->hasMany('App\Models\Expense');
-    }
+  /**
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function expenses() {
+    return $this->hasMany('App\Models\Expense');
+  }
+
+  public function findMySpecialData() {
+    return 'a';
+  }
 }

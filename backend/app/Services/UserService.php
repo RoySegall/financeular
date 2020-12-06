@@ -21,10 +21,9 @@ class UserService
    *
    * @return User|null
    */
-    public function getUserByEmail(string $email)
-    {
-        return User::where('email', $email)->first();
-    }
+  public function getUserByEmail(string $email) {
+      return User::where('email', $email)->first();
+  }
 
   /**
    * Checking the user password.
@@ -36,8 +35,7 @@ class UserService
    *
    * @return bool
    */
-    public function validateUserPassword(User $user, $password): bool
-    {
-        return Hash::check($password, $user->getAuthPassword());
-    }
+  public function validateUserPassword(User $user, $password): bool {
+      return Hash::check($password, $user->getAuthPassword());
+  }
 }
