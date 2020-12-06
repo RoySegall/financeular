@@ -184,7 +184,7 @@ class FileResolverTest extends TestCase
       }
     }";
 
-    $this->graphQL($query)->assertJson([
+    $this->graphQueryWithToken($query, $this->createAccessToken($this->user)->accessToken)->assertJson([
       'data' => [
         'file' => [
           'name' => $this->firstFile->name,
@@ -201,6 +201,13 @@ class FileResolverTest extends TestCase
         ]
       ],
     ]);
+  }
+
+  /**
+   * Testing the access of a user to a file which belong to another user.
+   */
+  public function testAccessToAnotherUserFile() {
+    $this->fail('TBD');
   }
 
 }
