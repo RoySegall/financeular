@@ -207,7 +207,18 @@ class FileResolverTest extends TestCase
    * Testing the access of a user to a file which belong to another user.
    */
   public function testAccessToAnotherUserFile() {
-    $this->fail('TBD');
+    $second_user = $this->createuser();
+
+    $query = " {
+      file(id: {$this->firstFile->id}) {
+          name
+      }
+    }";
+
+    $errors = $this
+      ->graphQueryWithToken($query, $this->createAccessToken($second_user)->accessToken)->json('errors');
+
+    $this->assertEquals($errors[0]['message'], 'You are not authorized to access file');
   }
 
 }
