@@ -195,8 +195,8 @@ class ExcelFileProcessorService
     public function extractIncomeFromRow($row) {
       if (!empty($row[self::INCOME_VALUE_KEY])) {
           return [
-              'title' => $row[self::INCOME_VALUE_KEY],
-              'value' => $row[self::INCOME_VALUE_NAME],
+              'title' => $row[self::INCOME_VALUE_NAME],
+              'value' => $row[self::INCOME_VALUE_KEY],
           ];
       }
 
