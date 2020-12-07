@@ -11,6 +11,7 @@ type Query {
 
 type Mutation {
   login(email: String!, password: String!, client_id: String!, client_secret: String!): AccessToken!
+  fileUpload: String
 }
 
 type User {
