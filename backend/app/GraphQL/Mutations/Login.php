@@ -18,10 +18,10 @@ class Login
   /**
    * Login constructor.
    *
-   * @param userService $user_service
+   * @param userService $userService
    */
-  public function __construct(UserService $user_service) {
-      $this->userService = $user_service;
+  public function __construct(UserService $userService) {
+      $this->userService = $userService;
   }
 
   /**
