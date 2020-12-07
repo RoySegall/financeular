@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\Category;
 use App\Models\Expense;
 use App\Models\File;
 use App\Models\Income;
@@ -14,12 +13,15 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\Client;
 use Laravel\Passport\PersonalAccessClient;
 use Laravel\Passport\PersonalAccessTokenResult;
-use Laravel\Passport\Token;
+use Illuminate\Http\Testing\File as TestingFile;
+
 
 trait FinancularTestUtilsTrait
 {
 
   use WithFaker, RefreshDatabase;
+
+  protected $preventFileUpload = null;
 
   /**
    * Creating a user.
@@ -197,11 +199,27 @@ trait FinancularTestUtilsTrait
   }
 
   /**
+   * Creating a file to upload.
+   *
+   * @param $filename
+   *   The file name.
+   * @param int $kilobyte
+   *   The size of file.
+   * @param null $mime_type
+   *   The mime type.
+   *
+   * @return TestingFile
+   */
+  protected function createFileToUpload($filename, $kilobyte = 500, $mime_type = null) {
+    return TestingFile::fake()->create($filename, $kilobyte, $mime_type);
+  }
+
+  /**
    * Uploading file.
    *
    * @param null $file
    *   The file to upload. If nothing will pass then a dummy file will be
-   *  created.
+   *   created.
    * @param null $access_token
    *   The access token of a user. Optional.
    *
@@ -210,7 +228,7 @@ trait FinancularTestUtilsTrait
   protected function uploadFile($file = null, $access_token = null) {
 
     if (!$file) {
-      $file = \Illuminate\Http\Testing\File::fake()->create('image.jpg', 500);
+      $file = $this->createFileToUpload('image.jpg');
     }
 
     $headers = [];
@@ -224,7 +242,7 @@ trait FinancularTestUtilsTrait
         'operations' => /** @lang JSON */
           '
             {
-                "query": "mutation($file: Upload!) { fileUpload(file: $file) }",
+                "query": "mutation($file: Upload!) { fileUpload(file: $file) { id name path } }",
                 "variables": {
                     "file": null
                 }
@@ -240,6 +258,34 @@ trait FinancularTestUtilsTrait
       ['0' => $file],
       $headers
     );
+  }
+
+  /**
+   * Assert the file upload for a given file.
+   *
+   * @param $response
+   *   The response from the mutation.
+   */
+  protected function assertFileUploadResponse($response) {
+    $data = $response->json('data');
+
+    $this->assertArrayHasKey('fileUpload', $data);
+    $this->assertNotEmpty($data['fileUpload']['id']);
+    $this->assertNotEmpty($data['fileUpload']['name']);
+    $this->assertNotEmpty($data['fileUpload']['path']);
+  }
+
+  /**
+   * Asserting the error from a response.
+   *
+   * @param $response
+   *   The response from the query/mutation.
+   * @param $message
+   *   The message to assert.
+   */
+  protected function assertErrorFromResponse($response, $message) {
+    $errors = $response->json('errors');
+    $this->assertEquals($errors[0]['message'], $message);
   }
 
 }

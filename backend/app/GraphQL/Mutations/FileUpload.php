@@ -3,6 +3,8 @@
 namespace App\GraphQL\Mutations;
 
 use App\Exceptions\GraphQlException;
+use App\Models\File;
+use GuzzleHttp\Psr7\MimeType;
 use Illuminate\Http\Request;
 
 class FileUpload
@@ -38,7 +40,20 @@ class FileUpload
     /** @var \Illuminate\Http\UploadedFile $file */
     $file = $args['file'];
 
-    print($file->storePublicly('uploads'));
-    return "a";
+    $supported = [MimeType::fromExtension('xlsx')];
+
+    if (!in_array($file->getMimeType(), $supported)) {
+      throw new GraphQlException('The uploaded file is not supported');
+    }
+
+    $path = $file->storePublicly('uploads');
+
+    $file_model = new File();
+    $file_model->name = $file->name;
+    $file_model->path = $path;
+    $file_model->user_id = $user->id;
+    $file_model->save();
+
+    return $file_model;
   }
 }
