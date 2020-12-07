@@ -12,19 +12,30 @@ class FileUploadResolverTest extends TestCase
   use MakesGraphQLRequests, FinancularTestUtilsTrait;
 
   /**
+   * @var \App\Models\User
+   */
+  protected $user;
+
+  /**
+   * @var \Laravel\Passport\PersonalAccessTokenResult
+   */
+  protected $accessToken;
+
+  /**
    * Setting the class and the assets.
    */
   protected function setUp(): void {
     parent::setUp();
+
+    $this->user = $this->createUser();
+    $this->accessToken = $this->createAccessToken($this->user);
   }
 
   /**
    * Testing that a guest cannot upload a file.
    */
   public function testNotAuthUser() {
-    $query = "mutation { fileUpload }";
-
-    $errors = $this->graphQL($query)->json('errors');
+    $errors = $this->uploadFile()->json('errors');
     $this->assertEquals($errors[0]['message'], 'You are not allowed to upload a file.');
   }
 
@@ -32,29 +43,32 @@ class FileUploadResolverTest extends TestCase
    * Testing that a user cannot upload more than 10 files.
    */
   public function testLimitingUploadingFile() {
-    $user = $this->createUser();
-    $token = $this->createAccessToken($user);
     $query = "mutation { fileUpload }";
 
-
     // Testing when no files.
-    $this->graphQueryWithToken($query, $token->accessToken)->assertJson(['data' => ['fileUpload' => 'a']]);
+    $this->uploadFile(null, $this->accessToken->accessToken)->assertJson(['data' => ['fileUpload' => 'a']]);
 
     // Testing when having 9 files.
     for ($i = 0; $i < 9; $i++) {
-      $this->createFile($user);
+      $this->createFile($this->user);
     }
-    $this->graphQueryWithToken($query, $token->accessToken)->assertJson(['data' => ['fileUpload' => 'a']]);
+
+    $this->uploadFile(null, $this->accessToken->accessToken)->assertJson(['data' => ['fileUpload' => 'a']]);
 
     // Testing when having 10 files.
-    $this->createFile($user);
-    $this->graphQueryWithToken($query, $token->accessToken)->assertJson(['data' => ['fileUpload' => 'a']]);
+    $this->createFile($this->user);
+    $this->uploadFile(null, $this->accessToken->accessToken)->assertJson(['data' => ['fileUpload' => 'a']]);
 
     // Testing when more than 10 files.
-    $this->createFile($user);
-    $errors = $this->graphQueryWithToken($query, $token->accessToken)->json('errors');
+    $this->createFile($this->user);
+    $errors = $this->uploadFile(null, $this->accessToken->accessToken)->json('errors');
     $this->assertEquals($errors[0]['message'], 'You cannot upload more than 10 files.');
-
   }
 
+  /**
+   * Testing the upload of the file.
+   */
+  public function  testUploadFileByUser() {
+    $this->uploadFile(null, $this->accessToken->accessToken)->assertJson(['data' => ['fileUpload' => 'a']]);
+  }
 }

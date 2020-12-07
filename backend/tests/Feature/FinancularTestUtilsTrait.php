@@ -183,8 +183,63 @@ trait FinancularTestUtilsTrait
     return $user->createToken($client->name);
   }
 
+  /**
+   * Sending a graphql query with an access token.
+   *
+   * @param $query
+   *   The query to send.
+   * @param $token
+   *   The token of the user.s
+   * @return mixed
+   */
   protected function graphQueryWithToken($query, $token) {
     return $this->postGraphQL(['query' => $query], ['Authorization' => 'Bearer ' . $token]);
+  }
+
+  /**
+   * Uploading file.
+   *
+   * @param null $file
+   *   The file to upload. If nothing will pass then a dummy file will be
+   *  created.
+   * @param null $access_token
+   *   The access token of a user. Optional.
+   *
+   * @return \Illuminate\Testing\TestResponse
+   */
+  protected function uploadFile($file = null, $access_token = null) {
+
+    if (!$file) {
+      $file = \Illuminate\Http\Testing\File::fake()->create('image.jpg', 500);
+    }
+
+    $headers = [];
+
+    if ($access_token) {
+      $headers['Authorization'] = 'Bearer ' . $this->accessToken->accessToken;
+    }
+
+    return $this->multipartGraphQL(
+      [
+        'operations' => /** @lang JSON */
+          '
+            {
+                "query": "mutation($file: Upload!) { fileUpload(file: $file) }",
+                "variables": {
+                    "file": null
+                }
+            }
+        ',
+        'map' => /** @lang JSON */
+          '
+            {
+                "0": ["variables.file"]
+            }
+        ',
+      ],
+      ['0' => $file],
+      $headers
+    );
   }
 
 }

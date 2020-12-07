@@ -35,6 +35,10 @@ class FileUpload
       throw new GraphQlException('You cannot upload more than 10 files.', null, 'authorization');
     }
 
+    /** @var \Illuminate\Http\UploadedFile $file */
+    $file = $args['file'];
+
+    print($file->storePublicly('uploads'));
     return "a";
   }
 }
