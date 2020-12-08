@@ -29,7 +29,7 @@ describe('Login component', () => {
     },
     result: {
       data: {
-        login: { access_token: '1', expires: 'Buck', refresh_token: 'bulldog' },
+        login: { accessToken: '1', expires: 'Buck'},
       },
     },
   }];

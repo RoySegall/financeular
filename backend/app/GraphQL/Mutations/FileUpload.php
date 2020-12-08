@@ -49,7 +49,7 @@ class FileUpload
     $path = $file->storePublicly('uploads');
 
     $file_model = new File();
-    $file_model->name = $file->name;
+    $file_model->name = $file->getClientOriginalName();
     $file_model->path = $path;
     $file_model->user_id = $user->id;
     $file_model->save();

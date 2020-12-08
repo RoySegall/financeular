@@ -22,17 +22,6 @@ jest.mock('react-router-dom', () => {
 
 describe('Dashboard component', () => {
 
-  const mocks = [{
-    request: {
-      query: FILES,
-    },
-    result: {
-      data: {
-        files: [],
-      },
-    },
-  }];
-
   it('Should return the "Loading component" when loading the data', async () => {
     const wrapper = mountComponent({component: <DashboardFiles loading={true} />, wrapWithProvider: false});
 
@@ -41,7 +30,7 @@ describe('Dashboard component', () => {
   });
 
   it('Should return the no files component when the response is empty', () => {
-    const wrapper = mountComponent({component: <DashboardFiles loading={false} data={{files: []}} />, wrapWithProvider: false});
+    const wrapper = mountComponent({component: <DashboardFiles loading={false} data={{me: {files: []}}} />, wrapWithProvider: false});
 
     elementShouldContainText(wrapper, 'No files were found....');
     elementShouldContainText(wrapper, 'We could not found files. You can upload some files');
@@ -51,7 +40,7 @@ describe('Dashboard component', () => {
     const tree = renderer
       .create(<DashboardFiles
         loading={false}
-        data={{files: [{id: 42, name: 'john', createDate: 'yesterday'}]}}
+        data={{me: {files: [{id: 42, name: 'john', created_at: 'yesterday'}]}}}
       />)
       .toJSON();
     expect(tree).toMatchSnapshot();

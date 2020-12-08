@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\GraphQlException;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,7 +23,7 @@ class UserService
    * @return User|null
    */
   public function getUserByEmail(string $email) {
-      return User::where('email', $email)->first();
+    return User::where('email', $email)->first();
   }
 
   /**

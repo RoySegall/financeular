@@ -12,7 +12,7 @@ export default ({files}) => <table>
 
   {files.map((file, key) => <tr key={key}>
       <td>{file.name}</td>
-      <td>{file.createDate}</td>
+      <td>{file.created_at}</td>
       <td>View | Delete</td>
   </tr>)}
   </tbody>
