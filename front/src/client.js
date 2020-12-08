@@ -4,7 +4,7 @@ import {getAuthInfo, tokenIsValid} from "./services/auth";
 import {createUploadLink} from "apollo-upload-client";
 
 const httpLink = createUploadLink({
-  uri: `${backendAddress()}/graphql`
+  uri: `${backendAddress}/graphql`
 });
 
 const authMiddleware = new ApolloLink((operation, forward) => {

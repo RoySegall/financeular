@@ -37,19 +37,15 @@ export default () => {
 
   const uploadFile = async () => {
     setUploading(true);
+
     const results = await mutateUploadFile({variables:{file}});
 
     // Done with the uploading and set the success message or an error message.
     setUploading(false);
 
-    const {status, message} = results.data.uploadFile;
-    if (status === 'failed') {
-      setFileUploadError(message);
-    } else {
-      setFileUploadSuccess('The file has uploaded successfully.');
-      await client.resetStore();
-      setTimeout(() => setRedirect(true), 3000);
-    }
+    setFileUploadSuccess('The file has uploaded successfully.');
+    await client.resetStore();
+    setTimeout(() => setRedirect(true), 3000);
   }
 
   if (redirect) {

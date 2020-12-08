@@ -39,7 +39,7 @@ export default () => {
         }
       });
 
-      setLocalStorageKeysFromRequest(results.data.login)
+      setLocalStorageKeysFromRequest(results.data.login);
 
       setSubmitStatus({
         status: 'passed',

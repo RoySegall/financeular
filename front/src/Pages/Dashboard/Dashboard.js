@@ -23,7 +23,7 @@ export const DashboardFiles = ({loading, data}) => {
     />
   }
 
-  const {files} = data;
+  const {files} = data.me;
 
   if (files.length === 0) {
     return <IllustrationWithMessage
