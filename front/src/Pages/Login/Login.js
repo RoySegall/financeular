@@ -124,7 +124,7 @@ export default () => {
             </div>
 
             <div className="">
-              <button type="submit" className="button submit shadow" disabled={isSubmitting}>
+              <button type="submit" className="button-submit shadow" disabled={isSubmitting}>
                 <Login/> Login
               </button>
             </div>
@@ -133,9 +133,9 @@ export default () => {
               <h3 className="text-2xl font-bold underline pb-8">or login with: </h3>
 
               <div className="flex">
-                <LoginWith social="facebook"><Facebook/> Facebook</LoginWith>
-                <LoginWith social="google"><Google/> Google</LoginWith>
-                <LoginWith social="apple"><Apple/> Apple</LoginWith>
+                <LoginWith social="button-facebook"><Facebook/> Facebook</LoginWith>
+                <LoginWith social="button-google"><Google/> Google</LoginWith>
+                <LoginWith social="button-apple"><Apple/> Apple</LoginWith>
               </div>
             </div>
 

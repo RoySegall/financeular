@@ -1,31 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind utilities;
 
 @layer base {
 
-    img {
-        display: initial;
+  img {
+    display: initial;
+  }
+
+  a {
+    @apply font-normal underline;
+  }
+
+  .App {
+    @apply min-h-screen text-green-dark;
+
+    header {
+      @apply text-white-header bg-green-dark;
+
+      a {
+        @apply no-underline;
+      }
     }
 
-    a {
-        @apply font-normal underline;
+    main {
+      min-height: 92vh;
+      @apply bg-white-header;
     }
+  }
+}
 
-    .App {
-        @apply min-h-screen text-green-dark;
+// Components.
 
-        header {
-            @apply text-white-header bg-green-header;
+@layer utilities {
 
-            a {
-                @apply no-underline;
-            }
-        }
+  .button {
+    @apply flex items-center text-red-50
+      uppercase font-bold tracking-widest
+      h-14 mt-2 m-auto m-0
+      rounded
+      pr-4 pl-4 pt-7 pb-7;
 
-        main {
-            min-height: 92vh;
-            @apply bg-white-header;
-        }
+    svg {
+      font-size: 2em;
+      margin-right: .25em;
     }
+  }
+
+  .button-submit {
+    @apply button bg-green-light;
+  }
+
+  .button-apple {
+    @apply button bg-black;
+  }
+
+  .button-facebook {
+    @apply button bg-brands-facebook;
+  }
+
+  .button-google {
+    @apply button bg-brands-google;
+  }
+
 }
