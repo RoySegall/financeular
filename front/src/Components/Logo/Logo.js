@@ -1,11 +1,10 @@
 import React from "react";
-import "./logo.scss";
 
-export default () => <div className="logo block">
+export default () => <div className="block pl-2 pt-2 pb-2">
     <div className="flex items-center">
-        <span className="text">Financular</span>
+        <span className="text-5xl font-bold">Financular</span>
     </div>
-    <div className="sub-text">
+    <div className="font-thin text-center">
         Understand money, better
     </div>
 </div>
