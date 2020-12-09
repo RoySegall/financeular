@@ -32,7 +32,6 @@
 }
 
 // Components.
-
 @layer utilities {
 
   .button {
@@ -62,6 +61,10 @@
 
   .button-google {
     @apply button bg-brands-google;
+  }
+
+  .illustration-image {
+    @apply m-auto w-max pt-2;
   }
 
 }
