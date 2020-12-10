@@ -64,7 +64,7 @@ export default () => {
     return <Redirect to="/dashboard" />;
   }
 
-  return <div className="login-screen">
+  return <div className="login-screen w-screen flex justify-center items-center">
 
     <div className="login-wrapper shadow-lg">
       <PageTitle>Login</PageTitle>

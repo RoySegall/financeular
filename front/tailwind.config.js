@@ -3,8 +3,9 @@ const baseColors = {
     dark: '#006d77',
     light: '#83c5be',
   },
-  white: {
-    header: '#edf6f9'
+  white: '#ffffff',
+  light: {
+    white: '#edf6f9'
   },
   peach: {
     light: '#ffddd2',

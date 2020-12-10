@@ -13,9 +13,12 @@ import {
   faTimesCircle,
   faInfoCircle,
   faCheckCircle,
-  faSpinner
+  faSpinner,
+  faSchool,
+  faFingerprint
 } from "@fortawesome/free-solid-svg-icons";
 import {faFacebookSquare, faGoogle, faApple} from "@fortawesome/free-brands-svg-icons";
+import {faFileCode} from "@fortawesome/free-regular-svg-icons";
 
 export const UploadCloud = () => <FontAwesomeIcon icon={faCloudUploadAlt}/>
 export const DownloadCloud = () => <FontAwesomeIcon icon={faCloudDownloadAlt}/>
@@ -32,3 +35,6 @@ export const WarningMark = () => <FontAwesomeIcon icon={faExclamationCircle}/>
 export const InfoMark = () => <FontAwesomeIcon icon={faInfoCircle}/>
 export const Ok = () => <FontAwesomeIcon icon={faCheckCircle}/>
 export const Spinner = () => <FontAwesomeIcon icon={faSpinner} className="fa-spin"/>
+export const School = () => <FontAwesomeIcon icon={faSchool} />
+export const FingerPrint = () => <FontAwesomeIcon icon={faFingerprint} />
+export const Code = () => <FontAwesomeIcon icon={faFileCode} />
