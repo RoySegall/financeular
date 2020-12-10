@@ -66,7 +66,7 @@ export default () => {
 
   return <div className="login-screen">
 
-    <div className="text-white-header border border-sold border-green-header bg-green-dark shadow-lg">
+    <div className="login-wrapper shadow-lg">
       <PageTitle>Login</PageTitle>
 
       <Formik
