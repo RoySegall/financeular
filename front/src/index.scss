@@ -26,7 +26,9 @@
 
     main {
       min-height: 92vh;
-      @apply bg-white-header;
+      background: #edf2f7;
+      font-family: 'Rubik', sans-serif;
+      //@apply bg-white-header;
     }
   }
 }
@@ -36,7 +38,7 @@
 
   .button {
     @apply flex items-center text-red-50
-      uppercase font-bold tracking-widest
+      font-bold tracking-widest
       h-14 mt-2 m-auto m-0
       rounded
       pr-4 pl-4 pt-7 pb-7;
