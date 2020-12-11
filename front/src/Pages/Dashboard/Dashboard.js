@@ -1,6 +1,4 @@
 import React from 'react';
-import "./Dashboard.scss"
-import PageTitle from "../../Components/PageTitle/PageTitle";
 import {useQuery} from "@apollo/client";
 import {FILES} from "../../Apollo/Files";
 import loadingImage from "./loading.svg";
@@ -8,20 +6,10 @@ import IllustrationWithMessage from "../../Components/IllustrationWithMessage/Il
 import {Link} from "react-router-dom";
 import noFiles from "./noFiles.svg"
 import {Redirect} from "react-router-dom";
-import {SmallButton, Submit} from "../../Components/Buttons/Buttons";
-import {UploadCloud} from "../../Components/Icons/Icons";
+import {SmallButton} from "../../Components/Buttons/Buttons";
 import CardTable from "../../Components/Table/CardTable";
 
-export const DashboardFiles = ({loading, data}) => {
-
-  if (loading) {
-    return <IllustrationWithMessage
-      message="Loading..."
-      secondMessage="We are working on getting data from the server"
-      image={loadingImage}
-      imageAlt="Loading..."
-    />
-  }
+export const DashboardFiles = ({data}) => {
 
   const {files} = data.me;
 
@@ -55,7 +43,23 @@ export default () => {
     return <Redirect to="/" />
   }
 
-  return <div className="files-wrapper pt-4 pl-4 pr-4">
-    <DashboardFiles loading={loading} data={data} />
+  if (loading) {
+    return <div className="w-screen text-center">
+      <IllustrationWithMessage
+        message="Loading..."
+        secondMessage="We are working on getting data from the server"
+        image={loadingImage}
+        imageAlt="Loading..."
+      />
+    </div>
+  }
+
+  return <div className="flex w-screen">
+    <div className="pl-4">
+      asdasd
+    </div>
+    <div className="files-wrapper w-full pt-4 pl-4 pr-4">
+      <DashboardFiles loading={loading} data={data} />
+    </div>
   </div>
 }

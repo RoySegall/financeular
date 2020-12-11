@@ -8,7 +8,7 @@ import {Code, FingerPrint, School} from "../../Components/Icons/Icons";
 export default () => <div className="front-page flex flex-col pb-10">
   <FrontPageBlock
     image={research}
-    imageClass="first"
+    imageClass="w-8/12"
     imageAlt="Researching money"
     title="Understanding money is hard"
     text={
@@ -30,7 +30,7 @@ export default () => <div className="front-page flex flex-col pb-10">
   <FrontPageBlock
     className="pt-32"
     reversOrder={true}
-    imageClass="second"
+    imageClass="w-9/12"
     image={personal}
     imageAlt="Personal settings"
     title="Privacy in mind"
@@ -45,7 +45,7 @@ export default () => <div className="front-page flex flex-col pb-10">
   />
   <FrontPageBlock
     className="pt-32"
-    imageClass="second"
+    imageClass="w-8/12"
     image={openSource}
     imageAlt="Personal settings"
     title="Open Source"
