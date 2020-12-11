@@ -7,9 +7,8 @@ import loadingImage from "./loading.svg";
 import IllustrationWithMessage from "../../Components/IllustrationWithMessage/IllustrationWithMessage";
 import {Link} from "react-router-dom";
 import noFiles from "./noFiles.svg"
-import FilesTable from "../../Components/FilesTable/FilesTable";
 import {Redirect} from "react-router-dom";
-import {Submit} from "../../Components/Buttons/Buttons";
+import {SmallButton, Submit} from "../../Components/Buttons/Buttons";
 import {UploadCloud} from "../../Components/Icons/Icons";
 import CardTable from "../../Components/Table/CardTable";
 
@@ -37,7 +36,12 @@ export const DashboardFiles = ({loading, data}) => {
   }
 
   return <CardTable
-    title="Uploaded files"
+    title={<div className="flex justify-between">
+      <div>Uploaded files</div>
+      <div>
+        <Link to="/upload" className="no-underline"><SmallButton color='green'>Upload another file</SmallButton></Link>
+      </div>
+    </div>}
     headers={['File name', 'Created at', 'Actions']}
     rows={files.map(file => [file.name, file.created_at, <ul className="flex"><li className="pr-4">View</li> <li>Delete</li></ul>])}
   />
@@ -51,15 +55,7 @@ export default () => {
     return <Redirect to="/" />
   }
 
-  return <div className="files-wrapper pl-4 pr-4">
-    <div className="flex items-center pb-5">
-      <PageTitle align='left'>Your files</PageTitle>
-      <div className="ml-auto">
-        <Link to="/upload" className="no-underline">
-          <Submit><UploadCloud /> Upload another file</Submit>
-        </Link>
-      </div>
-    </div>
+  return <div className="files-wrapper pt-4 pl-4 pr-4">
     <DashboardFiles loading={loading} data={data} />
   </div>
 }
