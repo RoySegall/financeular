@@ -24,6 +24,9 @@ module.exports = {
     extend: {
       colors: baseColors,
       backgroundColor: baseColors,
+      boxShadow: {
+        red: '0 4px 30px 0 rgb(255 0 0 / 0.50);',
+      },
     },
   },
   variants: {

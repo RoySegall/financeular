@@ -10,7 +10,7 @@ import {
   faPiggyBank,
   faCalculator,
   faExclamationCircle,
-  faTimesCircle,
+  faTimes,
   faInfoCircle,
   faCheckCircle,
   faSpinner,
@@ -30,7 +30,7 @@ export const Income = () => <FontAwesomeIcon icon={faPiggyBank}/>
 export const Expenses = () => <FontAwesomeIcon icon={faCreditCard}/>
 export const Calculator = () => <FontAwesomeIcon icon={faCalculator}/>
 export const MoneyBill = () => <FontAwesomeIcon icon={faMoneyBillAlt}/>
-export const ErrorMark = () => <FontAwesomeIcon icon={faTimesCircle}/>
+export const ErrorMark = () => <FontAwesomeIcon icon={faTimes}/>
 export const WarningMark = () => <FontAwesomeIcon icon={faExclamationCircle}/>
 export const InfoMark = () => <FontAwesomeIcon icon={faInfoCircle}/>
 export const Ok = () => <FontAwesomeIcon icon={faCheckCircle}/>
