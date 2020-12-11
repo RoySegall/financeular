@@ -8,7 +8,6 @@ import noFiles from "./noFiles.svg"
 import {Redirect} from "react-router-dom";
 import {SmallButton} from "../../Components/Buttons/Buttons";
 import CardTable from "../../Components/Table/CardTable";
-import {Error, Info, Notice, Success} from "../../Components/Messages/Message";
 
 export const DashboardFiles = ({data}) => {
 
@@ -38,13 +37,6 @@ export const DashboardFiles = ({data}) => {
 
 export default () => {
   const { loading, error, data } = useQuery(FILES, { errorPolicy: 'all' });
-
-  return <>
-    <Error message={"There was an error. You not hungry enough! 🍕"} />
-    <Success message={"There was an error. You not hungry enough! 🍕"} />
-    <Info message={"There was an error. You not hungry enough! 🍕"} />
-    <Notice message={"There was an error. You not hungry enough! 🍕"} />
-  </>
 
   if (error && error.graphQLErrors[0].message.includes('Unauthorized')) {
     // todo: handle it better.
