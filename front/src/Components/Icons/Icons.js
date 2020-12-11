@@ -9,10 +9,10 @@ import {
   faSignInAlt,
   faPiggyBank,
   faCalculator,
-  faExclamationCircle,
+  faExclamation,
   faTimes,
-  faInfoCircle,
-  faCheckCircle,
+  faInfo,
+  faCheck,
   faSpinner,
   faSchool,
   faFingerprint
@@ -31,9 +31,9 @@ export const Expenses = () => <FontAwesomeIcon icon={faCreditCard}/>
 export const Calculator = () => <FontAwesomeIcon icon={faCalculator}/>
 export const MoneyBill = () => <FontAwesomeIcon icon={faMoneyBillAlt}/>
 export const ErrorMark = () => <FontAwesomeIcon icon={faTimes}/>
-export const WarningMark = () => <FontAwesomeIcon icon={faExclamationCircle}/>
-export const InfoMark = () => <FontAwesomeIcon icon={faInfoCircle}/>
-export const Ok = () => <FontAwesomeIcon icon={faCheckCircle}/>
+export const WarningMark = () => <FontAwesomeIcon icon={faExclamation}/>
+export const InfoMark = () => <FontAwesomeIcon icon={faInfo}/>
+export const Ok = () => <FontAwesomeIcon icon={faCheck}/>
 export const Spinner = () => <FontAwesomeIcon icon={faSpinner} className="fa-spin"/>
 export const School = () => <FontAwesomeIcon icon={faSchool} />
 export const FingerPrint = () => <FontAwesomeIcon icon={faFingerprint} />

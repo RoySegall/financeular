@@ -3,8 +3,8 @@ import {ErrorMark, InfoMark, Ok, WarningMark} from "../Icons/Icons";
 
 export const BaseMessage = ({type, color, icon, message, children}) => {
     return <section
-        className={`${type} align-middle bg-white w-9/12 m-auto m-0 relative flex flex-col mb-6 shadow-lg rounded p-2 px-4 py-5 border-2 border-${color}-900 bg-red-100`}>
-        <div className={`m-auto m-0 -mt-12 p-3 text-center inline-flex items-center justify-center w-14 h-14 mb-5 shadow-lg rounded-full text-4xl bg-red-400 text-white shadow-red`}>
+        className={`${type} align-middle bg-white w-9/12 m-auto m-0 relative flex flex-col mb-6 shadow-lg rounded p-2 px-4 py-5 border-2 border-${color}-900 bg-${color}-100`}>
+        <div className={`m-auto m-0 -mt-12 p-3 text-center inline-flex items-center justify-center w-14 h-14 mb-5 shadow-lg rounded-full text-4xl bg-${color}-400 text-white shadow-${color}`}>
             {icon}
         </div>
 

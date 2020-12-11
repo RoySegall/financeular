@@ -26,6 +26,9 @@ module.exports = {
       backgroundColor: baseColors,
       boxShadow: {
         red: '0 4px 30px 0 rgb(255 0 0 / 0.50);',
+        yellow: '0 4px 30px 0 rgb(251 255 0 / 50%);',
+        blue: '0 4px 30px 0 rgb(0 161 255 / 50%);',
+        green: '0 4px 30px 0 rgb(16 255 0 / 50%);',
       },
     },
   },
