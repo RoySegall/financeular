@@ -24,7 +24,7 @@ export const BaseMessage = ({type, color, icon, message, children, firstButtonCa
   return <section className={sectionClassName}>
     <div className={iconClassName}>{icon}</div>
 
-    <h2 className={`text-2xl text-${color}-900 font-semibold text-black pb-4 text-center`}>{message}</h2>
+    <h2 className={`text-2xl text-${color}-900 font-semibold text-black pb-4 text-center`}>{children ? children : message}</h2>
 
     {showButtons && <BaseMessageButtons
       color={color} firstButtonCallback={firstButtonCallback} secondButtonCallback={secondButtonCallback}

@@ -10,6 +10,6 @@ export default () => {
     <><User /> Personal details</>
   ];
   return <ul>
-    {links.map((link, id) => <li><a className="no-underline text-xl pb-3 block">{link}</a></li>)}
+    {links.map((link, id) => <li key={id}><a className="no-underline text-xl pb-3 block">{link}</a></li>)}
   </ul>
 }

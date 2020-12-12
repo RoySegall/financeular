@@ -29,8 +29,7 @@ export default function CardTable({ color, title, headers, rows }) {
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
-                {headers.map((title, key) => <th
-                  id={key} className={
+                {headers.map((title, id) => <th key={id} className={
                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left " +
                     (color === "light"
                       ? "bg-gray-100 text-gray-600 border-gray-200"
