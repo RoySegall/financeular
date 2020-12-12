@@ -16,20 +16,19 @@ const BaseMessageButtons = ({color, firstButtonCallback, secondButtonCallback, f
   </div>
 
 export const BaseMessage = ({type, color, icon, message, children, firstButtonCallback, secondButtonCallback, firstButtonText, secondButtonText}) => {
-  return <section
-    className={`${type} align-middle bg-white w-9/12 m-auto m-0 relative flex flex-col mb-6 shadow-lg rounded p-2 px-4 py-5 border-2 border-${color}-900 bg-${color}-100 shadow-${color}`}>
-    <div
-      className={`m-auto m-0 -mt-12 p-3 text-center inline-flex items-center justify-center w-14 h-14 mb-5 shadow-lg rounded-full text-4xl bg-${color}-400 text-white shadow-${color}`}>
-      {icon}
-    </div>
+  const sectionClassName = `${type} align-middle bg-white w-9/12 m-auto m-0 relative flex flex-col mb-6 shadow-lg 
+                            rounded p-2 px-4 py-5 border-2 border-${color}-900 bg-${color}-100 shadow-${color}`;
+  const iconClassName = `m-auto m-0 -mt-12 p-3 text-center inline-flex items-center justify-center w-14 h-14 mb-5 
+                          shadow-lg rounded-full text-4xl bg-${color}-400 text-white shadow-${color}`
+  const showButtons = firstButtonCallback || secondButtonCallback;
+  return <section className={sectionClassName}>
+    <div className={iconClassName}>{icon}</div>
 
     <h2 className={`text-2xl text-${color}-900 font-semibold text-black pb-4 text-center`}>{message}</h2>
 
-    {(firstButtonCallback || secondButtonCallback) &&
-    <BaseMessageButtons color={color} firstButtonCallback={firstButtonCallback}
-                        secondButtonCallback={secondButtonCallback} firstButtonText={firstButtonText}
-                        secondButtonText={secondButtonText}>
-
+    {showButtons && <BaseMessageButtons
+      color={color} firstButtonCallback={firstButtonCallback} secondButtonCallback={secondButtonCallback}
+      firstButtonText={firstButtonText} secondButtonText={secondButtonText}>
     </BaseMessageButtons>}
   </section>
 }

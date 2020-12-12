@@ -15,7 +15,12 @@ import {
   faCheck,
   faSpinner,
   faSchool,
-  faFingerprint
+  faFingerprint,
+  faFolderOpen,
+  faUnlock,
+  faAt,
+  faUser,
+  faDatabase
 } from "@fortawesome/free-solid-svg-icons";
 import {faFacebookSquare, faGoogle, faApple} from "@fortawesome/free-brands-svg-icons";
 import {faFileCode} from "@fortawesome/free-regular-svg-icons";
@@ -38,3 +43,8 @@ export const Spinner = () => <FontAwesomeIcon icon={faSpinner} className="fa-spi
 export const School = () => <FontAwesomeIcon icon={faSchool} />
 export const FingerPrint = () => <FontAwesomeIcon icon={faFingerprint} />
 export const Code = () => <FontAwesomeIcon icon={faFileCode} />
+export const Folder = () => <FontAwesomeIcon icon={faFolderOpen} />
+export const UnLock = () => <FontAwesomeIcon icon={faUnlock} />
+export const At = () => <FontAwesomeIcon icon={faAt} />
+export const User = () => <FontAwesomeIcon icon={faUser} />
+export const DataBase = () => <FontAwesomeIcon icon={faDatabase} />

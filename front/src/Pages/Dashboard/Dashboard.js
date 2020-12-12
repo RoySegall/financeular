@@ -3,37 +3,9 @@ import {useQuery} from "@apollo/client";
 import {FILES} from "../../Apollo/Files";
 import loadingImage from "./loading.svg";
 import IllustrationWithMessage from "../../Components/IllustrationWithMessage/IllustrationWithMessage";
-import {Link} from "react-router-dom";
-import noFiles from "./noFiles.svg"
 import {Redirect} from "react-router-dom";
-import {SmallButton} from "../../Components/Buttons/Buttons";
-import CardTable from "../../Components/Table/CardTable";
-
-export const DashboardFiles = ({data}) => {
-
-  const {files} = data.me;
-
-  if (files.length === 0) {
-    return <IllustrationWithMessage
-      message="No files were found...."
-      secondMessage={<>We could not found files. You can <Link to="/upload">upload</Link> some files and get some interesting insights,
-      maybe... We can't promise  any thing.</>}
-      image={noFiles}
-      imageAlt="No files were found"
-    />
-  }
-
-  return <CardTable
-    title={<div className="flex justify-between">
-      <div>Uploaded files</div>
-      <div>
-        <Link to="/upload" className="no-underline"><SmallButton color='green'>Upload another file</SmallButton></Link>
-      </div>
-    </div>}
-    headers={['File name', 'Created at', 'Actions']}
-    rows={files.map(file => [file.name, file.created_at, <ul className="flex"><li className="pr-4">View</li> <li>Delete</li></ul>])}
-  />
-}
+import DashboardSideMenu from "../../Components/DashboardSideMenu";
+import {DashboardFiles} from "../../Components/DashboardFiles/DashboardFiles";
 
 export default () => {
   const { loading, error, data } = useQuery(FILES, { errorPolicy: 'all' });
@@ -55,10 +27,10 @@ export default () => {
   }
 
   return <div className="flex w-screen">
-    <div className="pl-4">
-      asdasd
+    <div className="bg-green-dark text-white w-2/12 pt-4 border-r border-yellow-600 shadow-lg pl-2">
+      <DashboardSideMenu />
     </div>
-    <div className="files-wrapper w-full pt-4 pl-4 pr-4">
+    <div className="files-wrapper w-11/12 pt-4 pl-4 pr-4">
       <DashboardFiles loading={loading} data={data} />
     </div>
   </div>
