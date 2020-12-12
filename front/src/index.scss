@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind utilities;
+
+@layer base {
+
+  img {
+    display: initial;
+  }
+
+  a {
+    @apply font-normal underline;
+  }
+
+  .App {
+    @apply min-h-screen text-green-dark;
+
+    header {
+      @apply text-light-white bg-green-dark;
+
+      a {
+        @apply no-underline;
+      }
+    }
+
+    main {
+      min-height: 92vh;
+      background: #edf2f7;
+      font-family: 'Rubik', sans-serif;
+      //@apply bg-white-header;
+    }
+  }
+}
+
+// Components.
+@layer utilities {
+
+  .button {
+    @apply flex items-center text-red-50
+      font-bold tracking-widest
+      h-14 mt-2 m-auto m-0
+      rounded
+      pr-4 pl-4 pt-7 pb-7;
+
+    svg {
+      font-size: 2em;
+      margin-right: .25em;
+    }
+  }
+
+  .button-submit {
+    @apply button bg-green-light;
+  }
+
+  .button-apple {
+    @apply button bg-black;
+  }
+
+  .button-facebook {
+    @apply button bg-brands-facebook;
+  }
+
+  .button-google {
+    @apply button bg-brands-google;
+  }
+
+  .illustration-image {
+    @apply m-auto w-max pt-2;
+  }
+
+}

@@ -1,13 +1,10 @@
 import React from 'react';
-import {mount} from 'enzyme';
 import {configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { MockedProvider } from '@apollo/client/testing';
-import {FILES} from "../../Apollo/Files";
-import {elementShouldContainText, mountComponent, sleep} from "../../Tests/Utils";
-import Dashboard, {DashboardFiles} from "./Dashboard";
-import {act} from "react-dom/test-utils";
+import {elementShouldContainText, mountComponent} from "../../Tests/Utils";
 import renderer from 'react-test-renderer';
+import {DashboardFiles} from "../../Components/DashboardFiles/DashboardFiles";
+import Dashboard from "./Dashboard";
 
 configure({adapter: new Adapter()});
 
@@ -23,7 +20,7 @@ jest.mock('react-router-dom', () => {
 describe('Dashboard component', () => {
 
   it('Should return the "Loading component" when loading the data', async () => {
-    const wrapper = mountComponent({component: <DashboardFiles loading={true} />, wrapWithProvider: false});
+    const wrapper = mountComponent({component: <Dashboard loading={true} />, wrapWithProvider: true});
 
     elementShouldContainText(wrapper, 'Loading');
     elementShouldContainText(wrapper, 'We are working on getting data from the server');

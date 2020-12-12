@@ -38,7 +38,7 @@ export default () => {
   const uploadFile = async () => {
     setUploading(true);
 
-    const results = await mutateUploadFile({variables:{file}});
+    await mutateUploadFile({variables:{file}});
 
     // Done with the uploading and set the success message or an error message.
     setUploading(false);
@@ -53,9 +53,9 @@ export default () => {
   }
 
   return <div className="upload-files ml-auto mr-auto pt-16 text-center">
-      <img src={upload} alt="upload illustration" className="pb-5" />
+      <img src={upload} alt="upload illustration" className="h-2/4 pb-5" />
 
-      <div {...getRootProps()} className={`file-input ${isDragActive ? 'active' : ''}`}>
+      <div {...getRootProps()} className={`mt-6 p-2 text-2xl border border-solid border-green-dark ${isDragActive ? 'active' : ''}`}>
         <input {...getInputProps()} />
         {file ?
           <p>The selected file is <b>{file.name}</b></p> :
@@ -63,7 +63,7 @@ export default () => {
         }
       </div>
 
-      {fileUploadError && <div className="mt-5"><Error message={fileUploadError} /></div> }
+      {fileUploadError && <div className="mt-5"><Error message={fileUploadError}  /></div> }
       {fileUploadSuccess && <div className="mt-5"><Success message={fileUploadSuccess} /></div> }
 
       {!fileUploadError && !fileUploadSuccess && file && <Submit clickHandler={uploadFile} disabled={uploading}>

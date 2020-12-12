@@ -1,10 +1,10 @@
 import React from 'react';
-import './styles/tailwind.css';
 import FrontPage from "./Pages/FrontPage/FrontPage";
 import General from "./Layout/General";
 import Login from "./Pages/Login/Login";
 import Results from "./Pages/Results";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import './index.scss';
 import "./app.scss"
 import { ApolloProvider } from '@apollo/client';
 import {client} from "./client";

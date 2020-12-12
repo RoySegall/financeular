@@ -1,44 +1,11 @@
 import React from 'react';
-import "./Dashboard.scss"
-import PageTitle from "../../Components/PageTitle/PageTitle";
 import {useQuery} from "@apollo/client";
 import {FILES} from "../../Apollo/Files";
 import loadingImage from "./loading.svg";
 import IllustrationWithMessage from "../../Components/IllustrationWithMessage/IllustrationWithMessage";
-import {Link} from "react-router-dom";
-import noFiles from "./noFiles.svg"
-import FilesTable from "../../Components/FilesTable/FilesTable";
 import {Redirect} from "react-router-dom";
-import {Submit} from "../../Components/Buttons/Buttons";
-import {UploadCloud} from "../../Components/Icons/Icons";
-
-export const DashboardFiles = ({loading, data}) => {
-
-  if (loading) {
-    return <IllustrationWithMessage
-      message="Loading..."
-      secondMessage="We are working on getting data from the server"
-      image={loadingImage}
-      imageAlt="Loading..."
-    />
-  }
-
-  const {files} = data.me;
-
-  if (files.length === 0) {
-    return <IllustrationWithMessage
-      message="No files were found...."
-      secondMessage={<>We could not found files. You can <Link to="/upload">upload</Link> some files and get some interesting insights,
-      maybe... We can't promise  any thing.</>}
-      image={noFiles}
-      imageAlt="No files were found"
-    />
-  }
-
-  return <div className="files mr-5">
-    <FilesTable files={files} />
-  </div>
-}
+import DashboardSideMenu from "../../Components/DashboardSideMenu";
+import {DashboardFiles} from "../../Components/DashboardFiles/DashboardFiles";
 
 export default () => {
   const { loading, error, data } = useQuery(FILES, { errorPolicy: 'all' });
@@ -48,15 +15,23 @@ export default () => {
     return <Redirect to="/" />
   }
 
-  return <div className="files-wrapper">
-    <div className="flex items-center mr-5 pb-5">
-      <PageTitle align='left'>Your files</PageTitle>
-      <div className="ml-auto">
-        <Link to="/upload" className="no-underline">
-          <Submit><UploadCloud /> Upload another file</Submit>
-        </Link>
-      </div>
+  if (loading) {
+    return <div className="w-screen text-center">
+      <IllustrationWithMessage
+        message="Loading..."
+        secondMessage="We are working on getting data from the server"
+        image={loadingImage}
+        imageAlt="Loading..."
+      />
     </div>
-    <DashboardFiles loading={loading} data={data} />
+  }
+
+  return <div className="flex w-screen">
+    <div className="bg-green-dark text-white w-2/12 pt-4 border-r border-yellow-600 shadow-lg pl-2">
+      <DashboardSideMenu />
+    </div>
+    <div className="files-wrapper w-11/12 pt-4 pl-4 pr-4">
+      <DashboardFiles loading={loading} data={data} />
+    </div>
   </div>
 }

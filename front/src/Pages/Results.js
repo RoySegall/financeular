@@ -1,6 +1,5 @@
 import React from "react";
 import results from './results.json';
-import "./results.scss";
 import PageTitle from "../Components/PageTitle/PageTitle";
 import Table from "../Components/Table/Table";
 import Notes from "../Components/Notes/Notes";
