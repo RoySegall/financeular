@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+#  backend:
+#    build:
+#      context: ./backend
+#    ports:
+#      - "1000:8000"
+  front:
+    build:
+      context: ./front
+    ports:
+      - "80:80"
+    env_file: ./front/.docker.env
