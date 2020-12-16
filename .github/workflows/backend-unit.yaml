@@ -2,12 +2,13 @@ name: Tests
 on: [push]
 
 jobs:
-  phpunit:
-    name: Backend - Unit
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
+        operating-system: [ ubuntu-18.04 ]
         php: 7.4
+    name: PHP ${{ matrix.php }} sample
     steps:
       - uses: mirromutth/mysql-action@v1.1
         with:
