@@ -2,13 +2,9 @@ name: Tests
 on: [push]
 
 jobs:
-  build:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [ ubuntu-18.04 ]
-        php: 7.4
-    name: PHP ${{ matrix.php }} sample
+  phpunit:
+    name: Backend - Unit
+    runs-on: ubuntu-latest
     steps:
       - uses: mirromutth/mysql-action@v1.1
         with:
@@ -19,6 +15,9 @@ jobs:
           mysql password: 'root'
 
       - uses: actions/checkout@v1
+      - uses: nanasess/setup-php@master
+        with:
+          php-version: '7.4'
       - name: cd in to the backend and run tests
         run: |
           cd backend
