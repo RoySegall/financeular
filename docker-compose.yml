@@ -18,6 +18,9 @@ services:
       context: ./backend
     ports:
       - "1000:80"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
     depends_on:
       - db
 
