@@ -1,13 +1,30 @@
 version: "3.8"
 services:
-#  backend:
-#    build:
-#      context: ./backend
-#    ports:
-#      - "1000:8000"
+  #MySQL Service
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: financeular
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PORT: 3306
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "1000:80"
+    depends_on:
+      - db
+
   front:
     build:
       context: ./front
     ports:
       - "80:80"
-    env_file: ./front/.docker.env
+    depends_on:
+      - backend
