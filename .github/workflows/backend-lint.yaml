@@ -2,17 +2,14 @@ name: Tests
 on: [push]
 
 jobs:
-  build:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [ ubuntu-18.04, windows-2019 ]
-        php: 7.4
   phpunit:
     name: Backend - Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - uses: nanasess/setup-php@master
+        with:
+          php-version: '7.4'
       - name: cd in to the backend and run linter
         run: |
           cd backend
