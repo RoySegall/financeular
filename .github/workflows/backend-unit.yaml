@@ -16,8 +16,6 @@ jobs:
 
       - uses: actions/checkout@v1
       - name: cd in to the backend and run tests
-        with:
-          php-version: '7.4'
         run: |
           cd backend
           cp .githubactions.env .env
