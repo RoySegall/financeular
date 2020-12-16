@@ -2,6 +2,13 @@ name: Tests
 on: [push]
 
 jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ ubuntu-18.04, windows-2019 ]
+        php: 7.4
+    name: PHP ${{ matrix.php }} sample
   phpunit:
     name: Backend - Unit
     runs-on: ubuntu-latest
