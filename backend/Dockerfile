@@ -20,8 +20,6 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Create system user to run Composer and Artisan Commands.
-
 # Set working directory.
 ADD . /var/www/html
 WORKDIR /var/www/html
@@ -32,7 +30,6 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf && \
     sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf && \
     a2enmod rewrite headers
-
 
 # Running composer install.
 RUN composer install --optimize-autoloader --no-dev
@@ -46,4 +43,3 @@ RUN chown -R root:www-data /var/www/html/storage && \
 # Running the entry point.
 RUN chmod +x /var/www/html/entrypoint.sh
 CMD [ "/var/www/html/entrypoint.sh" ]
-
