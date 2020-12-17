@@ -1,0 +1,12 @@
+name: Tests
+on: [push]
+
+jobs:
+  phpunit:
+    name: E2E
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Spinning up the container
+        run: |
+          docker-compose up -d
