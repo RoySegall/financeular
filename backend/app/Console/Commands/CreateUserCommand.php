@@ -25,18 +25,18 @@ class CreateUserCommand extends Command
      *
      * @return void
      */
-    public function __construct()
+  public function __construct()
     {
-        parent::__construct();
-    }
+      parent::__construct();
+  }
 
     /**
      * Execute the console command.
      *
      * @return int
      */
-    public function handle()
+  public function handle()
     {
-        return 0;
-    }
+      return 0;
+  }
 }
