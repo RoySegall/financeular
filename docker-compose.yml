@@ -11,7 +11,9 @@ services:
       MYSQL_USER: root
       MYSQL_PORT: 3306
     volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
   backend:
     build:
@@ -21,6 +23,8 @@ services:
     environment:
       MYSQL_HOST: db
       MYSQL_PORT: 3306
+    volumes:
+      - ./storage:/var/www/html/storage
     depends_on:
       - db
 

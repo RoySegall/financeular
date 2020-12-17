@@ -36,13 +36,11 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 
 # Running composer install.
 RUN composer install --optimize-autoloader --no-dev
-RUN cp .env.docker .env && php artisan config:cache && php artisan route:cache
-RUN php artisan passport:keys
+RUN cp .env.docker .env
 
 # Setting a sylink between the public folder and the main folder of apache.
 RUN chown -R root:www-data /var/www/html/storage && \
     chmod -R ug+w /var/www/html/storage && \
-    php artisan cache:clear && \
     composer dump-autoload
 
 # Running the entry point.
