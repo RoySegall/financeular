@@ -58,7 +58,7 @@ class CreateUserCommand extends Command
     }
 
     $password = $this->secret('Enter the user password');
-    $name = $this->secret('Enter the name of the user');
+    $name = $this->ask('Enter the name of the user');
 
     $this->userService->createUser($email, Hash::make($password), $name);
   }

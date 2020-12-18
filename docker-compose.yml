@@ -23,6 +23,11 @@ services:
     environment:
       MYSQL_HOST: db
       MYSQL_PORT: 3306
+
+      # This is the client ID which we need to create upon setting up the
+      # docker container.
+      CLIENT_ID: 50
+      CLIENT_SECRET: 4af37737-a903-47e6-a26e-a339c3b764f4
     volumes:
       - ./storage:/var/www/html/storage
     depends_on:
@@ -32,6 +37,6 @@ services:
     build:
       context: ./front
     ports:
-      - "80:80"
+      - "2000:80"
     depends_on:
       - backend

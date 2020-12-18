@@ -15,5 +15,6 @@ php artisan route:cache
 php artisan cache:clear
 php artisan storage:link
 php artisan migrate --force
+php artisan financeular:create-app --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET
 
 apache2-foreground
