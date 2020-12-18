@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Services;
+namespace Tests\Feature\Services;
 
 use Illuminate\Validation\ValidationException;
 use Tests\Feature\FinancularTestUtilsTrait;
