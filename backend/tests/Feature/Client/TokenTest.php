@@ -31,14 +31,13 @@ class TokenTest extends TestCase
    */
   public function __construct(?string $name = null, array $data = [], $dataName = '') {
     parent::__construct($name, $data, $dataName);
-    $this->query = "{ me { id email } }";
   }
 
   /**
    * @param TestResponse $query
    */
   protected function verifyNotLoggedInError($token) {
-    $errors = $this->postGraphQL(['query' => $this->query], ['Authorization' => $token])->json('errors');
+    $errors = $this->postGraphQL(['query' => $this->queryMe], ['Authorization' => $token])->json('errors');
     $this->assertEquals($errors[0]['message'], 'You are not logged in');
   }
 
@@ -48,8 +47,7 @@ class TokenTest extends TestCase
   public function testValidToken() {
     $user = $this->createUser();
 
-    $data = $this
-      ->postGraphQL(['query' => $this->query], ['Authorization' => 'Bearer ' . $this->createAccessToken($user)->accessToken])
+    $data = $this->sendQuery($this->queryMe, $this->createAccessToken($user)->accessToken)
       ->json('data');
 
     $this->assertEquals($data, ['me' => ['id' => $user->id, 'email' => $user->email]]);

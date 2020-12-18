@@ -45,7 +45,7 @@ class ExcelFileProcessorServiceTest extends TestCase
                 ->andReturn('this is the processed file');
         });
 
-        $this->artisan('excel:process')
+        $this->artisan('financeular:excl-process')
             ->expectsQuestion('Please enter the file path', $this->getPathsForFiles('original'));
     }
 
