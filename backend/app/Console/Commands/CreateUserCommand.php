@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Services\UserService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class CreateUserCommand extends Command
 {
@@ -46,12 +47,18 @@ class CreateUserCommand extends Command
    */
   public function handle() {
     $email = $this->ask('Enter the user email');
-    $password = $this->secret('Enter the user password');
-    $name = $this->secret('Enter the name of the user');
 
+    // Check email.
+    Validator::make(['email' => $email], ['email' => 'email'])
+      ->validate();
+
+    // Verify the email is unique.
     if ($this->userService->getUserByEmail($email)) {
       throw new \Exception('The email already exists');
     }
+
+    $password = $this->secret('Enter the user password');
+    $name = $this->secret('Enter the name of the user');
 
     $this->userService->createUser($email, Hash::make($password), $name);
   }

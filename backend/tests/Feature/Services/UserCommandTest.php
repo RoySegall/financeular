@@ -2,6 +2,7 @@
 
 namespace Tests\Services;
 
+use Illuminate\Validation\ValidationException;
 use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
 
@@ -64,17 +65,31 @@ class UserCommandTest extends TestCase
     $this->assertEquals($me['id'], $user->id);
   }
 
-//  /**
-//   * Testing the command when passing a bad email.
-//   */
-//  public function testCreateUserCommandWithBadEmail() {
-//    $this->fail('a');
-//  }
-//
-//  /**
-//   * Testing the creation of user with an email which already exists.
-//   */
-//  public function testCreateUserWithExistingEmail() {
-//    $this->fail();
-//  }
+  /**
+   * Testing the command when passing a bad email.
+   */
+  public function testCreateUserCommandWithBadEmail() {
+
+    try {
+      $this->artisan('financeular:user-create')
+        ->expectsQuestion('Enter the user email', 'foo');
+      $this->fail('A validation exception was not raised.');
+    } catch (ValidationException $e) {
+      $this->assertEquals($e->errors(), ['email' => [0 => 'The email must be a valid email address.']]);
+    }
+  }
+
+  /**
+   * Testing the creation of user with an email which already exists.
+   */
+  public function testCreateUserWithExistingEmail() {
+    $user = $this->createuser();
+
+    try {
+      $this->artisan('financeular:user-create')
+        ->expectsQuestion('Enter the user email', $user->email);
+    } catch (\Exception $e) {
+      $this->assertEquals($e->getMessage(), 'The email already exists');
+    }
+  }
 }
