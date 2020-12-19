@@ -1,3 +1,12 @@
+![E2E](https://github.com/RoySegall/financeular/workflows/E2E/badge.svg)
+
+![Backend - Lint](https://github.com/RoySegall/financeular/workflows/Backend%20-%20Lint/badge.svg)
+![Backend - Unit](https://github.com/RoySegall/financeular/workflows/Backend%20-%20Unit/badge.svg)
+
+![Front Unit test](https://github.com/RoySegall/financeular/workflows/Front%20Unit%20test/badge.svg)
+![Front linter](https://github.com/RoySegall/financeular/workflows/Front%20linter/badge.svg)
+
+
 # Financeular 🤑
 
 Welcome to `financeular`. The project aims for tracking the incomes and 
