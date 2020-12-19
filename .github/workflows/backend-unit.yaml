@@ -15,6 +15,9 @@ jobs:
           mysql password: 'root'
 
       - uses: actions/checkout@v1
+      - uses: nanasess/setup-php@master
+        with:
+          php-version: '7.4'
       - name: cd in to the backend and run tests
         run: |
           cd backend

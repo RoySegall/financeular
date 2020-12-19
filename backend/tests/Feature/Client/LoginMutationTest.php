@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Client;
 
-use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
 use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
 
@@ -14,7 +13,7 @@ use Tests\TestCase;
 class LoginMutationTest extends TestCase
 {
 
-  use MakesGraphQLRequests, FinancularTestUtilsTrait;
+  use FinancularTestUtilsTrait;
 
   /**
    * @var \App\Models\User
@@ -34,20 +33,6 @@ class LoginMutationTest extends TestCase
 
     $this->user = $this->createUser();
     $this->client = $this->createClient();
-  }
-
-  protected function loginViaRequest($username, $password='password', $client_id=null, $client_secret=null) {
-    $client_id = $client_id ? $client_id : $this->client->id;
-    $client_secret = $client_secret ? $client_secret : $this->client->getPlainSecretAttribute();
-
-    $query = "mutation { login(
-      email: \"{$username}\"
-      password: \"{$password}\"
-      client_id: \"{$client_id}\"
-      client_secret: \"{$client_secret}\"
-    ) { accessToken expires }}";
-
-    return $this->graphQL($query);
   }
 
   /**

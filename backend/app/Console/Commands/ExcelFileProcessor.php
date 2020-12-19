@@ -13,7 +13,7 @@ class ExcelFileProcessor extends Command
      *
      * @var string
      */
-    protected $signature = 'excel:process';
+    protected $signature = 'financeular:excl-process';
 
     /**
      * The console command description.

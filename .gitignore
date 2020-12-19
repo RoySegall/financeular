@@ -8,3 +8,11 @@ vendor
 oauth-*.key
 
 front/.env
+
+# Docker persistant volumes.
+storage
+data
+
+# Cypress ignore
+cypress/cypress/fixtures/
+cypress/cypress/videos

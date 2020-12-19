@@ -10,18 +10,22 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\TestResponse;
 use Laravel\Passport\Client;
 use Laravel\Passport\PersonalAccessClient;
 use Laravel\Passport\PersonalAccessTokenResult;
 use Illuminate\Http\Testing\File as TestingFile;
+use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
 
 
 trait FinancularTestUtilsTrait
 {
 
-  use WithFaker, RefreshDatabase;
+  use WithFaker, RefreshDatabase, MakesGraphQLRequests;
 
   protected $preventFileUpload = null;
+
+  protected $queryMe = "{ me { id email } }";
 
   /**
    * Creating a user.
@@ -223,7 +227,7 @@ trait FinancularTestUtilsTrait
    * @param null $access_token
    *   The access token of a user. Optional.
    *
-   * @return \Illuminate\Testing\TestResponse
+   * @return TestResponse
    */
   protected function uploadFile($file = null, $access_token = null) {
 
@@ -286,6 +290,49 @@ trait FinancularTestUtilsTrait
   protected function assertErrorFromResponse($response, $message) {
     $errors = $response->json('errors');
     $this->assertEquals($errors[0]['message'], $message);
+  }
+
+  /**
+   * Logging in with a user.
+   *
+   * @param $username
+   *  The username.
+   * @param string $password
+   *  The password.
+   * @param null $client_id
+   *  The client object ID.
+   * @param null $client_secret
+   *  The client secret.
+   *
+   * @return TestResponse
+   *  The response from the service.
+   */
+  protected function loginViaRequest($username, $password='password', $client_id=null, $client_secret=null) {
+    $client_id = $client_id ? $client_id : $this->client->id;
+    $client_secret = $client_secret ? $client_secret : $this->client->getPlainSecretAttribute();
+
+    $query = "mutation { login(
+      email: \"{$username}\"
+      password: \"{$password}\"
+      client_id: \"{$client_id}\"
+      client_secret: \"{$client_secret}\"
+    ) { accessToken expires }}";
+
+    return $this->graphQL($query);
+  }
+
+  /**
+   * Sending a query.
+   *
+   * @param $query
+   *   The query to test.
+   * @param $access_token
+   *   The access to attach to the header.
+   * @return TestResponse
+   */
+  protected function sendQuery($query, $access_token) {
+    return $this
+      ->postGraphQL(['query' => $query], ['Authorization' => 'Bearer ' . $access_token]);
   }
 
 }

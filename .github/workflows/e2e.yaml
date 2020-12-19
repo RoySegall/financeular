@@ -1,0 +1,22 @@
+name: Tests
+on: [push]
+
+jobs:
+  build:
+    name: E2E
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Spinning up the container
+        run: |
+          docker-compose up -d
+      - name: Install the cypress and trigger tests.
+        run: |
+          cd cypress
+          npm i
+          npm run test:headless

@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Exceptions\GraphQlException;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -38,5 +37,23 @@ class UserService
    */
   public function validateUserPassword(User $user, $password): bool {
       return Hash::check($password, $user->getAuthPassword());
+  }
+
+  /**
+   * Creating a user.
+   *
+   * @param $email
+   *   The email.
+   * @param $password
+   *   The password.
+   * @param $name
+   *   The name of the user.
+   */
+  public function createUser($email, $password, $name) {
+    $user = new User();
+    $user->email = $email;
+    $user->password = $password;
+    $user->name = $name;
+    $user->save();
   }
 }

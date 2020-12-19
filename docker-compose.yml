@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  #MySQL Service
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: financeular
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PORT: 3306
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "1000:80"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+
+      # This is the client ID which we need to create upon setting up the
+      # docker container.
+      CLIENT_ID: 50
+      CLIENT_SECRET: 4af37737-a903-47e6-a26e-a339c3b764f4
+    volumes:
+      - ./storage:/var/www/html/storage
+    depends_on:
+      - db
+
+  front:
+    build:
+      context: ./front
+      args:
+        REACT_APP_BACKEND_ADDRESS: http://localhost:1000
+        REACT_APP_CLIENT_ID: 50
+        REACT_APP_CLIENT_SECRET: 4af37737-a903-47e6-a26e-a339c3b764f4
+    ports:
+      - "2000:80"
+    depends_on:
+      - backend

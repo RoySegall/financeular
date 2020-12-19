@@ -1,0 +1,16 @@
+{
+  "name": "financeular-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^6.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "cypress run  --browser chrome --no-exit",
+    "test:headless": "cypress run"
+  },
+  "author": "RoySegall <roy@segall.io>",
+  "license": "ISC"
+}
