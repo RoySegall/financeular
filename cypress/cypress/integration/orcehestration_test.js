@@ -3,7 +3,7 @@ describe('Testing all the docker compose setup.', () => {
   it('Verify the login mutation is sent with the correct payloads.', () => {
 
     cy.visit('/');
-    cy.get('a#logissn').click();
+    cy.get('a#login').click();
 
     // The password and username are not important for this test.
     cy.get('#username').type('foo@gmail.com');
