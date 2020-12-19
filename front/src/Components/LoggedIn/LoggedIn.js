@@ -13,7 +13,7 @@ export default () => {
 
   if (!data) {
     return <div className="pr-5">
-      Welcome <b>Guest</b>. Click here to <Link to="/login" className="font-bold" onClick={logOut}>login</Link>
+      Welcome <b>Guest</b>. Click here to <Link to="/login" className="font-bold" onClick={logOut} id="login">login</Link>
     </div>
   }
 
