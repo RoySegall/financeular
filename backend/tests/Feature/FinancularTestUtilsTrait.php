@@ -328,9 +328,10 @@ trait FinancularTestUtilsTrait
    *   The query to test.
    * @param $access_token
    *   The access to attach to the header.
+   *
    * @return TestResponse
    */
-  protected function sendQuery($query, $access_token) {
+  protected function sendQuery($query, $access_token = null) {
     return $this
       ->postGraphQL(['query' => $query], ['Authorization' => 'Bearer ' . $access_token]);
   }
@@ -345,8 +346,9 @@ trait FinancularTestUtilsTrait
    */
   protected function getPathsForFiles($type) {
     $types = [
-      'original' => getcwd() . '/app/Console/Commands/example_files/dummy_file.xlsx',
-      'expected' => getcwd() . '/tests/Feature/parsed_excel_json.json',
+      'invalid_file' => base_path() . '/app/Console/Commands/example_files/bad_dummy_file.xlsx',
+      'original' => base_path() . '/app/Console/Commands/example_files/dummy_file.xlsx',
+      'expected' => base_path() . '/tests/Feature/parsed_excel_json.json',
     ];
 
     return $types[$type];

@@ -3,6 +3,9 @@
 namespace App\GraphQL\Mutations;
 
 use App\Exceptions\GraphQlException;
+use App\Models\File;
+use App\Models\Limitation;
+use App\Services\ExcelFileProcessorService;
 use Illuminate\Http\Request;
 
 class FileProcess
@@ -13,13 +16,21 @@ class FileProcess
   protected $request;
 
   /**
+   * @var ExcelFileProcessorService
+   */
+  protected $excelService;
+
+  /**
    * Me constructor.
    *
    * @param Request $request
    *   The request service.
+   * @param ExcelFileProcessorService $excel_process_file
+   *   The excel process service.
    */
-  public function __construct(Request $request) {
+  public function __construct(Request $request, ExcelFileProcessorService $excel_process_file) {
     $this->request = $request;
+    $this->excelService = $excel_process_file;
   }
 
   /**
@@ -27,19 +38,19 @@ class FileProcess
    * @param array<string, mixed> $args
    */
   public function __invoke($_, array $args) {
-    // Check first the user is logged in.
-    if (!$user = $this->request->user()) {
-      throw new GraphQlException('You are not logged in');
-    }
-
-    // Check the file exists.
-
-    // Check the user has permission to the file.
+    $file = File::where('id', $args['id'])->first();
 
     // Process the file.
+    try {
+      $results = $this->excelService->processFile($file->path);
+    } catch (\Exception $e) {
+      // todo: set the status of the file and save the errors.
+      throw new GraphQlException('There was an error wile processing the file. Please contact costumer success');
+    }
 
-    // Store any errors.
+    // todo: set the status of the file.
 
     // Return the payload data.
+    return $file;
   }
 }

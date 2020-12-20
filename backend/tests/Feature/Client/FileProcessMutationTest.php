@@ -49,27 +49,72 @@ class FileProcessMutationTest extends TestCase
    * Verify the access for an anonymous user.
    */
   public function testCheckAnonymousUser() {
-    $this->fail();
+    // The file ID does not matter.
+    $results = $this->sendQuery("mutation { fileProcess(id: 1) { name }}");
+    $this->assertEquals($results->json('errors')[0]['message'], 'You are not authorized to access fileProcess');
+  }
+
+  /**
+   * Testing the response when mutating a file ID which not exists with a logged in user.
+   */
+  public function testLoggedInUserWithNotExistsFileId() {
+    $access_token = $this->createAccessToken($this->userFirst);
+
+    $results = $this->sendQuery("mutation { fileProcess(id: 0) { name }}", $access_token->accessToken);
+    $this->assertEquals($results->json('errors')[0]['message'], 'No query results for model [App\Models\File] 0');
   }
 
   /**
    * Test Access for file: file which belong to the user and one which not.
    */
   public function testAccessForFile() {
-    $this->fail();
+    $options = [
+      ['user' => $this->userFirst, 'shouldBeBlockedFor' => $this->fileSecond],
+      ['user' => $this->userSecond, 'shouldBeBlockedFor' => $this->fileFirst],
+    ];
+
+    foreach ($options as $option) {
+
+      $access_token = $this->createAccessToken($option['user']);
+      $results = $this->sendQuery("mutation { fileProcess(id: {$option['shouldBeBlockedFor']->id}) { name }}", $access_token->accessToken);
+
+      $this->assertEquals($results->json('errors')[0]['message'], 'You are not authorized to access fileProcess');
+    }
   }
 
   /**
    * Test processing an invalid file.
    */
   public function testInvalidFile() {
-    $this->fail();
+
+    // Setting the pat of the invalid file for parsing.
+    $this->fileFirst->path = $this->getPathsForFiles('invalid_file');
+    $this->fileFirst->save();
+
+    // Trigger the file process.
+    $access_token = $this->createAccessToken($this->userFirst);
+    $results = $this->sendQuery("mutation { fileProcess(id: {$this->fileFirst->id}) { name }}", $access_token->accessToken);
+
+    $this->assertEquals(
+      $results->json('errors')[0]['message'],
+      'There was an error wile processing the file. Please contact costumer success'
+    );
+
+    // todo: reload from the DB and verify the errors and verify we got error due to invalid file.
   }
 
   /**
    * Testing the happy flow - processing a valid file which belong to the user.
    */
   public function testValidFile() {
-    $this->fail();
+    // Setting the pat of the invalid file for parsing.
+    $this->fileFirst->path = $this->getPathsForFiles('original');
+    $this->fileFirst->save();
+
+    // Trigger the file process.
+    $access_token = $this->createAccessToken($this->userFirst);
+    $results = $this->sendQuery("mutation { fileProcess(id: {$this->fileFirst->id}) { id }}", $access_token->accessToken);
+
+    $this->assertEquals($results->json('data')['fileProcess']['id'], $this->fileFirst->id);
   }
 }
