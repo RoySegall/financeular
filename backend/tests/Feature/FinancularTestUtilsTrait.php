@@ -335,4 +335,21 @@ trait FinancularTestUtilsTrait
       ->postGraphQL(['query' => $query], ['Authorization' => 'Bearer ' . $access_token]);
   }
 
+  /**
+   * Get path for a file based on the type.
+   *
+   * @param $type
+   *   The type of the file.
+   * @return string
+   *   The path of the file.
+   */
+  protected function getPathsForFiles($type) {
+    $types = [
+      'original' => getcwd() . '/app/Console/Commands/example_files/dummy_file.xlsx',
+      'expected' => getcwd() . '/tests/Feature/parsed_excel_json.json',
+    ];
+
+    return $types[$type];
+  }
+
 }
