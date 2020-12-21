@@ -131,7 +131,6 @@ class FileProcessMutationTest extends TestCase
     $this->assertEquals($fileProcess['status'], $this->fileFirst->status);
 
     // Asserting there are records in the system.
-
     $base_filter = [
       'file_id' => $this->fileFirst->id,
       'month' => 12,
@@ -159,16 +158,16 @@ class FileProcessMutationTest extends TestCase
     ];
 
     foreach ($queries as $object => $items_to_search) {
-      $query = null;
 
       foreach ($items_to_search as $item_to_search) {
+        $query = null;
 
         foreach ($item_to_search as $field => $value) {
           $query = $object::where($field, $value);
         }
-      }
 
-      $this->assertTrue($query->exists());
+        $this->assertTrue($query->exists());
+      }
     }
   }
 }
