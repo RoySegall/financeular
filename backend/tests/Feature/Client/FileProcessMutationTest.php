@@ -2,8 +2,10 @@
 
 namespace Tests\Feature\Client;
 
+use App\Models\Expense;
 use App\Models\File;
 use App\Models\Income;
+use App\Models\Limitation;
 use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
 
@@ -129,14 +131,59 @@ class FileProcessMutationTest extends TestCase
     $this->assertEquals($fileProcess['status'], $this->fileFirst->status);
 
     // Asserting there are records in the system.
-    $months_query = [
-      Income::where('file_id', $this->fileFirst->id)->where('month', 12)->where('year', 2019)->where('value', 10000),
-      Income::where('file_id', $this->fileFirst->id)->where('month', 12)->where('year', 2019)->where('value', 1200),
-      Income::where('file_id', $this->fileFirst->id)->where('month', 12)->where('year', 2019)->where('value', 1000),
+
+    $queries = [
+      // Incomes.
+      Income::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value', 10000),
+      Income::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value', 1200),
+      Income::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value', 1000),
+
+      // Expenses.
+      Expense::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value', -1255.06)
+        ->where('date', '2019-01-12'),
+      Expense::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value', 3750)
+        ->where('date', '2019-01-12'),
+      Expense::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value', 80)
+        ->where('date', '2019-01-12'),
+
+      // Limitations.
+      Limitation::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value_per_week', 400)
+        ->where('time_per_month', 4),
+      Limitation::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value_per_week', 100)
+        ->where('time_per_month', 4),
+      Limitation::where('file_id', $this->fileFirst->id)
+        ->where('month', 12)
+        ->where('year', 2019)
+        ->where('value_per_week', 50)
+        ->where('time_per_month', 20),
     ];
 
-    foreach ($months_query as $month_query) {
-      $this->assertTrue($month_query->exists());
+    foreach ($queries as $query) {
+      $this->assertTrue($query->exists());
     }
   }
 }

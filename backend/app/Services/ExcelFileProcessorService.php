@@ -4,8 +4,10 @@ namespace App\Services;
 
 use App\Exceptions\UnparsedFileType;
 use App\Exceptions\UnparsedSheetName;
+use App\Models\Expense;
 use App\Models\File;
 use App\Models\Income;
+use App\Models\Limitation;
 
 class ExcelFileProcessorService
 {
@@ -216,9 +218,9 @@ class ExcelFileProcessorService
     foreach ($results['months'] as $month_year => $month_info) {
       [$year, $month] = explode('_', $month_year);
       $this->inflateIncomes($year, $month, $month_info['incomes'], $file);
+      $this->inflateExpenses($year, $month, $month_info['expenses'], $file);
+      $this->inflateLimitations($year, $month, $month_info['limitations'], $file);
     }
-//    $this->inflateExpenses();
-//    $this->inflateLimitations();
   }
 
   /**
@@ -247,5 +249,53 @@ class ExcelFileProcessorService
 
       $income_object->save();
     }
+  }
+
+  /**
+   * Inflating the expenses to the DB.
+   *
+   * @param $year
+   *   The year which the record belongs to.
+   * @param $month
+   *   The month which the record belongs to.
+   * @param $expenses
+   *   The expenses for a given month.
+   * @param $file
+   *   The file object.
+   */
+  public function inflateExpenses($year, $month, $expenses, $file) {
+    foreach ($expenses as $expense) {
+      $expense_object = new Expense();
+
+      $expense_object->file_id = $file->id;
+
+      $expense_object->month = $month;
+      $expense_object->year = $year;
+
+      $expense_object->title = $expense['title'];
+      $expense_object->value = $expense['value'];
+      $expense_object->date = date('Y-m-d', $expense['date']);
+
+      $expense_object->save();
+    }
+  }
+
+  public function inflateLimitations($year, $month, $limitations, $file) {
+    foreach ($limitations as $limitation) {
+      $limitation_object = new Limitation();
+
+      $limitation_object->file_id = $file->id;
+
+      $limitation_object->month = $month;
+      $limitation_object->year = $year;
+
+      $limitation_object->value_per_week = $limitation['value_per_week'];
+      $limitation_object->description = $limitation['description'];
+      $limitation_object->time_per_month = $limitation['time_per_month'];
+      $limitation_object->title = $limitation['title'];
+
+      $limitation_object->save();
+    }
+
   }
 }
