@@ -132,57 +132,42 @@ class FileProcessMutationTest extends TestCase
 
     // Asserting there are records in the system.
 
-    $queries = [
-      // Incomes.
-      Income::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value', 10000),
-      Income::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value', 1200),
-      Income::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value', 1000),
-
-      // Expenses.
-      Expense::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value', -1255.06)
-        ->where('date', '2019-01-12'),
-      Expense::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value', 3750)
-        ->where('date', '2019-01-12'),
-      Expense::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value', 80)
-        ->where('date', '2019-01-12'),
-
-      // Limitations.
-      Limitation::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value_per_week', 400)
-        ->where('time_per_month', 4),
-      Limitation::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value_per_week', 100)
-        ->where('time_per_month', 4),
-      Limitation::where('file_id', $this->fileFirst->id)
-        ->where('month', 12)
-        ->where('year', 2019)
-        ->where('value_per_week', 50)
-        ->where('time_per_month', 20),
+    $base_filter = [
+      'file_id' => $this->fileFirst->id,
+      'month' => 12,
+      'year' => 2019
     ];
 
-    foreach ($queries as $query) {
+    $queries = [
+      Income::class => [
+        $base_filter + ['value' => 10000],
+        $base_filter + ['value' => 1200],
+        $base_filter + ['value' => 1000],
+      ],
+
+      Expense::class => [
+        $base_filter + ['value' => -1255.06, 'date' => '2019-01-12'],
+        $base_filter + ['value' => 3750, 'date' => '2019-01-12'],
+        $base_filter + ['value' => 80, 'date' => '2019-01-12'],
+      ],
+
+      Limitation::class => [
+        $base_filter + ['value_per_week' => 400, 'time_per_month' => 4],
+        $base_filter + ['value_per_week' => 100, 'time_per_month' => 4],
+        $base_filter + ['value_per_week' => 50, 'time_per_month' => 20],
+      ],
+    ];
+
+    foreach ($queries as $object => $items_to_search) {
+      $query = null;
+
+      foreach ($items_to_search as $item_to_search) {
+
+        foreach ($item_to_search as $field => $value) {
+          $query = $object::where($field, $value);
+        }
+      }
+
       $this->assertTrue($query->exists());
     }
   }
