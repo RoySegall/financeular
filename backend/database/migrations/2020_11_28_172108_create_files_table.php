@@ -6,29 +6,35 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFilesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('files', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('path');
-            $table->integer('user_id');
-            $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up() {
+    $status_options = [
+      \App\Models\File::STATUS_NEW,
+      \App\Models\File::STATUS_ERRORED,
+      \App\Models\File::STATUS_PASSED
+    ];
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('files');
-    }
+    Schema::create('files', function (Blueprint $table) use($status_options) {
+      $table->id();
+      $table->string('name');
+      $table->string('path');
+      $table->integer('user_id');
+      $table->enum('status', $status_options)->default(\App\Models\File::STATUS_NEW);
+      $table->string('errors')->nullable();
+      $table->timestamps();
+    });
+  }
+
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down() {
+    Schema::dropIfExists('files');
+  }
 }

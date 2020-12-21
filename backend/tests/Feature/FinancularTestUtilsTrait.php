@@ -61,6 +61,7 @@ trait FinancularTestUtilsTrait
     $file->name = $this->faker()->name;
     $file->path = $this->faker()->name;
     $file->user()->associate($user);
+    $file->status = File::STATUS_NEW;
     $file->save();
 
     return $file;

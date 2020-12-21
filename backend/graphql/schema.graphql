@@ -35,6 +35,7 @@ type File {
     expenses: [Expenses!] @hasMany
     incomes: [Incomes!] @hasMany
     limitations: [Limitations!] @hasMany
+    status: String!
     created_at: DateTime!
     updated_at: DateTime!
 }

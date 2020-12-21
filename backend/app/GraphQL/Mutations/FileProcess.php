@@ -44,11 +44,17 @@ class FileProcess
     try {
       $results = $this->excelService->processFile($file->path);
     } catch (\Exception $e) {
-      // todo: set the status of the file and save the errors.
+
+      // Set the status with the error and throw the exception.
+      $file->errors = $e->getMessage();
+      $file->status = File::STATUS_ERRORED;
+      $file->save();
+
       throw new GraphQlException('There was an error wile processing the file. Please contact costumer success');
     }
 
-    // todo: set the status of the file.
+    $file->status = File::STATUS_PASSED;
+    $file->save();
 
     // Return the payload data.
     return $file;

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Client;
 
+use App\Models\File;
 use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
 
@@ -91,6 +92,8 @@ class FileProcessMutationTest extends TestCase
     $this->fileFirst->path = $this->getPathsForFiles('invalid_file');
     $this->fileFirst->save();
 
+    $this->assertEquals($this->fileFirst->status, File::STATUS_NEW);
+
     // Trigger the file process.
     $access_token = $this->createAccessToken($this->userFirst);
     $results = $this->sendQuery("mutation { fileProcess(id: {$this->fileFirst->id}) { name }}", $access_token->accessToken);
@@ -100,7 +103,9 @@ class FileProcessMutationTest extends TestCase
       'There was an error wile processing the file. Please contact costumer success'
     );
 
-    // todo: reload from the DB and verify the errors and verify we got error due to invalid file.
+    $this->fileFirst->refresh();
+    $this->assertEquals($this->fileFirst->status, File::STATUS_ERRORED);
+    $this->assertEquals($this->fileFirst->errors, 'There was an error while trying to process the excel file.');
   }
 
   /**
@@ -113,8 +118,13 @@ class FileProcessMutationTest extends TestCase
 
     // Trigger the file process.
     $access_token = $this->createAccessToken($this->userFirst);
-    $results = $this->sendQuery("mutation { fileProcess(id: {$this->fileFirst->id}) { id }}", $access_token->accessToken);
+    $results = $this->sendQuery("mutation { fileProcess(id: {$this->fileFirst->id}) { id status }}", $access_token->accessToken);
 
-    $this->assertEquals($results->json('data')['fileProcess']['id'], $this->fileFirst->id);
+    $this->fileFirst->refresh();
+    $this->assertEquals($this->fileFirst->status, File::STATUS_PASSED);
+
+    $fileProcess = $results->json('data')['fileProcess'];
+    $this->assertEquals($fileProcess['id'], $this->fileFirst->id);
+    $this->assertEquals($fileProcess['status'], $this->fileFirst->status);
   }
 }
