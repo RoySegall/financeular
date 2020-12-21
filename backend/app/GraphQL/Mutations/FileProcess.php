@@ -53,6 +53,8 @@ class FileProcess
       throw new GraphQlException('There was an error wile processing the file. Please contact costumer success');
     }
 
+    $this->excelService->inflateToDb($results, $file);
+
     $file->status = File::STATUS_PASSED;
     $file->save();
 

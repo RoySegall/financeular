@@ -3,6 +3,7 @@
 namespace Tests\Feature\Client;
 
 use App\Models\File;
+use App\Models\Income;
 use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
 
@@ -126,5 +127,16 @@ class FileProcessMutationTest extends TestCase
     $fileProcess = $results->json('data')['fileProcess'];
     $this->assertEquals($fileProcess['id'], $this->fileFirst->id);
     $this->assertEquals($fileProcess['status'], $this->fileFirst->status);
+
+    // Asserting there are records in the system.
+    $months_query = [
+      Income::where('file_id', $this->fileFirst->id)->where('month', 12)->where('year', 2019)->where('value', 10000),
+      Income::where('file_id', $this->fileFirst->id)->where('month', 12)->where('year', 2019)->where('value', 1200),
+      Income::where('file_id', $this->fileFirst->id)->where('month', 12)->where('year', 2019)->where('value', 1000),
+    ];
+
+    foreach ($months_query as $month_query) {
+      $this->assertTrue($month_query->exists());
+    }
   }
 }
