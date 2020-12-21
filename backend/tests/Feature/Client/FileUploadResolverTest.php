@@ -8,6 +8,7 @@ use Nuwave\Lighthouse\Testing\MakesGraphQLRequests;
 use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
 
+
 class FileUploadResolverTest extends TestCase
 {
 

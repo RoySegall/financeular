@@ -3,9 +3,8 @@
 ![Backend - Lint](https://github.com/RoySegall/financeular/workflows/Backend%20-%20Lint/badge.svg)
 ![Backend - Unit](https://github.com/RoySegall/financeular/workflows/Backend%20-%20Unit/badge.svg)
 
-![Front Unit test](https://github.com/RoySegall/financeular/workflows/Front%20Unit%20test/badge.svg)
 ![Front linter](https://github.com/RoySegall/financeular/workflows/Front%20linter/badge.svg)
-
+![Front Unit test](https://github.com/RoySegall/financeular/workflows/Front%20Unit%20test/badge.svg)
 
 # Financeular 🤑
 
@@ -29,7 +28,7 @@ Financeular deals with those issues in two ways:
   2. You can use financular. Unlike to other services we store all the data. By
   managing the income and expenses in a predefined excel sheet you can upload
   a single file and get insights about you finance behaviour. One you are done,
-  delete the file. It's would be like you never been here.
+  delete the file. It's would be like you've never been here.
   
 ## Using docker 🐳
 

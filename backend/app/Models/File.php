@@ -15,6 +15,10 @@ class File extends Model
 
   use HasFactory;
 
+  public const STATUS_NEW = 'NEW';
+  public const STATUS_PASSED = 'PASSED';
+  public const STATUS_ERRORED = 'ERROR';
+
   /**
    * Get the user which owns the file.
    *
