@@ -1,11 +1,10 @@
 import React from 'react';
 import {useQuery} from "@apollo/client";
 import {FILES} from "../../Apollo/Files";
-import loadingImage from "./loading.svg";
-import IllustrationWithMessage from "../../Components/IllustrationWithMessage/IllustrationWithMessage";
 import {Redirect} from "react-router-dom";
 import DashboardSideMenu from "../../Components/DashboardSideMenu";
 import {DashboardFiles} from "../../Components/DashboardFiles/DashboardFiles";
+import Loading from "../../Components/Loading/Loading";
 
 export default () => {
   const { loading, error, data } = useQuery(FILES, { errorPolicy: 'all' });
@@ -16,14 +15,7 @@ export default () => {
   }
 
   if (loading) {
-    return <div className="w-screen text-center">
-      <IllustrationWithMessage
-        message="Loading..."
-        secondMessage="We are working on getting data from the server"
-        image={loadingImage}
-        imageAlt="Loading..."
-      />
-    </div>
+    return <Loading />;
   }
 
   return <div className="flex w-screen">

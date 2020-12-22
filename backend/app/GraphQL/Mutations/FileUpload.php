@@ -53,6 +53,8 @@ class FileUpload
 
     $file_model = new File();
     $file_model->name = $file->getClientOriginalName();
+
+    // todo: set here the full path.
     $file_model->path = $path;
     $file_model->user_id = $user->id;
     $file_model->save();
