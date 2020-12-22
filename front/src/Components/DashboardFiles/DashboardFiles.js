@@ -27,6 +27,13 @@ export const DashboardFiles = ({data}) => {
       </div>
     </div>}
     headers={['File name', 'Created at', 'Actions']}
-    rows={files.map(file => [file.name, file.created_at, <ul className="flex"><li className="pr-4">View</li> <li>Delete</li></ul>])}
+    rows={files.map(file => [
+      file.name,
+      file.created_at,
+      <ul className="flex">
+        <li className="pr-4"><Link to={`/dashboard/file/view/${file.id}`}>View</Link></li>
+        <li>Delete</li>
+      </ul>
+    ])}
   />
 }
