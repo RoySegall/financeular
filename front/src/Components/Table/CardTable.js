@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function CardTable({ color, title, headers, rows }) {
+export default function CardTable({ color, title, headers, rows, className }) {
   return (
     <>
       <div
         className={
-          "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-          (color === "light" ? "bg-white" : "bg-blue-900 text-white")
+          `relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded ${className} ${(color === "light" ? "bg-white" : "bg-blue-900 text-white")}`
         }
       >
         <div className="rounded-t mb-0 px-4 py-3 border-0">

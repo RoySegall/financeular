@@ -7,6 +7,7 @@ use App\Models\File;
 use App\Services\ExcelFileProcessorService;
 use GuzzleHttp\Psr7\MimeType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FileUpload
 {
@@ -49,13 +50,12 @@ class FileUpload
       throw new GraphQlException('The uploaded file is not supported');
     }
 
-    $path = $file->storePublicly('uploads');
+    $path = Storage::putFile('avatars', $file);
 
     $file_model = new File();
     $file_model->name = $file->getClientOriginalName();
 
-    // todo: set here the full path.
-    $file_model->path = $path;
+    $file_model->path = storage_path('app/'. $path);
     $file_model->user_id = $user->id;
     $file_model->save();
 

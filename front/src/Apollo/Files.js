@@ -15,8 +15,33 @@ export const FILES = gql`
 export const FILE = gql`
     query($id: ID) {
         file(id: $id) {
-            name
             status
+            expenses {
+                month
+                year
+
+                title
+                value
+                date
+            }
+
+            incomes {
+                month
+                year
+
+                title
+                value
+            }
+
+            limitations {
+                month
+                year
+
+                value_per_week
+                description
+                time_per_month
+                title
+            }
         }
     }
 `

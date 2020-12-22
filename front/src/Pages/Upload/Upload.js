@@ -9,10 +9,12 @@ import {UPLOAD} from "../../Apollo/UploadFile";
 import {Redirect} from "react-router-dom";
 import {client} from "../../client";
 import {Submit} from "../../Components/Buttons/Buttons";
+import {PROCESS_FILE} from "../../Apollo/Files";
 
 export default () => {
   // Mutation section.
   const [mutateUploadFile] = useMutation(UPLOAD);
+  const [mutateFileProcess] = useMutation(PROCESS_FILE);
 
   const onDrop = useCallback(async (acceptedFiles) => {
 
@@ -38,14 +40,22 @@ export default () => {
   const uploadFile = async () => {
     setUploading(true);
 
-    await mutateUploadFile({variables:{file}});
+    const results = await mutateUploadFile({variables:{file}});
 
     // Done with the uploading and set the success message or an error message.
     setUploading(false);
 
-    setFileUploadSuccess('The file has uploaded successfully.');
-    await client.resetStore();
-    setTimeout(() => setRedirect(true), 3000);
+    const {fileUpload} = results.data;
+
+    try {
+      await mutateFileProcess({variables:{id: fileUpload.id}});
+
+      setFileUploadSuccess('The file has uploaded successfully.');
+      await client.resetStore();
+      setTimeout(() => setRedirect(true), 3000);
+    } catch (e) {
+      setFileUploadError('There was an error while trying to process the file. Please contact support.');
+    }
   }
 
   if (redirect) {
