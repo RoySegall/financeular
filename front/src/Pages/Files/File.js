@@ -7,23 +7,26 @@ import {Error} from "../../Components/Messages/Message";
 import {useParams} from 'react-router-dom';
 import CardTable from "../../Components/Table/CardTable";
 
-const simplifiedIncomes = (incomesFromFile) => {
-  const incomes = {};
+const massageExtras = (extra, keys) => {
+  const massagedObject = {};
 
-  incomesFromFile.map(incomesFromFile => {
-    const identifier = `${incomesFromFile.month}_${incomesFromFile.year}`;
+  extra.map(extraFromFile => {
+    const identifier = `${extraFromFile.month}_${extraFromFile.year}`;
 
-    if (!Object.keys(incomes).includes(identifier)) {
-      incomes[identifier] = [];
+    if (!Object.keys(massagedObject).includes(identifier)) {
+      massagedObject[identifier] = [];
     }
 
-    incomes[identifier].push({
-      title: incomesFromFile['title'],
-      value: incomesFromFile['value']
+    const objectToAppend = [];
+
+    keys.map(key => {
+      objectToAppend.push(extraFromFile[key])
     });
+
+    massagedObject[identifier].push(objectToAppend);
   });
 
-  return incomes;
+  return massagedObject;
 }
 
 export default () => {
@@ -52,8 +55,10 @@ export default () => {
     setShowError(true);
   }
 
-  console.log(simplifiedIncomes(file.incomes))
+  const expenses = massageExtras(file.expenses, ['title', 'value', 'date']);
+  const incomes = massageExtras(file.incomes, ['title', 'value']);
 
+  // todo: add page, get the first month from the key, add aviagation.
   return <div className="min-h-full w-full m-4 mb-6 p-4">
     <div className="flex justify-between items-center">
       <PageTitle align={'left'}>Results for the 12/2019</PageTitle>
@@ -69,11 +74,7 @@ export default () => {
         <CardTable
           title="Incomes"
           headers={['Title', 'Value']}
-          rows={[
-            ['a', 'b'],
-            ['a', 'b'],
-            ['a', 'b'],
-          ]}>
+          rows={incomes['12_2019']}>
         </CardTable>
       </div>
 
@@ -81,14 +82,7 @@ export default () => {
         <CardTable
           title="Expenses"
           headers={['Title', 'Value', 'Date']}
-          rows={[
-            ['a', 'b'],
-            ['a', 'b'],
-            ['a', 'b'],
-            ['a', 'b'],
-            ['a', 'b'],
-            ['a', 'b'],
-          ]}>
+          rows={expenses['12_2019'].slice(0, 10)}>
 
         </CardTable>
       </div>
