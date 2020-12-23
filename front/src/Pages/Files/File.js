@@ -1,12 +1,30 @@
 import React, {useState} from "react";
-import results from './results.json';
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import Loading from "../../Components/Loading/Loading";
 import {useQuery} from "@apollo/client";
 import {FILE} from "../../Apollo/Files";
-import {Error, Info} from "../../Components/Messages/Message";
+import {Error} from "../../Components/Messages/Message";
 import {useParams} from 'react-router-dom';
 import CardTable from "../../Components/Table/CardTable";
+
+const simplifiedIncomes = (incomesFromFile) => {
+  const incomes = {};
+
+  incomesFromFile.map(incomesFromFile => {
+    const identifier = `${incomesFromFile.month}_${incomesFromFile.year}`;
+
+    if (!Object.keys(incomes).includes(identifier)) {
+      incomes[identifier] = [];
+    }
+
+    incomes[identifier].push({
+      title: incomesFromFile['title'],
+      value: incomesFromFile['value']
+    });
+  });
+
+  return incomes;
+}
 
 export default () => {
 
@@ -33,6 +51,8 @@ export default () => {
   if (file.status === "ERROR") {
     setShowError(true);
   }
+
+  console.log(simplifiedIncomes(file.incomes))
 
   return <div className="min-h-full w-full m-4 mb-6 p-4">
     <div className="flex justify-between items-center">
