@@ -1,7 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
+import {Next, Prev} from "../Icons/Icons";
 
-export default function CardTable({ color, title, headers, rows, className }) {
+export default function CardTable({ color, title, headers, rows, className, perPage }) {
+  const showPager = rows.length > perPage;
+  const [currentPage, setCurrentPage] = useState(0);
+
+  let numberOfPages = null;
+
+  if (showPager) {
+    numberOfPages = Math.ceil(rows.length / perPage);
+  }
+
+  const rowsToDisplay = rows.slice(perPage*currentPage, perPage * (currentPage + 1));
+
   return (
     <>
       <div
@@ -11,7 +23,7 @@ export default function CardTable({ color, title, headers, rows, className }) {
       >
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-left">
+            <div className="relative w-full px-4 max-w-full flex-grow flex text-left justify-between">
               <h3
                 className={
                   "font-semibold text-lg " +
@@ -20,6 +32,17 @@ export default function CardTable({ color, title, headers, rows, className }) {
               >
                 {title}
               </h3>
+
+              {showPager && <span>
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  currentPage > 0 && setCurrentPage(currentPage - 1)}
+                } className="pr-1 cursor-pointer underline"><Prev /></button>
+                {currentPage + 1} of {numberOfPages}
+                <button onClick={(e) => {
+                  e.preventDefault();
+                  currentPage + 1 < numberOfPages && setCurrentPage(currentPage + 1)}} className="pl-1 cursor-pointer underline"><Next /></button>
+              </span>}
             </div>
           </div>
         </div>
@@ -41,7 +64,7 @@ export default function CardTable({ color, title, headers, rows, className }) {
             </thead>
             <tbody>
 
-            {rows.map((row, id) => <tr key={id}>
+            {rowsToDisplay.map((row, id) => <tr key={id}>
               {row.map((column, id) => {
                 let className = 'border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left';
                 return <td id={id} className={className}>{column} </td>

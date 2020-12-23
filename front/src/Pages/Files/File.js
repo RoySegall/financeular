@@ -6,6 +6,8 @@ import {FILE} from "../../Apollo/Files";
 import {Error} from "../../Components/Messages/Message";
 import {useParams} from 'react-router-dom';
 import CardTable from "../../Components/Table/CardTable";
+import Card from "../../Components/Card/Card";
+import {ErrorMark, Ok} from "../../Components/Icons/Icons";
 
 const massageExtras = (extra, keys) => {
   const massagedObject = {};
@@ -58,8 +60,21 @@ export default () => {
   const expenses = massageExtras(file.expenses, ['title', 'value', 'date']);
   const incomes = massageExtras(file.incomes, ['title', 'value']);
 
-  // todo: add page, get the first month from the key, add aviagation.
-  return <div className="min-h-full w-full m-4 mb-6 p-4">
+  const selectedMonth = Object.keys(incomes)[0];
+
+  const totalExpenses = Math.round(expenses[selectedMonth].reduce((accumulator, currentValue) => {
+    return (Array.isArray(accumulator) ? accumulator[1] : accumulator) + currentValue[1];
+  }));
+
+  const totalIncomes = Math.floor(incomes[selectedMonth].reduce((accumulator, currentValue) => {
+    return (Array.isArray(accumulator) ? accumulator[1] : accumulator) + currentValue[1];
+  }));
+
+  const isMonthOverDraft = totalExpenses > totalIncomes;
+  const [infoBoxIcon, infoBoxColor, infoBoxTitle] = isMonthOverDraft ? [<ErrorMark />, 'red', 'Not seems so good'] : [<Ok />, 'green', 'You got it!'];
+  const balance = totalIncomes - totalExpenses;
+
+  return <div className="min-h-full w-full mb-6 p-2">
     <div className="flex justify-between items-center">
       <PageTitle align={'left'}>Results for the 12/2019</PageTitle>
       <div>
@@ -74,15 +89,28 @@ export default () => {
         <CardTable
           title="Incomes"
           headers={['Title', 'Value']}
-          rows={incomes['12_2019']}>
+          rows={incomes[selectedMonth]}
+          perPage={5}>
         </CardTable>
+
+        <div>
+          <Card icon={infoBoxIcon}
+                iconType={infoBoxColor}
+                title={infoBoxTitle}
+                text={isMonthOverDraft ?
+                  <>Not good 😓 All your income are summed to {totalIncomes} while the expenses are summed to {totalExpenses}. The total is {balance}</> :
+                  <>On the right track! All your income are summed to {totalIncomes} while the expenses are summed to {totalExpenses}. The total is {balance}</>
+                }
+                className={"w-full"}/>
+        </div>
       </div>
 
       <div className="w-3/6">
         <CardTable
           title="Expenses"
           headers={['Title', 'Value', 'Date']}
-          rows={expenses['12_2019'].slice(0, 10)}>
+          rows={expenses[selectedMonth]}
+          perPage={10}>
 
         </CardTable>
       </div>

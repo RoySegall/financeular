@@ -20,7 +20,9 @@ import {
   faUnlock,
   faAt,
   faUser,
-  faDatabase
+  faDatabase,
+  faAngleDoubleRight,
+  faAngleDoubleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import {faFacebookSquare, faGoogle, faApple} from "@fortawesome/free-brands-svg-icons";
 import {faFileCode} from "@fortawesome/free-regular-svg-icons";
@@ -48,3 +50,5 @@ export const UnLock = () => <FontAwesomeIcon icon={faUnlock} />
 export const At = () => <FontAwesomeIcon icon={faAt} />
 export const User = () => <FontAwesomeIcon icon={faUser} />
 export const DataBase = () => <FontAwesomeIcon icon={faDatabase} />
+export const Next = () => <FontAwesomeIcon icon={faAngleDoubleRight} />
+export const Prev = () => <FontAwesomeIcon icon={faAngleDoubleLeft} />
