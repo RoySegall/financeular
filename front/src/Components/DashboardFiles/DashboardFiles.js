@@ -20,12 +20,8 @@ export const DashboardFiles = ({data}) => {
   }
 
   return <CardTable
-    title={<div className="flex justify-between">
-      <div>Uploaded files</div>
-      <div>
-        <Link to="/upload" className="no-underline"><SmallButton color='green'>Upload another file</SmallButton></Link>
-      </div>
-    </div>}
+    title={"Uploaded files"}
+    actions={<><Link to="/upload" className="no-underline"><SmallButton color='green'>Upload another file</SmallButton></Link></>}
     headers={['File name', 'Created at', 'Actions']}
     rows={files.map(file => [
       file.name,

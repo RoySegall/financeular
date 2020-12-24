@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Next, Prev} from "../Icons/Icons";
 
-export default function CardTable({ color, title, headers, rows, className, perPage }) {
+export default function CardTable({ color, title, headers, rows, className, perPage, actions = null }) {
   const showPager = rows.length > perPage;
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -12,7 +12,7 @@ export default function CardTable({ color, title, headers, rows, className, perP
     numberOfPages = Math.ceil(rows.length / perPage);
   }
 
-  const rowsToDisplay = rows.slice(perPage*currentPage, perPage * (currentPage + 1));
+  const rowsToDisplay = !showPager ? rows : rows.slice(perPage*currentPage, perPage * (currentPage + 1));
 
   return (
     <>
@@ -23,15 +23,17 @@ export default function CardTable({ color, title, headers, rows, className, perP
       >
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
-            <div className="relative w-full px-4 max-w-full flex-grow flex text-left justify-between">
+            <div className="relative w-full px-4 max-w-full flex-grow flex text-left flex justify-between">
               <h3
                 className={
-                  "font-semibold text-lg " +
+                  "font-semibold text-lg" +
                   (color === "light" ? "text-gray-800" : "text-white")
                 }
               >
                 {title}
               </h3>
+
+              {actions}
 
               {showPager && <span>
                 <button onClick={(e) => {
