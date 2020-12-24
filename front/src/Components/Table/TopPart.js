@@ -11,7 +11,7 @@ export default ({title, actions=null, showPager, currentPage, numberOfPages, set
         prevPageCallback={() => {currentPage > 0 && setCurrentPage(currentPage - 1)}}
         currentPage={currentPage}
         numberOfPages={numberOfPages}
-        onClick1={() => {currentPage + 1 < numberOfPages && setCurrentPage(currentPage + 1)}
+        nextPageCallback={() => {currentPage + 1 < numberOfPages && setCurrentPage(currentPage + 1)}
         }/>}
     </div>
   </div>
