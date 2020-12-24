@@ -1,20 +1,25 @@
 import React from "react";
 
-export default ({data}) => <div className="table-wrapper">
-    <table className="table">
-        <thead>
-            <tr className="headers">
-            {Object.keys(data[0]).map((item, key) => <td className="capitalize" key={key}>{item.split('_').join(' ')}</td>)}
-            </tr>
-        </thead>
+const tableHeadersClass =
+  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 " +
+  "border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 " +
+  "text-gray-600 border-gray-200";
+const rowsTableClass =
+  "border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs " +
+  "whitespace-no-wrap p-4 text-left";
 
-        <tbody>
-            {data.map((item, key) =>
-                <tr key={key}>
-                    {Object.values(item).map((column, columnKey) => <td key={columnKey}>{column}</td>)}
-                </tr>
-            )}
-        </tbody>
-    </table>
 
-</div>
+const TableHead = ({headers}) => <thead>
+  <tr>{headers.map((title, id) => <th key={id} className={tableHeadersClass}>{title}</th>)}</tr>
+</thead>
+
+const TableBody = ({rows}) => <tbody>
+  {rows.map((row, id) => <tr key={id}>
+    {row.map((column, id) => <td id={id} className={rowsTableClass}>{column}</td>)}</tr>
+  )}
+</tbody>
+
+export default ({headers, rows}) => <table className="items-center w-full bg-transparent border-collapse">
+  <TableHead headers={headers} />
+  <TableBody rows={rows} />
+</table>

@@ -117,7 +117,7 @@ export default () => {
 
       </section>
 
-      <ul className="flex mt-auto w-full border border-yellow-600 bg-white rounded">
+      <ul className="flex mt-auto w-full border border-yellow-600 mb-2 bg-white rounded">
         {Object.keys(expenses).map((month, index) => {
           const selectedClass = month === selectedMonth ? 'bg-green-dark text-light-white' : '';
           return <li key={index} className={`p-2 ${selectedClass}`}>
