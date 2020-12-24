@@ -9,6 +9,9 @@ import CardTable from "../../Components/Table/CardTable";
 import Card from "../../Components/Card/Card";
 import {ErrorMark, Ok} from "../../Components/Icons/Icons";
 
+// todo: split to small components, get the month properly, improve the look of
+//  the info box, add tests, page or month selector.
+
 const massageExtras = (extra, keys) => {
   const massagedObject = {};
 
