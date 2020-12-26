@@ -10,7 +10,7 @@ import FileBalance from "./FileBalance";
 import MonthsPicker from "./MonthsPicker";
 
 
-// todo: fix june and july, when going between months the table need reset.
+// todo: fix june and july.
 export default () => {
 
   const {id} = useParams();
@@ -22,6 +22,9 @@ export default () => {
 
   const [showError, setShowError] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(null);
+
+  const [incomeCurrentPage, setIncomeCurrentPage] = useState(0);
+  const [expensesCurrentPage, setExpensesCurrentPage] = useState(0);
 
   if (loading) {
     return <Loading/>;
@@ -51,9 +54,10 @@ export default () => {
 
     <FileBalance {...{
       incomes, expenses, selectedMonth, infoBoxIcon, infoBoxColor, infoBoxTitle,
-      isMonthOverDraft, totalIncomes, totalExpenses, balance
+      isMonthOverDraft, totalIncomes, totalExpenses, balance, incomeCurrentPage,
+      setIncomeCurrentPage, expensesCurrentPage, setExpensesCurrentPage
     }}/>
 
-    <MonthsPicker {...{months, selectedMonth, setCurrentMonth}} />
+    <MonthsPicker {...{months, selectedMonth, setCurrentMonth, setIncomeCurrentPage, setExpensesCurrentPage}} />
   </div>
 }

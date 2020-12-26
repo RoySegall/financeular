@@ -2,12 +2,21 @@ import CardTable from "../../Components/Table/CardTable";
 import Card from "../../Components/Card/Card";
 import React from "react";
 
-export default (
-  {incomes, expenses, selectedMonth, infoBoxIcon, infoBoxColor, infoBoxTitle, isMonthOverDraft, totalIncomes, totalExpenses, balance}
-) => <section className="pt-4 flex">
+export default ({
+  incomes, expenses, selectedMonth, totalIncomes, totalExpenses,
+  infoBoxIcon, infoBoxColor, infoBoxTitle,
+  isMonthOverDraft, balance,
+  incomeCurrentPage, setIncomeCurrentPage, expensesCurrentPage, setExpensesCurrentPage
+}) => <section className="pt-4 flex">
   <div className="mr-10 w-3/6">
 
-    <CardTable title="Incomes" headers={['Title', 'Value']} rows={incomes[selectedMonth]} perPage={5} />
+    <CardTable
+      title="Incomes"
+      headers={['Title', 'Value']}
+      rows={incomes[selectedMonth]}
+      perPage={5}
+      currentPage={incomeCurrentPage}
+      setCurrentPage={setIncomeCurrentPage} />
 
     <div>
       <Card
@@ -27,7 +36,9 @@ export default (
       title="Expenses"
       headers={['Title', 'Value', 'Date']}
       rows={expenses[selectedMonth]}
-      perPage={10} />
+      perPage={10}
+      currentPage={expensesCurrentPage}
+      setCurrentPage={setExpensesCurrentPage} />
   </div>
 
 </section>

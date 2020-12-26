@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Table from "./Table";
 import TopPart from "./TopPart";
 
-export default function CardTable({ title, headers, rows, className, perPage, actions = null }) {
+export default function CardTable({ title, headers, rows, className, perPage, actions = null, currentPage = 0, setCurrentPage }) {
   const showPager = rows.length > perPage;
-  const [currentPage, setCurrentPage] = useState(0);
 
   let numberOfPages = null;
 
