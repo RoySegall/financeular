@@ -23,6 +23,17 @@ export const massageExtras = (extra, keys) => {
   return massagedObject;
 }
 
+const calculateTotal = (incomeExpensesItems) => {
+
+  if (incomeExpensesItems.length === 1) {
+    return incomeExpensesItems[0][1];
+  }
+
+  return Math.round(incomeExpensesItems.reduce((accumulator, currentValue) => {
+    return (Array.isArray(accumulator) ? accumulator[1] : accumulator) + currentValue[1];
+  }));
+}
+
 export const extractMetaDataFromFile = ({file, currentMonth}) => {
   const expenses = massageExtras(file.expenses, ['title', 'value', 'date']);
   const incomes = massageExtras(file.incomes, ['title', 'value']);
@@ -30,13 +41,8 @@ export const extractMetaDataFromFile = ({file, currentMonth}) => {
 
   const selectedMonth = currentMonth || months[0];
 
-  const totalExpenses = Math.round(expenses[selectedMonth].reduce((accumulator, currentValue) => {
-    return (Array.isArray(accumulator) ? accumulator[1] : accumulator) + currentValue[1];
-  }));
-
-  const totalIncomes = Math.floor(incomes[selectedMonth].reduce((accumulator, currentValue) => {
-    return (Array.isArray(accumulator) ? accumulator[1] : accumulator) + currentValue[1];
-  }));
+  const totalExpenses = calculateTotal(expenses[selectedMonth]);
+  const totalIncomes = calculateTotal(incomes[selectedMonth]);
 
   const isMonthOverDraft = totalExpenses > totalIncomes;
   const balance = totalIncomes - totalExpenses;
@@ -61,17 +67,8 @@ export const getBalanceMetaData = (isMonthOverDraft) => {
 
 export const getMonthAndYearFromKey = (monthKeyYear) => {
   const months = {
-    1: 'January',
-    2: 'February',
-    3: 'March',
-    4: 'April',
-    5: 'May',
-    6: 'June',
-    7: 'July',
-    8: 'August',
-    9: 'September',
-    10: 'October',
-    11: 'November',
+    1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
+    7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November',
     12: 'December',
   };
 

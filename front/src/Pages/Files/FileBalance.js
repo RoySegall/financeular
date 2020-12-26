@@ -2,6 +2,8 @@ import CardTable from "../../Components/Table/CardTable";
 import Card from "../../Components/Card/Card";
 import React from "react";
 
+
+//todo: work on the balancer design, look and feel.
 export default ({
   incomes, expenses, selectedMonth, totalIncomes, totalExpenses,
   infoBoxIcon, infoBoxColor, infoBoxTitle,

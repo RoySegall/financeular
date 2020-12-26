@@ -9,8 +9,6 @@ import Header from "./Header";
 import FileBalance from "./FileBalance";
 import MonthsPicker from "./MonthsPicker";
 
-
-// todo: fix june and july.
 export default () => {
 
   const {id} = useParams();
