@@ -78,7 +78,5 @@ export const getMonthAndYearFromKey = (monthKeyYear) => {
 };
 
 export const formatToCurrency = (number) => {
-  return new Intl
-    .NumberFormat('he', { style: 'currency', currency: 'nis' })
-    .format(number)
+  return new Intl.NumberFormat().format(number);
 };
