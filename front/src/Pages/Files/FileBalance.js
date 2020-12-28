@@ -1,6 +1,7 @@
 import CardTable from "../../Components/Table/CardTable";
 import Card from "../../Components/Card/Card";
 import React from "react";
+import {formatToCurrency} from "./File.service";
 
 
 //todo: work on the balancer design, look and feel.
@@ -26,10 +27,16 @@ export default ({
         iconType={infoBoxColor}
         title={infoBoxTitle}
         className={"w-full"}
-        text={isMonthOverDraft ?
-          <>Not good 😓 All your income are summed to {totalIncomes} while the expenses are summed to {totalExpenses}. The total is {balance}</> :
-          <>On the right track! All your income are summed to {totalIncomes} while the expenses are summed to {totalExpenses}. The total is {balance}</>
-        } />
+        text={
+          <>
+            <p>
+              All your income(s) are summed to <b>{formatToCurrency(totalIncomes)}</b> while the
+              expenses are summed to <b>{formatToCurrency(totalExpenses)}</b>.
+            </p>
+            <p>
+              The balance stands on <b>{formatToCurrency(balance)}</b>.
+            </p>
+          </>} />
     </div>
   </div>
 
