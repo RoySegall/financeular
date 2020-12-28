@@ -29,8 +29,11 @@ export default () => {
   }
 
   if (error || showError) {
-    return <Error
-      message="Something went wrong while fetching the data. Please contact costume success"/>
+    return <div className=" flex justify-center items-center">
+      <div className="m-auto">
+        <Error message="Something went wrong while fetching the data. Please contact costumer success"/>
+      </div>
+    </div>
   }
 
   const {file} = data;
