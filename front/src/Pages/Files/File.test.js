@@ -1,4 +1,4 @@
-describe('Login component', () => {
+describe('File service and component', () => {
 
   it('Testing error from when accessing a bad file', () => {
     expect(1).toBe(2);

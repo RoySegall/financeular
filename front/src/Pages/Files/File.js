@@ -54,8 +54,8 @@ export default () => {
     <hr className="border-b border-green-dark mt-2"/>
 
     <FileBalance {...{
-      incomes, expenses, selectedMonth, infoBoxIcon, infoBoxColor, infoBoxTitle,
-      isMonthOverDraft, totalIncomes, totalExpenses, balance, incomeCurrentPage,
+      incomes: incomes[selectedMonth], expenses: expenses[selectedMonth], infoBoxIcon, infoBoxColor, infoBoxTitle,
+      totalIncomes, totalExpenses, balance, incomeCurrentPage,
       setIncomeCurrentPage, expensesCurrentPage, setExpensesCurrentPage
     }}/>
 

@@ -3,12 +3,9 @@ import Card from "../../Components/Card/Card";
 import React from "react";
 import {formatToCurrency} from "./File.service";
 
-
-//todo: work on the balancer design, look and feel.
 export default ({
-  incomes, expenses, selectedMonth, totalIncomes, totalExpenses,
-  infoBoxIcon, infoBoxColor, infoBoxTitle,
-  isMonthOverDraft, balance,
+  incomes, expenses, totalIncomes, totalExpenses,
+  infoBoxIcon, infoBoxColor, infoBoxTitle, balance,
   incomeCurrentPage, setIncomeCurrentPage, expensesCurrentPage, setExpensesCurrentPage
 }) => <section className="pt-4 flex">
   <div className="mr-10 w-3/6">
@@ -16,7 +13,7 @@ export default ({
     <CardTable
       title="Incomes"
       headers={['Title', 'Value']}
-      rows={incomes[selectedMonth]}
+      rows={incomes}
       perPage={5}
       currentPage={incomeCurrentPage}
       setCurrentPage={setIncomeCurrentPage} />
@@ -44,7 +41,7 @@ export default ({
     <CardTable
       title="Expenses"
       headers={['Title', 'Value', 'Date']}
-      rows={expenses[selectedMonth]}
+      rows={expenses}
       perPage={10}
       currentPage={expensesCurrentPage}
       setCurrentPage={setExpensesCurrentPage} />
