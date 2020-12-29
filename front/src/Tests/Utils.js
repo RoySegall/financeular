@@ -16,6 +16,10 @@ export const elementShouldContainText = (wrapper, message) => {
   expect(wrapper.html()).toContain(message);
 }
 
+export const elementShouldExists = (wrapper, times) => {
+  expect(wrapper.length).toBe(times);
+};
+
 export const mountComponent = ({mocks, addTypename = false, component, wrapWithProvider = true}) => {
 
   if (!wrapWithProvider) {

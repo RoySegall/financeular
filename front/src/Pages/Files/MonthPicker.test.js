@@ -1,7 +1,57 @@
+import React from "react";
+import {elementShouldExists, mountComponent} from "../../Tests/Utils";
+import MonthsPicker from "./MonthsPicker";
+import renderer from "react-test-renderer";
+
+const months = ['1_2019', '2_2019', '3_2019', '1_2020'];
+const mockSetCurrentMonth = jest.fn();
+const mockSetIncomeCurrentPage = jest.fn();
+const mockSetExpensesCurrentPage = jest.fn();
+
 describe('Month picker', () => {
 
-  it('Testing the months are displayed correctly and the switching with months', () => {
-    expect(1).toBe(2);
-  })
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('Testing the component months without a picked month', () => {
+    const tree = renderer
+      .create(<MonthsPicker months={months}/>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Testing the component months with a picked month', () => {
+    const months = ['1_2019', '2_2019', '3_2019', '1_2020'];
+    const tree = renderer
+      .create(<MonthsPicker months={months} selectedMonth={"1_2019"}/>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Testing the clicking on a month', () => {
+    const wrapper = mountComponent({
+      component: <MonthsPicker
+        months={months}
+        selectedMonth={"1_2019"}
+        setCurrentMonth={mockSetCurrentMonth}
+        setIncomeCurrentPage={mockSetIncomeCurrentPage}
+        setExpensesCurrentPage={mockSetExpensesCurrentPage}
+      />
+    });
+
+    elementShouldExists(wrapper.find('.bg-green-dark.text-light-white'), 1);
+
+    const firstNotSelectedAnchor = wrapper.find('li')
+      .not('.bg-green-dark.text-light-white')
+      .at(0)
+      .find('a');
+
+    firstNotSelectedAnchor.simulate('click');
+
+    expect(mockSetCurrentMonth).toBeCalledWith('2_2019');
+    expect(mockSetIncomeCurrentPage).toBeCalledWith(0);
+    expect(mockSetExpensesCurrentPage).toBeCalledWith(0);
+  });
 
 });
