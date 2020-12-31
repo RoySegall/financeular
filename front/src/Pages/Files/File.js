@@ -9,13 +9,17 @@ import Header from "./Header";
 import FileBalance from "./FileBalance";
 import MonthsPicker from "./MonthsPicker";
 
-export default () => {
+export default ({fileId}) => {
 
-  const {id} = useParams();
+  if (!fileId) {
+    const {id} = useParams();
+
+    fileId = id;
+  }
 
   const {loading, error, data} = useQuery(FILE, {
     errorPolicy: 'all',
-    variables: {id: id}
+    variables: {id: fileId}
   });
 
   const [showError, setShowError] = useState(false);
