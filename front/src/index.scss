@@ -5,6 +5,11 @@
 
 @layer base {
 
+  .overlap-tabs {
+    margin-bottom: -16px;
+    z-index: 1;
+  }
+
   img {
     display: initial;
   }
