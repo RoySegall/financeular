@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pager component Snap shot the component 1`] = `
+<ul
+  className="flex float-right"
+>
+  <li
+    className="p-2 border border-green-400 bg-green-50 text-green-700 border-r-0 rounded-l-lg"
+  >
+    <button
+      onClick={[Function]}
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-angle-double-left fa-w-14 "
+        data-icon="angle-double-left"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 448 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="font-semibold text-black"
+      onClick={[Function]}
+    >
+      1
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      2
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      3
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      4
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      5
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      6
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      7
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      8
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      9
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      10
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      11
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      12
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      13
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      14
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      15
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      16
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      17
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      18
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      19
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50  border-r-0 cursor-pointer"
+  >
+    <button
+      className="text-green-700"
+      onClick={[Function]}
+    >
+      20
+    </button>
+  </li>
+  <li
+    className="p-2 border border-green-400 bg-green-50 text-green-700 rounded-r-lg"
+  >
+    <button
+      onClick={[Function]}
+    >
+      <svg
+        aria-hidden="true"
+        className="svg-inline--fa fa-angle-double-right fa-w-14 "
+        data-icon="angle-double-right"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        style={Object {}}
+        viewBox="0 0 448 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+          fill="currentColor"
+          style={Object {}}
+        />
+      </svg>
+    </button>
+  </li>
+</ul>
+`;

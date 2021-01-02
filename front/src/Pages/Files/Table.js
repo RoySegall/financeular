@@ -36,7 +36,6 @@ export default ({tableHeaders, borderColor, rows, tableTdWidth, perPage, current
     {numberOfPages > 1 && <tr>
       <td colSpan={5} className="pr-2 pt-4">
         <Pager
-          pages={numberOfPages}
           borderColor={borderColor}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

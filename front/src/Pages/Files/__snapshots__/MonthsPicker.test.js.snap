@@ -2,10 +2,10 @@
 
 exports[`Month picker Testing the component months with a picked month 1`] = `
 <ul
-  className="flex mt-auto w-full border border-yellow-600 mb-2 bg-white rounded"
+  className="flex mt-auto w-full "
 >
   <li
-    className="p-2 bg-green-dark text-light-white"
+    className="p-2 font-extrabold text-black"
   >
     <a
       className="cursor-pointer"
@@ -49,7 +49,7 @@ exports[`Month picker Testing the component months with a picked month 1`] = `
 
 exports[`Month picker Testing the component months without a picked month 1`] = `
 <ul
-  className="flex mt-auto w-full border border-yellow-600 mb-2 bg-white rounded"
+  className="flex mt-auto w-full "
 >
   <li
     className="p-2 "

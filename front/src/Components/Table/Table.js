@@ -15,7 +15,7 @@ const TableHead = ({headers}) => <thead>
 
 const TableBody = ({rows}) => <tbody>
   {rows.map((row, id) => <tr key={id}>
-    {row.map((column, id) => <td id={id} className={rowsTableClass}>{column}</td>)}</tr>
+    {row.map((column, rowId) => <td id={rowId} className={rowsTableClass}>{column}</td>)}</tr>
   )}
 </tbody>
 
