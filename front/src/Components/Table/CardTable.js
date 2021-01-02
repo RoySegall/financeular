@@ -11,7 +11,7 @@ export default function CardTable({ title, headers, rows, className, perPage, ac
     numberOfPages = Math.ceil(rows.length / perPage);
   }
 
-  const rowsToDisplay = !showPager ? rows : rows.slice(perPage*currentPage, perPage * (currentPage + 1));
+  const rowsToDisplay = !showPager ? rows : rows.slice(perPage * currentPage, perPage * (currentPage + 1));
 
   return <div className={`relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white ${className}`}>
     <TopPart title={title} actions={actions} showPager={showPager} currentPage={currentPage} setCurrentPage={setCurrentPage} numberOfPages={numberOfPages} />

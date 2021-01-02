@@ -10,10 +10,8 @@ import {
   getBalanceMetaData
 } from "./File.service";
 import Header from "./Header";
-import FileBalance from "./FileBalance";
 import MonthsPicker from "./MonthsPicker";
-import Card from "../../Components/Card/Card";
-import IPieChartOptions from 'react-chartist';
+import {InfoMark, Next, Prev} from "../../Components/Icons/Icons";
 
 export default ({fileId}) => {
 
@@ -30,6 +28,8 @@ export default ({fileId}) => {
 
   const [showError, setShowError] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(null);
+
+  const [infoMode, setInfoMode] = useState('expenses');
 
   const [incomeCurrentPage, setIncomeCurrentPage] = useState(0);
   const [expensesCurrentPage, setExpensesCurrentPage] = useState(0);
@@ -60,13 +60,28 @@ export default ({fileId}) => {
 
   const borderColor = isMonthOverDraft ? "red" : "green";
 
-
   const width = Math.round((totalExpenses / totalIncomes) * 100);
+
+  let tableHeaders = [];
+  let tableTdWidth = '';
+
+  if (infoMode === 'expenses') {
+    tableHeaders = [
+      'Title',
+      'Value',
+      'Date',
+      'Category',
+      <><input placeholder="Filter expenses by typing" className="w-full rounded border border-green-500 bg-green-50 text-green-700 py-1 pl-2 ml-1 focus:outline-none" /></>
+    ];
+    tableTdWidth = "w-1/4";
+  } else {
+
+  }
 
   return <div className="min-h-full w-full p-2 pb-0 flex flex-col content-between">
     <Header selectedMonth={selectedMonth} borderColor={borderColor} />
 
-    <div className={`flex flex-col rounded rounded-xl rounded-tr-none bg-white border border-${borderColor}-300 pt-4 h-4/5`}>
+    <div className={`flex flex-col rounded rounded-xl rounded-tr-none bg-white border border-${borderColor}-300 pt-4 h-full mb-4`}>
 
       <section id="upper-wrapper" className="flex flex-row justify-between">
         <section id="balance-intro" className="pl-2 flex items-center">
@@ -84,16 +99,16 @@ export default ({fileId}) => {
           </div>
         </section>
 
-        <section id="balance-info" className="pr-3 flex flex-col pr-4">
+        <section id="balance-info" className="pr-2 flex flex-col">
 
           <div className="flex">
             <div className="text-red-300">
-              <span className="text-xl font-bold block">Expenses</span>
+              <span className="text-xl font-bold block"><a className="font-bold">Expenses</a></span>
               <span>{formatToCurrency(totalExpenses)}</span>
             </div>
 
             <div className="pl-8 text-green-500">
-              <span className="text-xl font-bold block">Incomes</span>
+              <span className="text-xl block"><a>Incomes</a></span>
               <span>{formatToCurrency(totalIncomes)}</span>
             </div>
           </div>
@@ -112,26 +127,47 @@ export default ({fileId}) => {
 
       </section>
 
-      <section id="data-wrapper" className="pl-2 pt-4">
-        Data!!
-      </section>
+      <section id="data-wrapper" className="pl-2 pr-2 pt-10">
+        <table className="w-full">
 
+          <thead>
+            {tableHeaders.map((tableHeader, key) => <th
+              className={"text-left font-semibold uppercase py-3 px-2 border border-solid border-l-0 border-r-0 border-gray-200 bg-gray-100 text-gray-600"} key={key}>
+              {tableHeader}
+            </th>)}
+          </thead>
+
+          <tbody>
+
+            {expenses[selectedMonth].slice(0, 14).map((expense, key) => {
+              return <tr className="text-black border-b border-gray-300" key={key}>
+
+                {expense.map((expense, tdKey) => {
+                  return <td className={`px-2 ${tableTdWidth} pt-2`} key={tdKey}>{expense}</td>
+                })}
+
+                <td colSpan={2}><p className="bg-green-100 p-2 border border-green-900 w-min text-black my-2 font-light text-xs rounded">Category</p></td>
+              </tr>
+            })}
+
+            <tr>
+
+              <td colspan={5} className="pr-2 pt-4">
+                <ul className="flex float-right">
+                  <li className="p-2 border border-blue-400 border-r-0 text-black rounded-l-lg"><Prev /></li>
+                  <li className="p-2 border border-blue-400 border-r-0 text-black">1</li>
+                  <li className="p-2 border border-blue-400 border-r-0 text-black">2</li>
+                  <li className="p-2 border border-blue-400 border-r-0 text-black">3</li>
+                  <li className="p-2 border border-blue-400 text-black rounded-r-lg"><Next /></li>
+                </ul>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </section>
 
       <MonthsPicker {...{months, selectedMonth, setCurrentMonth, setIncomeCurrentPage, setExpensesCurrentPage}} />
     </div>
   </div>
-
-  // return <div className="min-h-full w-full p-2 pb-0 flex flex-col content-between">
-  //   <Header selectedMonth={selectedMonth} />
-  //
-  //   <hr className="border-b border-green-dark mt-2"/>
-  //
-  //   <FileBalance {...{
-  //     incomes: incomes[selectedMonth], expenses: expenses[selectedMonth], infoBoxIcon, infoBoxColor, infoBoxTitle,
-  //     totalIncomes, totalExpenses, balance, incomeCurrentPage,
-  //     setIncomeCurrentPage, expensesCurrentPage, setExpensesCurrentPage
-  //   }}/>
-  //
-  //
-  // </div>
 }
