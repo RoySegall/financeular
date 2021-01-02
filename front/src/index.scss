@@ -10,6 +10,14 @@
     z-index: 1;
   }
 
+  .half-circle {
+    width: 150px;
+    height: 75px;
+    border-top-left-radius: 110px;
+    border-top-right-radius: 110px;
+    border-bottom: 0;
+  }
+
   img {
     display: initial;
   }

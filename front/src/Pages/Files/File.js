@@ -13,6 +13,7 @@ import Header from "./Header";
 import FileBalance from "./FileBalance";
 import MonthsPicker from "./MonthsPicker";
 import Card from "../../Components/Card/Card";
+import IPieChartOptions from 'react-chartist';
 
 export default ({fileId}) => {
 
@@ -59,6 +60,9 @@ export default ({fileId}) => {
 
   const borderColor = isMonthOverDraft ? "red" : "green";
 
+
+  const width = Math.round((totalExpenses / totalIncomes) * 100);
+
   return <div className="min-h-full w-full p-2 pb-0 flex flex-col content-between">
     <Header selectedMonth={selectedMonth} borderColor={borderColor} />
 
@@ -72,15 +76,44 @@ export default ({fileId}) => {
               {infoBoxIcon}
             </div>
           </div>
-          <div className="icon text-xl font-bold align-center">
-            The balance for the current month is <b>{formatToCurrency(balance)}</b>.
+          <div className="icon align-center">
+            <p className="text-xl font-bold ">{infoBoxTitle}</p>
+            <p>
+              The balance for the current month is <b>{formatToCurrency(balance)}</b>.
+            </p>
           </div>
         </section>
 
-        <section id="balance-info" className="pr-2">
-          asdasd
+        <section id="balance-info" className="pr-3 flex flex-col pr-4">
+
+          <div className="flex">
+            <div className="text-red-300">
+              <span className="text-xl font-bold block">Expenses</span>
+              <span>{formatToCurrency(totalExpenses)}</span>
+            </div>
+
+            <div className="pl-8 text-green-500">
+              <span className="text-xl font-bold block">Incomes</span>
+              <span>{formatToCurrency(totalIncomes)}</span>
+            </div>
+          </div>
+
+          <div className="relative w-full" style={{maxWidth: '200px'}}>
+            <div className="m-0 m-auto mt-2 h-6 w-full bg-green-200 rounded">
+              &nbsp;
+            </div>
+
+            <div className="absolute top-0 m-0 m-auto mt-2 h-6 bg-red-200 rounded text-red-700 font-bold text-center" style={{width: (width * 2) + 'px', maxWidth: '210px'}}>
+              {width}%
+            </div>
+          </div>
+
         </section>
 
+      </section>
+
+      <section id="data-wrapper" className="pl-2 pt-4">
+        Data!!
       </section>
 
 
