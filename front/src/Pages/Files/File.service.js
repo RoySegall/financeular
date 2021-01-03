@@ -1,7 +1,7 @@
 import {ErrorMark, Ok} from "../../Components/Icons/Icons";
 import React from "react";
 
-export const massageExtras = (extra, keys) => {
+export const processFileRowsByKeys = (extra, keys) => {
   const massagedObject = {};
 
   extra.map(extraFromFile => {
@@ -23,7 +23,7 @@ export const massageExtras = (extra, keys) => {
   return massagedObject;
 }
 
-const calculateTotal = (incomeExpensesItems) => {
+export const calculateTotal = (incomeExpensesItems) => {
 
   if (incomeExpensesItems.length === 1) {
     return incomeExpensesItems[0][1];
@@ -35,8 +35,8 @@ const calculateTotal = (incomeExpensesItems) => {
 }
 
 export const extractMetaDataFromFile = ({file, currentMonth}) => {
-  const expenses = massageExtras(file.expenses, ['title', 'value', 'date']);
-  const incomes = massageExtras(file.incomes, ['title', 'value']);
+  const expenses = processFileRowsByKeys(file.expenses, ['title', 'value', 'date']);
+  const incomes = processFileRowsByKeys(file.incomes, ['title', 'value']);
   const months = Object.keys(incomes);
 
   const selectedMonth = currentMonth || months[0];
