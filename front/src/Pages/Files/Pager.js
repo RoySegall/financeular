@@ -3,7 +3,7 @@ import React from "react";
 
 export default ({borderColor, currentPage, setCurrentPage, numberOfPages}) => <ul className="flex float-right">
   <li className={`p-2 border border-${borderColor}-400 bg-${borderColor}-50 text-${borderColor}-700 border-r-0 rounded-l-lg`}>
-    <button onClick={() => {currentPage > 0 && setCurrentPage(currentPage - 1)}}><Prev /></button>
+    <button className="prev-button" onClick={() => {currentPage > 0 && setCurrentPage(currentPage - 1)}}><Prev /></button>
   </li>
 
   {[...Array(numberOfPages)].map((_, i) => <li key={i} className={`p-2 border border-${borderColor}-400 bg-${borderColor}-50  border-r-0 cursor-pointer`}>
@@ -11,6 +11,6 @@ export default ({borderColor, currentPage, setCurrentPage, numberOfPages}) => <u
   </li>)}
 
   <li className={`p-2 border border-${borderColor}-400 bg-${borderColor}-50 text-${borderColor}-700 rounded-r-lg`}>
-    <button onClick={() => {currentPage + 1 < numberOfPages && setCurrentPage(currentPage + 1)}}><Next /></button>
+    <button className="next-button" onClick={() => {currentPage + 1 < numberOfPages && setCurrentPage(currentPage + 1)}}><Next /></button>
   </li>
 </ul>
