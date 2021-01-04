@@ -1,7 +1,7 @@
 import {Next, Prev} from "../../Components/Icons/Icons";
 import React from "react";
 
-export default ({borderColor, currentPage, setCurrentPage, numberOfPages}) => <ul className="flex float-right">
+export default ({borderColor, currentPage, setCurrentPage, numberOfPages}) => <ul className="flex float-right pager">
   <li className={`p-2 border border-${borderColor}-400 bg-${borderColor}-50 text-${borderColor}-700 border-r-0 rounded-l-lg`}>
     <button className="prev-button" onClick={() => {currentPage > 0 && setCurrentPage(currentPage - 1)}}><Prev /></button>
   </li>

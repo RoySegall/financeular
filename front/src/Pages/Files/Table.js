@@ -17,11 +17,11 @@ export default ({tableHeaders, borderColor, rows, tableTdWidth, perPage, current
   return <table className="w-full">
 
     <thead>
-    {tableHeaders.map((tableHeader, key) => <th
+    {tableHeaders.map((tableHeader, key) => <td
       className={"text-left font-semibold uppercase py-3 px-2 border border-solid border-l-0 border-r-0 border-gray-200 bg-gray-100 text-gray-600"}
       key={key}>
       {tableHeader}
-    </th>)}
+    </td>)}
     </thead>
 
     <tbody>
