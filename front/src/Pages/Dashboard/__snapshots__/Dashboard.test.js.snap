@@ -2,7 +2,7 @@
 
 exports[`Dashboard component Should show the list of files when querying the server 1`] = `
 <div
-  className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+  className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white undefined"
 >
   <div
     className="rounded-t mb-0 px-4 py-3 border-0"
@@ -11,26 +11,18 @@ exports[`Dashboard component Should show the list of files when querying the ser
       className="flex flex-wrap items-center"
     >
       <div
-        className="relative w-full px-4 max-w-full flex-grow flex-1 text-left"
+        className="relative w-full px-4 max-w-full flex-grow flex text-left flex justify-between"
       >
         <h3
           className="font-semibold text-lg text-gray-800"
         >
-          <div
-            className="flex justify-between"
-          >
-            <div>
-              Uploaded files
-            </div>
-            <div>
-              <button
-                className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-              >
-                Upload another file
-              </button>
-            </div>
-          </div>
+          Uploaded files
         </h3>
+        <button
+          className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+        >
+          Upload another file
+        </button>
       </div>
     </div>
   </div>
@@ -66,14 +58,12 @@ exports[`Dashboard component Should show the list of files when querying the ser
             id={0}
           >
             john
-             
           </td>
           <td
             className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
             id={1}
           >
             yesterday
-             
           </td>
           <td
             className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left"
@@ -87,12 +77,10 @@ exports[`Dashboard component Should show the list of files when querying the ser
               >
                 View
               </li>
-               
               <li>
                 Delete
               </li>
             </ul>
-             
           </td>
         </tr>
       </tbody>

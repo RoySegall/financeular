@@ -5,6 +5,11 @@
 
 @layer base {
 
+  .overlap-tabs {
+    margin-bottom: -16px;
+    z-index: 1;
+  }
+
   img {
     display: initial;
   }
@@ -27,8 +32,7 @@
     main {
       min-height: 92vh;
       background: #edf2f7;
-      font-family: 'Rubik', sans-serif;
-      //@apply bg-white-header;
+      font-family: "Open Sans", sans-serif;
     }
   }
 }

@@ -8,13 +8,10 @@ configure({adapter: new Adapter()});
 
 export const sleep = async (time) => await new Promise((r) => setTimeout(r, time));
 
-export const elementShouldBeHidden = (wrapper) => {
-  expect(wrapper.find('.error').length).toBe(0);
-};
-
-export const elementShouldContainText = (wrapper, message) => {
-  expect(wrapper.html()).toContain(message);
-}
+export const elementShouldBeHidden = (wrapper) => expect(wrapper.find('.error').length).toBe(0);
+export const elementShouldContainText = (wrapper, message) => expect(wrapper.html()).toContain(message);
+export const elementShouldExists = (wrapper, times) => expect(wrapper.length).toBe(times);
+export const clickOnElement = (wrapper) => wrapper.simulate('click');
 
 export const mountComponent = ({mocks, addTypename = false, component, wrapWithProvider = true}) => {
 
