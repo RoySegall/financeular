@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Services;
 
+use App\Models\User;
 use Illuminate\Validation\ValidationException;
 use Tests\Feature\FinancularTestUtilsTrait;
 use Tests\TestCase;
@@ -90,6 +91,42 @@ class UserCommandTest extends TestCase
         ->expectsQuestion('Enter the user email', $user->email);
     } catch (\Exception $e) {
       $this->assertEquals($e->getMessage(), 'The email already exists');
+    }
+  }
+
+  /**
+   * Testing the creation of a user when passing the question values as optional
+   * argument.
+   */
+  public function testCreatingUserWhenPassingAnOptionalArguments() {
+    $this->artisan('financeular:user-create --email=foo@bar.com')
+      ->expectsQuestion('Enter the user password', 'pizza')
+      ->expectsQuestion('Enter the name of the user', 'John');
+
+    $created_user = $this->userService->getUserByEmail('foo@bar.com');
+    $this->assertNotNull($created_user);
+    $this->assertEquals($created_user->name, 'John');
+
+    // Checking with only email and password.
+    $this->artisan('financeular:user-create --email=bar@bar.com --password=pizza')
+      ->expectsQuestion('Enter the name of the user', 'Tom');
+
+    $created_user = $this->userService->getUserByEmail('bar@bar.com');
+    $this->assertNotNull($created_user);
+    $this->assertEquals($created_user->name, 'Tom');
+
+
+    // Check when passing all the arguments.
+    $this->artisan('financeular:user-create --email=bar@foo.com --password=pizza --name=Sam');
+    $created_user  = $this->userService->getUserByEmail('bar@foo.com');
+    $this->assertNotNull($created_user);
+    $this->assertEquals($created_user->name, 'Sam');
+
+    // Check the email is being validated.
+    try {
+      $this->artisan('financeular:user-create --email=barfoo.com --password=pizza --name=Sam');
+      $this->fail();
+    } catch (ValidationException $e) {
     }
   }
 }

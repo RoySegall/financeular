@@ -14,7 +14,7 @@ class CreateUserCommand extends Command
    *
    * @var string
    */
-  protected $signature = 'financeular:user-create';
+  protected $signature = 'financeular:user-create {--email=} {--password=} {--name=}';
 
   /**
    * The console command description.
@@ -46,7 +46,9 @@ class CreateUserCommand extends Command
    * Execute the console command.
    */
   public function handle() {
-    $email = $this->ask('Enter the user email');
+    if (!$email = $this->option('email')) {
+      $email = $this->ask('Enter the user email');
+    }
 
     // Check email.
     Validator::make(['email' => $email], ['email' => 'email'])
@@ -57,8 +59,13 @@ class CreateUserCommand extends Command
       throw new \Exception('The email already exists');
     }
 
-    $password = $this->secret('Enter the user password');
-    $name = $this->ask('Enter the name of the user');
+    if (!$password = $this->option('password')) {
+      $password = $this->secret('Enter the user password');
+    }
+
+    if (!$name = $this->option('name')) {
+      $name = $this->ask('Enter the name of the user');
+    }
 
     $this->userService->createUser($email, Hash::make($password), $name);
   }
