@@ -15,6 +15,9 @@ jobs:
       - name: Spinning up the container
         run: |
           docker-compose up -d
+          docker-compose exec backend php artisan financeular:user-create --email=john@testing.com --password=1234 --name="John Doe"
+          docker-compose exec backend php artisan financeular:user-create --email=tom@testing.com --password=1234 --name="Tom Catesenberg"
+
       - name: Install the cypress and trigger tests.
         run: |
           cd cypress
