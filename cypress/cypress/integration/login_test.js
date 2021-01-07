@@ -4,6 +4,10 @@ describe('Login.', () => {
     const {email, password, name} = this.users.john;
     cy.visit('/login');
 
+    cy.get('header > div').should(($div) => {
+      expect($div.first()).to.contain('Welcome Guest')
+    });
+
     // Set the username and password.
     cy.setUsernameAndPassword(email, password);
     cy.get('button.button-submit').click();
@@ -14,6 +18,40 @@ describe('Login.', () => {
     });
 
     // Verify the upper menu has changed.
+    cy.get('header > div').should(($div) => {
+      expect($div.first()).to.contain(`Hello ${name}`)
+    });
+  });
+
+  it('Log in and log out between different users an verify the text changes',  function () {
+
+    // todo: merge with the prev test.
+    const loginAsUser = (userInfo) => {
+      const {email, password, name} = userInfo;
+      cy.visit('/login');
+
+      cy.get('header > div').should(($div) => {
+        expect($div.first()).to.contain('Welcome Guest')
+      });
+
+      // Set the username and password.
+      cy.setUsernameAndPassword(email, password);
+      cy.get('button.button-submit').click();
+
+      cy.get('header > div').should(($div) => {
+        expect($div.first()).to.contain(`Hello ${name}`)
+      });
+    };
+
+    const {john, tom} = this.users;
+
+    loginAsUser(john);
+
+    // Logout.
+    cy.visit('/logout');
+
+    // Verify a proper login as another user.
+    loginAsUser(tom);
   });
 
   // it('Login as wrong username but correct password', function () {
