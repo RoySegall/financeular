@@ -29,3 +29,9 @@ Cypress.Commands.add("setUsernameAndPassword", (username, password) => {
   cy.get('#username').type(username);
   cy.get('#password').type(password);
 });
+
+Cypress.Commands.add("verifyElementContainText", (selector, text) => {
+  cy.get(selector).should('be.visible').then(($element) => {
+    expect($element.first()).to.contain(text);
+  });
+});

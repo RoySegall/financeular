@@ -1,48 +1,28 @@
 describe('Login.', () => {
 
-  it('Verify login with correct username and password', function () {
-    const {email, password, name} = this.users.john;
+  const loginAsUser = (userInfo) => {
+    const {email, password, name} = userInfo;
     cy.visit('/login');
 
-    cy.get('header > div').should(($div) => {
-      expect($div.first()).to.contain('Welcome Guest')
-    });
+    cy.verifyElementContainText('header > div', 'Welcome Guest');
 
     // Set the username and password.
     cy.setUsernameAndPassword(email, password);
     cy.get('button.button-submit').click();
 
     // Verify the login appears.
-    cy.get('section.success').should('be.visible').then(($success) => {
-      expect($success.first()).to.contain('You are logged in successfully')
-    });
+    cy.verifyElementContainText('section.success', 'You are logged in successfully');
 
-    // Verify the upper menu has changed.
-    cy.get('header > div').should(($div) => {
-      expect($div.first()).to.contain(`Hello ${name}`)
-    });
+    // waiting a second and verify the upper menu has changed.
+    cy.wait(1000);
+    cy.verifyElementContainText('header > div', `Hello ${name}`);
+  }
+
+  it('Verify login with correct username and password', function () {
+    loginAsUser(this.users.john);
   });
 
   it('Log in and log out between different users an verify the text changes',  function () {
-
-    // todo: merge with the prev test.
-    const loginAsUser = (userInfo) => {
-      const {email, password, name} = userInfo;
-      cy.visit('/login');
-
-      cy.get('header > div').should(($div) => {
-        expect($div.first()).to.contain('Welcome Guest')
-      });
-
-      // Set the username and password.
-      cy.setUsernameAndPassword(email, password);
-      cy.get('button.button-submit').click();
-
-      cy.get('header > div').should(($div) => {
-        expect($div.first()).to.contain(`Hello ${name}`)
-      });
-    };
-
     const {john, tom} = this.users;
 
     loginAsUser(john);
