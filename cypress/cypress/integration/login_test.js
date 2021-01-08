@@ -1,5 +1,14 @@
 describe('Login.', () => {
 
+  const setUsernameAndPassword = (username, password) => {
+    cy.get('#username').type(username);
+    cy.get('#password').type(password);
+  };
+
+  afterEach(() => {
+    cy.visit('/logout');
+  });
+
   const loginAsUser = (userInfo) => {
     const {email, password, name} = userInfo;
     cy.visit('/login');
@@ -7,7 +16,7 @@ describe('Login.', () => {
     cy.verifyElementContainText('header > div', 'Welcome Guest');
 
     // Set the username and password.
-    cy.setUsernameAndPassword(email, password);
+    setUsernameAndPassword(email, password);
     cy.get('button.button-submit').click();
 
     // Verify the login appears.
@@ -34,12 +43,24 @@ describe('Login.', () => {
     loginAsUser(tom);
   });
 
-  // it('Login as wrong username but correct password', function () {
-  //   expect(1).to.be(2);
-  // });
-  // it('Login as correct username but wrong password', function () {
-  //   expect(1).to.be(2);
-  // });
+  it('Login as wrong username but correct password', function () {
+    cy.visit('/login');
+
+    setUsernameAndPassword('wrong_username', '1234');
+    cy.get('button.button-submit').click();
+
+    cy.verifyElementContainText('section.error', 'The password or user are incorrect');
+  });
+
+  it('Login as correct username but wrong password', function () {
+    cy.visit('/login');
+
+    setUsernameAndPassword(this.users.john.email, 'wrong password');
+    cy.get('button.button-submit').click();
+
+    cy.verifyElementContainText('section.error', 'The password or user are incorrect');
+  });
+
   // it('Verify the user is logged in when the token exists in the local storage', function () {
   //   expect(1).to.be(2);
   // });
