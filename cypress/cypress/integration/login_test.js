@@ -60,11 +60,4 @@ describe('Login.', () => {
 
     cy.verifyElementContainText('section.error', 'The password or user are incorrect');
   });
-
-  // it('Verify the user is logged in when the token exists in the local storage', function () {
-  //   expect(1).to.be(2);
-  // });
-  // it('Verify the user need to login again after the token is expired', function() {
-  //   expect(1).to.be(2);
-  // });
 })
