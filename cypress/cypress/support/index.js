@@ -18,3 +18,8 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+beforeEach(function () {
+  cy.fixture('users').then((users) => {
+    this.users = users;
+  });
+})

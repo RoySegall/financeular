@@ -14,5 +14,4 @@ storage
 data
 
 # Cypress ignore
-cypress/cypress/fixtures/
 cypress/cypress/videos

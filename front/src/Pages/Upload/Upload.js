@@ -40,8 +40,14 @@ export default () => {
   const uploadFile = async () => {
     setUploading(true);
 
-    const results = await mutateUploadFile({variables:{file}});
-
+    let results;
+    try {
+      results = await mutateUploadFile({variables:{file}});
+    } catch (e) {
+      setFileUploadError(e.message);
+      setUploading(false);
+      return;
+    }
     // Done with the uploading and set the success message or an error message.
     setUploading(false);
 

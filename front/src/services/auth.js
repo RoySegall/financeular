@@ -5,7 +5,7 @@ export const getAuthInfo = () => {
 }
 
 export const setLocalStorageKeysFromRequest = (login) => {
-  const {accessToken, expires, } = login;
+  const {accessToken, expires} = login;
 
   const date = new Date();
   localStorage.setItem('accessToken', accessToken);

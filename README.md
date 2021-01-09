@@ -44,6 +44,11 @@ The next is to create a user
 docker-compose exec backend php artisan financeular:user-create
 ```
 
+Or you can use with predefined values:
+```bash
+docker-compose exec backend php artisan financeular:user-create --email=john@testing.com --password=1234 --name="John Doe"
+```
+
 Once you created the user go to `http://localhost:2000` and you ready to go.
 
 ### For production development
