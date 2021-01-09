@@ -28,7 +28,7 @@ jobs:
 
       - name: Collect docker logs.
         run: |
-          docker-compsoe logs > /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
+          docker-compose logs > /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
         if: ${{ failure() }}
 
       - name: Upload Cypress Screenshots and Videos
