@@ -15,8 +15,6 @@ jobs:
       - name: Spinning up the container
         run: |
           docker-compose up -d
-          ls -al /home/runner/work/financeular/financeular/storage
-          pwd
 
           sleep 20
           docker-compose exec -T backend php artisan financeular:user-create --email=john@testing.com --password=1234 --name=John
@@ -30,6 +28,8 @@ jobs:
 
       - name: Collect docker logs.
         run: |
+          ls -al /home/runner/work/financeular/financeular/storage
+          pwd
           docker-compose logs > /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
           cp /home/runner/work/financeular/financeular/storage/logs/laravel.log /home/runner/work/financeular/financeular/cypress/cypress/backend_logs.txt
         if: ${{ failure() }}
