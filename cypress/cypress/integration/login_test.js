@@ -20,7 +20,7 @@ describe('Login.', () => {
     cy.get('button.button-submit').click();
 
     // Verify the login appears.
-    cy.verifyElementContainText('section.success', 'You are logged in successfully');
+    cy.verifySuccessText('You are logged in successfully');
 
     // waiting a second and verify the upper menu has changed.
     cy.wait(1000);
@@ -48,8 +48,7 @@ describe('Login.', () => {
 
     setUsernameAndPassword('wrong_username', '1234');
     cy.get('button.button-submit').click();
-
-    cy.verifyElementContainText('section.error', 'The password or user are incorrect');
+    cy.verifyErrorText('The password or user are incorrect');
   });
 
   it('Login as correct username but wrong password', function () {
@@ -57,7 +56,6 @@ describe('Login.', () => {
 
     setUsernameAndPassword(this.users.john.email, 'wrong password');
     cy.get('button.button-submit').click();
-
-    cy.verifyElementContainText('section.error', 'The password or user are incorrect');
+    cy.verifyErrorText('The password or user are incorrect');
   });
 })
