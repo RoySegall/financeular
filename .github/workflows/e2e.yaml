@@ -15,7 +15,7 @@ jobs:
       - name: Spinning up the container
         run: |
           docker-compose up -d
-          ls -al
+          ls -al /home/runner/work/financeular/financeular/storage
           pwd
 
           sleep 20
