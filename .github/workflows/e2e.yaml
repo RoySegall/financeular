@@ -36,8 +36,8 @@ jobs:
         with:
           name: cypress-artifacts
           path: |-
+            /home/runner/work/financeular/financeular/storage/logs/laravel.log
             /home/runner/work/financeular/financeular/cypress/cypress/screenshots
             /home/runner/work/financeular/financeular/cypress/cypress/videos
             /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
-            /home/runner/work/financeular/financeular/storage/logs
         if: ${{ failure() }}
