@@ -26,6 +26,11 @@ jobs:
           npm i
           npm run test:headless
 
+      - name: Collect docker logs.
+        run: |
+          docker-compsoe logs > /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
+        if: ${{ failure() }}
+
       - name: Upload Cypress Screenshots and Videos
         uses: actions/upload-artifact@v2
         with:
@@ -33,4 +38,5 @@ jobs:
           path: |-
             /home/runner/work/financeular/financeular/cypress/cypress/screenshots
             /home/runner/work/financeular/financeular/cypress/cypress/videos
+            /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
         if: ${{ failure() }}

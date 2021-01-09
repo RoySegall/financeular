@@ -7,10 +7,6 @@ describe('Uploading a file', () => {
     cy.login(john);
   });
 
-  afterEach(() => {
-    cy.visit('/logout')
-  });
-
   it('Verify error when upload in an unsupported format', () => {
     cy.visit('/upload');
     cy.get('[type="file"]').attachFile('kitten.jpg');
@@ -22,7 +18,16 @@ describe('Uploading a file', () => {
   it('verify an error will be raised for a valid format file with corrupted values', () => {
     cy.visit('/upload');
     cy.get('[type="file"]').attachFile('bad_dummy_file.xlsx');
+
+    cy.intercept('POST', '**/graphql').as('graphql');
+
     cy.get('.button-submit').click();
+
+    // Verifying the request contains the dummy client secret and ID.
+    cy.wait('@graphql').should(({ request, response }) => {
+      cy.log(JSON.stringify(response));
+      cy.log(JSON.stringify(request));
+    });
 
     cy.verifyErrorText('There was an error while trying to process the file. Please contact support.');
   });
@@ -30,7 +35,16 @@ describe('Uploading a file', () => {
   it('Verify uploading a good file', () => {
     cy.visit('/upload');
     cy.get('[type="file"]').attachFile('dummy_file.xlsx');
+
+    cy.intercept('POST', '**/graphql').as('graphql');
+
     cy.get('.button-submit').click();
+
+    // Verifying the request contains the dummy client secret and ID.
+    cy.wait('@graphql').should(({ request, response }) => {
+      cy.log(JSON.stringify(response));
+      cy.log(JSON.stringify(request));
+    });
 
     cy.verifySuccessText('The file has uploaded successfully.');
 
