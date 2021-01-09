@@ -29,6 +29,7 @@ jobs:
       - name: Collect docker logs.
         run: |
           docker-compose logs > /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
+          cp /home/runner/work/financeular/financeular/storage/logs/laravel.log /home/runner/work/financeular/financeular/cypress/cypress/backend_logs.txt
         if: ${{ failure() }}
 
       - name: Upload Cypress Screenshots and Videos
@@ -36,7 +37,7 @@ jobs:
         with:
           name: cypress-artifacts
           path: |-
-            /home/runner/work/financeular/financeular/storage/logs/laravel.log
+            /home/runner/work/financeular/financeular/cypress/cypress/backend_logs.txt
             /home/runner/work/financeular/financeular/cypress/cypress/screenshots
             /home/runner/work/financeular/financeular/cypress/cypress/videos
             /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
