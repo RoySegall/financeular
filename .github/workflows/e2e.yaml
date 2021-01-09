@@ -31,6 +31,6 @@ jobs:
         with:
           name: cypress-artifacts
           path: |-
-            ./cypress/screenshots
-            ./cypress/videos
+            /home/runner/work/financeular/financeular/cypress/cypress/screenshots
+            /home/runner/work/financeular/financeular/cypress/cypress/videos
         if: ${{ failure() }}
