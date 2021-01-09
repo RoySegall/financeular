@@ -39,4 +39,5 @@ jobs:
             /home/runner/work/financeular/financeular/cypress/cypress/screenshots
             /home/runner/work/financeular/financeular/cypress/cypress/videos
             /home/runner/work/financeular/financeular/cypress/cypress/logs.txt
+            /home/runner/work/financeular/financeular/storage/logs
         if: ${{ failure() }}
