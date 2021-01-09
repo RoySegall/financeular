@@ -15,7 +15,6 @@ jobs:
       - name: Spinning up the container
         run: |
           docker-compose up -d
-          chmod 777 -R ./storage
 
           sleep 20
           docker-compose exec -T backend php artisan financeular:user-create --email=john@testing.com --password=1234 --name=John
@@ -26,3 +25,12 @@ jobs:
           cd cypress
           npm i
           npm run test:headless
+
+      - name: Upload Cypress Screenshots and Videos
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-artifacts
+          path: |-
+            cypress/screenshots
+            cypress/videos
+        if: ${{ failure() }}
