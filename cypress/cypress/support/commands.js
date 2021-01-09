@@ -39,33 +39,33 @@ Cypress.Commands.add("verifySuccessText", (text) => {
 });
 
 Cypress.Commands.add("login", (user) => {
-  const {email, password} = user;
-
-  const query = {
-    "variables": {"username":email,"password": password},
-    "query": `mutation ($username: String!, $password: String!) {
-      login(
-        email: $username
-        password: $password
-        client_id: "50"
-        client_secret: "4af37737-a903-47e6-a26e-a339c3b764f4"
-      ) {
-        accessToken
-        expires
-      }
-    }
-  `};
-
-  cy.request({
-    url: `${Cypress.config('backendUrl')}/graphql`,
-    method: 'POST',
-    body: query,
-  }).then((response) => {
-    const {data} = response.body;
-    const {accessToken, expires} = data.login;
-
-    const date = new Date();
-    window.localStorage.setItem('accessToken', accessToken);
-    window.localStorage.setItem('expires', Math.round(date.getTime() / 1000) + expires);
-  })
+  // const {email, password} = user;
+  //
+  // const query = {
+  //   "variables": {"username":email,"password": password},
+  //   "query": `mutation ($username: String!, $password: String!) {
+  //     login(
+  //       email: $username
+  //       password: $password
+  //       client_id: "50"
+  //       client_secret: "4af37737-a903-47e6-a26e-a339c3b764f4"
+  //     ) {
+  //       accessToken
+  //       expires
+  //     }
+  //   }
+  // `};
+  //
+  // cy.request({
+  //   url: `${Cypress.config('backendUrl')}/graphql`,
+  //   method: 'POST',
+  //   body: query,
+  // }).then((response) => {
+  //   const {data} = response.body;
+  //   const {accessToken, expires} = data.login;
+  //
+  //   const date = new Date();
+  //   window.localStorage.setItem('accessToken', accessToken);
+  //   window.localStorage.setItem('expires', Math.round(date.getTime() / 1000) + expires);
+  // })
 });

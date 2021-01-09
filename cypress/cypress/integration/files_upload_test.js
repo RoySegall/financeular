@@ -7,6 +7,10 @@ describe('Uploading a file', () => {
     cy.login(john);
   });
 
+  afterEach(() => {
+    cy.visit('/logout')
+  });
+
   it('Verify error when upload in an unsupported format', () => {
     cy.visit('/upload');
     cy.get('[type="file"]').attachFile('kitten.jpg');
