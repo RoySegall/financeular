@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v1
       - name: Spinning up the container
         run: |
+          docker-compose up -d
           ls -al
           pwd
-#          docker-compose up -d
 #
 #          sleep 20
 #          docker-compose exec -T backend php artisan financeular:user-create --email=john@testing.com --password=1234 --name=John
