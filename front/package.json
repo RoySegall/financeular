@@ -20,7 +20,7 @@
     "formik": "^2.2.5",
     "graphql": "^15.4.0",
     "node-sass": "^4.14.1",
-    "postcss": "^7.0.35",
+    "postcss": "^7.0.36",
     "react": "^16.14.0",
     "react-chartist": "^0.14.3",
     "react-dom": "^16.14.0",
